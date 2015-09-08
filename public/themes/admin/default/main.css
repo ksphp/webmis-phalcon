@@ -26,7 +26,7 @@ input:focus, textarea:focus{box-shadow: 0 0 6px rgba(153, 153, 153, 0.7);}
 .login_ct .login dt{float: left; width: 90px; line-height: 25px; text-align: right; padding: 4px;}
 .login_ct .login dd{line-height: 25px; padding: 4px 0;}
 .login_ct .login .input{border: none; width: 210px; height: 25px; line-height: 25px; border: #222 1px solid; background-color: #DFE1E8; padding: 0 5px;}
-.login_ct .sub{float: left; width: 60px; line-height: 60px; margin-top: 4px; display: inline-block; background-color: #3A90BA; color: #FFF; text-align: center; box-shadow: 1px 1px 3px #000; border-radius: 3px;}
+.login_ct .sub{float: left; width: 60px; line-height: 60px; margin-top: 4px; display: inline-block; background-color: #3A90BA; color: #FFF; text-align: center; box-shadow: 1px 1px 2px #000; border-radius: 3px;}
 .login_ct .sub:hover{background-color: #BF3E11;}
 .login_copy{height: 50px; line-height: 20px; color: #CCC; text-align: center; padding: 15px 0; border-radius: 5px; min-width: 460px;}
 .login_copy a{color: #DFE1E8;}
