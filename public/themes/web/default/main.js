@@ -1,0 +1,4 @@
+$(function(){
+	// Version
+	$('#webmisVersion').webmisVersion();
+});
