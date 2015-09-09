@@ -11,7 +11,8 @@ class ControllerBase extends Controller{
 			'uname'=>$admin['uname'],'name'=>$admin['name'],'department'=>$admin['department'],'position'=>$admin['position']
 		));
 		// Perm
-		$this->_UserPerm($admin);
+		// $this->_UserPerm($admin);
+		print_r($admin['perm_s']);
 	}
 	
 	/* Language */
