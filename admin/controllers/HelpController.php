@@ -5,7 +5,8 @@ class HelpController extends ControllerBase{
 		parent::initialize();
 	}
 	public function indexAction(){
-		//默认后台样式
+		$Menus = $this->getMenus();
+		$this->view->setVar('Menus',$Menus);
 		$this->view->setTemplateAfter(APP_THEMES.'/main');
 	}
 }

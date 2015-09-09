@@ -5,6 +5,8 @@ class SystemController extends ControllerBase{
 		parent::initialize();
 	}
 	public function indexAction(){
+		$Menus = $this->getMenus();
+		$this->view->setVar('Menus',$Menus);
 		//默认后台样式
 		$this->view->setTemplateAfter(APP_THEMES.'/main');
 	}

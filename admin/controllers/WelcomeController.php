@@ -5,7 +5,9 @@ class WelcomeController extends ControllerBase{
 		parent::initialize();
 	}
 	public function indexAction(){
-		//默认后台样式
+		$Menus = $this->getMenus();
+		$this->view->setVar('Menus',$Menus);
+		// 模板
 		$this->view->setTemplateAfter(APP_THEMES.'/main');
 	}
 	public function testAction(){
