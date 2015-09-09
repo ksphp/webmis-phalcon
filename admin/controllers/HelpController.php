@@ -1,11 +1,9 @@
 <?php
 class HelpController extends ControllerBase{
-	public function initialize(){
-		$this->tag->setTitle('Help');
-		parent::initialize();
-	}
+	// Index
 	public function indexAction(){
 		$Menus = $this->getMenus();
+		$this->tag->appendTitle($this->Ctitle);
 		$this->view->setVar('Menus',$Menus);
 		$this->view->setTemplateAfter(APP_THEMES.'/main');
 	}

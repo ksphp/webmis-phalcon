@@ -1,14 +1,8 @@
 <?php
 class WelcomeController extends ControllerBase{
-	public function initialize(){
-		$this->tag->setTitle('Welcome');
-		parent::initialize();
-	}
+	// Index
 	public function indexAction(){
-		$Menus = $this->getMenus();
-		$this->view->setVar('Menus',$Menus);
-		// 模板
-		$this->view->setTemplateAfter(APP_THEMES.'/main');
+		$this->forward('desktop');
 	}
 	public function testAction(){
 		//$this->view->disable();

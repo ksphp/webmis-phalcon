@@ -1,11 +1,9 @@
 <?php
 class SystemController extends ControllerBase{
-	public function initialize(){
-		$this->tag->setTitle('System');
-		parent::initialize();
-	}
+	// Index
 	public function indexAction(){
 		$Menus = $this->getMenus();
+		$this->tag->appendTitle($this->Ctitle);
 		$this->view->setVar('Menus',$Menus);
 		//默认后台样式
 		$this->view->setTemplateAfter(APP_THEMES.'/main');

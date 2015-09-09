@@ -2,8 +2,9 @@
 use Phalcon\Mvc\Controller;
 use Phalcon\Translate\Adapter\NativeArray;
 class ControllerBase extends Controller{
+	protected $Ctitle;
 	public function initialize(){
-		$this->tag->appendTitle(' | '.APP_TITLE);
+		$this->tag->setTitle(APP_TITLE.' | ');
 		// Admin Info
 		$admin = $this->session->get('Admin');
 		$this->view->setVar('UserInfo', array(
@@ -28,7 +29,7 @@ class ControllerBase extends Controller{
 	/* Forward */
 	protected function forward($url){
 		$urlParts = explode('/', $url);
-		return $this->dispatcher->forward(array('controller' => $urlParts[0],'action' => $urlParts[1]));
+		return $this->dispatcher->forward(array('controller' => $urlParts[0],'action' => @$urlParts[1]));
 	}
 	
 	// Get Menus
@@ -61,8 +62,8 @@ class ControllerBase extends Controller{
 			}
 		}
 		// return array('Date'=>$data,'FID'=>$FID,'Ctitle'=>$title,'userHtml'=>$userHtml,'actionHtml'=>$actionHtml);
-		$title = $Lang->_($FID['Ctitle']);
-		return array('Date'=>$data,'FID'=>$FID,'Ctitle'=>$title);
+		$this->Ctitle = $Lang->_($FID['Ctitle']);
+		return array('Date'=>$data,'FID'=>$FID,'Ctitle'=>$this->Ctitle);
 	}
 	private function getFID($Cname){
 		$FID1=''; $FID2=''; $FID3='';
@@ -71,7 +72,7 @@ class ControllerBase extends Controller{
 		if($G1->fid==0){
 			$FID1 = $G1->id;
 		}else{
-			$G2 = $APP->sys_menus_m->getMenu();Menus::findFirst(array("fid = :fid:",'bind' => array('fid' => $G1->fid)));
+			$G2 = Menus::findFirst(array("id = :fid:",'bind' => array('fid' => $G1->fid)));
 			if($G2->fid==0){
 				$FID1 = $G1->fid;
 				$FID2 = $G1->id;
