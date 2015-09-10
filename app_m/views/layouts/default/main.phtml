@@ -2,6 +2,8 @@
 <html>
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+	<meta name="format-detection" content="telephone=no">
 	<?php echo $this->tag->getTitle();?>
 	<meta name="author" content="KSPHP" />
 	<meta name="keywords" content="KEY" />
@@ -11,15 +13,15 @@
 	<?php echo $this->tag->stylesheetLink("../themes/web/".APP_THEMES."/main.css");?>
 	<?php echo $this->tag->javascriptInclude("../webmis/plugin/jquery/".JQUERY_NAME);?>
 	<?php echo $this->tag->javascriptInclude("../webmis/jquery.webmis.js");?>
-	<?php echo $this->tag->javascriptInclude("../themes/web/".APP_THEMES."/main.js");?>
+	<?php echo $this->tag->javascriptInclude("../themes/m/".APP_THEMES."/main.js");?>
 	<?php if(@$LoadCSS){ foreach($LoadCSS as $val){
-		echo $this->tag->stylesheetLink("../themes/web/".APP_THEMES."/css/".$val);
+		echo $this->tag->stylesheetLink("../themes/m/".APP_THEMES."/css/".$val);
 	}} ?>
 </head>
 <body class="body">
 <?php echo $this->getContent() ?>
 <?php if(@$LoadJS){ foreach($LoadJS as $val){
-	echo $this->tag->javascriptInclude("../themes/web/".APP_THEMES."/js/".$val);
+	echo $this->tag->javascriptInclude("../themes/m/".APP_THEMES."/js/".$val);
 }} ?>
 </body>
 </html>

@@ -4,7 +4,16 @@ class IndexController extends Controller{
 	public function indexAction(){
 		// Login Template
 		$this->view->setTemplateAfter(APP_THEMES.'/login');
+		//$this->IsMobile();
 	}
+	public function IsMobile(){
+		$useragent = $this->request->getUserAgent();
+		print_r($useragent);
+		echo '<br/>';
+		$info = preg_match('|\(.*?\)|',$useragent,$matches)>0?$matches[0]:'';
+		print_r($info);
+	}
+
 	// Login
 	public function loginAction(){
 		if ($this->request->isPost()) {

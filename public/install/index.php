@@ -53,14 +53,14 @@ $isWrite='';$msg='';$suc='';
 if(!is_writable('webmis.sql')){
 	$isWrite .= '<p class="err">install/webmis.sql '.$Lang['msg_not_write'].'</p>';
 }
-if(!is_writable('../../admin/config/config.ini')){
-	$isWrite .= '<p class="err">admin/config/database.php '.$Lang['msg_not_write'].'</p>';
+if(!is_writable('../../app_admin/config/config.ini')){
+	$isWrite .= '<p class="err">app_admin/config/config.ini '.$Lang['msg_not_write'].'</p>';
 }
-if(!is_writable('../../web/config/config.ini')){
-	$isWrite .= '<p class="err">web/config/database.php '.$Lang['msg_not_write'].'</p>';
+if(!is_writable('../../app_web/config/config.ini')){
+	$isWrite .= '<p class="err">app_web/config/config.ini '.$Lang['msg_not_write'].'</p>';
 }
-if(!is_writable('../m/config/config.ini')){
-	$isWrite .= '<p class="err">m/config/database.php '.$Lang['msg_not_write'].'</p>';
+if(!is_writable('../../app_m/config/config.ini')){
+	$isWrite .= '<p class="err">app_m/config/config.ini '.$Lang['msg_not_write'].'</p>';
 }
 
 // Install
@@ -80,7 +80,7 @@ if (isset($_POST['install'])){
 	$database = trim($_POST['database']);
 	if(!$msg){
 		try {
-			$db = new PDO($type.':dbname='.$database.';host='.$hostname,$username,$password);
+			$db = new PDO(strtolower($type).':dbname='.$database.';host='.$hostname,$username,$password);
 			$db->query('set names utf8;');
 			$suc = '<p class="suc">'.$Lang['msg_db_conn'].' [ '.$Lang[ 'msg_suc'].' ]</p>';
 			// Database
@@ -107,9 +107,9 @@ if (isset($_POST['install'])){
 				}
 				$suc .= $data;
 				// Database Config
-				$file1 = '../admin/config/database.php';
-				$file2 = '../web/config/database.php';
-				$file3 = '../m/config/database.php';
+				$file1 = '../../app_admin/config/config.ini';
+				$file2 = '../../app_web/config/config.ini';
+				$file3 = '../../app_m/config/config.ini';
 				$ct1 = file_get_contents($file1);
 				$ct2 = file_get_contents($file2);
 				$ct3 = file_get_contents($file3);
@@ -120,12 +120,12 @@ if (isset($_POST['install'])){
 				}elseif(!$ct3) {
 					$suc .= '<p class="err">'.$Lang['msg_file_read' ].'：'.$file3.' [ '.$Lang['msg_err' ].' ]</p>';
 				}else {
-					$ct1 = preg_replace("/'hostname' => '(.*)'/","'hostname' => '".$hostname."'",$ct1);
-					$ct1 = preg_replace("/'username' => '(.*)'/","'username' => '".$username."'",$ct1);
-					$ct1 = preg_replace("/'password' => '(.*)'/","'password' => '".$password."'",$ct1);
-					$ct1 = preg_replace("/'database' => '(.*)'/","'database' => '".$database."'",$ct1);
-					$type = $type=='mysql'?'mysqli':$type;
-					$ct1 = preg_replace("/'dbdriver' => '(.*)'/","'dbdriver' => '".$type."'",$ct1);
+					// Write Config Admin
+					$ct1 = preg_replace("/ adapter = (.*)/"," adapter = ".$type,$ct1);
+					$ct1 = preg_replace("/ host = (.*)/"," host = ".$hostname,$ct1);
+					$ct1 = preg_replace("/ username = (.*)/"," username = ".$username,$ct1);
+					$ct1 = preg_replace("/ password = (.*)/"," password = ".$password,$ct1);
+					$ct1 = preg_replace("/ name = (.*)/"," name = ".$database,$ct1);
 					$fp=fopen($file1,'w');
 					if(fwrite($fp,$ct1)){
 						$suc .= '<p class="suc">'.$Lang['msg_file_write' ].'：'.$file1.' [ '.$Lang['msg_suc' ].' ]</p>';
@@ -133,15 +133,27 @@ if (isset($_POST['install'])){
 						$suc .= '<p class="err">'.$Lang['msg_file_write' ].'：'.$file1.' [ '.$Lang['msg_err' ].' ]</p>';
 					};
 					fclose($fp);
+					// Write Config Web
+					$ct2 = preg_replace("/ adapter = (.*)/"," adapter = ".$type,$ct2);
+					$ct2 = preg_replace("/ host = (.*)/"," host = ".$hostname,$ct2);
+					$ct2 = preg_replace("/ username = (.*)/"," username = ".$username,$ct2);
+					$ct2 = preg_replace("/ password = (.*)/"," password = ".$password,$ct2);
+					$ct2 = preg_replace("/ name = (.*)/"," name = ".$database,$ct2);
 					$fp=fopen($file2,'w');
-					if(fwrite($fp,$ct1)){
+					if(fwrite($fp,$ct2)){
 						$suc .= '<p class="suc">'.$Lang['msg_file_write' ].'：'.$file2.' [ '.$Lang['msg_suc' ].' ]</p>';
 					}else {
 						$suc .= '<p class="err">'.$Lang['msg_file_write' ].'：'.$file2.' [ '.$Lang['msg_err' ].' ]</p>';
 					};
 					fclose($fp);
+					// Write Config M
+					$ct3 = preg_replace("/ adapter = (.*)/"," adapter = ".$type,$ct3);
+					$ct3 = preg_replace("/ host = (.*)/"," host = ".$hostname,$ct3);
+					$ct3 = preg_replace("/ username = (.*)/"," username = ".$username,$ct3);
+					$ct3 = preg_replace("/ password = (.*)/"," password = ".$password,$ct3);
+					$ct3 = preg_replace("/ name = (.*)/"," name = ".$database,$ct3);
 					$fp=fopen($file3,'w');
-					if(fwrite($fp,$ct1)){
+					if(fwrite($fp,$ct3)){
 						$suc .= '<p class="suc">'.$Lang['msg_file_write' ].'：'.$file3.' [ '.$Lang['msg_suc' ].' ]</p>';
 					}else {
 						$suc .= '<p class="err">'.$Lang['msg_file_write' ].'：'.$file3.' [ '.$Lang['msg_err' ].' ]</p>';
@@ -213,8 +225,10 @@ h2{font-size: 14px; border-bottom: #DADCDF 1px solid; color: #999;}
 			<dt><?php echo $Lang['db_type'];?>：</dt>
 			<dd>
 				<select name="type" style="width: 222px;">
-					<option value="mysql" <?php echo $type=='mysql'?'selected':'';?>>MySQL</option>
-					<option value="mssql" <?php echo $type=='mssql'?'selected':'';?>>SQL Server</option>
+					<option value="Mysql" <?php echo $type=='Mysql'?'selected':'';?>>MySQL</option>
+					<option value="Postgresql" <?php echo $type=='Postgresql'?'selected':'';?>>PostgreSQL</option>
+					<option value="Sqlite" <?php echo $type=='Sqlite'?'selected':'';?>>SQLite</option>
+					<option value="Oracle" <?php echo $type=='Oracle'?'selected':'';?>>Oracle</option>
 				</select>
 			</dd>
 			<dt><?php echo $Lang['db_host'];?>：</dt>

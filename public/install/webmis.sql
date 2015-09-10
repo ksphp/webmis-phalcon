@@ -79,31 +79,31 @@ CREATE TABLE `wmis_sys_menus` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8;
 
-INSERT INTO `wmis_sys_menus` (`id`, `fid`, `title`, `url`, `perm`, `ico`, `remark`, `ctime`, `sort`) VALUES ('1', '0', 'menu_home', 'welcome', '0', 'ico-home', NULL, '2010-01-01 08:00:00', '1');
-INSERT INTO `wmis_sys_menus` (`id`, `fid`, `title`, `url`, `perm`, `ico`, `remark`, `ctime`, `sort`) VALUES ('2', '0', 'menu_system', 'system', '0', 'ico-system', NULL, '2010-01-01 08:00:00', '2');
-INSERT INTO `wmis_sys_menus` (`id`, `fid`, `title`, `url`, `perm`, `ico`, `remark`, `ctime`, `sort`) VALUES ('3', '0', 'menu_web', 'web', '0', 'ico-web', NULL, '2012-03-31 09:10:58', '3');
-INSERT INTO `wmis_sys_menus` (`id`, `fid`, `title`, `url`, `perm`, `ico`, `remark`, `ctime`, `sort`) VALUES ('4', '0', 'menu_log', 'log', '0', 'ico-logs', NULL, '2014-06-25 12:30:26', '4');
-INSERT INTO `wmis_sys_menus` (`id`, `fid`, `title`, `url`, `perm`, `ico`, `remark`, `ctime`, `sort`) VALUES ('5', '0', 'menu_help', 'help', '0', 'ico-help', NULL, '2010-01-01 08:00:00', '5');
+INSERT INTO `wmis_sys_menus` (`id`, `fid`, `title`, `url`, `perm`, `ico`, `remark`, `ctime`, `sort`) VALUES ('1', '0', 'menu_home', 'Welcome', '0', 'ico-home', NULL, '2010-01-01 08:00:00', '1');
+INSERT INTO `wmis_sys_menus` (`id`, `fid`, `title`, `url`, `perm`, `ico`, `remark`, `ctime`, `sort`) VALUES ('2', '0', 'menu_system', 'System', '0', 'ico-system', NULL, '2010-01-01 08:00:00', '2');
+INSERT INTO `wmis_sys_menus` (`id`, `fid`, `title`, `url`, `perm`, `ico`, `remark`, `ctime`, `sort`) VALUES ('3', '0', 'menu_web', 'Web', '0', 'ico-web', NULL, '2012-03-31 09:10:58', '3');
+INSERT INTO `wmis_sys_menus` (`id`, `fid`, `title`, `url`, `perm`, `ico`, `remark`, `ctime`, `sort`) VALUES ('4', '0', 'menu_log', 'Log', '0', 'ico-logs', NULL, '2014-06-25 12:30:26', '4');
+INSERT INTO `wmis_sys_menus` (`id`, `fid`, `title`, `url`, `perm`, `ico`, `remark`, `ctime`, `sort`) VALUES ('5', '0', 'menu_help', 'Help', '0', 'ico-help', NULL, '2010-01-01 08:00:00', '5');
 INSERT INTO `wmis_sys_menus` (`id`, `fid`, `title`, `url`, `perm`, `ico`, `remark`, `ctime`, `sort`) VALUES ('6', '1', 'menu_home_desktop', '', '0', 'ico-disktop', '', '2010-01-01 08:00:00', '0');
-INSERT INTO `wmis_sys_menus` (`id`, `fid`, `title`, `url`, `perm`, `ico`, `remark`, `ctime`, `sort`) VALUES ('7', '6', 'menu_home_userHome', 'desktop', '1', 'ico-user1', NULL, '2010-01-01 08:00:00', '0');
+INSERT INTO `wmis_sys_menus` (`id`, `fid`, `title`, `url`, `perm`, `ico`, `remark`, `ctime`, `sort`) VALUES ('7', '6', 'menu_home_userHome', 'Desktop', '1', 'ico-user1', NULL, '2010-01-01 08:00:00', '0');
 INSERT INTO `wmis_sys_menus` (`id`, `fid`, `title`, `url`, `perm`, `ico`, `remark`, `ctime`, `sort`) VALUES ('8', '1', 'menu_home_user', '', '0', 'ico-user', '', '2012-03-30 14:49:29', '0');
-INSERT INTO `wmis_sys_menus` (`id`, `fid`, `title`, `url`, `perm`, `ico`, `remark`, `ctime`, `sort`) VALUES ('9', '8', 'menu_home_userPWD', 'sys_change_passwd', '1', 'ico-pwd', NULL, '2012-03-30 14:37:30', '0');
+INSERT INTO `wmis_sys_menus` (`id`, `fid`, `title`, `url`, `perm`, `ico`, `remark`, `ctime`, `sort`) VALUES ('9', '8', 'menu_home_userPWD', 'SysChangePasswd', '1', 'ico-pwd', NULL, '2012-03-30 14:37:30', '0');
 INSERT INTO `wmis_sys_menus` (`id`, `fid`, `title`, `url`, `perm`, `ico`, `remark`, `ctime`, `sort`) VALUES ('10', '2', 'menu_sys_management', '', '0', 'ico-system1', '', '2010-01-01 08:00:00', '0');
-INSERT INTO `wmis_sys_menus` (`id`, `fid`, `title`, `url`, `perm`, `ico`, `remark`, `ctime`, `sort`) VALUES ('11', '10', 'menu_sys_m_menu', 'sys_menus', '31', 'ico-menu', NULL, '2010-01-01 08:00:00', '0');
-INSERT INTO `wmis_sys_menus` (`id`, `fid`, `title`, `url`, `perm`, `ico`, `remark`, `ctime`, `sort`) VALUES ('12', '10', 'menu_sys_m_action', 'sys_menus_action', '31', 'ico-menuA', NULL, '2010-01-01 08:00:00', '0');
-INSERT INTO `wmis_sys_menus` (`id`, `fid`, `title`, `url`, `perm`, `ico`, `remark`, `ctime`, `sort`) VALUES ('13', '10', 'menu_sys_m_admin', 'sys_admin', '31', 'ico-admin', NULL, '2010-01-01 08:00:00', '0');
-INSERT INTO `wmis_sys_menus` (`id`, `fid`, `title`, `url`, `perm`, `ico`, `remark`, `ctime`, `sort`) VALUES ('14', '10', 'menu_sys_m_config', 'sys_config', '1', 'ico-system2', NULL, '2012-05-30 19:12:52', '0');
-INSERT INTO `wmis_sys_menus` (`id`, `fid`, `title`, `url`, `perm`, `ico`, `remark`, `ctime`, `sort`) VALUES ('15', '10', 'menu_sys_m_files', 'sys_filemanager', '1', 'ico-fileM', NULL, '2013-07-03 13:33:29', '0');
+INSERT INTO `wmis_sys_menus` (`id`, `fid`, `title`, `url`, `perm`, `ico`, `remark`, `ctime`, `sort`) VALUES ('11', '10', 'menu_sys_m_menu', 'SysMenus', '31', 'ico-menu', NULL, '2010-01-01 08:00:00', '0');
+INSERT INTO `wmis_sys_menus` (`id`, `fid`, `title`, `url`, `perm`, `ico`, `remark`, `ctime`, `sort`) VALUES ('12', '10', 'menu_sys_m_action', 'SysMenusAction', '31', 'ico-menuA', NULL, '2010-01-01 08:00:00', '0');
+INSERT INTO `wmis_sys_menus` (`id`, `fid`, `title`, `url`, `perm`, `ico`, `remark`, `ctime`, `sort`) VALUES ('13', '10', 'menu_sys_m_admin', 'SysAdmin', '31', 'ico-admin', NULL, '2010-01-01 08:00:00', '0');
+INSERT INTO `wmis_sys_menus` (`id`, `fid`, `title`, `url`, `perm`, `ico`, `remark`, `ctime`, `sort`) VALUES ('14', '10', 'menu_sys_m_config', 'SysConfig', '1', 'ico-system2', NULL, '2012-05-30 19:12:52', '0');
+INSERT INTO `wmis_sys_menus` (`id`, `fid`, `title`, `url`, `perm`, `ico`, `remark`, `ctime`, `sort`) VALUES ('15', '10', 'menu_sys_m_files', 'SysFilemanager', '1', 'ico-fileM', NULL, '2013-07-03 13:33:29', '0');
 INSERT INTO `wmis_sys_menus` (`id`, `fid`, `title`, `url`, `perm`, `ico`, `remark`, `ctime`, `sort`) VALUES ('16', '2', 'menu_sys_database', '', '0', 'ico-db', '', '2012-08-16 14:06:33', '0');
-INSERT INTO `wmis_sys_menus` (`id`, `fid`, `title`, `url`, `perm`, `ico`, `remark`, `ctime`, `sort`) VALUES ('17', '16', 'menu_sys_db_backup', 'sys_db_backup', '81', 'ico-exp', '', '2012-08-16 14:09:42', '0');
-INSERT INTO `wmis_sys_menus` (`id`, `fid`, `title`, `url`, `perm`, `ico`, `remark`, `ctime`, `sort`) VALUES ('18', '16', 'menu_sys_db_recovery', 'sys_db_restore', '145', 'ico-imp', NULL, '2012-08-16 14:10:19', '0');
+INSERT INTO `wmis_sys_menus` (`id`, `fid`, `title`, `url`, `perm`, `ico`, `remark`, `ctime`, `sort`) VALUES ('17', '16', 'menu_sys_db_backup', 'SysDBBackup', '81', 'ico-exp', '', '2012-08-16 14:09:42', '0');
+INSERT INTO `wmis_sys_menus` (`id`, `fid`, `title`, `url`, `perm`, `ico`, `remark`, `ctime`, `sort`) VALUES ('18', '16', 'menu_sys_db_recovery', 'SysDBRestore', '145', 'ico-imp', NULL, '2012-08-16 14:10:19', '0');
 INSERT INTO `wmis_sys_menus` (`id`, `fid`, `title`, `url`, `perm`, `ico`, `remark`, `ctime`, `sort`) VALUES ('19', '4', 'menu_log_system', '', '0', 'ico-logs', '', '2012-03-30 09:03:18', '0');
-INSERT INTO `wmis_sys_menus` (`id`, `fid`, `title`, `url`, `perm`, `ico`, `remark`, `ctime`, `sort`) VALUES ('20', '19', 'menu_log_adminLogin', 'log_admin_login', '19', 'ico-logs1', NULL, '2012-03-30 09:29:20', '0');
+INSERT INTO `wmis_sys_menus` (`id`, `fid`, `title`, `url`, `perm`, `ico`, `remark`, `ctime`, `sort`) VALUES ('20', '19', 'menu_log_adminLogin', 'LogAdminLogin', '19', 'ico-logs1', NULL, '2012-03-30 09:29:20', '0');
 INSERT INTO `wmis_sys_menus` (`id`, `fid`, `title`, `url`, `perm`, `ico`, `remark`, `ctime`, `sort`) VALUES ('21', '5', 'menu_help_doc', '', '0', 'ico-help', '', '2010-01-01 08:00:00', '0');
-INSERT INTO `wmis_sys_menus` (`id`, `fid`, `title`, `url`, `perm`, `ico`, `remark`, `ctime`, `sort`) VALUES ('22', '21', 'menu_help_system', 'help_system', '1', '', NULL, '2010-01-01 08:00:00', '0');
+INSERT INTO `wmis_sys_menus` (`id`, `fid`, `title`, `url`, `perm`, `ico`, `remark`, `ctime`, `sort`) VALUES ('22', '21', 'menu_help_system', 'HelpSystem', '1', '', NULL, '2010-01-01 08:00:00', '0');
 INSERT INTO `wmis_sys_menus` (`id`, `fid`, `title`, `url`, `perm`, `ico`, `remark`, `ctime`, `sort`) VALUES ('23', '3', 'menu_web_management', '', '0', 'ico-web', '', '2012-03-31 09:42:59', '0');
-INSERT INTO `wmis_sys_menus` (`id`, `fid`, `title`, `url`, `perm`, `ico`, `remark`, `ctime`, `sort`) VALUES ('24', '23', 'menu_web_m_news', 'web_news', '319', '', '', '2012-03-31 10:53:01', '0');
-INSERT INTO `wmis_sys_menus` (`id`, `fid`, `title`, `url`, `perm`, `ico`, `remark`, `ctime`, `sort`) VALUES ('25', '23', 'menu_web_class', 'class_web', '63', '', '', '2012-03-31 10:45:05', '0');
+INSERT INTO `wmis_sys_menus` (`id`, `fid`, `title`, `url`, `perm`, `ico`, `remark`, `ctime`, `sort`) VALUES ('24', '23', 'menu_web_m_news', 'WebNews', '319', '', '', '2012-03-31 10:53:01', '0');
+INSERT INTO `wmis_sys_menus` (`id`, `fid`, `title`, `url`, `perm`, `ico`, `remark`, `ctime`, `sort`) VALUES ('25', '23', 'menu_web_class', 'ClassWeb', '63', '', '', '2012-03-31 10:45:05', '0');
 
 
 #
