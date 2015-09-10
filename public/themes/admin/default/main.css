@@ -51,7 +51,7 @@ input:focus, textarea:focus{box-shadow: 0 0 6px rgba(153, 153, 153, 0.7);}
 
 /* Content */
 .ct_body{overflow: hidden; padding-top: 70px;}
-.ct_left{overflow-y: auto; float: left; width: 200px; background: #F5F5F5; padding: 10px 0;}
+.ct_left{overflow-y: auto; float: left; width: 200px; background: #F5F5F5; padding: 10px 0; box-shadow: -1px 0px 0px #CCC inset;}
 .ct_right{overflow-y: auto; background: #FFF; margin-left: 200px; padding: 10px;}
 
 /* Left */
