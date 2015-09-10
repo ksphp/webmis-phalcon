@@ -5,7 +5,7 @@ use Phalcon\Mvc\Application;
 use Phalcon\Config\Adapter\Ini as ConfigIni;
 
 try {
-	define('APP_PATH', realpath('../..') . '/app_admin/');
+	define('APP_PATH', realpath('../..') . '/app_m/');
 	
 	/**
 	 * Read the configuration

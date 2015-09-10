@@ -5,17 +5,19 @@ use Phalcon\Mvc\Application;
 use Phalcon\Config\Adapter\Ini as ConfigIni;
 
 try {
-	define('APP_PATH', realpath('..') . '/');
+	define('APP_PATH', realpath('..') . '/app_web/');
 
 	/**
 	 * Read the configuration
 	 */
-	$config = new ConfigIni(APP_PATH . 'web/config/config.ini');
+	$config = new ConfigIni(APP_PATH . 'config/config.ini');
 	
 	/**
 	 * Constant
 	 */
 	define('APP_NAME', $config->application->baseUri);
+	define('APP_TITLE', $config->webmis->appTitle);
+	define('APP_COPY', $config->webmis->appCopy);
 	define('APP_THEMES', $config->webmis->defaultThemes);
 	define('WEBMIS_THEMES', $config->webmis->webmisThemes);
 	define('JQUERY_NAME', $config->webmis->jqueryName);
@@ -29,15 +31,13 @@ try {
 	/**
 	 * Auto-loader configuration
 	 */
-	require APP_PATH .$config->webmis->appName.'/config/loader.php';
+	require APP_PATH .'/config/loader.php';
 
 	/**
 	 * Load application services
 	 */
-	require APP_PATH .$config->webmis->appName.'/config/services.php';
-
+	require APP_PATH .'/config/services.php';
 	$application = new Application($di);
-
 	echo $application->handle()->getContent();
 
 } catch (Exception $e){

@@ -1,12 +1,12 @@
 #*****************************
-#http://www.example.com/admin/
-# "/admin/"
+#http://www.example.com/m/
+# "/m/"
 #http://wmis.example.com
 # "/"
 #*****************************
 
 RewriteEngine On
-RewriteBase /admin/
+RewriteBase /m/
 
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
