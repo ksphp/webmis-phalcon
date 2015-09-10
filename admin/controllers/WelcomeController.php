@@ -2,7 +2,7 @@
 class WelcomeController extends ControllerBase{
 	// Index
 	public function indexAction(){
-		$this->forward('desktop');
+		$this->forward('Desktop');
 	}
 	public function testAction(){
 		//$this->view->disable();

@@ -20,7 +20,7 @@ $(function(){
 		}else{
 			$.post($base_url+'index/login',{'uname':uname,'passwd':passwd,'is_mobile':is_mobile},function(data){
 				if(data.status == 'y'){
-					$.webmis.win('close','welcome');
+					$.webmis.win('close','Welcome');
 				}else{
 					$.webmis.win('open',{content:'<b class="red">'+data.msg+'</b>',AutoClose:3});
 				}

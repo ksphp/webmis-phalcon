@@ -5,4 +5,10 @@ class ErrorsController extends Controller{
 		$this->view->setTemplateAfter(APP_THEMES.'/error');
 	}
 }
+//class ErrorsController extends ControllerBase{
+//	// Index
+//	public function indexAction(){
+//		echo 1;
+//	}
+//}
 
