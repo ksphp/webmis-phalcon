@@ -2,6 +2,6 @@
 class HelpController extends ControllerBase{
 	// Index
 	public function indexAction(){
-		$this->forward('HelpSystem');
+		$this->inc->Forward('HelpSystem');
 	}
 }

@@ -65,3 +65,14 @@ $di->set('session', function() {
 	$session->start();
 	return $session;
 });
+
+/**
+ * Library
+ */
+$di->set('inc', function () {
+	return new Inc();
+});
+
+$di->set('names', function () {
+	return new Names();
+});

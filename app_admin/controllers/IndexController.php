@@ -2,16 +2,15 @@
 use Phalcon\Mvc\Controller;
 class IndexController extends Controller{
 	public function indexAction(){
+		// Lang
+		$this->view->setVar('incLang',$this->inc->getLang('inc'));
+		$lang = $this->session->get('Lang');
+		$this->view->setVar('LangName',$lang.' | '.$this->names->getName('lang',$lang));
+		$this->view->setVar('LangAll',$this->names->getName('lang'));
 		// Login Template
 		$this->view->setTemplateAfter(APP_THEMES.'/login');
-		// echo $this->IsMobile();
-	}
-	public function IsMobile(){
-		$useragent = $this->request->getUserAgent();
-		$user_agent = new Phalcon\Config\Adapter\Php(APP_PATH . 'config/user_agents.php');
-		foreach ($user_agent->mobiles as $key=>$val){
-			if(strpos($useragent, $key)){return TRUE;}else{return FALSE;}
-		}
+		// echo $this->inc->IsMobile();
+		
 	}
 
 	// Login

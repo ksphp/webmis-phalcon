@@ -1,6 +1,8 @@
 $(function(){
 	// Version
 	$('#webmisVersion').webmisVersion();
+	// Lang
+	$('#Lang').hover(function(){$(this).find('ul').show();},function(){$(this).find('ul').hide();});
 	// Auto Size
 	var autoSize = function(){
 		var height = ($(window).height()-318)/2;

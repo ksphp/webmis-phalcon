@@ -12,3 +12,11 @@ $loader->registerDirs(
 		APP_PATH . $config->application->formsDir,
 	)
 )->register();
+
+/* Constant */
+define('APP_NAME', $config->application->baseUri);
+define('APP_TITLE', $config->webmis->appTitle);
+define('APP_COPY', $config->webmis->appCopy);
+define('APP_THEMES', $config->webmis->defaultThemes);
+define('WEBMIS_THEMES', $config->webmis->webmisThemes);
+define('JQUERY_NAME', $config->webmis->jqueryName);

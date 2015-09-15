@@ -2,6 +2,6 @@
 class LogController extends ControllerBase{
 	// Index
 	public function indexAction(){
-		$this->forward('LogAdminLogin');
+		$this->inc->Forward('LogAdminLogin');
 	}
 }

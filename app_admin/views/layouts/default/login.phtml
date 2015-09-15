@@ -11,23 +11,33 @@
 </head>
 
 <body class="body">
+	<!--	Lang -->
+	<div id="Lang" class="lang_ct">
+		<?php echo $LangName;?>
+		<ul class="lang">
+<?php foreach ($LangAll as $key=>$val){?>
+			<li><a href="<?php echo $this->inc->BaseUrl('?lang='.$key); ?>"><?php echo $key.' | '.$val;?></a></li>
+<?php }?>
+		</ul>
+	</div>
+	<!--	Longin -->
 	<h1 id="webmisVersion" class="login_title">WebMIS</h1>
 	<div class="login_body">
 		<div class="login_ct">
 			<dl class="login">
-				<dt>用户名：</dt>
+				<dt><?php echo $incLang->_('inc_uname');?>：</dt>
 				<dd><input type="text" id="uname" class="input" /></dd>
-				<dt>密码：</dt>
+				<dt><?php echo $incLang->_('inc_passwd');?>：</dt>
 				<dd><input type="password" id="passwd" class="input" /></dd>
 			</dl>
-			<a href="#" id="adminLogin" class="sub">登录</a>
+			<a href="#" id="adminLogin" class="sub"><?php echo $incLang->_('inc_login');?></a>
 		</div>
 	</div>
 	<div class="login_copy">
 		Copyright © <?php echo APP_COPY;?> All rights are reserved.<br>
-		<a href="<?php echo base_url('../');?>" >网站首页</a> | <a href="?mode=pc" >电脑版</a> | <a href="?mode=mobile" >手机版</a>
+		<a href="<?php echo $this->inc->BaseUrl('../');?>" ><?php echo $incLang->_('inc_home');?></a> | <a href="?mode=pc" ><?php echo $incLang->_('inc_pc');?></a> | <a href="?mode=mobile" ><?php echo $incLang->_('inc_mobile');?></a>
 	</div>
-<div id="base_url" style="display: none;"><?php echo base_url();?></div>
+<div id="base_url" style="display: none;"><?php echo $this->inc->BaseUrl();?></div>
 <div id="is_mobile" style="display: none;"></div>
 <?php echo $this->tag->javascriptInclude("../webmis/plugin/jquery/".JQUERY_NAME);?>
 <?php echo $this->tag->javascriptInclude("../webmis/jquery.webmis.js");?>
