@@ -24,7 +24,7 @@ $lang = array(
 	"menu_home_userPWD" => "Change Password",
 	
 	"menu_sys_management" => "System Management",
-	"menu_sys_m_menu" => "Menus Action",
+	"menu_sys_m_menu" => "Menus Management",
 	"menu_sys_m_action" => "Menus Action",
 	"menu_sys_m_admin" => "System Users",
 	"menu_sys_m_config" => "System Config",

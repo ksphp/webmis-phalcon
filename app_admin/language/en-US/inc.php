@@ -20,6 +20,11 @@ $lang = array(
 	"inc_import" => "Import",
 	"inc_up" => "Upload",
 	"inc_down" => "Download",
+	/* Page */
+	"inc_page_first" => "First",
+	"inc_page_before" => "Previous",
+	"inc_page_next" => "Next",
+	"inc_page_last" => "Last",
 	/* Form */
 	"inc_form_null" => "Not Null",
 	"inc_form_pass" => "Pass",

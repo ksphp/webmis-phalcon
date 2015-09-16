@@ -51,13 +51,23 @@ class Inc extends Component{
 	public function getPage($config=array()){
 		if(isset($config['model'])){
 			// Default
-			$limit = isset($config['limit'])?$config['limit']:10;
+			$limit = isset($config['limit'])?$config['limit']:15;
 			$where = isset($config['where'])?$config['where']:'';
 			// Page
 			$page = $this->request->getQuery('page', 'int');
 			$data = $config['model']::find($where);
 			$paginator   = new PaginatorModel(array('data'=>$data,'limit'=>$limit,'page'=>$page));
-			return $paginator->getPaginate();
+			$Page = $paginator->getPaginate();
+			// Page Html
+			$Lang = $this->inc->getLang('inc');
+			$cname = $this->dispatcher->getControllerName();
+			$html = '<a href="'.$cname.'">'.$Lang->_('inc_page_first').'</a>'.
+				  '<a href="'.$cname.'?page='.$Page->before.'">'.$Lang->_('inc_page_before').'</a>'.
+				  '<a href="'.$cname.'?page='.$Page->next.'">'.$Lang->_('inc_page_next').'</a>'.
+				  '<a href="'.$cname.'?page='.$Page->last.'">'.$Lang->_('inc_page_last').'</a>'.
+				  ' Page : '.$Page->current.'/'.$Page->total_pages;
+			$Page->PageHtml = $html;
+			return $Page;
 		}else{return FALSE;}
 	}
 

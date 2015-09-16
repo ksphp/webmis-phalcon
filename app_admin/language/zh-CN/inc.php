@@ -20,6 +20,11 @@ $lang = array(
 	"inc_import" => "导入",
 	"inc_up" => "上传",
 	"inc_down" => "下载",
+	/* Page */
+	"inc_page_first" => "首页",
+	"inc_page_before" => "上一页",
+	"inc_page_next" => "下一页",
+	"inc_page_last" => "末页",
 	/* 表单 */
 	"inc_form_null" => "不能为空",
 	"inc_form_pass" => "通过",
