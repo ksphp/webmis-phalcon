@@ -2,9 +2,66 @@
 
 use Phalcon\Mvc\User\Component;
 use Phalcon\Translate\Adapter\NativeArray;
+use Phalcon\Paginator\Adapter\Model as PaginatorModel;
 
 class Inc extends Component{
 	public $Ctitle;
+	
+	// Forward
+	public function Forward($url){
+		$urlParts = explode('/', $url);
+		return $this->dispatcher->forward(array('controller' => $urlParts[0],'action' => @$urlParts[1]));
+	}
+	
+	// AppURL
+	public function BaseUrl($url=''){
+		$base_url = $_SERVER['SERVER_PORT']=='443'?'https://':'http://';
+		$base_url .= $_SERVER['HTTP_HOST'].APP_NAME.$url;
+		return $base_url;
+	}
+	
+	// IsMobile
+	public function IsMobile(){
+		$useragent = $this->request->getUserAgent();
+		$user_agent = new Phalcon\Config\Adapter\Php(APP_PATH . 'config/user_agents.php');
+		foreach ($user_agent->mobiles as $key=>$val){
+			if(strpos($useragent, $key)){return TRUE;}else{return FALSE;}
+		}
+	}
+	
+	// GetLang
+	public function getLang($name=''){
+		if(!$name){return FALSE;}
+		$lang = $this->request->get('lang');
+		if($lang){
+			$this->session->set('Lang', $lang);
+		}else{
+			$lang = $this->session->get('Lang');
+			if(!isset($lang)){
+				$lang = $this->request->getBestLanguage();
+				$this->session->set('Lang', $lang);
+			}
+		}
+		$file = __DIR__."/../language/".$lang."/".$name.".php";
+		if(file_exists($file)){require $file;}else{require __DIR__."/../language/en-US/".$name.".php";}
+		return new NativeArray(array('content'=>$lang));
+	}
+	
+	// Page
+	public function getPage($config=array()){
+		if(isset($config['model'])){
+			// Default
+			$limit = isset($config['limit'])?$config['limit']:10;
+			$where = isset($config['where'])?$config['where']:'';
+			// Page
+			$page = $this->request->getQuery('page', 'int');
+			$data = $config['model']::find($where);
+			$paginator   = new PaginatorModel(array('data'=>$data,'limit'=>$limit,'page'=>$page));
+			return $paginator->getPaginate();
+		}else{return FALSE;}
+	}
+
+
 	// Get Menus
 	public function getMenus(){
 		$Lang = $this->inc->getLang('menus');
@@ -84,46 +141,6 @@ class Inc extends Component{
 		}else{
 			$_SESSION['Admin']['ltime'] = time()+1800;
 		}
-	}
-	
-	// Forward
-	public function Forward($url){
-		$urlParts = explode('/', $url);
-		return $this->dispatcher->forward(array('controller' => $urlParts[0],'action' => @$urlParts[1]));
-	}
-	
-	// AppURL
-	public function BaseUrl($url=''){
-		$base_url = $_SERVER['SERVER_PORT']=='443'?'https://':'http://';
-		$base_url .= $_SERVER['HTTP_HOST'].APP_NAME.$url;
-		return $base_url;
-	}
-	
-	// IsMobile
-	public function IsMobile(){
-		$useragent = $this->request->getUserAgent();
-		$user_agent = new Phalcon\Config\Adapter\Php(APP_PATH . 'config/user_agents.php');
-		foreach ($user_agent->mobiles as $key=>$val){
-			if(strpos($useragent, $key)){return TRUE;}else{return FALSE;}
-		}
-	}
-	
-	// GetLang
-	public function getLang($name=''){
-		if(!$name){return FALSE;}
-		$lang = $this->request->get('lang');
-		if($lang){
-			$this->session->set('Lang', $lang);
-		}else{
-			$lang = $this->session->get('Lang');
-			if(!isset($lang)){
-				$lang = $this->request->getBestLanguage();
-				$this->session->set('Lang', $lang);
-			}
-		}
-		$file = __DIR__."/../language/".$lang."/".$name.".php";
-		if(file_exists($file)){require $file;}else{require __DIR__."/../language/en-US/".$name.".php";}
-		return new NativeArray(array('content'=>$lang));
 	}
 }
 

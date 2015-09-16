@@ -88,6 +88,12 @@ input:focus, textarea:focus{box-shadow: 0 0 6px rgba(153, 153, 153, 0.7);}
 .action a:hover{background-color: #6FB737; color: #FFF;}
 .action a:hover em{color: #FFF;}
 
+/* Checkbox */
+#checkboxY,#checkboxN{font-family: 'icomoon'; font-style: normal; font-weight: normal; font-size: 14px; color: #6FB737; padding: 2px 2px;}
+#checkboxN{display: none;}
+#checkboxY:before {content: "\e637";}
+#checkboxN:before {content: "\e636";}
+
 /* Table */
 .table_list{width: 100%; border-collapse: collapse; text-align: center; border-top: #6FB737 2px solid; background: #FFF; margin-top: 6px;}
 .table_list td{border-top: #DADCDF 1px solid; border-bottom: #DADCDF 1px solid; line-height: 20px; padding: 6px 5px;}

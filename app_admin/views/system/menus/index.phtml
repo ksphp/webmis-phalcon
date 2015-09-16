@@ -5,7 +5,7 @@
 </div>
 <table class="table_list">
 	<tr class="title">
-		<td></td>
+		<td width="20"><a href="#" id="checkboxY"></a><a href="#" id="checkboxN"></a></td>
 		<td>ID</td>
 		<td>FID</td>
 		<td>别名</td>
@@ -20,7 +20,7 @@
 	<tbody id="listBG">
 <?php foreach ($Page->items as $val){?>
 	<tr>
-		<td><input type="checkbox" /></td>
+		<td><input type="checkbox" value="<?php echo $val->id;?>" /></td>
 		<td><?php echo $val->id;?></td>
 		<td><?php echo $val->fid;?></td>
 		<td><?php echo $MenusLang->_($val->title);?></td>

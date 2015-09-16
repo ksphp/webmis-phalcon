@@ -25,4 +25,16 @@ $(function (){
 			p.slideUp('fast');
 		}
 	});
+	// All or Not all
+	$('#checkboxY').click(function () {
+		$(this).hide();
+		$(this).parent().parent().parent().parent().find("input:checkbox").prop("checked", true);
+		$('#checkboxN').show().click(function () {
+			$(this).hide();
+			$('#checkboxY').show();
+			$(this).parent().parent().parent().parent().find("input:checkbox").prop("checked", false);
+			return false;
+		});
+		return false;
+	});
 });
