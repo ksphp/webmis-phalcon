@@ -64,16 +64,38 @@ input:focus, textarea:focus{box-shadow: 0 0 6px rgba(153, 153, 153, 0.7);}
 .left_title{cursor: pointer; width: 90%; padding: 5px 0; font-size: 12px; color: #999; font-weight: bold; border-bottom: #CCC 1px solid; box-shadow: 0 1px 0 #FFF; margin: 0 auto;}
 .left_title em{color: #999; padding-right: 5px;}
 .left_list{padding: 5px 0;}
-.left_list li a{font-size: 13px; display: block; padding: 4px 10px;}
-.left_list li a em{position: relative; font-size: 16px; top: 2px; padding-right: 5px;}
+.left_list li a{font-size: 13px; display: block; overflow: hidden; padding: 5px 10px;}
+.left_list li a em{float: left; position: relative; font-size: 16px; top: 2px; margin-top: -2px;}
+.left_list li a span{float: left; padding-left: 5px;}
 
-.left_an1{background: #6FB737; color: #FFF;}
-.left_an1:hover{color: #FFF;}
-.left_an1 em{color: #FFF;}
-.left_an2{color: #333;}
-.left_an2:hover{color: #333; background: #EEE;}
+.left_an1{color: #6FB737; background: #FFF; border-top: #CCC 1px solid; border-bottom: #CCC 1px solid;}
+.left_an1:hover{color: #6FB737;}
+.left_an1 em{color: #6FB737;}
+.left_an2{color: #333; border-top: #F5F5F5 1px solid; border-bottom: #F5F5F5 1px solid;}
+.left_an2:hover{background: #EEE; color: #6FB737; border-right: #6FB737 1px solid;}
 .left_an2 em{color: #666;}
 .left_an2:hover em{color: #6FB737;}
+
+/* Action */
+.action{line-height: 32px; display: inline-block; overflow: hidden; border: #DADCDF 1px solid; border-radius: 3px; padding: 0 10px; box-shadow: 1px 1px 2px #EEE;
+	background:-moz-linear-gradient(top, #FFF,#F5F5F5);
+	background:-webkit-gradient(linear, 0 0, 0 100%, from(#FFF), to(#F5F5F5));
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#FFF,endColorstr=#F5F5F5,grandientType=1);
+}
+.action a{float: left; padding: 0 8px; display: inline-block; overflow: hidden; color: #333;}
+.action a em{float: left; font-size: 14px; position: relative;}
+.action a span{float: left; padding-left: 5px;}
+.action a:hover{background-color: #6FB737; color: #FFF;}
+.action a:hover em{color: #FFF;}
+
+/* Table */
+.table_list{width: 100%; border-collapse: collapse; text-align: center; border-top: #6FB737 2px solid; background: #FFF; margin-top: 6px;}
+.table_list td{border-top: #DADCDF 1px solid; border-bottom: #DADCDF 1px solid; line-height: 20px; padding: 6px 5px;}
+.table_list .title{color: #999; background: #F8F8F8;}
+.table_list .text{padding: 10px 20px; line-height: 24px; background: #F5F5F5; text-align: left;}
+.table_list .text h1{font-size: 20px; line-height: 40px; border-bottom: #CCC 1px solid;}
+.table_list .text h2{font-size: 16px; line-height: 30px; border-bottom: #CCC 1px solid;}
+.table_list .text h3{font-size: 14px;}
 
 /* ICO */
 .ico-qrcode:before {content: "\e608";}

@@ -1,6 +1,17 @@
 <?php
-/* Menus */
 $lang = array(
+	/* Action */
+	"action_list" => "ListView",
+	"action_sea" => "Search",
+	"action_add" => "Add",
+	"action_edit" => "Edit",
+	"action_remove" => "Remove",
+	"action_audit" => "Audits",
+	"action_export" => "Export",
+	"action_import" => "Import",
+	"action_chart" => "Chart",
+	
+	/* Menus */
 	"menu_home" => "Home",
 	"menu_system" => "System",
 	"menu_web" => "WebSite",

@@ -1,6 +1,17 @@
 <?php
-/* Menus */
 $lang = array(
+	/* Action */
+	"action_list" => "列表",
+	"action_sea" => "搜索",
+	"action_add" => "添加",
+	"action_edit" => "编辑",
+	"action_remove" => "删除",
+	"action_audit" => "审核",
+	"action_export" => "导出",
+	"action_import" => "导入",
+	"action_chart" => "图表",
+	
+	/* Menus */
 	"menu_home" => "首页",
 	"menu_system" => "系统",
 	"menu_web" => "网站",

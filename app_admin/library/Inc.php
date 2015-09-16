@@ -35,8 +35,19 @@ class Inc extends Component{
 			}
 		}
 		// return array('Date'=>$data,'FID'=>$FID,'Ctitle'=>$title,'userHtml'=>$userHtml,'actionHtml'=>$actionHtml);
+		$action = $this->actionMenus($permArr['perm_s'][$Cname],$Cname,$Lang);
 		$this->Ctitle = $Lang->_($FID['Ctitle']);
-		return array('Date'=>$data,'FID'=>$FID,'Ctitle'=>$this->Ctitle);
+		return array('Date'=>$data,'FID'=>$FID,'Ctitle'=>$this->Ctitle,'action'=>$action);
+	}
+	private function actionMenus($perm='',$Cname='',$Lang='') {
+		$Action = Menuaction::find(array('order'=>'id'));
+		$data='';
+		foreach ($Action as $val){
+			if(intval($perm)&intval($val->perm)){
+				$data[] = array('name'=>$Lang->_($val->name),'ico'=>$val->ico);
+			}
+		}
+		return $data;
 	}
 	private function getFID($Cname){
 		$FID1=''; $FID2=''; $FID3='';
@@ -85,7 +96,7 @@ class Inc extends Component{
 	public function BaseUrl($url=''){
 		$base_url = $_SERVER['SERVER_PORT']=='443'?'https://':'http://';
 		$base_url .= $_SERVER['HTTP_HOST'].APP_NAME.$url;
-		echo $base_url;
+		return $base_url;
 	}
 	
 	// IsMobile
