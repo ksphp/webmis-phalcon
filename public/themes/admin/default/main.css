@@ -7,7 +7,7 @@ img{border: none;}
 ul{list-style: none;}
 a{color: #007568; text-decoration: none;}
 a:hover{color: #FF6600;}
-textarea{border: #999 1px solid; background: #EFF4FA;}
+textarea{border: #999 1px solid; background: #FFF;}
 input, textarea{box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;}
 input:focus, textarea:focus{box-shadow: 0 0 6px rgba(153, 153, 153, 0.7);}
 
@@ -16,6 +16,10 @@ input:focus, textarea:focus{box-shadow: 0 0 6px rgba(153, 153, 153, 0.7);}
 .red{color: red;}.green{color: green;}.c1{color: #666;}.c2{color: #999;}
 .input{float: left; height: 30px; line-height: 30px; border: #999 1px solid; background: #FFF; display: inline-block; padding: 0 5px;}
 .inputText{float: left; height: 30px; line-height: 30px; padding: 0 10px 0 5px;}
+.Checkbox{float: left; margin-top: 8px;}
+
+/* WebMIS */
+.Validform_checktip{float: left;}
 
 /* Lang */
 .lang_ct{position: absolute; z-index: 10; cursor: pointer; width: 140px; height: 28px; line-height: 28px; background-color: rgba(0,0,0,0.5); color: #FFF; text-align: center; border-radius: 5px; top: 10px; right: 10px;}

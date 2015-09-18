@@ -1,6 +1,6 @@
 <?php
 class SysMenusController extends ControllerBase{
-	// Index
+	/* Index */
 	public function indexAction(){
 		// Page
 		if(isset($_GET['search'])){
@@ -29,9 +29,33 @@ class SysMenusController extends ControllerBase{
 		$this->view->setTemplateAfter(APP_THEMES.'/main');
 		$this->view->pick("system/menus/index");
 	}
-	// Search
+	/* Search */
 	public function seaAction(){
 		$this->view->setVar('Lang',$this->inc->getLang('system/sys_menu'));
 		$this->view->pick("system/menus/sea");
+	}
+	/* ADD */
+	public function addAction(){
+		$this->view->setVar('MLang',$this->inc->getLang('menus'));
+		$this->view->setVar('Action',Menuaction::find());
+		$this->view->setVar('Lang',$this->inc->getLang('system/sys_menu'));
+		$this->view->pick("system/menus/add");
+	}
+	public function addDataAction(){
+		if(isset($_POST['Add'])){
+			$data = $this->request->getPost();
+			print_r($data);
+		}else{return FALSE;}
+	}
+	/* GetMenu */
+	public function getMenuAction(){
+		$fid = $this->request->getPost('fid');
+		$data = '';
+		$Menus = Menus::find(array("fid='".$fid."'"));
+		$MLang = $this->inc->getLang('menus');
+		foreach ($Menus as $val){
+			$data[] = array('id'=>$val->id,'title'=>$MLang->_($val->title));
+		}
+		echo json_encode($data);
 	}
 }
