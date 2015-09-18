@@ -1,0 +1,41 @@
+<form action="<?php echo $this->inc->BaseUrl('SysMenus/index');?>" method="get">
+<table class="table_add">
+	<tr>
+		<td class="tright" width="90">FID:</td>
+		<td>
+			<input type="text" name="fid" class="input" style="width: 30%;" value="<?php echo @$_GET['fid'];?>" />
+		</td>
+	</tr>
+	<tr>
+		<td class="tright"><?php echo $Lang->_('sys_menu_name');?>:</td>
+		<td>
+			<input type="text" name="title" class="input" style="width: 80%;" value="<?php echo @$_GET['title'];?>" />
+		</td>
+	</tr>
+	<tr>
+		<td class="tright"><?php echo $Lang->_('sys_menu_cname');?>:</td>
+		<td>
+			<input type="text" name="url" class="input" style="width: 80%;" value="<?php echo @$_GET['url'];?>" />
+		</td>
+	</tr>
+	<tr>
+		<td class="tright"><?php echo $Lang->_('sys_menu_perm');?>:</td>
+		<td>
+			<input type="text" name="perm" class="input" style="width: 50%;" value="<?php echo @$_GET['perm'];?>" />
+		</td>
+	</tr>
+	<tr>
+		<td class="tright"><?php echo $Lang->_('sys_menu_icon');?>:</td>
+		<td>
+			<input type="text" name="ico" class="input" style="width: 50%;" value="<?php echo @$_GET['ico'];?>" />
+		</td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td class="sub">
+			<input type="submit" id="seaSub" name="search" value="<?php echo $incLang->_('inc_sea');?>" />
+			<input type="hidden" name="page" value="1"/>
+		</td>
+	</tr>
+</table>
+</form>

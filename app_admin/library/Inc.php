@@ -7,20 +7,20 @@ use Phalcon\Paginator\Adapter\Model as PaginatorModel;
 class Inc extends Component{
 	public $Ctitle;
 	
-	// Forward
+	/* Forward */
 	public function Forward($url){
 		$urlParts = explode('/', $url);
 		return $this->dispatcher->forward(array('controller' => $urlParts[0],'action' => @$urlParts[1]));
 	}
 	
-	// AppURL
+	/* AppURL */
 	public function BaseUrl($url=''){
 		$base_url = $_SERVER['SERVER_PORT']=='443'?'https://':'http://';
 		$base_url .= $_SERVER['HTTP_HOST'].APP_NAME.$url;
 		return $base_url;
 	}
 	
-	// IsMobile
+	/* IsMobile */
 	public function IsMobile(){
 		$useragent = $this->request->getUserAgent();
 		$user_agent = new Phalcon\Config\Adapter\Php(APP_PATH . 'config/user_agents.php');
@@ -29,7 +29,7 @@ class Inc extends Component{
 		}
 	}
 	
-	// GetLang
+	/* Get Lang */
 	public function getLang($name=''){
 		if(!$name){return FALSE;}
 		$lang = $this->request->get('lang');
@@ -47,30 +47,57 @@ class Inc extends Component{
 		return new NativeArray(array('content'=>$lang));
 	}
 	
-	// Page
+	/* Key Highlight */
+	public function keyHH($str='', $phrase, $tag_open = '<span style="color:#FF6600">', $tag_close = '</span>'){
+		if ($str == ''){return FALSE;}
+		if ($phrase != ''){return preg_replace('/('.preg_quote($phrase, '/').')/i', $tag_open."\\1".$tag_close, $str);}
+		return $str;
+	}
+	
+	/* Page */
 	public function getPage($config=array()){
-		if(isset($config['model'])){
-			// Default
+		if(isset($config['data'])){
+			$cname = isset($config['cname'])?$config['where']:$this->dispatcher->getControllerName();
 			$limit = isset($config['limit'])?$config['limit']:15;
-			$where = isset($config['where'])?$config['where']:'';
+			$getUrl = isset($config['getUrl'])?$config['getUrl']:'';
 			// Page
 			$page = $this->request->getQuery('page', 'int');
-			$data = $config['model']::find($where);
-			$paginator   = new PaginatorModel(array('data'=>$data,'limit'=>$limit,'page'=>$page));
+			$paginator   = new PaginatorModel(array('data'=>$config['data'],'limit'=>$limit,'page'=>$page));
 			$Page = $paginator->getPaginate();
 			// Page Html
 			$Lang = $this->inc->getLang('inc');
-			$cname = $this->dispatcher->getControllerName();
-			$html = '<a href="'.$cname.'">'.$Lang->_('inc_page_first').'</a>'.
-				  '<a href="'.$cname.'?page='.$Page->before.'">'.$Lang->_('inc_page_before').'</a>'.
-				  '<a href="'.$cname.'?page='.$Page->next.'">'.$Lang->_('inc_page_next').'</a>'.
-				  '<a href="'.$cname.'?page='.$Page->last.'">'.$Lang->_('inc_page_last').'</a>'.
-				  ' Page : '.$Page->current.'/'.$Page->total_pages;
+			$html = '';
+			if(empty($page) || $page==1){
+				$html .= '<span>'.$Lang->_('inc_page_first').'</span>';
+				$html .= '<span>'.$Lang->_('inc_page_before').'</span>';
+			}else{
+				$html .= '<a href="'.$this->inc->BaseUrl($cname).'?page=1'.$getUrl.'">'.$Lang->_('inc_page_first').'</a>';
+				$html .= '<a href="'.$this->inc->BaseUrl($cname).'?page='.$Page->before.$getUrl.'">'.$Lang->_('inc_page_before').'</a>';
+			}
+			if($page==$Page->last){
+				$html .= '<span>'.$Lang->_('inc_page_next').'</span>';
+				$html .= '<span>'.$Lang->_('inc_page_last').'</span>';
+			}else{
+				$html .= '<a href="'.$this->inc->BaseUrl($cname).'?page='.$Page->next.$getUrl.'">'.$Lang->_('inc_page_next').'</a>';
+				$html .= '<a href="'.$this->inc->BaseUrl($cname).'?page='.$Page->last.$getUrl.'">'.$Lang->_('inc_page_last').'</a>';
+			}
+			$html .= ' Page : '.$Page->current.'/'.$Page->total_pages;
 			$Page->PageHtml = $html;
 			return $Page;
 		}else{return FALSE;}
 	}
-
+	// Page Where
+	public function pageWhere(){
+		$getUrl = '';
+		$like = $this->request->getQuery();
+		$page = isset($like['page'])?$like['page']:1;
+		unset($like['_url']);
+		unset($like['page']);
+		foreach($like as $key=>$val){if($val==''){unset($like[$key]);}else{$getUrl .= '&'.$key.'='.$val;}}
+		unset($like['search']);
+		$this->view->setVar('getUrl','?page='.$page.$getUrl);
+		return array('getUrl'=>$getUrl,'data'=>$like);
+	}
 
 	// Get Menus
 	public function getMenus(){
@@ -101,9 +128,8 @@ class Inc extends Component{
 				$M1++;
 			}
 		}
-		// return array('Date'=>$data,'FID'=>$FID,'Ctitle'=>$title,'userHtml'=>$userHtml,'actionHtml'=>$actionHtml);
-		$action = $this->actionMenus($permArr['perm_s'][$Cname],$Cname,$Lang);
 		$this->Ctitle = $Lang->_($FID['Ctitle']);
+		$action = $this->actionMenus($permArr['perm_s'][$Cname],$Cname,$Lang);
 		return array('Date'=>$data,'FID'=>$FID,'Ctitle'=>$this->Ctitle,'action'=>$action);
 	}
 	private function actionMenus($perm='',$Cname='',$Lang='') {

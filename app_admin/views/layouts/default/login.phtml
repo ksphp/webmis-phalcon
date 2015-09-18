@@ -10,7 +10,7 @@
 	<?php echo $this->tag->stylesheetLink("../themes/admin/".APP_THEMES."/main.css");?>
 </head>
 
-<body class="body">
+<body class="body_login">
 	<!--	Lang -->
 	<div id="Lang" class="lang_ct">
 		<?php echo $LangName;?>
@@ -26,9 +26,9 @@
 		<div class="login_ct">
 			<dl class="login">
 				<dt><?php echo $incLang->_('inc_uname');?>：</dt>
-				<dd><input type="text" id="uname" class="input" /></dd>
+				<dd><input type="text" id="uname" class="login_input" /></dd>
 				<dt><?php echo $incLang->_('inc_passwd');?>：</dt>
-				<dd><input type="password" id="passwd" class="input" /></dd>
+				<dd><input type="password" id="passwd" class="login_input" /></dd>
 			</dl>
 			<a href="#" id="adminLogin" class="sub"><?php echo $incLang->_('inc_login');?></a>
 		</div>

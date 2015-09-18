@@ -1,3 +1,6 @@
+var IsMobile = $('#IsMobile').text();
+var moWidth = $(window).width()-20;
+var moHeight = $(window).height()-60;
 $(function (){
 	// Auto Size
 	var autoSize = function(size){

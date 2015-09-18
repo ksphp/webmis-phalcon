@@ -3,7 +3,7 @@
 <?php foreach ($Menus['action'] as $val){
 	$url = $val['ico']=='ico-list'?$this->inc->BaseUrl($this->dispatcher->getControllerName()):'';
 ?>
-	<a href="<?php echo $url;?>"><em class="<?php echo $val['ico'];?>"></em><span><?php echo $val['name'];?></span></a>
+	<a href="<?php echo $url;?>" id="<?php echo $val['ico'];?>"><em class="<?php echo $val['ico'];?>"></em><span><?php echo $val['name'];?></span></a>
 <?php }?>
 </span>
 <table class="table_list">
@@ -11,26 +11,26 @@
 		<td width="20"><a href="#" id="checkboxY"></a><a href="#" id="checkboxN"></a></td>
 		<td>ID</td>
 		<td>FID</td>
-		<td>别名</td>
-		<td>菜单名称</td>
-		<td>URL</td>
-		<td>权限值</td>
-		<td>图标</td>
-		<td>创建时间</td>
-		<td>排序</td>
-		<td>备注</td>
+		<td><?php echo $Lang->_('sys_menu_title');?></td>
+		<td><?php echo $Lang->_('sys_menu_name');?></td>
+		<td><?php echo $Lang->_('sys_menu_cname');?></td>
+		<td><?php echo $Lang->_('sys_menu_perm');?></td>
+		<td><?php echo $Lang->_('sys_menu_icon');?></td>
+		<td><?php echo $Lang->_('sys_menu_ctime');?></td>
+		<td><?php echo $Lang->_('sys_menu_sort');?></td>
+		<td><?php echo $Lang->_('sys_menu_remark');?></td>
 	</tr>
 	<tbody id="listBG">
 <?php foreach ($Page->items as $val){?>
 	<tr>
 		<td><input type="checkbox" value="<?php echo $val->id;?>" /></td>
 		<td><?php echo $val->id;?></td>
-		<td><?php echo $val->fid;?></td>
+		<td><?php echo $this->inc->keyHH($val->fid,@$_GET['fid']);?></td>
 		<td><b><?php echo $MenusLang->_($val->title);?></b></td>
-		<td><?php echo $val->title;?></td>
-		<td><?php echo $val->url;?></td>
-		<td><?php echo $val->perm;?></td>
-		<td><?php echo $val->ico;?></td>
+		<td><?php echo $this->inc->keyHH($val->title,@$_GET['title']);?></td>
+		<td><?php echo $this->inc->keyHH($val->url,@$_GET['url']);?></td>
+		<td><?php echo $this->inc->keyHH($val->perm,@$_GET['perm']);?></td>
+		<td><?php echo $this->inc->keyHH($val->ico,@$_GET['ico']);?></td>
 		<td><?php echo $val->ctime;?></td>
 		<td><?php echo $val->sort;?></td>
 		<td><?php echo $val->remark;?></td>

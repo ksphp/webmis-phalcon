@@ -13,7 +13,7 @@
 	<?php echo $this->tag->javascriptInclude("../themes/admin/".APP_THEMES."/main.js");?>
 	<?php if(@$LoadCSS){ foreach($LoadCSS as $val){
 		echo $this->tag->stylesheetLink("../themes/admin/".APP_THEMES."/css/".$val);
-	}} ?>
+	}}?>
 </head>
 
 <body class="top_bg">
@@ -28,7 +28,7 @@
 <?php }?>
 		</ul>
 		<span class="top_link">
-			<?php echo $_SESSION['Admin']['uname'];?> [ <a href="<?php $this->inc->BaseUrl('SysConfig');?>"><?php echo $incLang->_('inc_sysconfig');?></a> ] | <a href="<?php echo $this->inc->BaseUrl('index/loginOut');?>"><b><?php echo $incLang->_('inc_logout');?></b></a>
+			<?php echo $_SESSION['Admin']['uname'];?> [ <a href="<?php echo $this->inc->BaseUrl('SysConfig');?>"><?php echo $incLang->_('inc_sysconfig');?></a> ] | <a href="<?php echo $this->inc->BaseUrl('index/loginOut');?>"><b><?php echo $incLang->_('inc_logout');?></b></a>
 		</span>
 	</div>
 	<div class="ct_body">
@@ -54,6 +54,7 @@
 	</div>
 <div id="base_url" style="display: none;"><?php echo $this->inc->BaseUrl();?></div>
 <div id="IsMobile" style="display: none;"></div>
+<div id="getUrl" style="display: none;"><?php echo @$getUrl;?></div>
 <?php if(@$LoadJS){ foreach($LoadJS as $val){
 echo $this->tag->javascriptInclude("../themes/admin/js/".$val);
 }}?>

@@ -12,11 +12,10 @@ input, textarea{box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;}
 input:focus, textarea:focus{box-shadow: 0 0 6px rgba(153, 153, 153, 0.7);}
 
 /* INC */
-.body{background: url("images/bg.png") #2D2D2D center center;}
-.left{float: left;}
-.right{float: right;}
-.red{color: red;}
-.green{color: green;}
+.left{float: left;}.right{float: right;}.tleft{text-align: left;}.tright{text-align: right;}
+.red{color: red;}.green{color: green;}.c1{color: #666;}.c2{color: #999;}
+.input{float: left; height: 30px; line-height: 30px; border: #999 1px solid; background: #FFF; display: inline-block; padding: 0 5px;}
+.inputText{float: left; height: 30px; line-height: 30px; padding: 0 10px 0 5px;}
 
 /* Lang */
 .lang_ct{position: absolute; z-index: 10; cursor: pointer; width: 140px; height: 28px; line-height: 28px; background-color: rgba(0,0,0,0.5); color: #FFF; text-align: center; border-radius: 5px; top: 10px; right: 10px;}
@@ -25,13 +24,14 @@ input:focus, textarea:focus{box-shadow: 0 0 6px rgba(153, 153, 153, 0.7);}
 .lang li a:hover{background-color: #6FB737;}
 
 /* login */
+.body_login{background: url("images/bg.png") #2D2D2D center center;}
 .login_title{font-size: 38px; height: 50px; line-height: 50px; color: #DFE1E8; text-align: center; padding: 15px 0; min-width: 460px;}
 .login_body{overflow: hidden; border-top: #555 1px solid; border-bottom: #555 1px solid; background-color: #3D3D3D; padding: 24px 0;}
 .login_ct{width: 460px; margin: 0 auto; color: #DFE1E8;}
 .login_ct .login{float: left; width: 330px;}
 .login_ct .login dt{float: left; width: 90px; line-height: 25px; text-align: right; padding: 4px;}
 .login_ct .login dd{line-height: 25px; padding: 4px 0;}
-.login_ct .login .input{border: none; width: 210px; height: 25px; line-height: 25px; border: #222 1px solid; background-color: #DFE1E8; padding: 0 5px;}
+.login_ct .login_input{border: none; width: 210px; height: 25px; line-height: 25px; border: #222 1px solid; background-color: #DFE1E8; padding: 0 5px;}
 .login_ct .sub{float: left; width: 60px; line-height: 60px; margin-top: 4px; display: inline-block; background-color: #6FB737; color: #FFF; text-align: center; box-shadow: 1px 1px 2px #000; border-radius: 3px;}
 .login_ct .sub:hover{background-color: #390;}
 .login_copy{height: 50px; line-height: 20px; color: #CCC; text-align: center; padding: 15px 0; border-radius: 5px; min-width: 460px;}
@@ -65,7 +65,7 @@ input:focus, textarea:focus{box-shadow: 0 0 6px rgba(153, 153, 153, 0.7);}
 .left_title em{color: #999; padding-right: 5px;}
 .left_list{padding: 5px 0;}
 .left_list li a{font-size: 13px; display: block; overflow: hidden; padding: 5px 10px;}
-.left_list li a em{float: left; position: relative; font-size: 16px; top: 2px; margin-top: -2px;}
+.left_list li a em{float: left; position: relative; font-size: 16px; margin-top: -1px;}
 .left_list li a span{float: left; padding-left: 5px;}
 
 .left_an1{color: #6FB737; background: #FFF; border-top: #CCC 1px solid; border-bottom: #CCC 1px solid;}
@@ -97,17 +97,17 @@ input:focus, textarea:focus{box-shadow: 0 0 6px rgba(153, 153, 153, 0.7);}
 
 /* Page */
 .page{height: 60px; line-height: 60px; text-align: center; color: #999;}
-.page a{border: #DADCDF 1px solid; background-color: #F8F8F8; color: #666; padding: 3px 12px; margin: 0 4px;}
-.page a:hover{border: #6FB737 1px solid; background: #F5FBF4; color: #6FB737;}
+.page a,.page span{padding: 3px 5px; margin: 0 4px;}
 
 /* Table */
 .table_list{width: 100%; border-collapse: collapse; text-align: center; border-top: #6FB737 2px solid; background: #FFF; margin-top: 5px;}
 .table_list td{border-top: #DADCDF 1px solid; border-bottom: #DADCDF 1px solid; line-height: 20px; padding: 6px 5px;}
 .table_list .title{color: #999; background: #F8F8F8;}
-.table_list .text{padding: 10px 20px; line-height: 24px; background: #F5F5F5; text-align: left;}
-.table_list .text h1{font-size: 20px; line-height: 40px; border-bottom: #CCC 1px solid;}
-.table_list .text h2{font-size: 16px; line-height: 30px; border-bottom: #CCC 1px solid;}
-.table_list .text h3{font-size: 14px;}
+
+.table_add{width: 100%; border-collapse: collapse; margin: 5px 0;}
+.table_add td{line-height: 20px; padding: 5px;}
+.table_add .width{width: 90px;}
+.table_add .sub{padding: 10px 5px;}
 
 /* ICO */
 .ico-qrcode:before {content: "\e608";}
