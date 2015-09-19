@@ -1,32 +1,10 @@
--- phpMyAdmin SQL Dump
--- version 3.5.8.1deb1
--- http://www.phpmyadmin.net
---
--- 主机: localhost
--- 生成日期: 2015 年 09 月 19 日 15:34
--- 服务器版本: 5.5.34-0ubuntu0.13.04.1
--- PHP 版本: 5.5.9-1ubuntu4.12
+#
+# TABLE STRUCTURE FOR: wmis_class_web
+#
 
-SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
+DROP TABLE IF EXISTS `wmis_class_web`;
 
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
-
---
--- 数据库: `pwebmis`
---
-
--- --------------------------------------------------------
-
---
--- 表的结构 `wmis_class_web`
---
-
-CREATE TABLE IF NOT EXISTS `wmis_class_web` (
+CREATE TABLE `wmis_class_web` (
   `id` int(3) NOT NULL AUTO_INCREMENT COMMENT 'ID',
   `fid` int(3) NOT NULL COMMENT 'FID',
   `title` varchar(16) NOT NULL COMMENT 'Title',
@@ -37,23 +15,19 @@ CREATE TABLE IF NOT EXISTS `wmis_class_web` (
   `sort` int(3) NOT NULL DEFAULT '0' COMMENT 'Sort',
   `state` varchar(1) NOT NULL DEFAULT '0' COMMENT 'State',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
---
--- 转存表中的数据 `wmis_class_web`
---
+INSERT INTO `wmis_class_web` (`id`, `fid`, `title`, `url`, `ico`, `remark`, `ctime`, `sort`, `state`) VALUES ('1', '0', 'Home', 'home', 'ico-home', '', '2012-06-01 14:28:17', '0', '1');
+INSERT INTO `wmis_class_web` (`id`, `fid`, `title`, `url`, `ico`, `remark`, `ctime`, `sort`, `state`) VALUES ('2', '0', 'News', 'news', '', '', '2012-06-01 17:17:07', '0', '1');
 
-INSERT INTO `wmis_class_web` (`id`, `fid`, `title`, `url`, `ico`, `remark`, `ctime`, `sort`, `state`) VALUES
-(1, 0, 'Home', 'home', 'ico-home', '', '2012-06-01 14:28:17', 0, '1'),
-(2, 0, 'News', 'news', '', '', '2012-06-01 17:17:07', 0, '1');
 
--- --------------------------------------------------------
+#
+# TABLE STRUCTURE FOR: wmis_log_admin_login
+#
 
---
--- 表的结构 `wmis_log_admin_login`
---
+DROP TABLE IF EXISTS `wmis_log_admin_login`;
 
-CREATE TABLE IF NOT EXISTS `wmis_log_admin_login` (
+CREATE TABLE `wmis_log_admin_login` (
   `id` int(6) NOT NULL AUTO_INCREMENT COMMENT 'ID',
   `type` varchar(16) NOT NULL COMMENT 'Type',
   `uname` varchar(16) NOT NULL COMMENT 'UserName',
@@ -61,15 +35,15 @@ CREATE TABLE IF NOT EXISTS `wmis_log_admin_login` (
   `time` datetime DEFAULT NULL COMMENT 'Login Time',
   `agent` varchar(255) DEFAULT NULL COMMENT 'User Agent',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- --------------------------------------------------------
+#
+# TABLE STRUCTURE FOR: wmis_sys_admin
+#
 
---
--- 表的结构 `wmis_sys_admin`
---
+DROP TABLE IF EXISTS `wmis_sys_admin`;
 
-CREATE TABLE IF NOT EXISTS `wmis_sys_admin` (
+CREATE TABLE `wmis_sys_admin` (
   `id` int(3) NOT NULL AUTO_INCREMENT COMMENT 'ID',
   `uname` varchar(16) NOT NULL COMMENT 'UserName',
   `password` varchar(32) NOT NULL COMMENT 'PassWord',
@@ -81,23 +55,19 @@ CREATE TABLE IF NOT EXISTS `wmis_sys_admin` (
   `state` varchar(1) NOT NULL DEFAULT '0' COMMENT 'State',
   `perm` text COMMENT 'Authority',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
---
--- 转存表中的数据 `wmis_sys_admin`
---
+INSERT INTO `wmis_sys_admin` (`id`, `uname`, `password`, `email`, `name`, `department`, `position`, `rtime`, `state`, `perm`) VALUES ('1', 'admin', '21232f297a57a5a743894a0e4a801fc3', 'admin@ksphp.com', 'Administrator', 'Department', 'Position', '2010-01-01 08:00:00', '1', '1:0 2:0 3:0 4:0 5:0 6:0 8:0 10:0 16:0 23:0 19:0 21:0 7:1 9:1 11:31 12:31 13:31 14:1 15:1 17:81 18:145 24:319 25:63 20:19 22:1');
+INSERT INTO `wmis_sys_admin` (`id`, `uname`, `password`, `email`, `name`, `department`, `position`, `rtime`, `state`, `perm`) VALUES ('2', 'webmis', '062d13422d6f79880a24408445f214ec', 'test@ksphp.com', 'Test', 'Test', 'Test', '2015-07-22 10:44:58', '1', '1:0 2:0 3:0 4:0 5:0 6:0 8:0 10:0 16:0 23:0 19:0 21:0 7:1 9:1 11:31 12:31 13:31 14:1 15:1 17:81 18:145 24:319 25:63 20:19 22:1');
 
-INSERT INTO `wmis_sys_admin` (`id`, `uname`, `password`, `email`, `name`, `department`, `position`, `rtime`, `state`, `perm`) VALUES
-(1, 'admin', '8d37796cd6857b5b2d6721b2d25829ee', 'admin@ksphp.com', 'Administrator', 'Department', 'Position', '2010-01-01 08:00:00', '1', '1:0 2:0 3:0 4:0 5:0 6:0 8:0 10:0 16:0 23:0 19:0 21:0 7:1 9:1 11:31 12:31 13:31 14:1 15:1 17:81 18:145 24:319 25:63 20:19 22:1'),
-(2, 'webmis', '062d13422d6f79880a24408445f214ec', 'test@ksphp.com', 'Test', 'Test', 'Test', '2015-07-22 10:44:58', '1', '1:0 2:0 3:0 4:0 5:0 6:0 8:0 10:0 16:0 23:0 19:0 21:0 7:1 9:1 11:31 12:31 13:31 14:1 15:1 17:81 18:145 24:319 25:63 20:19 22:1');
 
--- --------------------------------------------------------
+#
+# TABLE STRUCTURE FOR: wmis_sys_menus
+#
 
---
--- 表的结构 `wmis_sys_menus`
---
+DROP TABLE IF EXISTS `wmis_sys_menus`;
 
-CREATE TABLE IF NOT EXISTS `wmis_sys_menus` (
+CREATE TABLE `wmis_sys_menus` (
   `id` int(3) NOT NULL AUTO_INCREMENT COMMENT 'ID',
   `fid` int(3) NOT NULL COMMENT 'FID',
   `title` varchar(32) NOT NULL COMMENT 'Name',
@@ -108,75 +78,67 @@ CREATE TABLE IF NOT EXISTS `wmis_sys_menus` (
   `ctime` datetime DEFAULT NULL COMMENT 'Create time',
   `sort` int(3) NOT NULL DEFAULT '0' COMMENT 'Sort',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=26 ;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8;
 
---
--- 转存表中的数据 `wmis_sys_menus`
---
+INSERT INTO `wmis_sys_menus` (`id`, `fid`, `title`, `url`, `perm`, `ico`, `remark`, `ctime`, `sort`) VALUES ('1', '0', 'menu_home', 'Welcome', '0', 'ico-home', NULL, '2010-01-01 08:00:00', '1');
+INSERT INTO `wmis_sys_menus` (`id`, `fid`, `title`, `url`, `perm`, `ico`, `remark`, `ctime`, `sort`) VALUES ('2', '0', 'menu_system', 'System', '0', 'ico-system', NULL, '2010-01-01 08:00:00', '2');
+INSERT INTO `wmis_sys_menus` (`id`, `fid`, `title`, `url`, `perm`, `ico`, `remark`, `ctime`, `sort`) VALUES ('3', '0', 'menu_web', 'Web', '0', 'ico-web', NULL, '2012-03-31 09:10:58', '3');
+INSERT INTO `wmis_sys_menus` (`id`, `fid`, `title`, `url`, `perm`, `ico`, `remark`, `ctime`, `sort`) VALUES ('4', '0', 'menu_log', 'Log', '0', 'ico-logs', NULL, '2014-06-25 12:30:26', '4');
+INSERT INTO `wmis_sys_menus` (`id`, `fid`, `title`, `url`, `perm`, `ico`, `remark`, `ctime`, `sort`) VALUES ('5', '0', 'menu_help', 'Help', '0', 'ico-help', NULL, '2010-01-01 08:00:00', '5');
+INSERT INTO `wmis_sys_menus` (`id`, `fid`, `title`, `url`, `perm`, `ico`, `remark`, `ctime`, `sort`) VALUES ('6', '1', 'menu_home_desktop', '', '0', 'ico-disktop', '', '2010-01-01 08:00:00', '0');
+INSERT INTO `wmis_sys_menus` (`id`, `fid`, `title`, `url`, `perm`, `ico`, `remark`, `ctime`, `sort`) VALUES ('7', '6', 'menu_home_userHome', 'Desktop', '1', 'ico-user1', NULL, '2010-01-01 08:00:00', '0');
+INSERT INTO `wmis_sys_menus` (`id`, `fid`, `title`, `url`, `perm`, `ico`, `remark`, `ctime`, `sort`) VALUES ('8', '1', 'menu_home_user', '', '0', 'ico-user', '', '2012-03-30 14:49:29', '0');
+INSERT INTO `wmis_sys_menus` (`id`, `fid`, `title`, `url`, `perm`, `ico`, `remark`, `ctime`, `sort`) VALUES ('9', '8', 'menu_home_userPWD', 'SysChangePasswd', '1', 'ico-pwd', NULL, '2012-03-30 14:37:30', '0');
+INSERT INTO `wmis_sys_menus` (`id`, `fid`, `title`, `url`, `perm`, `ico`, `remark`, `ctime`, `sort`) VALUES ('10', '2', 'menu_sys_management', '', '0', 'ico-system1', '', '2010-01-01 08:00:00', '0');
+INSERT INTO `wmis_sys_menus` (`id`, `fid`, `title`, `url`, `perm`, `ico`, `remark`, `ctime`, `sort`) VALUES ('11', '10', 'menu_sys_m_menu', 'SysMenus', '31', 'ico-menu', NULL, '2010-01-01 08:00:00', '0');
+INSERT INTO `wmis_sys_menus` (`id`, `fid`, `title`, `url`, `perm`, `ico`, `remark`, `ctime`, `sort`) VALUES ('12', '10', 'menu_sys_m_action', 'SysMenusAction', '31', 'ico-menuA', NULL, '2010-01-01 08:00:00', '0');
+INSERT INTO `wmis_sys_menus` (`id`, `fid`, `title`, `url`, `perm`, `ico`, `remark`, `ctime`, `sort`) VALUES ('13', '10', 'menu_sys_m_admin', 'SysAdmin', '31', 'ico-admin', NULL, '2010-01-01 08:00:00', '0');
+INSERT INTO `wmis_sys_menus` (`id`, `fid`, `title`, `url`, `perm`, `ico`, `remark`, `ctime`, `sort`) VALUES ('14', '10', 'menu_sys_m_config', 'SysConfig', '1', 'ico-system2', NULL, '2012-05-30 19:12:52', '0');
+INSERT INTO `wmis_sys_menus` (`id`, `fid`, `title`, `url`, `perm`, `ico`, `remark`, `ctime`, `sort`) VALUES ('15', '10', 'menu_sys_m_files', 'SysFilemanager', '1', 'ico-fileM', NULL, '2013-07-03 13:33:29', '0');
+INSERT INTO `wmis_sys_menus` (`id`, `fid`, `title`, `url`, `perm`, `ico`, `remark`, `ctime`, `sort`) VALUES ('16', '2', 'menu_sys_database', '', '0', 'ico-db', '', '2012-08-16 14:06:33', '0');
+INSERT INTO `wmis_sys_menus` (`id`, `fid`, `title`, `url`, `perm`, `ico`, `remark`, `ctime`, `sort`) VALUES ('17', '16', 'menu_sys_db_backup', 'SysDBBackup', '81', 'ico-exp', '', '2012-08-16 14:09:42', '0');
+INSERT INTO `wmis_sys_menus` (`id`, `fid`, `title`, `url`, `perm`, `ico`, `remark`, `ctime`, `sort`) VALUES ('18', '16', 'menu_sys_db_recovery', 'SysDBRestore', '145', 'ico-imp', NULL, '2012-08-16 14:10:19', '0');
+INSERT INTO `wmis_sys_menus` (`id`, `fid`, `title`, `url`, `perm`, `ico`, `remark`, `ctime`, `sort`) VALUES ('19', '4', 'menu_log_system', '', '0', 'ico-logs', '', '2012-03-30 09:03:18', '0');
+INSERT INTO `wmis_sys_menus` (`id`, `fid`, `title`, `url`, `perm`, `ico`, `remark`, `ctime`, `sort`) VALUES ('20', '19', 'menu_log_adminLogin', 'LogAdminLogin', '19', 'ico-logs1', NULL, '2012-03-30 09:29:20', '0');
+INSERT INTO `wmis_sys_menus` (`id`, `fid`, `title`, `url`, `perm`, `ico`, `remark`, `ctime`, `sort`) VALUES ('21', '5', 'menu_help_doc', '', '0', 'ico-help', '', '2010-01-01 08:00:00', '0');
+INSERT INTO `wmis_sys_menus` (`id`, `fid`, `title`, `url`, `perm`, `ico`, `remark`, `ctime`, `sort`) VALUES ('22', '21', 'menu_help_system', 'HelpSystem', '1', '', NULL, '2010-01-01 08:00:00', '0');
+INSERT INTO `wmis_sys_menus` (`id`, `fid`, `title`, `url`, `perm`, `ico`, `remark`, `ctime`, `sort`) VALUES ('23', '3', 'menu_web_management', '', '0', 'ico-web', '', '2012-03-31 09:42:59', '0');
+INSERT INTO `wmis_sys_menus` (`id`, `fid`, `title`, `url`, `perm`, `ico`, `remark`, `ctime`, `sort`) VALUES ('24', '23', 'menu_web_m_news', 'WebNews', '319', '', '', '2012-03-31 10:53:01', '0');
+INSERT INTO `wmis_sys_menus` (`id`, `fid`, `title`, `url`, `perm`, `ico`, `remark`, `ctime`, `sort`) VALUES ('25', '23', 'menu_web_class', 'ClassWeb', '63', '', '', '2012-03-31 10:45:05', '0');
 
-INSERT INTO `wmis_sys_menus` (`id`, `fid`, `title`, `url`, `perm`, `ico`, `remark`, `ctime`, `sort`) VALUES
-(1, 0, 'menu_home', 'Welcome', '0', 'ico-home', NULL, '2010-01-01 08:00:00', 1),
-(2, 0, 'menu_system', 'System', '0', 'ico-system', NULL, '2010-01-01 08:00:00', 2),
-(3, 0, 'menu_web', 'Web', '0', 'ico-web', NULL, '2012-03-31 09:10:58', 3),
-(4, 0, 'menu_log', 'Log', '0', 'ico-logs', NULL, '2014-06-25 12:30:26', 4),
-(5, 0, 'menu_help', 'Help', '0', 'ico-help', NULL, '2010-01-01 08:00:00', 5),
-(6, 1, 'menu_home_desktop', '', '0', 'ico-disktop', '', '2010-01-01 08:00:00', 0),
-(7, 6, 'menu_home_userHome', 'Desktop', '1', 'ico-user1', NULL, '2010-01-01 08:00:00', 0),
-(8, 1, 'menu_home_user', '', '0', 'ico-user', '', '2012-03-30 14:49:29', 0),
-(9, 8, 'menu_home_userPWD', 'SysChangePasswd', '1', 'ico-pwd', NULL, '2012-03-30 14:37:30', 0),
-(10, 2, 'menu_sys_management', '', '0', 'ico-system1', '', '2010-01-01 08:00:00', 0),
-(11, 10, 'menu_sys_m_menu', 'SysMenus', '31', 'ico-menu', NULL, '2010-01-01 08:00:00', 0),
-(12, 10, 'menu_sys_m_action', 'SysMenusAction', '31', 'ico-menuA', NULL, '2010-01-01 08:00:00', 0),
-(13, 10, 'menu_sys_m_admin', 'SysAdmin', '31', 'ico-admin', NULL, '2010-01-01 08:00:00', 0),
-(14, 10, 'menu_sys_m_config', 'SysConfig', '1', 'ico-system2', NULL, '2012-05-30 19:12:52', 0),
-(15, 10, 'menu_sys_m_files', 'SysFilemanager', '1', 'ico-fileM', NULL, '2013-07-03 13:33:29', 0),
-(16, 2, 'menu_sys_database', '', '0', 'ico-db', '', '2012-08-16 14:06:33', 0),
-(17, 16, 'menu_sys_db_backup', 'SysDBBackup', '81', 'ico-exp', '', '2012-08-16 14:09:42', 0),
-(18, 16, 'menu_sys_db_recovery', 'SysDBRestore', '145', 'ico-imp', NULL, '2012-08-16 14:10:19', 0),
-(19, 4, 'menu_log_system', '', '0', 'ico-logs', '', '2012-03-30 09:03:18', 0),
-(20, 19, 'menu_log_adminLogin', 'LogAdminLogin', '19', 'ico-logs1', NULL, '2012-03-30 09:29:20', 0),
-(21, 5, 'menu_help_doc', '', '0', 'ico-help', '', '2010-01-01 08:00:00', 0),
-(22, 21, 'menu_help_system', 'HelpSystem', '1', '', NULL, '2010-01-01 08:00:00', 0),
-(23, 3, 'menu_web_management', '', '0', 'ico-web', '', '2012-03-31 09:42:59', 0),
-(24, 23, 'menu_web_m_news', 'WebNews', '319', '', '', '2012-03-31 10:53:01', 0),
-(25, 23, 'menu_web_class', 'ClassWeb', '63', '', '', '2012-03-31 10:45:05', 0);
 
--- --------------------------------------------------------
+#
+# TABLE STRUCTURE FOR: wmis_sys_menus_action
+#
 
---
--- 表的结构 `wmis_sys_menus_action`
---
+DROP TABLE IF EXISTS `wmis_sys_menus_action`;
 
-CREATE TABLE IF NOT EXISTS `wmis_sys_menus_action` (
+CREATE TABLE `wmis_sys_menus_action` (
   `id` int(2) NOT NULL AUTO_INCREMENT COMMENT 'ID',
   `name` varchar(32) NOT NULL COMMENT 'Name',
   `perm` varchar(6) NOT NULL COMMENT 'Authority',
   `ico` varchar(24) DEFAULT NULL COMMENT 'ICON',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
---
--- 转存表中的数据 `wmis_sys_menus_action`
---
+INSERT INTO `wmis_sys_menus_action` (`id`, `name`, `perm`, `ico`) VALUES ('1', 'action_list', '1', 'ico-list');
+INSERT INTO `wmis_sys_menus_action` (`id`, `name`, `perm`, `ico`) VALUES ('2', 'action_sea', '2', 'ico-search');
+INSERT INTO `wmis_sys_menus_action` (`id`, `name`, `perm`, `ico`) VALUES ('3', 'action_add', '4', 'ico-add');
+INSERT INTO `wmis_sys_menus_action` (`id`, `name`, `perm`, `ico`) VALUES ('4', 'action_edit', '8', 'ico-edit');
+INSERT INTO `wmis_sys_menus_action` (`id`, `name`, `perm`, `ico`) VALUES ('5', 'action_remove', '16', 'ico-del');
+INSERT INTO `wmis_sys_menus_action` (`id`, `name`, `perm`, `ico`) VALUES ('6', 'action_audit', '32', 'ico-audit');
+INSERT INTO `wmis_sys_menus_action` (`id`, `name`, `perm`, `ico`) VALUES ('7', 'action_export', '64', 'ico-exp');
+INSERT INTO `wmis_sys_menus_action` (`id`, `name`, `perm`, `ico`) VALUES ('8', 'action_import', '128', 'ico-imp');
+INSERT INTO `wmis_sys_menus_action` (`id`, `name`, `perm`, `ico`) VALUES ('9', 'action_chart', '256', 'ico-chart');
 
-INSERT INTO `wmis_sys_menus_action` (`id`, `name`, `perm`, `ico`) VALUES
-(1, 'action_list', '1', 'ico-list'),
-(2, 'action_sea', '2', 'ico-search'),
-(3, 'action_add', '4', 'ico-add'),
-(4, 'action_edit', '8', 'ico-edit'),
-(5, 'action_remove', '16', 'ico-del'),
-(6, 'action_audit', '32', 'ico-audit'),
-(7, 'action_export', '64', 'ico-exp'),
-(8, 'action_import', '128', 'ico-imp'),
-(9, 'action_chart', '256', 'ico-chart');
 
--- --------------------------------------------------------
+#
+# TABLE STRUCTURE FOR: wmis_web_news
+#
 
---
--- 表的结构 `wmis_web_news`
---
+DROP TABLE IF EXISTS `wmis_web_news`;
 
-CREATE TABLE IF NOT EXISTS `wmis_web_news` (
+CREATE TABLE `wmis_web_news` (
   `id` int(6) NOT NULL AUTO_INCREMENT COMMENT 'ID',
   `class` varchar(24) NOT NULL COMMENT 'Class',
   `title` varchar(36) NOT NULL COMMENT 'Title',
@@ -194,8 +156,5 @@ CREATE TABLE IF NOT EXISTS `wmis_web_news` (
   `summary` varchar(300) DEFAULT NULL COMMENT 'Summary',
   `content` text,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
