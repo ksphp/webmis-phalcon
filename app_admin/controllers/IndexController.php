@@ -12,6 +12,15 @@ class IndexController extends Controller{
 		// echo $this->inc->IsMobile();
 		
 	}
+	// Get Lang
+	public function getLangAction($type=''){
+		$lang = $this->inc->getLang($type);
+		$name = $this->request->getQuery();
+		foreach ($name as $key=>$val){
+			$data[$key] = $lang->_($key);
+		}
+		echo json_encode($data);
+	}
 
 	// Login
 	public function loginAction(){

@@ -1,0 +1,63 @@
+<form action="<?php echo $this->inc->BaseUrl('SysMenus/Data');?>" method="post" id="Form">
+<table class="table_add">
+	<tr>
+		<td class="tright" width="90"><?php echo $Lang->_('sys_menu_class');?>:</td>
+		<td>
+			<input type="text" id="menus_fid" name="fid" class="input" style="width: 40px;" value="<?php echo $Edit->fid;?>" />
+			<span id="menusClass">&nbsp;</span>
+		</td>
+	</tr>
+	<tr>
+		<td class="tright"><?php echo $Lang->_('sys_menu_name');?>:</td>
+		<td>
+			<input type="text" name="title" class="input" style="width: 70%;" value="<?php echo $Edit->title;?>" datatype="*2-32" errormsg="2~32<?php echo $incLang->_('inc_form_char');?>" sucmsg="<?php echo $incLang->_('inc_form_pass');?>" nullmsg="<?php echo $incLang->_('inc_form_null');?>" />
+			<span class="Validform_checktip"></span>
+		</td>
+	</tr>
+	<tr>
+		<td class="tright"><?php echo $Lang->_('sys_menu_cname');?>:</td>
+		<td>
+			<input type="text" name="url" class="input" style="width: 70%;" value="<?php echo $Edit->url;?>" datatype="*0-32" errormsg="0~32<?php echo $incLang->_('inc_form_char');?>" sucmsg="<?php echo $incLang->_('inc_form_pass');?>" nullmsg="<?php echo $incLang->_('inc_form_null');?>" />
+			<span class="Validform_checktip"></span>
+		</td>
+	</tr>
+	<tr>
+		<td class="tright"><?php echo $Lang->_('sys_menu_icon');?>:</td>
+		<td>
+			<input type="text" name="ico" class="input" style="width: 30%;" value="<?php echo $Edit->ico;?>" datatype="*0-16" errormsg="0~16<?php echo $incLang->_('inc_form_char');?>" sucmsg="<?php echo $incLang->_('inc_form_pass');?>" nullmsg="<?php echo $incLang->_('inc_form_null');?>" />
+			<span class="Validform_checktip"></span>
+		</td>
+	</tr>
+	<tr>
+		<td class="tright"><?php echo $Lang->_('sys_menu_perm');?>:</td>
+		<td>
+<?php
+foreach($Action as $val){
+	$title = $MLang->_($val->name);
+?>
+			<input type="checkbox" id="PermVal" class="Checkbox" value="<?php echo $val->perm;?>" <?php echo intval($Edit->perm)&intval($val->perm)?'checked':'';?> /><span class="inputText"><?php echo $title;?></span>
+<?php }?>
+			<input type="hidden" id="menus_perm" name="perm" value="0" />
+		</td>
+	</tr>
+	<tr>
+		<td class="tright"><?php echo $Lang->_('sys_menu_remark');?>:</td>
+		<td>
+			<textarea name="remark" style="width: 95%; height: 120px;"><?php echo $Edit->remark;?></textarea>
+		</td>
+	</tr>
+	<tr>
+		<td class="tright"><?php echo $Lang->_('sys_menu_sort');?>:</td>
+		<td>
+			<input type="text" name="sort" class="input" style="width: 80px;" value="<?php echo $Edit->sort;?>" />
+		</td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td class="sub">
+			<input type="hidden" name="id" value="<?php echo $Edit->id;?>" />
+			<input type="submit" id="Sub" value="<?php echo $incLang->_('inc_edit');?>" />
+		</td>
+	</tr>
+</table>
+</form>
