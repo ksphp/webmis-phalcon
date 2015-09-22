@@ -1,7 +1,7 @@
 <span class="action">
 	<span class="title"><?php echo $Menus['Ctitle'];?></span>
 <?php foreach ($Menus['action'] as $val){
-	$url = $val['ico']=='ico-list'?$this->inc->BaseUrl($this->dispatcher->getControllerName()):'';
+	$url = $val['ico']=='ico-list'?$this->url->get($this->dispatcher->getControllerName()):'';
 ?>
 	<a href="<?php echo $url;?>" id="<?php echo $val['ico'];?>"><em class="<?php echo $val['ico'];?>"></em><span><?php echo $val['name'];?></span></a>
 <?php }?>

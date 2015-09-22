@@ -16,10 +16,10 @@ class Inc extends Component{
 	/* AppURL */
 	public function BaseUrl($url=''){
 		$base_url = $_SERVER['SERVER_PORT']=='443'?'https://':'http://';
-		$base_url .= $_SERVER['HTTP_HOST'].APP_NAME.$url;
+		$base_url .= $_SERVER['HTTP_HOST'].$url;
 		return $base_url;
 	}
-	
+
 	/* IsMobile */
 	public function IsMobile(){
 		$useragent = $this->request->getUserAgent();

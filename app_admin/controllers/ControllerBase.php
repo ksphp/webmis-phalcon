@@ -6,6 +6,10 @@ class ControllerBase extends Controller{
 		$this->view->setVar('incLang',$this->inc->getLang('inc'));
 		// Perm
 		$this->inc->userPerm();
+		// URL
+		$this->url->setStaticBaseUri($this->inc->BaseUrl());
+		$this->url->setBaseUri($this->inc->BaseUrl(APP_NAME));
+		
 	}
 }
 
