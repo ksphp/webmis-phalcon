@@ -14,7 +14,7 @@ $loader->registerDirs(
 )->register();
 
 /* Constant */
-define('APP_NAME', $config->application->baseUri);
+define('APP_BACKUP', $config->application->backupDir);
 define('APP_TITLE', $config->webmis->appTitle);
 define('APP_COPY', $config->webmis->appCopy);
 define('APP_THEMES', $config->webmis->defaultThemes);

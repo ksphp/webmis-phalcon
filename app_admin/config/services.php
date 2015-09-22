@@ -72,7 +72,3 @@ $di->set('session', function() {
 $di->set('inc', function () {
 	return new Inc();
 });
-
-$di->set('names', function () {
-	return new Names();
-});

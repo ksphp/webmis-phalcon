@@ -10,8 +10,9 @@ class IndexController extends Controller{
 		// Lang
 		$this->view->setVar('incLang',$this->inc->getLang('inc'));
 		$lang = $this->session->get('Lang');
-		$this->view->setVar('LangName',$lang.' | '.$this->names->getName('lang',$lang));
-		$this->view->setVar('LangAll',$this->names->getName('lang'));
+		$Name = new Names();
+		$this->view->setVar('LangName',$lang.' | '.$Name->getName('lang',$lang));
+		$this->view->setVar('LangAll',$Name->getName('lang'));
 		// Login Template
 		$this->view->setTemplateAfter(APP_THEMES.'/login');
 		// echo $this->inc->IsMobile();

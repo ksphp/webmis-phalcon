@@ -36,7 +36,68 @@ class SysDBBackupController extends ControllerBase{
 	}
 	/* Del */
 	public function delAction(){
-		$this->view->pick("system/menus/del");
+		$this->view->pick("system/db/backup/del");
+	}
+	/* Data */
+	public function DataAction($type=''){
+		if($this->request->isPost()){
+			$Tables = json_decode($this->request->getPost('table'));
+			// Export
+			if($type=='export'){
+				$path = $this->request->getPost('dir');
+				if(!is_dir($path)){return $this->Result('err');}
+				$file = $path.$this->request->getPost('name').'.'.$this->request->getPost('format');
+				// Data
+				$data = '';
+				foreach ($Tables as $table){
+					$data .=  "#\r\n";
+					$data .=  "# TABLE STRUCTURE FOR: ".$table."\r\n";
+					$data .=  "#\r\n\n";
+					$data .=  "DROP TABLE IF EXISTS `".$table."`;";
+					$data .=  "\r\n\n";
+					// DDL
+					$data .=  $this->query("SHOW CREATE TABLE `".$table."`")[0][1].';';
+					$data .=  "\r\n\n";
+					// Field
+					$Fields = $this->field($table);
+					$field = '';
+					foreach ($Fields as $val){
+						$field .= "`".$val."`, ";
+					}
+					$field = substr($field,0,-2);
+					// Data
+					$Datas = $this->query("SELECT * FROM `".$table."`");
+					$query='';
+					foreach ($Datas as $val){
+						$sql='';
+						foreach ($val as $d){
+							$sql .= "'".$d."', ";
+						}
+						$sql = substr($sql,0,-2);
+						$query .= "INSERT INTO `".$table."` (".$field.") VALUES (".$sql.");\r\n";
+					}
+					$data .=  $query;
+					if($Datas){
+						$data .=  "\r\n\n";
+					}
+					
+				}
+				return @file_put_contents($file, $data)?$this->Result('suc'):$this->Result('err');
+			}elseif($type=='delete'){
+				foreach ($Tables as $val){
+					if($this->db->dropTable($val)==FALSE){$this->Result('err');}
+				}
+				return $this->Result('suc');
+			}
+		}
+	}
+	private function Result($type=''){
+		$lang = $this->inc->getLang('msg');
+		if($type=='suc'){
+			return $this->response->setJsonContent(array('status'=>'y'));
+		}elseif($type=='err'){
+			return $this->response->setJsonContent(array('status'=>'n','title'=>"'.$lang->_('msg_title').'",'msg'=>"'.$lang->_('msg_err').'",'text'=>"'.$lang->_('msg_auto_close').'"));
+		}
 	}
 
 	// Query
