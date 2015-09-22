@@ -8,7 +8,7 @@ class ControllerBase extends Controller{
 		$this->inc->userPerm();
 		// URL
 		$this->url->setStaticBaseUri($this->inc->BaseUrl());
-		$this->url->setBaseUri($this->inc->BaseUrl($this->url->getBaseUri()));
+		$this->url->setBaseUri($this->inc->BaseUrl(APP_NAME));
 		
 	}
 }

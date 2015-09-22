@@ -28,47 +28,6 @@ class SysMenusController extends ControllerBase{
 		// View
 		$this->view->setTemplateAfter(APP_THEMES.'/main');
 		$this->view->pick("system/menus/index");
-		
-		/* DB */
-		$table = $this->db->listTables();
-		foreach ($table as $val){
-			$val;
-		}
-		
-		$table = 'wmis_sys_admin';
-		echo "#\r\n";
-		echo "# TABLE STRUCTURE FOR: ".$table."\r\n";
-		echo "#\r\n\n";
-		echo "DROP TABLE IF EXISTS `".$table."`;";
-		echo "\r\n\n";
-		// DDL
-		$result = $this->db->query("SHOW CREATE TABLE `".$table."`");
-		$result->setFetchMode(PDO::FETCH_NUM);
-		echo $ddl = $result->fetchAll()[0][1].';';
-		echo "\r\n\n";
-		// Columns
-		$result = $this->db->query("SHOW COLUMNS FROM `".$table."`");
-		$result->setFetchMode(PDO::FETCH_NUM);
-		$list = $result->fetchAll();
-		$columns = '';
-		foreach ($list as $val){
-			$columns .= "`".$val[0]."`,";
-		}
-		$columns = substr($columns,0,-1);
-		// Data
-		$result = $this->db->query("SELECT * FROM `".$table."`");
-		$result->setFetchMode(PDO::FETCH_NUM);
-		$data = $result->fetchAll();
-		$query='';
-		foreach ($data as $val){
-			$sql='';
-			foreach ($val as $d){
-				$sql .= "'".$d."',";
-			}
-			$sql = substr($sql,0,-1);
-			$query .= "INSERT INTO `".$table."` (".$columns.") VALUES (".$sql.");\r\n";
-		}
-		echo $query."\r\n\n";
 	}
 	
 	/* Search */
