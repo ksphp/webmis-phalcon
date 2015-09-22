@@ -1,6 +1,11 @@
 <?php
 use Phalcon\Mvc\Controller;
 class IndexController extends Controller{
+	public function initialize(){
+		// URL
+		$this->url->setStaticBaseUri($this->inc->BaseUrl());
+		$this->url->setBaseUri($this->inc->BaseUrl(APP_NAME));
+	}
 	public function indexAction(){
 		// Lang
 		$this->view->setVar('incLang',$this->inc->getLang('inc'));

@@ -6,8 +6,8 @@
 	<meta name="author" content="KSPHP" />
 	<title><?php echo APP_TITLE;?></title>
 	<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
-	<?php echo $this->tag->stylesheetLink("../webmis/themes/".WEBMIS_THEMES."/webmis.css");?>
-	<?php echo $this->tag->stylesheetLink("../themes/admin/".APP_THEMES."/main.css");?>
+	<?php echo $this->tag->stylesheetLink("/webmis/themes/".WEBMIS_THEMES."/webmis.css");?>
+	<?php echo $this->tag->stylesheetLink("/themes/admin/".APP_THEMES."/main.css");?>
 </head>
 
 <body class="body_login">
@@ -16,7 +16,7 @@
 		<?php echo $LangName;?>
 		<ul class="lang">
 <?php foreach ($LangAll as $key=>$val){?>
-			<li><a href="<?php echo $this->inc->BaseUrl('?lang='.$key); ?>"><?php echo $key.' | '.$val;?></a></li>
+			<li><a href="<?php echo $this->url->get('?lang='.$key); ?>"><?php echo $key.' | '.$val;?></a></li>
 <?php }?>
 		</ul>
 	</div>
@@ -35,12 +35,12 @@
 	</div>
 	<div class="login_copy">
 		Copyright © <?php echo APP_COPY;?> All rights are reserved.<br>
-		<a href="<?php echo $this->inc->BaseUrl('../');?>" ><?php echo $incLang->_('inc_home');?></a> | <a href="?mode=pc" ><?php echo $incLang->_('inc_pc');?></a> | <a href="?mode=mobile" ><?php echo $incLang->_('inc_mobile');?></a>
+		<a href="<?php echo $this->url->get('../');?>" ><?php echo $incLang->_('inc_home');?></a> | <a href="?mode=pc" ><?php echo $incLang->_('inc_pc');?></a> | <a href="?mode=mobile" ><?php echo $incLang->_('inc_mobile');?></a>
 	</div>
-<div id="base_url" style="display: none;"><?php echo $this->inc->BaseUrl();?></div>
+<div id="base_url" style="display: none;"><?php echo $this->url->get();?></div>
 <div id="is_mobile" style="display: none;"></div>
-<?php echo $this->tag->javascriptInclude("../webmis/plugin/jquery/".JQUERY_NAME);?>
-<?php echo $this->tag->javascriptInclude("../webmis/jquery.webmis.js");?>
-<?php echo $this->tag->javascriptInclude("../themes/admin/".APP_THEMES."/login.js");?>
+<?php echo $this->tag->javascriptInclude("/webmis/plugin/jquery/".JQUERY_NAME);?>
+<?php echo $this->tag->javascriptInclude("/webmis/jquery.webmis.js");?>
+<?php echo $this->tag->javascriptInclude("/themes/admin/".APP_THEMES."/login.js");?>
 </body>
 </html>
