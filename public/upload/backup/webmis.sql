@@ -22,23 +22,6 @@ INSERT INTO `wmis_class_web` (`id`, `fid`, `title`, `url`, `ico`, `remark`, `cti
 INSERT INTO `wmis_class_web` (`id`, `fid`, `title`, `url`, `ico`, `remark`, `ctime`, `sort`, `state`) VALUES ('2', '0', 'News', 'news', '', '', '2012-06-01 17:17:07', '0', '1');
 
 #
-# TABLE STRUCTURE FOR: wmis_log_admin_login
-#
-
-DROP TABLE IF EXISTS `wmis_log_admin_login`;
-
-CREATE TABLE `wmis_log_admin_login` (
-  `id` int(6) NOT NULL AUTO_INCREMENT COMMENT 'ID',
-  `type` varchar(16) NOT NULL COMMENT 'Type',
-  `uname` varchar(16) NOT NULL COMMENT 'UserName',
-  `ip` varchar(16) NOT NULL COMMENT 'IP addr',
-  `time` datetime DEFAULT NULL COMMENT 'Login Time',
-  `agent` varchar(255) DEFAULT NULL COMMENT 'User Agent',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-
-#
 # TABLE STRUCTURE FOR: wmis_sys_admin
 #
 
