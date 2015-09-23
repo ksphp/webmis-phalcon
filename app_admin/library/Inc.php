@@ -71,15 +71,15 @@ class Inc extends Component{
 				$html .= '<span>'.$Lang->_('inc_page_first').'</span>';
 				$html .= '<span>'.$Lang->_('inc_page_before').'</span>';
 			}else{
-				$html .= '<a href="'.$this->inc->BaseUrl($cname).'?page=1'.$getUrl.'">'.$Lang->_('inc_page_first').'</a>';
-				$html .= '<a href="'.$this->inc->BaseUrl($cname).'?page='.$Page->before.$getUrl.'">'.$Lang->_('inc_page_before').'</a>';
+				$html .= '<a href="'.$this->url->get($cname).'?page=1'.$getUrl.'&search">'.$Lang->_('inc_page_first').'</a>';
+				$html .= '<a href="'.$this->url->get($cname).'?page='.$Page->before.$getUrl.'&search">'.$Lang->_('inc_page_before').'</a>';
 			}
 			if($page==$Page->last){
 				$html .= '<span>'.$Lang->_('inc_page_next').'</span>';
 				$html .= '<span>'.$Lang->_('inc_page_last').'</span>';
 			}else{
-				$html .= '<a href="'.$this->inc->BaseUrl($cname).'?page='.$Page->next.$getUrl.'">'.$Lang->_('inc_page_next').'</a>';
-				$html .= '<a href="'.$this->inc->BaseUrl($cname).'?page='.$Page->last.$getUrl.'">'.$Lang->_('inc_page_last').'</a>';
+				$html .= '<a href="'.$this->url->get($cname).'?page='.$Page->next.$getUrl.'&search">'.$Lang->_('inc_page_next').'</a>';
+				$html .= '<a href="'.$this->url->get($cname).'?page='.$Page->last.$getUrl.'&search">'.$Lang->_('inc_page_last').'</a>';
 			}
 			$html .= ' Page : '.$Page->current.'/'.$Page->total_pages;
 			$Page->PageHtml = $html;
@@ -95,7 +95,7 @@ class Inc extends Component{
 		unset($like['page']);
 		foreach($like as $key=>$val){if($val==''){unset($like[$key]);}else{$getUrl .= '&'.$key.'='.$val;}}
 		unset($like['search']);
-		$this->view->setVar('getUrl','?page='.$page.$getUrl);
+		$this->view->setVar('getUrl','?page='.$page.$getUrl.'&search');
 		return array('getUrl'=>$getUrl,'data'=>$like);
 	}
 
@@ -133,7 +133,7 @@ class Inc extends Component{
 		return array('Date'=>$data,'FID'=>$FID,'Ctitle'=>$this->Ctitle,'action'=>$action);
 	}
 	private function actionMenus($perm='',$Cname='',$Lang='') {
-		$Action = Menuaction::find(array('order'=>'id'));
+		$Action = MenuAction::find(array('order'=>'id'));
 		$data='';
 		foreach ($Action as $val){
 			if(intval($perm)&intval($val->perm)){

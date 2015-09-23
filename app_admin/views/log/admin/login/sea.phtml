@@ -1,0 +1,41 @@
+<form action="<?php echo $this->url->get('LogAdminLogin/index');?>" method="get">
+<table class="table_add">
+	<tr>
+		<td class="tright" width="90"><?php echo $Lang->_('log_login_type');?>:</td>
+		<td>
+			<input type="text" name="type" class="input" style="width: 40%;" value="<?php echo @$_GET['type'];?>" />
+		</td>
+	</tr>
+	<tr>
+		<td class="tright"><?php echo $Lang->_('log_login_uname');?>:</td>
+		<td>
+			<input type="text" name="uname" class="input" style="width: 80%;" value="<?php echo @$_GET['uname'];?>" />
+		</td>
+	</tr>
+	<tr>
+		<td class="tright"><?php echo $Lang->_('log_login_time');?>:</td>
+		<td>
+			<input type="text" name="time" class="input" style="width: 80%;" value="<?php echo @$_GET['time'];?>" />
+		</td>
+	</tr>
+	<tr>
+		<td class="tright"><?php echo $Lang->_('log_login_IP');?>:</td>
+		<td>
+			<input type="text" name="ip" class="input" style="width: 80%;" value="<?php echo @$_GET['ip'];?>" />
+		</td>
+	</tr>
+	<tr>
+		<td class="tright"><?php echo $Lang->_('log_login_agent');?>:</td>
+		<td>
+			<input type="text" name="agent" class="input" style="width: 80%;" value="<?php echo @$_GET['agent'];?>" />
+		</td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td class="sub">
+			<input type="submit" id="seaSub" name="search" value="<?php echo $incLang->_('inc_sea');?>" />
+			<input type="hidden" name="page" value="1"/>
+		</td>
+	</tr>
+</table>
+</form>

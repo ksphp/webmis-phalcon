@@ -18,13 +18,13 @@ class SysMenusController extends ControllerBase{
 		}
 		$page = $this->inc->getPage(array('data'=>$data,'getUrl'=>$getUrl));
 		$this->view->setVar('Page', $page);
-		// Menus
-		$this->view->setVar('Menus',$this->inc->getMenus());
-		$this->tag->prependTitle($this->inc->Ctitle);
 		// Data
 		$this->view->setVar('MenusLang',$this->inc->getLang('menus'));
 		$this->view->setVar('Lang',$this->inc->getLang('system/sys_menu'));
 		$this->view->setVar('LoadJS', array('system/sys_menus.js'));
+		// Menus
+		$this->view->setVar('Menus',$this->inc->getMenus());
+		$this->tag->prependTitle($this->inc->Ctitle);
 		// View
 		$this->view->setTemplateAfter(APP_THEMES.'/main');
 		$this->view->pick("system/menus/index");
@@ -38,7 +38,7 @@ class SysMenusController extends ControllerBase{
 	/* ADD */
 	public function addAction(){
 		$this->view->setVar('MLang',$this->inc->getLang('menus'));
-		$this->view->setVar('Action',Menuaction::find());
+		$this->view->setVar('Action',MenuAction::find());
 		$this->view->setVar('Lang',$this->inc->getLang('system/sys_menu'));
 		$this->view->pick("system/menus/add");
 	}
@@ -48,7 +48,7 @@ class SysMenusController extends ControllerBase{
 		$data = Menus::findFirst(array('id='.$id));
 		$this->view->setVar('Edit',$data);
 		$this->view->setVar('MLang',$this->inc->getLang('menus'));
-		$this->view->setVar('Action',Menuaction::find());
+		$this->view->setVar('Action',MenuAction::find());
 		$this->view->setVar('Lang',$this->inc->getLang('system/sys_menu'));
 		$this->view->pick("system/menus/edit");
 	}

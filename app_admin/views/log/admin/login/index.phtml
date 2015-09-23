@@ -1,1 +1,33 @@
-<?php print_r($Menus['Ctitle']);?>
+<span class="action">
+	<span class="title"><?php echo $Menus['Ctitle'];?></span>
+<?php foreach ($Menus['action'] as $val){
+	$url = $val['ico']=='ico-list'?$this->url->get($this->dispatcher->getControllerName()):'';
+?>
+	<a href="<?php echo $url;?>" id="<?php echo $val['ico'];?>"><em class="<?php echo $val['ico'];?>"></em><span><?php echo $val['name'];?></span></a>
+<?php }?>
+</span>
+<table class="table_list">
+	<tr class="title">
+		<td width="20"><a href="#" id="checkboxY"></a><a href="#" id="checkboxN"></a></td>
+		<td width="30">ID</td>
+		<td width="30"><?php echo $Lang->_('log_login_type');?></td>
+		<td width="100"><?php echo $Lang->_('log_login_uname');?></td>
+		<td width="120"><?php echo $Lang->_('log_login_time');?></td>
+		<td width="100"><?php echo $Lang->_('log_login_IP');?></td>
+		<td><?php echo $Lang->_('log_login_agent');?></td>
+	</tr>
+	<tbody id="listBG">
+<?php foreach ($Page->items as $val){?>
+	<tr>
+		<td><input type="checkbox" value="<?php echo $val->id;?>" /></td>
+		<td><?php echo $val->id;?></td>
+		<td><?php echo $this->inc->keyHH($val->type,@$_GET['type']);?></td>
+		<td><?php echo $this->inc->keyHH($val->uname,@$_GET['uname']);?></td>
+		<td><?php echo $this->inc->keyHH($val->time,@$_GET['time']);?></td>
+		<td><?php echo $this->inc->keyHH($val->ip,@$_GET['ip']);?></td>
+		<td class="tleft"><?php echo $this->inc->keyHH($val->agent,@$_GET['agent']);?></td>
+	</tr>
+<?php }?>
+	</tbody>
+</table>
+<div class="page"><?php echo $Page->PageHtml;?></div>

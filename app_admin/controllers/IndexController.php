@@ -18,7 +18,15 @@ class IndexController extends Controller{
 		// echo $this->inc->IsMobile();
 		
 	}
-	// Get Lang
+	
+	/* LoginLog */
+	private function loginLog($type,$uname){
+		$data = array('type'=>$type,'uname'=>$uname,'ip'=>$this->request->getClientAddress(),'time'=>date('Y-m-d H:i:s'),'agent'=>$this->request->getUserAgent());
+		$DB = new LogAdminLogin();
+		$DB->save($data);
+	}
+	
+	/* Get Lang */
 	public function getLangAction($type=''){
 		$lang = $this->inc->getLang($type);
 		$name = $this->request->getQuery();
@@ -38,12 +46,20 @@ class IndexController extends Controller{
 				'bind' => array('uname' => $uname, 'password' => md5($password))
 			));
 			// Return JSON
+			$lang = $this->inc->getLang('msg');
 			if($admin){
 				if($admin->state=='1'){
 					$this->_registerSession($admin);
-					echo '{"status":"y"}';
-				}else{echo '{"status":"n","msg":"该用户已被禁用！"}';}
-			}else{echo '{"status":"n","msg":"帐号或密码有误！"}';}
+					$this->loginLog('Login',$uname);
+					return $this->response->setJsonContent(array("status"=>"y"));
+				}else{
+					$this->loginLog('Disable',$uname);
+					return $this->response->setJsonContent(array("status"=>"n","title"=>$lang->_("msg_title"),"msg"=>$lang->_("msg_isDisable"),"text"=>$lang->_('msg_auto_close')));
+				}
+			}else{
+				$this->loginLog('Error',$uname);
+				return $this->response->setJsonContent(array("status"=>"n","title"=>$lang->_("msg_title"),"msg"=>$lang->_("msg_isUser"),"text"=>$lang->_('msg_auto_close')));
+			}
 		}
 	}
 	// Save Session
@@ -70,7 +86,11 @@ class IndexController extends Controller{
     }
 	// LoginOut
 	public function loginOutAction(){
-		$this->session->remove('Admin');
+		$admin = $this->session->get('Admin');
+		if(isset($admin['uname'])){
+			$this->loginLog('Logout',$admin['uname']);
+			$this->session->remove('Admin');
+		}
 		return $this->dispatcher->forward(array('controller' =>'index','action' =>'index'));
 	}
 }
