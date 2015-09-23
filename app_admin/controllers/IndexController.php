@@ -18,47 +18,28 @@ class IndexController extends Controller{
 		// echo $this->inc->IsMobile();
 		
 	}
-	
-	/* LoginLog */
-	private function loginLog($type,$uname){
-		$data = array('type'=>$type,'uname'=>$uname,'ip'=>$this->request->getClientAddress(),'time'=>date('Y-m-d H:i:s'),'agent'=>$this->request->getUserAgent());
-		$DB = new LogAdminLogin();
-		$DB->save($data);
-	}
-	
-	/* Get Lang */
-	public function getLangAction($type=''){
-		$lang = $this->inc->getLang($type);
-		$name = $this->request->getQuery();
-		foreach ($name as $key=>$val){
-			$data[$key] = $lang->_($key);
-		}
-		echo json_encode($data);
-	}
 
-	// Login
+	/* Login */
 	public function loginAction(){
 		if ($this->request->isPost()) {
 			$uname = $this->request->getPost('uname');
 			$password = $this->request->getPost('passwd');
 			// User Data
 			$admin = Admins::findFirst(array("(uname = :uname: OR email = :uname:) AND password = :password:",
-				'bind' => array('uname' => $uname, 'password' => md5($password))
-			));
+				'bind' => array('uname' => $uname, 'password' => md5($password))));
 			// Return JSON
 			$lang = $this->inc->getLang('msg');
-			if($admin){
-				if($admin->state=='1'){
-					$this->_registerSession($admin);
-					$this->loginLog('Login',$uname);
-					return $this->response->setJsonContent(array("status"=>"y"));
-				}else{
-					$this->loginLog('Disable',$uname);
-					return $this->response->setJsonContent(array("status"=>"n","title"=>$lang->_("msg_title"),"msg"=>$lang->_("msg_isDisable"),"text"=>$lang->_('msg_auto_close')));
-				}
-			}else{
+			if(empty($admin)){
 				$this->loginLog('Error',$uname);
 				return $this->response->setJsonContent(array("status"=>"n","title"=>$lang->_("msg_title"),"msg"=>$lang->_("msg_isUser"),"text"=>$lang->_('msg_auto_close')));
+			}
+			if($admin->state=='1'){
+				$this->_registerSession($admin);
+				$this->loginLog('Login',$uname);
+				return $this->response->setJsonContent(array("status"=>"y"));
+			}else{
+				$this->loginLog('Disable',$uname);
+				return $this->response->setJsonContent(array("status"=>"n","title"=>$lang->_("msg_title"),"msg"=>$lang->_("msg_isDisable"),"text"=>$lang->_('msg_auto_close')));
 			}
 		}
 	}
@@ -84,7 +65,8 @@ class IndexController extends Controller{
 			'perm_s' => $data
 		));
     }
-	// LoginOut
+	
+	/* LoginOut */
 	public function loginOutAction(){
 		$admin = $this->session->get('Admin');
 		if(isset($admin['uname'])){
@@ -92,5 +74,22 @@ class IndexController extends Controller{
 			$this->session->remove('Admin');
 		}
 		return $this->dispatcher->forward(array('controller' =>'index','action' =>'index'));
+	}
+	
+	/* LoginLog */
+	private function loginLog($type,$uname){
+		$data = array('type'=>$type,'uname'=>$uname,'ip'=>$this->request->getClientAddress(),'time'=>date('Y-m-d H:i:s'),'agent'=>$this->request->getUserAgent());
+		$DB = new LogAdminLogin();
+		$DB->save($data);
+	}
+	
+	/* Get Lang */
+	public function getLangAction($type=''){
+		$lang = $this->inc->getLang($type);
+		$name = $this->request->getQuery();
+		foreach ($name as $key=>$val){
+			$data[$key] = $lang->_($key);
+		}
+		echo json_encode($data);
 	}
 }
