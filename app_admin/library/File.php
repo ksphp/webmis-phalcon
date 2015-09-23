@@ -18,7 +18,7 @@ class File{
 		if(is_dir($root)) {
 			$d = opendir($root);
 			while($f = readdir($d)) {
-				if(strpos($f, '.') === 0){continue;}
+				if($f == "." || $f == ".."){continue;}
 				$ff = $root . '/' . $f;
 				$ext = strtolower(substr(strrchr($f, '.'), 1));
 				$ctime = $this->getctime($ff);
@@ -98,15 +98,14 @@ class File{
 		$data = TRUE;
 		$d = opendir($dir);
 		while ($file = readdir($d)){
-			if ($file != "." && $file != ".."){
-				$fullpath = $dir . "/" . $file;
-				if (!is_dir($fullpath)){
-					$data = unlink($fullpath)==TRUE?TRUE:FALSE;
-				}else{
-					$data = $this->deldir($fullpath)==TRUE?TRUE:FALSE;
-				}
-				if($data==FALSE){break;}
+			if($file == "." || $file == ".."){continue;}
+			$fullpath = $dir . "/" . $file;
+			if (!is_dir($fullpath)){
+				$data = unlink($fullpath)==TRUE?TRUE:FALSE;
+			}else{
+				$data = $this->deldir($fullpath)==TRUE?TRUE:FALSE;
 			}
+			if($data==FALSE){break;}
 		}
 		closedir($d);
 		return rmdir($dir)==TRUE&&$data?TRUE:FALSE;
@@ -128,15 +127,14 @@ class File{
 		$data = TRUE;
 		$d = opendir($dir);
 		while ($file = readdir($d)){
-			if ($file != "." && $file != ".."){
-				$fullpath = $dir . "/" . $file;
-				if(!is_dir($fullpath)){
-					$data = chmod($fullpath,$perm)==TRUE?TRUE:FALSE;
-				}else{
-					$data = $this->editDirPerm($fullpath,$perm)==TRUE?TRUE:FALSE;
-				}
-				if($data==FALSE){break;}
+			if($file == "." || $file == ".."){continue;}
+			$fullpath = $dir . "/" . $file;
+			if(!is_dir($fullpath)){
+				$data = chmod($fullpath,$perm)==TRUE?TRUE:FALSE;
+			}else{
+				$data = $this->editDirPerm($fullpath,$perm)==TRUE?TRUE:FALSE;
 			}
+			if($data==FALSE){break;}
 		}
 		closedir($d);
 		return chmod($dir,$perm)==TRUE&&$data?TRUE:FALSE;
