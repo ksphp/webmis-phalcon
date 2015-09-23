@@ -44,20 +44,21 @@ class SysDBBackupController extends ControllerBase{
 			$Tables = json_decode($this->request->getPost('table'));
 			// Export
 			if($type=='export'){
-				$path = $this->request->getPost('dir');
+				$path = $_SERVER['DOCUMENT_ROOT'].$this->request->getPost('dir');
 				if(!is_dir($path)){return $this->Result('err');}
 				$file = $path.$this->request->getPost('name').'.'.$this->request->getPost('format');
 				// Data
 				$data = '';
 				foreach ($Tables as $table){
-					$data .=  "#\r\n";
-					$data .=  "# TABLE STRUCTURE FOR: ".$table."\r\n";
-					$data .=  "#\r\n\n";
-					$data .=  "DROP TABLE IF EXISTS `".$table."`;";
-					$data .=  "\r\n\n";
+					$data .=  "\n";
+					$data .=  "#\n";
+					$data .=  "# TABLE STRUCTURE FOR: ".$table."\n";
+					$data .=  "#\n\n";
+					$data .=  "DROP TABLE IF EXISTS `".$table."`;\n";
+					$data .=  "\n";
 					// DDL
 					$data .=  $this->query("SHOW CREATE TABLE `".$table."`")[0][1].';';
-					$data .=  "\r\n\n";
+					$data .=  "\n\n";
 					// Field
 					$Fields = $this->field($table);
 					$field = '';
@@ -74,12 +75,9 @@ class SysDBBackupController extends ControllerBase{
 							$sql .= "'".$d."', ";
 						}
 						$sql = substr($sql,0,-2);
-						$query .= "INSERT INTO `".$table."` (".$field.") VALUES (".$sql.");\r\n";
+						$query .= "INSERT INTO `".$table."` (".$field.") VALUES (".$sql.");\n";
 					}
 					$data .=  $query;
-					if($Datas){
-						$data .=  "\r\n\n";
-					}
 					
 				}
 				return @file_put_contents($file, $data)?$this->Result('suc'):$this->Result('err');

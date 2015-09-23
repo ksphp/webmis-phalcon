@@ -151,6 +151,16 @@ class File{
 		closedir($d);
 		return chmod($dir,$perm);
 	}
+	
+	/* Download */
+	function down($f){
+		$fileinfo = pathinfo($f);
+		header('Content-type: application/x-'.$fileinfo['extension']);
+		header('Content-Disposition: attachment; filename='.$fileinfo['basename']);
+		header('Content-Length: '.filesize($f));
+		readfile($f);
+		exit();
+	}
 
 	/* Folder Size */
 	function dirsize($dir) {

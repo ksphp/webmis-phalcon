@@ -89,7 +89,7 @@ if (isset($_POST['install'])){
 				$suc .= '<p class="err">'.$Lang['msg_file_read' ].'：'.'webmis.sql [ '.$Lang['msg_err' ].' ]</p>';
 			}else{
 				$suc .= '<p class="suc">'.$Lang['msg_file_read' ].'：'.'webmis.sql [ '.$Lang['msg_suc' ].' ]</p>';
-				$content = preg_replace("/#\n# TABLE(.*)\s#\n/i","",$content);
+				$content = preg_replace("/\n#\n# TABLE(.*)\s#\n\n/i","",$content);
 				$content = preg_replace("/'admin'/","'".$uname."'",$content);
 				$content = preg_replace("/'21232f297a57a5a743894a0e4a801fc3'/","'".md5($passwd)."'",$content);
 				$sqls = array_filter(explode(";\n",$content));
@@ -101,7 +101,7 @@ if (isset($_POST['install'])){
 							$err = $db->errorInfo();
 							$data = '<p class="err">'.$Lang['msg_db_import' ].' [ '.$Lang['msg_err' ].' ]</p>';
 							$data .= '<p class="err">'.$err[2].'</p>';
-							break;
+							return FALSE;
 						}
 					}
 				}

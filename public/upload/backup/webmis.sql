@@ -1,3 +1,4 @@
+
 #
 # TABLE STRUCTURE FOR: wmis_class_web
 #
@@ -20,7 +21,6 @@ CREATE TABLE `wmis_class_web` (
 INSERT INTO `wmis_class_web` (`id`, `fid`, `title`, `url`, `ico`, `remark`, `ctime`, `sort`, `state`) VALUES ('1', '0', 'Home', 'home', 'ico-home', '', '2012-06-01 14:28:17', '0', '1');
 INSERT INTO `wmis_class_web` (`id`, `fid`, `title`, `url`, `ico`, `remark`, `ctime`, `sort`, `state`) VALUES ('2', '0', 'News', 'news', '', '', '2012-06-01 17:17:07', '0', '1');
 
-
 #
 # TABLE STRUCTURE FOR: wmis_log_admin_login
 #
@@ -36,6 +36,7 @@ CREATE TABLE `wmis_log_admin_login` (
   `agent` varchar(255) DEFAULT NULL COMMENT 'User Agent',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 
 #
 # TABLE STRUCTURE FOR: wmis_sys_admin
@@ -59,7 +60,6 @@ CREATE TABLE `wmis_sys_admin` (
 
 INSERT INTO `wmis_sys_admin` (`id`, `uname`, `password`, `email`, `name`, `department`, `position`, `rtime`, `state`, `perm`) VALUES ('1', 'admin', '21232f297a57a5a743894a0e4a801fc3', 'admin@ksphp.com', 'Administrator', 'Department', 'Position', '2010-01-01 08:00:00', '1', '1:0 2:0 3:0 4:0 5:0 6:0 8:0 10:0 16:0 23:0 19:0 21:0 7:1 9:1 11:31 12:31 13:31 14:1 15:1 17:81 18:145 24:319 25:63 20:19 22:1');
 INSERT INTO `wmis_sys_admin` (`id`, `uname`, `password`, `email`, `name`, `department`, `position`, `rtime`, `state`, `perm`) VALUES ('2', 'webmis', '062d13422d6f79880a24408445f214ec', 'test@ksphp.com', 'Test', 'Test', 'Test', '2015-07-22 10:44:58', '1', '1:0 2:0 3:0 4:0 5:0 6:0 8:0 10:0 16:0 23:0 19:0 21:0 7:1 9:1 11:31 12:31 13:31 14:1 15:1 17:81 18:145 24:319 25:63 20:19 22:1');
-
 
 #
 # TABLE STRUCTURE FOR: wmis_sys_menus
@@ -106,7 +106,6 @@ INSERT INTO `wmis_sys_menus` (`id`, `fid`, `title`, `url`, `perm`, `ico`, `remar
 INSERT INTO `wmis_sys_menus` (`id`, `fid`, `title`, `url`, `perm`, `ico`, `remark`, `ctime`, `sort`) VALUES ('24', '23', 'menu_web_m_news', 'WebNews', '319', '', '', '2012-03-31 10:53:01', '0');
 INSERT INTO `wmis_sys_menus` (`id`, `fid`, `title`, `url`, `perm`, `ico`, `remark`, `ctime`, `sort`) VALUES ('25', '23', 'menu_web_class', 'ClassWeb', '63', '', '', '2012-03-31 10:45:05', '0');
 
-
 #
 # TABLE STRUCTURE FOR: wmis_sys_menus_action
 #
@@ -130,7 +129,6 @@ INSERT INTO `wmis_sys_menus_action` (`id`, `name`, `perm`, `ico`) VALUES ('6', '
 INSERT INTO `wmis_sys_menus_action` (`id`, `name`, `perm`, `ico`) VALUES ('7', 'action_export', '64', 'ico-exp');
 INSERT INTO `wmis_sys_menus_action` (`id`, `name`, `perm`, `ico`) VALUES ('8', 'action_import', '128', 'ico-imp');
 INSERT INTO `wmis_sys_menus_action` (`id`, `name`, `perm`, `ico`) VALUES ('9', 'action_chart', '256', 'ico-chart');
-
 
 #
 # TABLE STRUCTURE FOR: wmis_web_news
