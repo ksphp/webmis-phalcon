@@ -3,28 +3,28 @@ class File{
 	public $file_root = '.';
 	
 	/* Lists */
-	function lists($c='/') {
-		$c = $c?$c:'/';
-		$c = preg_replace('/\.\.\/|\.\/|\.\./','',$c);
-		$c = $c=='/'?$c:'/'.trim($c, '/').'/';
+	function lists($path='/') {
+		$path = $path?$path:'/';
+		$path = preg_replace('/\.\.\/|\.\/|\.\./','',$path);
+		$path = $path=='/'?$path:'/'.trim($path, '/').'/';
 
-		$data['path'] = $c;
+		$data['path'] = $path;
 		$data['dirNum'] = 0;
 		$data['fileNum'] = 0;
 		$data['size'] = 0;
 		
-		$c = $this->file_root.$c;
+		$root = $this->file_root.$path;
 
-		if(is_dir($c)) {
-			$d = opendir($c);
+		if(is_dir($root)) {
+			$d = opendir($root);
 			while($f = readdir($d)) {
-				if(strpos($f, '.') === 0) continue;
-				$ff = $c . '/' . $f;
+				if(strpos($f, '.') === 0){continue;}
+				$ff = $root . '/' . $f;
 				$ext = strtolower(substr(strrchr($f, '.'), 1));
 				$ctime = $this->getctime($ff);
 				$mtime = $this->getmtime($ff);
 				$perm = $this->perm($ff);
-				if(is_dir($ff)) {
+				if(is_dir($ff)){
 					$size = $this->dirsize($ff);
 					$data['folder'][] = array('name'=>$f, 'ctime'=>$ctime, 'mtime'=>$mtime, 'size'=>$this->formatBytes($size), 'perm'=>$perm);
 					$data['size'] += $size;
@@ -37,35 +37,17 @@ class File{
 					$data['fileNum']++;
 				}
 			}
-		}else {
-			show_404();
-		}
+		}else{return FALSE;}
 		$data['size'] = $this->formatBytes($data['size']);
 		return $data;
 	}
 
 	/* File Ico */
 	private function ico_class($ext='file') {
-		$class = array(
-			'file'=>'ico-file',
-			'ico'=>'ico-ico',
-			'htm'=>'ico-html',
-			'html'=>'ico-html',
-			'php'=>'ico-php',
-			'css'=>'ico-css',
-			'jpg'=>'ico-img',
-			'png'=>'ico-img',
-			'gif'=>'ico-img',
-			'pdf'=>'ico-pdf',
-			'zip'=>'ico-zip',
-			'txt'=>'ico-txt',
-			'doc'=>'ico-doc',
-			'docx'=>'ico-doc',
-			'xls'=>'ico-xls',
-			'xlsx'=>'ico-xls',
-			'odt'=>'ico-odt',
+		$class = array('file'=>'ico-file','ico'=>'ico-ico','htm'=>'ico-html','html'=>'ico-html','php'=>'ico-php','css'=>'ico-css','jpg'=>'ico-img','png'=>'ico-img','gif'=>'ico-img',
+			'pdf'=>'ico-pdf','zip'=>'ico-zip','txt'=>'ico-txt','doc'=>'ico-doc','docx'=>'ico-doc','xls'=>'ico-xls','xlsx'=>'ico-xls','odt'=>'ico-odt',
 		);
-		$date = @$class[$ext]?$class[$ext]:'ico-file';
+		$date = isset($class[$ext])?$class[$ext]:'ico-file';
 		return $date;
 	}
 
@@ -73,24 +55,21 @@ class File{
 	function addDir($path,$perm=0755) {
 		$dir = $this->file_root.$path;
 		if(!is_dir($dir)){
-			return @mkdir($dir,octdec($perm))?TRUE:FALSE;
+			return mkdir($dir,octdec($perm))==TRUE?TRUE:FALSE;
 		}else{return FALSE;}
 	}
 	/* AddFile */
-	function addFile($file){
+	function addFile($file,$data=''){
 		$file = $this->file_root.$file;
 		if(!is_file($file)){
-			return @fopen($file,'w')?TRUE:FALSE;
+			return file_put_contents($file,$data)==TRUE?TRUE:FALSE;
 		}else{return FALSE;}
 	}
 	/* EditFile */
-	function editFile($file,$data){
+	function editFile($file,$data=''){
 		$file = $this->file_root.$file;
 		if(is_file($file)){
-			$myfile = @fopen($file,'w');
-			$IS = @fwrite($myfile, $data)?TRUE:FALSE;
-			@fclose($myfile);
-			return $IS;
+			return file_put_contents($file,$data)==TRUE?TRUE:FALSE;
 		}else{return FALSE;}
 	}
 
@@ -98,58 +77,69 @@ class File{
 	function reName($rename,$name) {
 		$ff = $this->file_root.$rename;
 		$f = $this->file_root.$name;
-		return rename($ff,$f);
+		return rename($ff,$f)==TRUE?TRUE:FALSE;
 	}
 
 	/* Delete folder and file */
 	function del($path,$f) {
-		$data = false;
+		$data = FALSE;
 		foreach($f as $val){
 			$ff = $this->file_root.$path.$val;
 			if(!is_dir($ff)) {
-				if(@unlink($ff)){$data = true;}else {$data = false;break;}
+				$data = unlink($ff)==TRUE?TRUE:FALSE;
 			}else {
-				if($this->deldir($ff)){$data = true;}else {$data = false;break;}
+				$data = $this->deldir($ff)==TRUE?TRUE:FALSE;
 			}
+			if($data==FALSE){break;}
 		}
 		return $data;
 	}
 	function deldir($dir){
+		$data = TRUE;
 		$d = opendir($dir);
 		while ($file = readdir($d)){
-      	if ($file != "." && $file != ".."){
+			if ($file != "." && $file != ".."){
 				$fullpath = $dir . "/" . $file;
-				if (!is_dir($fullpath)) unlink($fullpath);
-				else $this->deldir($fullpath);
+				if (!is_dir($fullpath)){
+					$data = unlink($fullpath)==TRUE?TRUE:FALSE;
+				}else{
+					$data = $this->deldir($fullpath)==TRUE?TRUE:FALSE;
+				}
+				if($data==FALSE){break;}
 			}
 		}
 		closedir($d);
-		return @rmdir($dir);
+		return rmdir($dir)==TRUE&&$data?TRUE:FALSE;
 	}
 
 	/* EditPerm */
 	function editPerm($path,$perm) {
 		$ff = $this->file_root.$path;
 		$perm = octdec($perm);
-		$data = false;
+		$data = FALSE;
 		if(!is_dir($ff)) {
-			if(chmod($ff,$perm)){$data = true;}else {$data = false;}
+			$data = chmod($ff,$perm)==TRUE?TRUE:FALSE;
 		}else {
-			if($this->editDirPerm($ff,$perm)){$data = true;}else {$data = false;}
+			$data = $this->editDirPerm($ff,$perm)==TRUE?TRUE:FALSE;
 		}
 		return $data;
 	}
 	function editDirPerm($dir,$perm) {
+		$data = TRUE;
 		$d = opendir($dir);
 		while ($file = readdir($d)){
-      	if ($file != "." && $file != ".."){
+			if ($file != "." && $file != ".."){
 				$fullpath = $dir . "/" . $file;
-				if (!is_dir($fullpath)) chmod($fullpath,$perm);
-				else $this->editDirPerm($fullpath,$perm);
+				if(!is_dir($fullpath)){
+					$data = chmod($fullpath,$perm)==TRUE?TRUE:FALSE;
+				}else{
+					$data = $this->editDirPerm($fullpath,$perm)==TRUE?TRUE:FALSE;
+				}
+				if($data==FALSE){break;}
 			}
 		}
 		closedir($d);
-		return chmod($dir,$perm);
+		return chmod($dir,$perm)==TRUE&&$data?TRUE:FALSE;
 	}
 	
 	/* Download */
@@ -166,10 +156,13 @@ class File{
 	function dirsize($dir) {
 		$handle=opendir($dir);
 		$size = 0;
-		while ( $file=readdir($handle) ) {
-			if ( ( $file == "." ) || ( $file == ".." ) ) continue;
-			if ( is_dir("$dir/$file") ) $size += $this->dirsize("$dir/$file");
-			else $size += filesize("$dir/$file");
+		while($file=readdir($handle)){
+			if($file == "." || $file == ".."){continue;}
+			if(is_dir("$dir/$file")){
+				$size += $this->dirsize("$dir/$file");
+			}else{
+				$size += filesize("$dir/$file");
+			}
 		}
 		closedir($handle);
 		return $size;

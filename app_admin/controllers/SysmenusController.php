@@ -80,9 +80,9 @@ class SysMenusController extends ControllerBase{
 	private function Result($type=''){
 		$lang = $this->inc->getLang('msg');
 		if($type=='suc'){
-			return $this->response->setJsonContent(array('status'=>'y'));
+			return $this->response->setJsonContent(array("status"=>"y"));
 		}elseif($type=='err'){
-			return $this->response->setJsonContent(array('status'=>'n','title'=>"'.$lang->_('msg_title').'",'msg'=>"'.$lang->_('msg_err').'",'text'=>"'.$lang->_('msg_auto_close').'"));
+			return $this->response->setJsonContent(array("status"=>"n","title"=>$lang->_("msg_title"),"msg"=>$lang->_("msg_err"),"text"=>$lang->_('msg_auto_close')));
 		}
 	}
 	/* GetMenu */

@@ -57,20 +57,19 @@ class SysDBRestoreController extends ControllerBase{
 				}
 				return $this->Result('suc');
 			}elseif($type=='delete'){
+				$File = new File();
+				$File->file_root = $this->FileRoot;
 				$Files = json_decode($this->request->getPost('file'));
-				foreach ($Files as $val){
-					if(@unlink($this->FileRoot.$val)==FALSE){$this->Result('err');}
-				}
-				return $this->Result('suc');
+				return $File->del('./',$Files)?$this->Result('suc'):$this->Result('err');
 			}
 		}
 	}
 	private function Result($type=''){
 		$lang = $this->inc->getLang('msg');
 		if($type=='suc'){
-			return $this->response->setJsonContent(array('status'=>'y'));
+			return $this->response->setJsonContent(array("status"=>"y"));
 		}elseif($type=='err'){
-			return $this->response->setJsonContent(array('status'=>'n','title'=>"'.$lang->_('msg_title').'",'msg'=>"'.$lang->_('msg_err').'",'text'=>"'.$lang->_('msg_auto_close').'"));
+			return $this->response->setJsonContent(array("status"=>"n","title"=>$lang->_("msg_title"),"msg"=>$lang->_("msg_err"),"text"=>$lang->_('msg_auto_close')));
 		}
 	}
 }

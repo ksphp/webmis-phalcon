@@ -44,9 +44,8 @@ class SysDBBackupController extends ControllerBase{
 			$Tables = json_decode($this->request->getPost('table'));
 			// Export
 			if($type=='export'){
-				$path = $_SERVER['DOCUMENT_ROOT'].$this->request->getPost('dir');
+				$path = $_SERVER['DOCUMENT_ROOT'].APP_BACKUP;
 				if(!is_dir($path)){return $this->Result('err');}
-				$file = $path.$this->request->getPost('name').'.'.$this->request->getPost('format');
 				// Data
 				$data = '';
 				foreach ($Tables as $table){
@@ -80,7 +79,10 @@ class SysDBBackupController extends ControllerBase{
 					$data .=  $query;
 					
 				}
-				return @file_put_contents($file, $data)?$this->Result('suc'):$this->Result('err');
+				$File = new File();
+				$File->file_root = $path;
+				$file = $this->request->getPost('name').'.'.$this->request->getPost('format');
+				return $File->addFile($file, $data)?$this->Result('suc'):$this->Result('err');
 			}elseif($type=='delete'){
 				foreach ($Tables as $val){
 					if($this->db->dropTable($val)==FALSE){$this->Result('err');}
@@ -92,9 +94,9 @@ class SysDBBackupController extends ControllerBase{
 	private function Result($type=''){
 		$lang = $this->inc->getLang('msg');
 		if($type=='suc'){
-			return $this->response->setJsonContent(array('status'=>'y'));
+			return $this->response->setJsonContent(array("status"=>"y"));
 		}elseif($type=='err'){
-			return $this->response->setJsonContent(array('status'=>'n','title'=>"'.$lang->_('msg_title').'",'msg'=>"'.$lang->_('msg_err').'",'text'=>"'.$lang->_('msg_auto_close').'"));
+			return $this->response->setJsonContent(array("status"=>"n","title"=>$lang->_("msg_title"),"msg"=>$lang->_("msg_err"),"text"=>$lang->_('msg_auto_close')));
 		}
 	}
 

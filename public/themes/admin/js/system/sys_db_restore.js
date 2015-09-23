@@ -34,7 +34,7 @@ $(function (){
 function impForm($url){
 	$('#Sub').webmis('SubClass');
 	// Validation
-	$("#Form").Validform({ajaxPost:true,tiptype:2,
+	$("#Form").Validform({ajaxPost:false,tiptype:2,
 		callback:function(data){
 			$.Hidemsg();
 			if(data.status=="y"){
