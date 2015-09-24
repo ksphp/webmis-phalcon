@@ -1,0 +1,32 @@
+<form action="<?php echo $this->url->get('SysMenusAction/Data');?>" method="post" id="Form">
+<table class="table_add">
+	<tr>
+		<td class="tright" width="90"><?php echo $Lang->_('sys_menu_a_name');?>:</td>
+		<td>
+			<input type="text" name="name" value="<?php echo $Edit->name;?>" class="input" style="width: 70%;" datatype="*2-32" errormsg="2~32<?php echo $incLang->_('inc_form_char');?>" sucmsg="<?php echo $incLang->_('inc_form_pass');?>" nullmsg="<?php echo $incLang->_('inc_form_null');?>" />
+			<span class="Validform_checktip"></span>
+		</td>
+	</tr>
+	<tr>
+		<td class="tright"><?php echo $Lang->_('sys_menu_a_perm');?>:</td>
+		<td>
+			<input type="text" name="perm" value="<?php echo $Edit->perm;?>" class="input" style="width: 40%;" datatype="n1-6" errormsg="1~6<?php echo $incLang->_('inc_form_num');?>" sucmsg="<?php echo $incLang->_('inc_form_pass');?>" nullmsg="<?php echo $incLang->_('inc_form_null');?>" />
+			<span class="Validform_checktip"></span>
+		</td>
+	</tr>
+	<tr>
+		<td class="tright"><?php echo $Lang->_('sys_menu_a_icon');?>:</td>
+		<td>
+			<input type="text" name="ico" value="<?php echo $Edit->ico;?>" class="input" style="width: 40%;" datatype="*2-24" errormsg="2~24<?php echo $incLang->_('inc_form_char');?>" sucmsg="<?php echo $incLang->_('inc_form_pass');?>" nullmsg="<?php echo $incLang->_('inc_form_null');?>" />
+			<span class="Validform_checktip"></span>
+		</td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td class="sub">
+			<input type="hidden" name="id" value="<?php echo $Edit->id;?>" />
+			<input type="submit" id="Sub" value="<?php echo $incLang->_('inc_edit');?>" />
+		</td>
+	</tr>
+</table>
+</form>

@@ -1,1 +1,31 @@
-<?php echo $Menus['Ctitle'];?>
+<span class="action">
+	<span class="title"><?php echo $Menus['Ctitle'];?></span>
+<?php foreach ($Menus['action'] as $val){
+	$url = $val['ico']=='ico-list'?$this->url->get($this->dispatcher->getControllerName()):'';
+?>
+	<a href="<?php echo $url;?>" id="<?php echo $val['ico'];?>"><em class="<?php echo $val['ico'];?>"></em><span><?php echo $val['name'];?></span></a>
+<?php }?>
+</span>
+<table class="table_list">
+	<tr class="title">
+		<td width="20"><a href="#" id="checkboxY"></a><a href="#" id="checkboxN"></a></td>
+		<td width="60">ID</td>
+		<td width="80"><?php echo $Lang->_('sys_menu_a_title');?></td>
+		<td width="80"><?php echo $Lang->_('sys_menu_a_name');?></td>
+		<td width="80"><?php echo $Lang->_('sys_menu_a_perm');?></td>
+		<td><?php echo $Lang->_('sys_menu_a_icon');?></td>
+	</tr>
+	<tbody id="listBG">
+<?php foreach ($Page->items as $val){?>
+	<tr>
+		<td><input type="checkbox" value="<?php echo $val->id;?>" /></td>
+		<td><?php echo $val->id;?></td>
+		<td><b><?php echo $MenusLang->_($val->name);?></b></td>
+		<td><?php echo $this->inc->keyHH($val->name,@$_GET['name']);?></td>
+		<td><?php echo $this->inc->keyHH($val->perm,@$_GET['perm']);?></td>
+		<td class="tleft"><?php echo $this->inc->keyHH($val->ico,@$_GET['ico']);?></td>
+	</tr>
+<?php }?>
+	</tbody>
+</table>
+<div class="page"><?php echo $Page->PageHtml;?></div>

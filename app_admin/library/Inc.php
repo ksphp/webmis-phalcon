@@ -61,7 +61,8 @@ class Inc extends Component{
 			$limit = isset($config['limit'])?$config['limit']:15;
 			$getUrl = isset($config['getUrl'])?$config['getUrl']:'';
 			// Page
-			$page = $this->request->getQuery('page', 'int');
+			$num = $this->request->getQuery('page', 'int');
+			$page = empty($num)?1:$num;
 			$paginator   = new PaginatorModel(array('data'=>$config['data'],'limit'=>$limit,'page'=>$page));
 			$Page = $paginator->getPaginate();
 			// Page Html

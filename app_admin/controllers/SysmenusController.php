@@ -45,8 +45,7 @@ class SysMenusController extends ControllerBase{
 	/* Edit */
 	public function editAction(){
 		$id = $this->request->getPost('id');
-		$data = Menus::findFirst(array('id='.$id));
-		$this->view->setVar('Edit',$data);
+		$this->view->setVar('Edit',Menus::findFirst(array('id='.$id)));
 		$this->view->setVar('MLang',$this->inc->getLang('menus'));
 		$this->view->setVar('Action',MenuAction::find());
 		$this->view->setVar('Lang',$this->inc->getLang('system/sys_menu'));
