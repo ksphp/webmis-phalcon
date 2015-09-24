@@ -54,7 +54,7 @@ input:focus, textarea:focus{box-shadow: 0 0 6px rgba(153, 153, 153, 0.7);}
 .nav_an1:hover span{display: block;}
 .nav_an1 em{color: #DFE1E8;}
 .nav_an2{color: #999;}
-.nav_an2:hover{color: #DFE1E8; background-color: #222;}
+.nav_an2:hover{color: #BBB; background-color: #222;}
 .nav_an2:hover span{display: block;}
 
 .top_link{position: absolute; z-index: 1; right: 0px; line-height: 50px; color: #999; padding: 0 10px;}
