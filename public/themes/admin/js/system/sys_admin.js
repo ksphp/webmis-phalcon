@@ -4,8 +4,8 @@ $(function (){
 	$('#listBG').webmis('TableOddColor');
 /* Search */
 	$('#ico-search').click(function(){
-		if(!IsMobile){moWidth = 360;}
-		$.webmis.win('open',{title:$(this).text(),width:moWidth,height:240});
+		if(!IsMobile){moWidth = 520; moHeight= 400;}
+		$.webmis.win('open',{title:$(this).text(),width:moWidth,height:moHeight,overflow:true});
 		// Content
 		var url = $('#getUrl').text();
 		$.get($base_url+'SysAdmin/sea'+url,function(data){
@@ -16,8 +16,8 @@ $(function (){
 	});
 /* Add */
 	$('#ico-add').click(function(){
-		if(!IsMobile){moWidth = 450;}
-		$.webmis.win('open',{title:$(this).text(),width:moWidth,height:260});
+		if(!IsMobile){moWidth = 620; moHeight= 480;}
+		$.webmis.win('open',{title:$(this).text(),width:moWidth,height:moHeight,overflow:true});
 		// Content
 		$.get($base_url+'SysAdmin/add',function(data){
 			$.webmis.win('load',data);
@@ -29,8 +29,8 @@ $(function (){
 	$('#ico-edit').click(function(){
 		var id = $('#listBG').webmis('GetInputID');
 		if(id){
-			if(!IsMobile){moWidth = 450;}
-			$.webmis.win('open',{title:$(this).text(),width:moWidth,height:260});
+			if(!IsMobile){moWidth = 620; moHeight= 420;}
+			$.webmis.win('open',{title:$(this).text(),width:moWidth,height:moHeight,overflow:true});
 			// Content
 			$.post($base_url+'SysAdmin/edit',{'id':id},function(data){
 				$.webmis.win('load',data);

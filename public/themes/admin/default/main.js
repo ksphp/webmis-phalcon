@@ -4,7 +4,7 @@ var moHeight = $(window).height()-60;
 $(function (){
 	// Auto Size
 	var autoSize = function(size){
-		var height = $(window).height()-90;
+		var height = $(window).height()-70;
 		var DisplayTop = $("#DisplayTop").text();
 		if(DisplayTop == 'hide'){
 			$("#top").hide();

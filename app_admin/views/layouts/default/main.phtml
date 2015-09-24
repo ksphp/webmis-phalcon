@@ -24,7 +24,7 @@
 	$an = $val['id']==$Menus['FID']['FID1']?'nav_an1':'nav_an2';
 	if($val['menus']){$MenusLeft = $val['menus'];}
 ?>
-			<li><a href="<?php echo $this->url->get($val['url']);?>" class="<?php echo $an;?>"><em class="<?php echo $val['ico'];?>"></em><p><?php echo $val['title'];?></p></a></li>
+			<li><a href="<?php echo $this->url->get($val['url']);?>" class="<?php echo $an;?>"><em class="<?php echo $val['ico'];?>"></em><span><?php echo $val['title'];?></span></a></li>
 <?php }?>
 		</ul>
 		<span class="top_link">
