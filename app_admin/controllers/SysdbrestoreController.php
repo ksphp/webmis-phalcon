@@ -2,7 +2,6 @@
 class SysDBRestoreController extends ControllerBase{
 	public function initialize(){
 		parent::initialize();
-		// File
 		$this->FileRoot = $_SERVER['DOCUMENT_ROOT'].APP_BACKUP;
 	}
 	// Index
@@ -10,12 +9,12 @@ class SysDBRestoreController extends ControllerBase{
 		$File = new File();
 		$File->file_root = $this->FileRoot;
 		$this->view->setVar('Files',$File->lists(''));
-		// Menus
-		$this->view->setVar('Menus',$this->inc->getMenus());
-		$this->tag->prependTitle($this->inc->Ctitle);
 		// Data
 		$this->view->setVar('Lang',$this->inc->getLang('system/sys_db'));
 		$this->view->setVar('LoadJS', array('system/sys_db_restore.js'));
+		// Menus
+		$this->view->setVar('Menus',$this->inc->getMenus());
+		$this->tag->prependTitle($this->inc->Ctitle);
 		// View
 		$this->view->setTemplateAfter(APP_THEMES.'/main');
 		$this->view->pick("system/db/restore/index");

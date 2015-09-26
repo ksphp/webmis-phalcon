@@ -1,1 +1,11 @@
-<?php print_r($Menus['Ctitle']);?>
+<table class="table_add">
+	<tr>
+		<td colspan="2"><h3><?php echo $Menus['Ctitle'];?></h3></td>
+	</tr>
+	<tr>
+		<td class="tright" width="100"><?php echo $Lang->_('sys_config_file');?>：</td>
+		<td>
+			<div class="<?php echo is_writable(__DIR__.'/../../../config/config.ini')?'suc':'err';?>"><em></em><b>config/config.ini</b></div>
+		</td>
+	</tr>
+</table>
