@@ -114,7 +114,8 @@ input:focus, textarea:focus{box-shadow: 0 0 6px rgba(153, 153, 153, 0.7);}
 .table_add td{line-height: 20px; padding: 5px;}
 .table_add .width{width: 90px;}
 .table_add .sub{padding: 10px 5px;}
-.table_add h3{font-size: 14px; color: #666; padding: 5px 0; border-bottom: #DADCDF 1px solid;}
+.table_add h2{font-size: 14px; color: #666; padding: 5px 0; border-bottom: #DADCDF 1px solid;}
+.table_add h3{font-size: 12px; color: #999;}
 
 /* ICO */
 .ico-qrcode:before {content: "\e608";}
