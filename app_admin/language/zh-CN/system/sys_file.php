@@ -1,0 +1,22 @@
+<?php
+$lang = array(
+	"sys_file_path" => "当前位置",
+	"sys_file_up" => "返回上级",
+	"sys_file_name" => "名称",
+	"sys_file_new" => "新建",
+	"sys_file_folder" => "文件夹",
+	"sys_file_file" => "文件",
+	"sys_file_size" => "大小",
+	"sys_file_ctime" => "创建时间",
+	"sys_file_mtime" => "修改时间",
+	"sys_file_perm" => "权限",
+	"sys_file_action" => "操作",
+	"sys_file_refresh" => "刷新",
+	"sys_file_rename" => "重命名",
+	"sys_file_edit" => "编辑",
+	"sys_file_remove" => "删除",
+	"sys_file_upload" => "上传",
+	"sys_file_upload_an" => "点击添加文件",
+	"sys_file_upload_text" => "或 拖拽文件到这里",
+	"sys_file_down" => "下载",
+);

@@ -1,0 +1,22 @@
+<?php
+$lang = array(
+	"sys_file_path" => "Path",
+	"sys_file_up" => "UpLevel",
+	"sys_file_name" => "Name",
+	"sys_file_new" => "New",
+	"sys_file_folder" => "Folder",
+	"sys_file_file" => "File",
+	"sys_file_size" => "Size",
+	"sys_file_ctime" => "CreateTime",
+	"sys_file_mtime" => "ModificationTime",
+	"sys_file_perm" => "Perm",
+	"sys_file_action" => "Action",
+	"sys_file_refresh" => "Refresh",
+	"sys_file_rename" => "Rename",
+	"sys_file_edit" => "Edit",
+	"sys_file_remove" => "Remove",
+	"sys_file_upload" => "Upload",
+	"sys_file_upload_an" => "Click to Add Files",
+	"sys_file_upload_text" => "or  Drag Files Here",
+	"sys_file_down" => "Download",
+);
