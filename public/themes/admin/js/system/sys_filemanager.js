@@ -11,3 +11,7 @@ function backDir(path) {
 function refreshDir(path) {
 	$.webmis.win('close','SysFilemanager?path='+path);
 }
+
+$(function () {
+	$('#listBG').webmis('TableOddColor');
+});
