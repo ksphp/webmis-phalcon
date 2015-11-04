@@ -80,15 +80,77 @@ class SysAdminController extends ControllerBase{
 					if($data->delete()==FALSE){$this->Result('err');}
 				}
 				return $this->Result('suc');
+			}elseif($type=='perm'){
+				$data = Admins::findFirst('id='.$this->request->getPost('id'));
+				$data->perm = $this->request->getPost('perm');
+				return $data->save()?$this->Result('suc'):$this->Result('err');
 			}
 		}else{return FALSE;}
 	}
 	private function Result($type=''){
 		$lang = $this->inc->getLang('msg');
 		if($type=='suc'){
-			return $this->response->setJsonContent(array("status"=>"y"));
+			return $this->response->setJsonContent(array("status"=>"y","url"=>"SysAdmin"));
 		}elseif($type=='err'){
 			return $this->response->setJsonContent(array("status"=>"n","title"=>$lang->_("msg_title"),"msg"=>$lang->_("msg_err"),"text"=>$lang->_('msg_auto_close')));
 		}
+	}
+	
+	/* Perm */
+	public function permAction(){
+		$Lang = $this->inc->getLang('menus');
+		$html = '';
+		$permArr = $this->splitPerm($this->request->getPost('perm'));
+		$actionM = MenuAction::find();
+		
+		$menu1 = Menus::find('fid=0');
+		foreach($menu1 as $m1){
+			$ck = isset($permArr[$m1->id])?'checked':'';
+			$title1 = $Lang->_($m1->title);
+			$html .= '<div id="oneMenuPerm" class="perm">';
+			$html .= '    <span class="text1"><input type="checkbox" value="'.$m1->id.'" '.$ck.' /></span>';
+			$html .= '    <span>[<a href="#">-</a>] '.$title1.'</span>';
+			$html .= '</div>';
+			$menu2 = Menus::find('fid='.$m1->id);
+			foreach($menu2 as $m2){
+				$ck = isset($permArr[$m2->id])?'checked':'';
+				$title2 = $Lang->_($m2->title);
+				$html .= '<div id="twoMenuPerm" class="perm">';
+				$html .= '    <span class="text2"><input type="checkbox" value="'.$m2->id.'" '.$ck.' /></span>';
+				$html .= '    <span>[<a href="#">-</a>] '.$title2.'</span>';
+				$html .= '</div>';
+				$menu3 = Menus::find('fid='.$m2->id);
+				foreach($menu3 as $m3){
+					$ck = isset($permArr[$m3->id])?'checked':'';
+					$title3 = $Lang->_($m3->title);
+					$html .= '<div id="threeMenuPerm" class="perm perm_action">';
+					$html .= '      <span class="text3"><input type="checkbox" name="threeMenuPerm" value="'.$m3->id.'" '.$ck.' /></span>';
+					$html .= '      <span>[<a href="#">-</a>] '.$title3.'</span>';
+					$html .= '  <span id="actionPerm_'.$m3->id.'"> ( ';
+					foreach($actionM as $val){
+						if(intval($m3->perm) & intval($val->perm)){
+							$ck = @$permArr[$m3->id]&intval($val->perm)?'checked':'';
+							$name = $Lang->_($val->name);
+							$html .= '<span><input type="checkbox" value="'.$val->perm.'" '.$ck.' /></span><span class="text">'.$name.'</span>';
+						}
+					}
+					$html .= ')</span>';
+					$html .= '</div>';
+				}
+			}
+		}
+		$this->view->setVar('menusHtml',$html);
+		$this->view->pick("system/admin/perm");
+	}
+	/* SplitPerm */
+	private function splitPerm($perm){
+		if($perm){
+			$arr = explode(' ', $perm);
+			foreach($arr as $val) {
+				$num = explode(':', $val);
+				$permArr[$num[0]]= $num[1];
+			}
+			return $permArr;
+		}else{return FALSE;}
 	}
 }

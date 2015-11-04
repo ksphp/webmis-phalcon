@@ -3,18 +3,18 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/kingsoul/ME/www/webmis-phalcon/app_admin/views/system/admin/edit.phtml</file>
-            <file>file:/home/kingsoul/ME/www/webmis-phalcon/app_admin/controllers/SysmenusController.php</file>
-            <file>file:/home/kingsoul/ME/www/webmis-phalcon/app_admin/controllers/SysadminController.php</file>
-            <file>file:/home/kingsoul/ME/www/webmis-phalcon/app_admin/views/system/admin/sea.phtml</file>
-            <file>file:/home/kingsoul/ME/www/webmis-phalcon/app_admin/views/system/admin/add.phtml</file>
+            <file>file:/home/kingsoul/ME/www/webmis-phalcon/app_admin/language/en-US/system/sys_config.php</file>
+            <file>file:/home/kingsoul/ME/www/webmis-phalcon/app_admin/language/zh-CN/system/sys_config.php</file>
+            <file>file:/home/kingsoul/ME/www/webmis-phalcon/app_admin/views/system/config/index.phtml</file>
+            <file>file:/home/kingsoul/ME/www/webmis-phalcon/app_admin/controllers/SysdbbackupController.php</file>
+            <file>file:/home/kingsoul/ME/www/webmis-phalcon/app_admin/controllers/SysconfigController.php</file>
+            <file>file:/home/kingsoul/ME/www/webmis-phalcon/app_admin/config/loader.php</file>
+            <file>file:/home/kingsoul/ME/www/webmis-phalcon/public/themes/admin/js/system/sys_config.js</file>
             <file>file:/home/kingsoul/ME/www/webmis-phalcon/public/themes/admin/default/main.css</file>
-            <file>file:/home/kingsoul/ME/www/webmis-phalcon/app_admin/models/Admins.php</file>
-            <file>file:/home/kingsoul/ME/www/webmis-phalcon/app_admin/views/system/admin/index.phtml</file>
-            <file>file:/home/kingsoul/ME/www/webmis-phalcon/public/themes/admin/js/system/sys_admin.js</file>
-            <file>file:/home/kingsoul/ME/www/webmis-phalcon/app_admin/views/system/menus/action/del.phtml</file>
-            <file>file:/home/kingsoul/ME/www/webmis-phalcon/app_admin/views/system/admin/del.phtml</file>
-            <file>file:/home/kingsoul/ME/www/webmis-phalcon/app_admin/controllers/SysmenusactionController.php</file>
+            <file>file:/home/kingsoul/ME/www/webmis-phalcon/public/install/index.php</file>
+            <file>file:/home/kingsoul/ME/www/webmis-phalcon/app_admin/config/config.ini</file>
+            <file>file:/home/kingsoul/ME/www/webmis-phalcon/app_web/config/config.ini</file>
+            <file>file:/home/kingsoul/ME/www/webmis-phalcon/public/admin/index.php</file>
         </group>
     </open-files>
 </project-private>

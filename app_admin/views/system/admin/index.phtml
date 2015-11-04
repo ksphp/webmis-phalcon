@@ -31,7 +31,7 @@
 		<td><?php echo $this->inc->keyHH($val->position,@$_GET['position']);?></td>
 		<td><?php echo $this->inc->keyHH($val->rtime,@$_GET['rtime']);?></td>
 		<td><?php echo $val->state==1?'<span class="green">'.$Lang->_('sys_admin_enable').'</span>':'<span class="red">'.$Lang->_('sys_admin_disable').'</span>';?></td>
-		<td><a href="#" id="editPerm<?php echo $val->id;?>" title="<?php echo $val->perm;?>" onclick="editPerm(<?php echo $val->id;?>,'<?php echo $Lang->_('sys_admin_permEdit');?>');return false;"><?php echo $Lang->_('sys_admin_permEdit');?></a></td>
+		<td><a href="#" id="editPerm<?php echo $val->id;?>" title="<?php echo $val->perm;?>" onclick="editPerm(<?php echo $val->id;?>,'<?php echo $Lang->_('sys_admin_perm');?>');return false;"><?php echo $Lang->_('sys_admin_permEdit');?></a></td>
 	</tr>
 <?php }?>
 	</tbody>

@@ -28,7 +28,7 @@
 <?php }?>
 		</ul>
 		<span class="top_link">
-			<?php echo $_SESSION['Admin']['uname'];?> [ <a href="<?php echo $this->url->get('SysConfig');?>"><?php echo $incLang->_('inc_sysconfig');?></a> ] | <a href="<?php echo $this->url->get('index/loginOut');?>"><b><?php echo $incLang->_('inc_logout');?></b></a>
+			<?php echo $_SESSION['Admin']['uname'];?> [ <?php echo $_SESSION['Admin']['department'].'-'.$_SESSION['Admin']['position'];?> ] | <a href="<?php echo $this->url->get('index/loginOut');?>"><b><?php echo $incLang->_('inc_logout');?></b></a>
 		</span>
 	</div>
 	<div class="ct_body">
