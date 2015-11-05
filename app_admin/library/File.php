@@ -39,6 +39,8 @@ class File{
 			}
 		}else{return FALSE;}
 		$data['size'] = $this->formatBytes($data['size']);
+		isset($data['folder'])?sort($data['folder']):FALSE;
+		isset($data['files'])?sort($data['files']):FALSE;
 		return $data;
 	}
 

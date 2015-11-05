@@ -93,6 +93,6 @@ class SysMenusController extends ControllerBase{
 		foreach ($Menus as $val){
 			$data[] = array('id'=>$val->id,'title'=>$MLang->_($val->title));
 		}
-		echo json_encode($data);
+		return $this->response->setJsonContent($data);
 	}
 }
