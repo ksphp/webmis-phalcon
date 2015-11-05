@@ -38,6 +38,22 @@ class ClasswebController extends ControllerBase{
 		$this->view->setVar('Lang',$this->inc->getLang('class/class_web'));
 		$this->view->pick("class/web/add");
 	}
+	/* Edit */
+	public function editAction(){
+		$id = $this->request->getPost('id');
+		$this->view->setVar('Edit', ClassWeb::findFirst(array('id='.$id)));
+		$this->view->setVar('Lang',$this->inc->getLang('class/class_web'));
+		$this->view->pick("class/web/edit");
+	}
+	/* Del */
+	public function delAction(){
+		$this->view->pick("class/web/del");
+	}
+	/* Audit */
+	public function auditAction(){
+		$this->view->setVar('Lang',$this->inc->getLang('class/class_web'));
+		$this->view->pick("class/web/audit");
+	}
 	/* GetMenu */
 	public function getMenuAction(){
 		$fid = $this->request->getPost('fid');
@@ -50,21 +66,36 @@ class ClasswebController extends ControllerBase{
 		return $this->response->setJsonContent($data);
 	}
 	/* Data */
-	public function DataAction($type='save'){
+	public function DataAction($type=''){
 		if($this->request->isPost()){
-			// Add and Edit
-			if($type=='save'){
+			// Add
+			if($type=='add'){
 				$post = $this->request->getPost();
 				$post['ctime'] = date('Y-m-d H:i:s');
-				$data = new Menus();
+				$data = new ClassWeb();
+				return $data->save($post)?$this->Result('suc'):$this->Result('err');
+			// Edit
+			}elseif($type=='edit'){
+				$post = $this->request->getPost();
+				$data = new ClassWeb();
 				return $data->save($post)?$this->Result('suc'):$this->Result('err');
 			// Delete
 			}elseif($type=='delete'){
 				$id = $this->request->getPost('id');
 				$arr = json_decode($id);
 				foreach ($arr as $val){
-					$data = Menus::findFirst('id='.$val);
-					if($data->delete()==FALSE){$this->Result('err');}
+					$data = ClassWeb::findFirst('id='.$val);
+					if($data->delete()==FALSE){return $this->Result('err');}
+				}
+				return $this->Result('suc');
+			// Audit
+			}elseif($type=='audit'){
+				$id = $this->request->getPost('id');
+				$state = $this->request->getPost('state');
+				$arr = json_decode($id);
+				foreach ($arr as $val){
+					$data = ClassWeb::findFirst('id='.$val);
+					if($data->save(array('state'=>$state))==FALSE){return $this->Result('err');}
 				}
 				return $this->Result('suc');
 			}
@@ -73,7 +104,7 @@ class ClasswebController extends ControllerBase{
 	private function Result($type=''){
 		$lang = $this->inc->getLang('msg');
 		if($type=='suc'){
-			return $this->response->setJsonContent(array("status"=>"y"));
+			return $this->response->setJsonContent(array("status"=>"y","url"=>"ClassWeb"));
 		}elseif($type=='err'){
 			return $this->response->setJsonContent(array("status"=>"n","title"=>$lang->_("msg_title"),"msg"=>$lang->_("msg_err"),"text"=>$lang->_('msg_auto_close')));
 		}

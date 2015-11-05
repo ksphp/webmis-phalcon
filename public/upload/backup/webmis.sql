@@ -11,7 +11,7 @@ CREATE TABLE `wmis_class_web` (
   `title` varchar(16) NOT NULL COMMENT 'Title',
   `url` varchar(32) NOT NULL COMMENT 'URL',
   `ico` varchar(12) DEFAULT NULL COMMENT 'Icon',
-  `remark` varchar(30) NOT NULL COMMENT 'Remark',
+  `remark` varchar(30) DEFAULT NULL COMMENT 'Remark',
   `ctime` datetime DEFAULT NULL COMMENT 'Create time',
   `sort` int(3) NOT NULL DEFAULT '0' COMMENT 'Sort',
   `state` varchar(1) NOT NULL DEFAULT '0' COMMENT 'State',

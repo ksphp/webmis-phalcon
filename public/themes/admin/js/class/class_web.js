@@ -51,14 +51,23 @@ $(function(){
 				$.webmis.win('load',data);
 				$('#Sub').webmis('SubClass');
 				$('#DelID').val(id);
-				menusForm();
+				classForm();
 			});
 		}else{noSelect();}
 		return false;
 	});
 /* Audit */
 	$('#ico-audit').click(function(){
-		actionAudit('class_web/auditData.html','class_web.html');
+		var id = $('#listBG').webmis('GetInputID',{type:'json'});
+		if(id){
+			$.webmis.win('open',{title:$(this).text(),width:280,height:160});
+			$.post($base_url+'ClassWeb/audit',{'id':id},function(data){
+				$.webmis.win('load',data);
+				$('#Sub').webmis('SubClass');
+				$('#DelID').val(id);
+				classForm();
+			});
+		}else{noSelect();}
 		return false;
 	});
 	
@@ -68,12 +77,12 @@ $(function(){
 function classForm(){
 	$('#Sub').webmis('SubClass');
 	// Validation
-	$("#Form").Validform({ajaxPost:false,tiptype:2,
+	$("#Form").Validform({ajaxPost:true,tiptype:2,
 		callback:function(data){
 			$.Hidemsg();
 			if(data.status=="y"){
 				var url = $('#getUrl').text();
-				$.webmis.win('close','class_web.html'+url);
+				$.webmis.win('close',data.url+url);
 			}else{
 				$.webmis.win('close');
 				$.webmis.win('open',{title:data.title,content:'<b class="red">'+data.msg+'</b>',AutoClose:3,AutoCloseText:data.text});
