@@ -1,0 +1,112 @@
+<script language="javascript" src="<?php echo $this->url->get('../webmis/plugin/edit/tinymce/tinymce.min.js'); ?>"></script>
+<div id="TabName1" class="noDisplay"><?php echo $Lang->_('web_news_tab1');?></div>
+<div id="TabName2" class="noDisplay"><?php echo $Lang->_('web_news_tab2');?></div>
+<div id="TabName3" class="noDisplay"><?php echo $Lang->_('web_news_tab3');?></div>
+<form id="newsForm" action="<?php echo $this->url->get('WebNews/Data/save');?>" method="post">
+<table class="table_add">
+	<tbody id="newsBody0">
+	<tr>
+		<td class="tright" width="80"><?php echo $Lang->_('web_news_class');?>:</td>
+		<td>
+			<input type="text" id="menus_fid" name="class" class="input" style="width: 60px;" value="<?php echo $Edit->class;?>" />
+			<span id="newsClass">&nbsp;</span>
+		</td>
+	</tr>
+	<tr>
+		<td class="tright"><?php echo $Lang->_('web_news_title');?>:</td>
+		<td>
+			<input type="text" name="title" value="<?php echo $Edit->title;?>" class="input" style="width: 80%;" datatype="*2-36" errormsg="2~36<?php echo $incLang->_('inc_form_char');?>" sucmsg="<?php echo $incLang->_('inc_form_pass');?>" nullmsg="<?php echo $incLang->_('inc_form_null');?>" />
+			<span class="Validform_checktip"></span>
+		</td>
+	</tr>
+	<tr>
+		<td class="tright"><?php echo $Lang->_('web_news_source');?>:</td>
+		<td>
+			<input type="text" name="sources" value="<?php echo $Edit->sources;?>" class="input" style="width: 30%;" datatype="*2-24" errormsg="2~24<?php echo $incLang->_('inc_form_char');?>" sucmsg="<?php echo $incLang->_('inc_form_pass');?>" nullmsg="<?php echo $incLang->_('inc_form_null');?>" />
+			<span class="inputText"><?php echo $Lang->_('web_news_author');?>:</span>
+			<input type="text" name="author" value="<?php echo $Edit->author;?>" class="input" style="width: 20%;" datatype="*2-12" errormsg="<?php echo $incLang->_('inc_form_char');?>" sucmsg="<?php echo $incLang->_('inc_form_pass');?>" nullmsg="<?php echo $incLang->_('inc_form_null');?>"  />
+			<span class="Validform_checktip"></span>
+		</td>
+	</tr>
+	<tr>
+		<td class="tright"><?php echo $Lang->_('web_news_ctime');?>:</td>
+		<td>
+			<input type="text" id="datepicker" name="ctime" value="<?php echo $Edit->ctime;?>" class="input" style="width: 130px;" />
+		</td>
+	</tr>
+	<tr>
+		<td class="tright"><?php echo $Lang->_('web_news_key');?>:</td>
+		<td>
+			<input type="text" name="key" value="<?php echo $Edit->key;?>" class="input" style="width: 70%;" />
+			<span class="inputText c2">WebMIS,PHP</span>
+		</td>
+	</tr>
+	<tr>
+		<td class="tright"><?php echo $Lang->_('web_news_summary');?>:</td>
+		<td><textarea name="summary" style="width: 95%; height: 120px;" maxlength="300"><?php echo $Edit->summary;?></textarea><span class="inputText c2">1~300<?php echo $Lang->_('inc_form_char');?></span></td>
+	</tr>
+	<tr>
+		<td class="tright"><?php echo $Lang->_('web_news_img');?>:</td>
+		<td>
+			<input type="text" name="img" value="<?php echo $Edit->img;?>" class="input" style="width: 70%;" /><span class="inputText c2">Width：110px Height：75px</span>
+		</td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td class="sub">
+			<input type="hidden" id="newsID" name="id" value="" />
+			<input type="submit" id="Sub" value="<?php echo $incLang->_('inc_edit');?>" />
+		</td>
+	</tr>
+	</tbody>
+	<tbody id="newsBody1" style="display: none;">
+	<tr>
+		<td colspan="2">
+			<textarea id="tinymce" name="content"><?php echo $Edit->content;?></textarea>
+		</td>
+	</tr>
+	</tbody>
+</table>
+</form>
+<div style="padding: 0 10px;" id="newsBody2" class="noDisplay">
+<table class="table_list">
+	<tr class="title">
+		<td width="150"><?php echo $Lang->_('web_news_preview');?></td>
+		<td><?php echo $Lang->_('web_news_url');?></td>
+		<td width="60"><?php echo $Lang->_('web_news_action');?></td>
+	</tr>
+	<tbody id="listBG">
+<?php
+$path = "/upload/images/news/";
+$url = array_filter(explode(',', $Edit->upload));
+$i = 0;
+foreach ($url as $val){
+	$i++;
+?>
+	<tr id="ImgCT_<?php echo $i;?>">
+		<td><a href="<?php echo $path.$val;?>" id="ImgShow_<?php echo $i;?>" target="_black" title="<?php echo $Lang->_('web_news_preview');?>"><img src="<?php echo $path.$val;?>" width="100" height="65" /></a></td>
+		<td class="tleft">
+			<form action="<?php echo $this->url->get('web_news/upImgData/'.$i.'.html');?>" method="post" enctype="multipart/form-data" id="upIMG_<?php echo $i;?>">
+			<div>
+				<input type="file" name="upimg_<?php echo $i;?>" size="20" />
+				<input type="submit" id="ImgSub" value="<?php echo $Lang->_('inc_up');?>" />
+				<input type="hidden" id="ImgInput_<?php echo $i;?>" name="img_url" value="<?php echo $val;?>" />
+				<input type="hidden" name="id" value="<?php echo $Edit->id;?>" />
+			</div>
+			</form>
+			<div style="padding-top: 5px;"><?php echo $Lang->_('web_news_url');?>：<span id="ImgURL_<?php echo $i;?>"><?php echo $path.$val;?></span></div>
+		</td>
+		<td><a href="" onclick="RemoveIMG('<?php echo $i;?>');return false;"><?php echo $Lang->_('inc_remove');?></a></td>
+	</tr>
+<?php }?>
+	</tbody>
+	<tr>
+		<td colspan="3">
+			<a href="" onclick="AddIMG(); return false;"><?php echo $Lang->_('web_news_addimg');?></a>
+			<input type="hidden" id="NumIMG" value="<?php echo $i;?>" />
+			<input type="hidden" id="ImgID" value="<?php echo $Edit->id;?>" />
+		</td>
+	</tr>
+	
+</table>
+</div>

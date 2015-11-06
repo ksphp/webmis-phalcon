@@ -70,7 +70,6 @@ $(function(){
 		}else{noSelect();}
 		return false;
 	});
-	
 });
 
 /* Form validation */

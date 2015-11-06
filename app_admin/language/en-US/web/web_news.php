@@ -1,0 +1,20 @@
+<?php
+$lang = array(
+	"web_news_class" => "Class",
+	"web_news_title" => "Title",
+	"web_news_source" => "Source",
+	"web_news_author" => "Author",
+	"web_news_key" => "Key",
+	"web_news_summary" => "Summary",
+	"web_news_img" => "CoverImg",
+	"web_news_ctime" => "CreateTime",
+	"web_news_click" => "Clicks",
+	"web_news_state" => "State",
+	"web_news_tab1" => "BasicInfo",
+	"web_news_tab2" => "NewsContent",
+	"web_news_tab3" => "Picture",
+	"web_news_view" => "View",
+	"web_news_preview" => "Preview",
+	"web_news_url" => "ImageURL",
+	"web_news_action" => "Action",
+);

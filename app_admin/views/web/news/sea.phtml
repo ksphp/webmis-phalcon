@@ -1,0 +1,40 @@
+<form action="<?php echo $this->url->get('WebNews/index');?>" method="get">
+<table class="table_add">
+	<tr>
+		<td class="tright" width="90"><?php echo $Lang->_('web_news_class');?>:</td>
+		<td>
+			<input type="text" name="class" class="input" style="width: 40%;" value="<?php echo @$_GET['class'];?>" /><span class="inputText c2"> :3:9:12:</span>
+		</td>
+	</tr>
+	<tr>
+		<td class="tright"><?php echo $Lang->_('web_news_title');?>:</td>
+		<td>
+			<input type="text" name="title" class="input" style="width: 90%;" value="<?php echo @$_GET['title'];?>" />
+		</td>
+	</tr>
+	<tr>
+		<td class="tright"><?php echo $Lang->_('web_news_source');?>:</td>
+		<td>
+			<input type="text" name="sources" class="input" style="width: 60%;" value="<?php echo @$_GET['sources'];?>" />
+		</td>
+	</tr>
+	<tr>
+		<td class="tright"><?php echo $Lang->_('web_news_author');?>:</td>
+		<td>
+			<input type="text" name="author" class="input" style="width: 60%;" value="<?php echo @$_GET['author'];?>" />
+		</td>
+	</tr>
+	<tr>
+		<td class="tright"><?php echo $Lang->_('web_news_ctime');?>:</td>
+		<td>
+			<input type="text" name="ctime" class="input" style="width: 60%;" value="<?php echo @$_GET['ctime'];?>" />
+		</td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td class="sub">
+			<input type="submit" id="seaSub" name="search" value="<?php echo $incLang->_('inc_sea');?>" />
+		</td>
+	</tr>
+</table>
+</form>

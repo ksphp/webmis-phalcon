@@ -1,0 +1,22 @@
+<style type="text/css">
+.show_body{padding: 20px;}
+.show_title{height: 50px; line-height: 50px; text-align: center; font-size: 16px; font-weight: bold;}
+.show_other{text-align: center; color: #999; padding: 5px 0;}
+.show_summary{line-height: 24px; border: #CCC 1px solid; background: #FFF; padding: 10px;}
+.show_ct{line-height: 24px; font-size: 14px; padding-top: 10px;}
+.show_key{line-height: 24px; color: #999;}
+</style>
+<div class="show_body">
+	<div class="show_title"><?php echo $show->title;?></div>
+	<div class="show_other">
+		<?php echo $Lang->_('web_news_source');?>：<?php echo $show->source;?>&nbsp;&nbsp;
+		<?php echo $Lang->_('web_news_author');?>：<?php echo $show->author;?>&nbsp;&nbsp;
+		<?php echo $Lang->_('web_news_ctime');?>：<?php echo $show->ctime;?>&nbsp;&nbsp;
+		<?php echo $Lang->_('web_news_click');?>：<?php echo $show->click;?>
+	</div>
+	<div class="show_summary"><?php echo $show->summary;?></div>
+	<div class="show_ct">
+		<?php echo $show->content;?>
+	</div>
+	<div class="show_key"><?php echo $Lang->_('web_news_key');?>：<?php echo $show->key;?></div>
+</div>

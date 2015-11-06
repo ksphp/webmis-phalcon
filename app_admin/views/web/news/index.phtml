@@ -1,1 +1,46 @@
-<?php echo $Menus['Ctitle'];?>
+<span class="action">
+	<span class="title"><?php echo $Menus['Ctitle'];?></span>
+<?php foreach ($Menus['action'] as $val){
+	$url = $val['ico']=='ico-list'?$this->url->get($this->dispatcher->getControllerName()):'';
+?>
+	<a href="<?php echo $url;?>" id="<?php echo $val['ico'];?>"><em class="<?php echo $val['ico'];?>"></em><span><?php echo $val['name'];?></span></a>
+<?php }?>
+</span>
+<table class="table_list">
+	<tr class="title" id="news_table">
+		<td width="20"><a href="#" id="checkboxY"></a><a href="#" id="checkboxN"></a></td>
+		<td>ID</td>
+		<td><?php echo $Lang->_('web_news_title');?></td>
+		<td><?php echo $Lang->_('web_news_class');?></td>
+		<td><?php echo $Lang->_('web_news_source');?></td>
+		<td><?php echo $Lang->_('web_news_author');?></td>
+		<td width="120"><?php echo $Lang->_('web_news_ctime');?></td>
+		<td><?php echo $Lang->_('web_news_click');?></td>
+		<td width="40"><?php echo $Lang->_('web_news_state');?></td>
+	</tr>
+	<tbody id="listBG">
+<?php foreach ($Page->items as $val){?>
+	<tr>
+		<td><input type="checkbox" value="<?php echo $val->id;?>" /></td>
+		<td><?php echo $val->id;?></td>
+		<td class="tleft">
+			<a href="#" onclick="newsShow(<?php echo $val->id;?>,'<?php echo $Lang->_('web_news_view');?>');return false;" style="font-weight: bold;"><?php echo $this->inc->keyHH($val->title, @$_GET['title']);?></a><?php echo $val->img?'<span class="c666">[图]</span>':'';?>
+		</td>
+		<td class="tleft">
+			<?php
+			$arr = array_filter(explode(':', $val->class));
+			foreach($arr as $val1){
+				echo $Class[$val1].'('.$val1.') > ';
+			}
+			?>
+		</td>
+		<td><?php echo $this->inc->keyHH($val->sources, @$_GET['sources']);?></td>
+		<td><?php echo $this->inc->keyHH($val->author, @$_GET['author']);?></td>
+		<td><?php echo $this->inc->keyHH($val->ctime, @$_GET['ctime']);?></td>
+		<td><?php echo $val->click;?></td>
+		<td><?php echo $val->state;?></td>
+	</tr>
+	<?php } ?>
+	</tbody>
+</table>
+<div class="page"><?php echo $Page->PageHtml;?></div>
