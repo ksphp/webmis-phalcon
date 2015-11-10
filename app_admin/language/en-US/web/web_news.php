@@ -17,4 +17,5 @@ $lang = array(
 	"web_news_preview" => "Preview",
 	"web_news_url" => "ImageURL",
 	"web_news_action" => "Action",
+	"web_news_add_info" => "Editing status！",
 );

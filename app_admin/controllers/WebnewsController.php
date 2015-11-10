@@ -132,4 +132,21 @@ class WebNewsController extends ControllerBase{
 			return $this->response->setJsonContent(array("status"=>"n","title"=>$lang->_("msg_title"),"msg"=>$lang->_("msg_err"),"text"=>$lang->_('msg_auto_close')));
 		}
 	}
+	/* UpLoad */
+	public function uploadAction(){
+		$path = '/upload/web/news/';
+		$upName = 'webmis';
+		// return $this->response->setJsonContent(array('ext'=>substr(strrchr($_FILES[$upName]['name'], '.'), 1)));
+		// 文件上传
+		if (!empty($_FILES)){
+			$tempFile = $_FILES[$upName]['tmp_name'];
+			$name = date('YmdHis').rand(10, 99).'.'.substr(strrchr($_FILES[$upName]['name'], '.'), 1);
+			$targetFile = $_SERVER['DOCUMENT_ROOT'].$path.$name;
+			if(move_uploaded_file($tempFile,$targetFile)){
+				echo '{"status":"ok","name":"'.$path.$name.'"}';
+			}else{
+				echo '{"status":"no","name":"'.$path.$name.'"}';
+			}
+		}
+	}
 }

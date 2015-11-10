@@ -4,7 +4,10 @@ $(function(){
 		$webmis_plugin + 'chart/Chart.min.js',
 		$webmis_plugin + 'edit/tinymce/tinymce.min.js',
 		$webmis_plugin + 'date/datepicker/datepicker.js',
-		$webmis_plugin + 'date/datepicker/datepicker.css'
+		$webmis_plugin + 'date/datepicker/datepicker.css',
+		$webmis_plugin+'upload/dmuploader/dmuploader.min.js',
+		$webmis_plugin+'upload/dmuploader/dmuploader.webmis.js',
+		$webmis_plugin+'upload/dmuploader/dmuploader.webmis.css'
 	]});
 /* Index */
 	$('#listBG').webmis('TableOddColor');
@@ -123,9 +126,7 @@ function newsForm($type){
 		}
 	});
 	// Upload
-	$('#listBG').webmis('TableOddColor');
-	var num = $("#NumIMG").val();
-	if(num > 0){for(i=num;i>0;i--){uploadIMG(i);}}
+	Uploader();
 }
 /* Editr */
 function TinyMce(obj,Lang){
@@ -162,5 +163,35 @@ function newsShow(id,title){
 	//加载内容
 	$.post($base_url+'WebNews/show',{'id':id},function(data){
 		$.webmis.win('load',data);
+	});
+}
+
+/* Upload Files */
+function Uploader(){
+	$("#UplandArea").dmUploader({
+		url: $base_url+'WebNews/upload',
+		dataType: 'json',
+		fileName: 'webmis',
+		maxFileSize: 600*1024,
+		allowedTypes: 'image/*',
+		onNewFile: function(id, file){
+			$.webmisUpload.addFile('#UplandFiles', id, file);
+		},
+		onUploadProgress: function(id, percent){
+			$.webmisUpload.updateFileProgress(id, percent);
+		},
+		onUploadSuccess: function(id, data){
+			alert(JSON.stringify(data));
+			if(data.status=='ok'){
+				// FileName
+				$('#WebMIS_Upload_files_'+id+' b').html(data.name);
+				// Remove
+				$('#WebMIS_Upload_Close_'+id).click(function (){
+					$('#WebMIS_Upload_files_'+id).remove();
+				});
+			}else{
+				alert('上传失败 : '+data.name);
+			}
+		}
 	});
 }

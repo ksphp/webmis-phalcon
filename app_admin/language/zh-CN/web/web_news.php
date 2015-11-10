@@ -17,4 +17,5 @@ $lang = array(
 	"web_news_preview" => "缩略图",
 	"web_news_url" => "图片地址",
 	"web_news_action" => "操作",
+	"web_news_add_info" => "编辑状态下启用！",
 );

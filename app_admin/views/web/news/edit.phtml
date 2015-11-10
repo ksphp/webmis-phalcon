@@ -69,44 +69,13 @@
 </table>
 </form>
 <div style="padding: 0 10px;" id="newsBody2" class="noDisplay">
-<table class="table_list">
-	<tr class="title">
-		<td width="150"><?php echo $Lang->_('web_news_preview');?></td>
-		<td><?php echo $Lang->_('web_news_url');?></td>
-		<td width="60"><?php echo $Lang->_('web_news_action');?></td>
-	</tr>
-	<tbody id="listBG">
-<?php
-$path = "/upload/images/news/";
-$url = array_filter(explode(',', $Edit->upload));
-$i = 0;
-foreach ($url as $val){
-	$i++;
-?>
-	<tr id="ImgCT_<?php echo $i;?>">
-		<td><a href="<?php echo $path.$val;?>" id="ImgShow_<?php echo $i;?>" target="_black" title="<?php echo $Lang->_('web_news_preview');?>"><img src="<?php echo $path.$val;?>" width="100" height="65" /></a></td>
-		<td class="tleft">
-			<form action="<?php echo $this->url->get('web_news/upImgData/'.$i.'.html');?>" method="post" enctype="multipart/form-data" id="upIMG_<?php echo $i;?>">
-			<div>
-				<input type="file" name="upimg_<?php echo $i;?>" size="20" />
-				<input type="submit" id="ImgSub" value="<?php echo $Lang->_('inc_up');?>" />
-				<input type="hidden" id="ImgInput_<?php echo $i;?>" name="img_url" value="<?php echo $val;?>" />
-				<input type="hidden" name="id" value="<?php echo $Edit->id;?>" />
-			</div>
-			</form>
-			<div style="padding-top: 5px;"><?php echo $Lang->_('web_news_url');?>：<span id="ImgURL_<?php echo $i;?>"><?php echo $path.$val;?></span></div>
-		</td>
-		<td><a href="" onclick="RemoveIMG('<?php echo $i;?>');return false;"><?php echo $Lang->_('inc_remove');?></a></td>
-	</tr>
-<?php }?>
-	</tbody>
-	<tr>
-		<td colspan="3">
-			<a href="" onclick="AddIMG(); return false;"><?php echo $Lang->_('web_news_addimg');?></a>
-			<input type="hidden" id="NumIMG" value="<?php echo $i;?>" />
-			<input type="hidden" id="ImgID" value="<?php echo $Edit->id;?>" />
-		</td>
-	</tr>
-	
-</table>
+	<div id="UplandArea" class="WebMIS_Upload" style="background: #FFF;">
+		<div class="WebMIS_Upload_input">
+			<label>
+				<span>click to add files</span>
+				<input type="file" name="files[]" multiple="multiple">
+			</label>  or  Drag Files Here
+		</div>
+		<div id="UplandFiles"></div>
+	</div>
 </div>
