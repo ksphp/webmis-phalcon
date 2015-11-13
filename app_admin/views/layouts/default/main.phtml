@@ -55,6 +55,7 @@
 	</div>
 <div id="base_url" style="display: none;"><?php echo $this->url->get();?></div>
 <div id="IsMobile" style="display: none;"></div>
+<div id="getLang" style="display: none;"><?php echo @$_SESSION['Lang'];?></div>
 <div id="getUrl" style="display: none;"><?php echo @$getUrl;?></div>
 <?php $this->assets->outputJs(); ?>
 <?php if(@$LoadJS){ foreach($LoadJS as $val){

@@ -76,9 +76,15 @@ class ClasswebController extends ControllerBase{
 				return $data->save($post)?$this->Result('suc'):$this->Result('err');
 			// Edit
 			}elseif($type=='edit'){
-				$post = $this->request->getPost();
-				$data = new ClassWeb();
-				return $data->save($post)?$this->Result('suc'):$this->Result('err');
+				$id = $this->request->getPost('id');
+				$data = ClassWeb::findFirst('id='.$id);
+				$data->fid = $this->request->getPost('fid');
+				$data->title = $this->request->getPost('title');
+				$data->url = $this->request->getPost('url');
+				$data->ico = $this->request->getPost('ico');
+				$data->remark = $this->request->getPost('remark');
+				$data->sort = $this->request->getPost('sort');
+				return $data->save()?$this->Result('suc'):$this->Result('err');
 			// Delete
 			}elseif($type=='delete'){
 				$id = $this->request->getPost('id');

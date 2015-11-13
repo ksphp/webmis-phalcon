@@ -103,9 +103,9 @@ function newsForm($type){
 		$.webmis.win('menu',{change:'#newsBody', menus:[$('#TabName1').text(),$('#TabName2').text(),$('#TabName3').text()]});
 	}
 	// Lang
-	var lang = $('#Lang').text();
+	var lang = $('#getLang').text();
 	var Lang = '';
-	if(lang=='zh-cn'){
+	if(lang=='zh-CN'){
 		Lang = 'zh_CN';
 		$.webmis.inc({files:[$webmis_plugin + 'date/datepicker/datepicker.zh-CN.js']});
 	}
