@@ -75,7 +75,8 @@ class Inc extends Component{
 				$html .= '<a href="'.$this->url->get($cname).'?page=1'.$getUrl.'&search">'.$Lang->_('inc_page_first').'</a>';
 				$html .= '<a href="'.$this->url->get($cname).'?page='.$Page->before.$getUrl.'&search">'.$Lang->_('inc_page_before').'</a>';
 			}
-			if($page==$Page->last){
+			if($Page->total_pages==0 || $page==$Page->last){
+				$Page->current = $Page->total_pages?$Page->current:0;
 				$html .= '<span>'.$Lang->_('inc_page_next').'</span>';
 				$html .= '<span>'.$Lang->_('inc_page_last').'</span>';
 			}else{
