@@ -2,7 +2,7 @@
 <div id="TabName1" class="noDisplay"><?php echo $Lang->_('web_news_tab1');?></div>
 <div id="TabName2" class="noDisplay"><?php echo $Lang->_('web_news_tab2');?></div>
 <div id="TabName3" class="noDisplay"><?php echo $Lang->_('web_news_tab3');?></div>
-<form id="newsForm" action="<?php echo $this->url->get('WebNews/Data/save');?>" method="post">
+<form id="Form" action="<?php echo $this->url->get('WebNews/Data/edit');?>" method="post">
 <table class="table_add">
 	<tbody id="newsBody0">
 	<tr>
@@ -72,10 +72,18 @@
 	<div id="UplandArea" class="WebMIS_Upload" style="background: #FFF;">
 		<div class="WebMIS_Upload_input">
 			<label>
-				<span>click to add files</span>
+				<span><?php echo $Lang->_('web_news_file_input');?></span>
 				<input type="file" name="files[]" multiple="multiple">
-			</label>  or  Drag Files Here
+			</label>&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $Lang->_('web_news_file_text');?>
 		</div>
-		<div id="UplandFiles"></div>
+		<div id="UplandFiles" class="WebMIS_Upload_files">
+<?php if($Upload){foreach ($Upload as $val){?>
+			<div class="WebMIS_Upload_files_ct">
+				<div class="WebMIS_Upload_files_img" style="background-image: url('<?php echo $val['path'].$val['name'];?>');"></div>
+				<div class="WebMIS_Upload_files_title"><span>#&nbsp;&nbsp;<b><?php echo $val['path'].$val['name'];?></b> ( <?php echo $val['size'];?> )</span><em onclick="RemoveIMG($(this),<?php echo $Edit->id;?>,'<?php echo $val['name'];?>');"></em></div>
+				<div title="Loaging" class="WebMIS_Upload_files_load"><div style="width: 100%;" class="WebMIS_Upload_files_bar">&nbsp;100%&nbsp;</div></div>
+			</div>
+<?php }}?>
+		</div>
 	</div>
 </div>

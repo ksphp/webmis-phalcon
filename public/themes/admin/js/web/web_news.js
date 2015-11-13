@@ -47,6 +47,7 @@ $(function(){
 				$('#newsID').val(id);
 				newsClass();
 				newsForm('tab');
+				Uploader(id);
 			});
 		}else{noSelect();}
 		return false;
@@ -60,7 +61,7 @@ $(function(){
 				$.webmis.win('load',data);
 				$('#Sub').webmis('SubClass');
 				$('#DelID').val(id);
-				newsForm();
+				newsForm('');
 			});
 		}else{noSelect();}
 		return false;
@@ -74,7 +75,7 @@ $(function(){
 				$.webmis.win('load',data);
 				$('#Sub').webmis('SubClass');
 				$('#DelID').val(id);
-				newsForm();
+				newsForm('');
 			});
 		}else{noSelect();}
 		return false;
@@ -113,7 +114,7 @@ function newsForm($type){
 	// Editr
 	TinyMce('#tinymce',Lang);
 	// Validform
-	$("#newsForm").Validform({ajaxPost:true,tiptype:2,
+	$("#Form").Validform({ajaxPost:true,tiptype:2,
 		callback:function(data){
 			$.Hidemsg();
 			if(data.status=="y"){
@@ -125,8 +126,6 @@ function newsForm($type){
 			}
 		}
 	});
-	// Upload
-	Uploader();
 }
 /* Editr */
 function TinyMce(obj,Lang){
@@ -167,9 +166,10 @@ function newsShow(id,title){
 }
 
 /* Upload Files */
-function Uploader(){
+function Uploader(nid){
 	$("#UplandArea").dmUploader({
 		url: $base_url+'WebNews/upload',
+		extraData:{'id':nid},
 		dataType: 'json',
 		fileName: 'webmis',
 		maxFileSize: 600*1024,
@@ -181,17 +181,25 @@ function Uploader(){
 			$.webmisUpload.updateFileProgress(id, percent);
 		},
 		onUploadSuccess: function(id, data){
-			alert(JSON.stringify(data));
+			// alert(JSON.stringify(data));
 			if(data.status=='ok'){
 				// FileName
-				$('#WebMIS_Upload_files_'+id+' b').html(data.name);
+				$('#WebMIS_Upload_files_'+id+' b').html(data.path+data.name);
+				$('#WebMIS_Upload_files_'+id+' .WebMIS_Upload_files_img').css({'background-image':'url('+data.path+data.name+')'}).html('');
 				// Remove
 				$('#WebMIS_Upload_Close_'+id).click(function (){
-					$('#WebMIS_Upload_files_'+id).remove();
+					$.post($base_url+'WebNews/RemoveIMG',{'id':nid,'name':data.name},function (del){
+						if(del.status=='ok'){$('#WebMIS_Upload_files_'+id).remove();}
+					},'json');
 				});
 			}else{
 				alert('上传失败 : '+data.name);
 			}
 		}
 	});
+}
+function RemoveIMG(obj,nid,name){
+	$.post($base_url+'WebNews/RemoveIMG',{'id':nid,'name':name},function (del){
+		if(del.status=='ok'){obj.parent().parent().remove();}
+	},'json');
 }

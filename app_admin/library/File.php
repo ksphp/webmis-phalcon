@@ -185,7 +185,7 @@ class File{
 		return date("Y-m-d H:i:s",filemtime($f));
 	}
 	/* Format Byte */
-	private function formatBytes($bytes){
+	function formatBytes($bytes){
 		if($bytes >= 1073741824){
 			$bytes = round($bytes / 1073741824 * 100) / 100 . ' GB';
 		}elseif($bytes >= 1048576){

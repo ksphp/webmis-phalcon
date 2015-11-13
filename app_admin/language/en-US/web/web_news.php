@@ -18,4 +18,6 @@ $lang = array(
 	"web_news_url" => "ImageURL",
 	"web_news_action" => "Action",
 	"web_news_add_info" => "Editing status！",
+	"web_news_file_input" => "click to add files",
+	"web_news_file_text" => "or Drag Files Here",
 );

@@ -18,4 +18,6 @@ $lang = array(
 	"web_news_url" => "图片地址",
 	"web_news_action" => "操作",
 	"web_news_add_info" => "编辑状态下启用！",
+	"web_news_file_input" => "添加上传文件",
+	"web_news_file_text" => "或  拖放文件到这里",
 );

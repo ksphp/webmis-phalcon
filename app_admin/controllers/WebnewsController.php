@@ -1,5 +1,10 @@
 <?php
 class WebNewsController extends ControllerBase{
+	public function initialize(){
+		parent::initialize();
+		$this->root = $_SERVER['DOCUMENT_ROOT'];
+		$this->path = '/upload/web/news/';
+	}
 	// Index
 	public function indexAction(){
 		// Page
@@ -47,9 +52,21 @@ class WebNewsController extends ControllerBase{
 	}
 	/* Edit */
 	public function editAction(){
-		$id = $this->request->getPost('id');
-		$this->view->setVar('Edit', WebNews::findFirst(array('id='.$id)));
 		$this->view->setVar('Lang',$this->inc->getLang('web/web_news'));
+		$id = $this->request->getPost('id');
+		$Edit = WebNews::findFirst(array('id='.$id));
+		$this->view->setVar('Edit',$Edit);
+		// Upload
+		$upload = '';
+		if(!empty($Edit->upload)){
+			$File = new File();
+			$arr = array_filter(explode(',', $Edit->upload));
+			foreach ($arr as $val){
+				$upload[] = array('path'=>$this->path,'name'=>$val,'size'=>$File->formatBytes($File->size($this->root.$this->path.$val)));
+			}
+		}
+		$this->view->setVar('Upload',$upload);
+		
 		$this->view->pick("web/news/edit");
 	}
 	/* Del */
@@ -96,12 +113,26 @@ class WebNewsController extends ControllerBase{
 	/* Data */
 	public function DataAction($type=''){
 		if($this->request->isPost()){
-			// Add and Edit
-			if($type=='save'){
+			// Add
+			if($type=='add'){
 				$post = $this->request->getPost();
 				$post['uname'] = @$_SESSION['Admin']['uname'];
 				$data = new WebNews();
 				return $data->save($post)?$this->Result('suc'):$this->Result('err');
+			// Edit
+			}if($type=='edit'){
+				$id = $this->request->getPost('id');
+				$data = WebNews::findFirst('id='.$id);
+				$data->class = $this->request->getPost('class');
+				$data->title = $this->request->getPost('title');
+				$data->sources = $this->request->getPost('sources');
+				$data->author = $this->request->getPost('author');
+				$data->ctime = $this->request->getPost('ctime');
+				$data->key = $this->request->getPost('key');
+				$data->summary = $this->request->getPost('summary');
+				$data->img = $this->request->getPost('img');
+				$data->content = $this->request->getPost('content');
+				return $data->save()?$this->Result('suc'):$this->Result('err');
 			// Delete
 			}elseif($type=='delete'){
 				$id = $this->request->getPost('id');
@@ -109,6 +140,9 @@ class WebNewsController extends ControllerBase{
 				foreach ($arr as $val){
 					$data = WebNews::findFirst('id='.$val);
 					if($data->delete()==FALSE){return $this->Result('err');}
+					// Remove Upload
+					$arr = array_filter(explode(',', $data->upload));
+					foreach ($arr as $val){@unlink($this->root.$this->path.$val);}
 				}
 				return $this->Result('suc');
 			// Audit
@@ -134,19 +168,36 @@ class WebNewsController extends ControllerBase{
 	}
 	/* UpLoad */
 	public function uploadAction(){
-		$path = '/upload/web/news/';
+		$this->path = '/upload/web/news/';
 		$upName = 'webmis';
-		// return $this->response->setJsonContent(array('ext'=>substr(strrchr($_FILES[$upName]['name'], '.'), 1)));
-		// 文件上传
+		// Files
 		if (!empty($_FILES)){
 			$tempFile = $_FILES[$upName]['tmp_name'];
 			$name = date('YmdHis').rand(10, 99).'.'.substr(strrchr($_FILES[$upName]['name'], '.'), 1);
-			$targetFile = $_SERVER['DOCUMENT_ROOT'].$path.$name;
-			if(move_uploaded_file($tempFile,$targetFile)){
-				echo '{"status":"ok","name":"'.$path.$name.'"}';
+			$targetFile = $this->root.$this->path.$name;
+			// News
+			$id = $this->request->getPost('id');
+			$data = WebNews::findFirst('id='.$id);
+			$data->upload = $data->upload.$name.',';
+			
+			if(move_uploaded_file($tempFile,$targetFile) && $data->save()){
+				$data = array('status'=>'ok','path'=>$this->path,'name'=>$name);
 			}else{
-				echo '{"status":"no","name":"'.$path.$name.'"}';
+				$data = array('status'=>'ok','name'=>$name);
 			}
+			return $this->response->setJsonContent($data);
+		}
+	}
+	public function RemoveIMGAction(){
+		$this->path = '/upload/web/news/';
+		$id = $this->request->getPost('id');
+		$name = $this->request->getPost('name');
+		$data = WebNews::findFirst('id='.$id);
+		$data->upload = str_replace($name.',','',$data->upload);
+		if($data->save() && unlink($this->root.$this->path.$name)==TRUE){
+			return $this->response->setJsonContent(array('status'=>'ok'));
+		}else{
+			return $this->response->setJsonContent(array('status'=>'no'));
 		}
 	}
 }
