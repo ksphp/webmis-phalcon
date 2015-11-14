@@ -73,7 +73,11 @@ class ClasswebController extends ControllerBase{
 				$post = $this->request->getPost();
 				$post['ctime'] = date('Y-m-d H:i:s');
 				$data = new ClassWeb();
-				return $data->save($post)?$this->Result('suc'):$this->Result('err');
+				if($data->save($post)){
+					header("Location: ".$this->url->get('index/Result/suc/ClassWeb'));
+				}else{
+					header("Location: ".$this->url->get('index/Result/err'));
+				}
 			// Edit
 			}elseif($type=='edit'){
 				$id = $this->request->getPost('id');
@@ -84,16 +88,21 @@ class ClasswebController extends ControllerBase{
 				$data->ico = $this->request->getPost('ico');
 				$data->remark = $this->request->getPost('remark');
 				$data->sort = $this->request->getPost('sort');
-				return $data->save()?$this->Result('suc'):$this->Result('err');
+
+				if($data->save()){
+					header("Location: ".$this->url->get('index/Result/suc/ClassWeb'));
+				}else{
+					header("Location: ".$this->url->get('index/Result/err'));
+				}
 			// Delete
 			}elseif($type=='delete'){
 				$id = $this->request->getPost('id');
 				$arr = json_decode($id);
 				foreach ($arr as $val){
 					$data = ClassWeb::findFirst('id='.$val);
-					if($data->delete()==FALSE){return $this->Result('err');}
+					if($data->delete()==FALSE){header("Location: ".$this->url->get('index/Result/err'));}
 				}
-				return $this->Result('suc');
+				header("Location: ".$this->url->get('index/Result/suc/ClassWeb'));
 			// Audit
 			}elseif($type=='audit'){
 				$id = $this->request->getPost('id');
@@ -101,18 +110,10 @@ class ClasswebController extends ControllerBase{
 				$arr = json_decode($id);
 				foreach ($arr as $val){
 					$data = ClassWeb::findFirst('id='.$val);
-					if($data->save(array('state'=>$state))==FALSE){return $this->Result('err');}
+					if($data->save(array('state'=>$state))==FALSE){header("Location: ".$this->url->get('index/Result/err'));}
 				}
-				return $this->Result('suc');
+				header("Location: ".$this->url->get('index/Result/suc/ClassWeb'));
 			}
 		}else{return FALSE;}
-	}
-	private function Result($type=''){
-		$lang = $this->inc->getLang('msg');
-		if($type=='suc'){
-			return $this->response->setJsonContent(array("status"=>"y","url"=>"ClassWeb"));
-		}elseif($type=='err'){
-			return $this->response->setJsonContent(array("status"=>"n","title"=>$lang->_("msg_title"),"msg"=>$lang->_("msg_err"),"text"=>$lang->_('msg_auto_close')));
-		}
 	}
 }

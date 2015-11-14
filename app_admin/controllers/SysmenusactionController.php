@@ -54,29 +54,37 @@ class SysMenusActionController extends ControllerBase{
 	/* Data */
 	public function DataAction($type='save'){
 		if($this->request->isPost()){
-			// Add and Edit
-			if($type=='save'){
+			// Add
+			if($type=='add'){
 				$post = $this->request->getPost();
 				$data = new MenuAction();
-				return $data->save($post)?$this->Result('suc'):$this->Result('err');
+				if($data->save($post)){
+					header("Location: ".$this->url->get('index/Result/suc/SysMenusAction'));
+				}else{
+					header("Location: ".$this->url->get('index/Result/err'));
+				}
+			// Edit
+			}if($type=='edit'){
+				$id = $this->request->getPost('id');
+				$data = MenuAction::findFirst('id='.$id);
+				$data->name = $this->request->getPost('name');
+				$data->perm = $this->request->getPost('perm');
+				$data->ico = $this->request->getPost('ico');
+				if($data->save()){
+					header("Location: ".$this->url->get('index/Result/suc/SysMenusAction'));
+				}else{
+					header("Location: ".$this->url->get('index/Result/err'));
+				}
 			// Delete
 			}elseif($type=='delete'){
 				$id = $this->request->getPost('id');
 				$arr = json_decode($id);
 				foreach ($arr as $val){
 					$data = MenuAction::findFirst('id='.$val);
-					if($data->delete()==FALSE){$this->Result('err');}
+					if($data->delete()==FALSE){header("Location: ".$this->url->get('index/Result/err'));}
 				}
-				return $this->Result('suc');
+				header("Location: ".$this->url->get('index/Result/suc/SysMenusAction'));
 			}
 		}else{return FALSE;}
-	}
-	private function Result($type=''){
-		$lang = $this->inc->getLang('msg');
-		if($type=='suc'){
-			return $this->response->setJsonContent(array("status"=>"y"));
-		}elseif($type=='err'){
-			return $this->response->setJsonContent(array("status"=>"n","title"=>$lang->_("msg_title"),"msg"=>$lang->_("msg_err"),"text"=>$lang->_('msg_auto_close')));
-		}
 	}
 }

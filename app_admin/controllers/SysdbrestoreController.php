@@ -51,15 +51,19 @@ class SysDBRestoreController extends ControllerBase{
 				foreach($sqls as $sql){
 					$sql = trim($sql);
 					if(!empty($sql)){
-						if($this->db->execute($sql)==FALSE){$this->Result('err');}
+						if($this->db->execute($sql)==FALSE){header("Location: ".$this->url->get('index/Result/err'));}
 					}
 				}
-				return $this->Result('suc');
+				header("Location: ".$this->url->get('index/Result/suc/SysDBBackup'));
 			}elseif($type=='delete'){
 				$File = new File();
 				$File->file_root = $this->FileRoot;
 				$Files = json_decode($this->request->getPost('file'));
-				return $File->del('./',$Files)?$this->Result('suc'):$this->Result('err');
+				if($File->del('./',$Files)){
+					header("Location: ".$this->url->get('index/Result/suc/SysDBRestore'));
+				}else{
+					header("Location: ".$this->url->get('index/Result/err'));
+				}
 			}
 		}
 	}

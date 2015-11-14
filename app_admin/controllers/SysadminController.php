@@ -61,39 +61,48 @@ class SysAdminController extends ControllerBase{
 				unset($post['passwd']);
 				$post['rtime'] = date('Y-m-d H:i:s');
 				$data = new Admins();
-				return $data->save($post)?$this->Result('suc'):$this->Result('err');
+				if($data->save($post)){
+					header("Location: ".$this->url->get('index/Result/suc/SysAdmin'));
+				}else{
+					header("Location: ".$this->url->get('index/Result/err'));
+				}
 			// Edit
 			}elseif($type=='edit'){
-				$post = $this->request->getPost();
-				if(!empty($post['passwd'])){
-					$post['password'] = md5($post['passwd']);
+				$id = $this->request->getPost('id');
+				$data = Admins::findFirst('id='.$id);
+				$passwd = $this->request->getPost('passwd');
+				if(!empty($passwd)){
+					$data->password = md5($passwd);
 				}
-				unset($post['passwd']);
-				$data = new Admins();
-				return $data->save($post)?$this->Result('suc'):$this->Result('err');
+				$data->state = $this->request->getPost('state');
+				$data->email = $this->request->getPost('email');
+				$data->name = $this->request->getPost('name');
+				$data->department = $this->request->getPost('department');
+				$data->position = $this->request->getPost('position');
+				if($data->save($post)){
+					header("Location: ".$this->url->get('index/Result/suc/SysAdmin'));
+				}else{
+					header("Location: ".$this->url->get('index/Result/err'));
+				}
 			// Delete
 			}elseif($type=='delete'){
 				$id = $this->request->getPost('id');
 				$arr = json_decode($id);
 				foreach ($arr as $val){
 					$data = Admins::findFirst('id='.$val);
-					if($data->delete()==FALSE){$this->Result('err');}
+					if($data->delete()==FALSE){header("Location: ".$this->url->get('index/Result/err'));}
 				}
-				return $this->Result('suc');
+				header("Location: ".$this->url->get('index/Result/suc/SysAdmin'));
 			}elseif($type=='perm'){
 				$data = Admins::findFirst('id='.$this->request->getPost('id'));
 				$data->perm = $this->request->getPost('perm');
-				return $data->save()?$this->Result('suc'):$this->Result('err');
+				if($data->save()){
+					header("Location: ".$this->url->get('index/Result/suc/SysAdmin'));
+				}else{
+					header("Location: ".$this->url->get('index/Result/err'));
+				}
 			}
 		}else{return FALSE;}
-	}
-	private function Result($type=''){
-		$lang = $this->inc->getLang('msg');
-		if($type=='suc'){
-			return $this->response->setJsonContent(array("status"=>"y","url"=>"SysAdmin"));
-		}elseif($type=='err'){
-			return $this->response->setJsonContent(array("status"=>"n","title"=>$lang->_("msg_title"),"msg"=>$lang->_("msg_err"),"text"=>$lang->_('msg_auto_close')));
-		}
 	}
 	
 	/* Perm */

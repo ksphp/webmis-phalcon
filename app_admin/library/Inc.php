@@ -10,7 +10,11 @@ class Inc extends Component{
 	/* Forward */
 	public function Forward($url){
 		$urlParts = explode('/', $url);
-		return $this->dispatcher->forward(array('controller' => $urlParts[0],'action' => @$urlParts[1]));
+		$C = $urlParts[0];
+		$A = @$urlParts[1];
+		unset($urlParts[0]);
+		unset($urlParts[1]);
+		return $this->dispatcher->forward(array('controller' =>$C,'action' =>$A,'params' => $urlParts));
 	}
 	
 	/* AppURL */

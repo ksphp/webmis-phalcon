@@ -46,18 +46,10 @@ class LogadminloginController extends ControllerBase{
 				$arr = json_decode($id);
 				foreach ($arr as $val){
 					$data = LogAdminLogin::findFirst('id='.$val);
-					if($data->delete()==FALSE){$this->Result('err');}
+					if($data->delete()==FALSE){header("Location: ".$this->url->get('index/Result/err'));}
 				}
-				return $this->Result('suc');
+				header("Location: ".$this->url->get('index/Result/suc/LogAdminLogin'));
 			}
 		}else{return FALSE;}
-	}
-	private function Result($type=''){
-		$lang = $this->inc->getLang('msg');
-		if($type=='suc'){
-			return $this->response->setJsonContent(array("status"=>"y"));
-		}elseif($type=='err'){
-			return $this->response->setJsonContent(array("status"=>"n","title"=>$lang->_("msg_title"),"msg"=>$lang->_("msg_err"),"text"=>$lang->_('msg_auto_close')));
-		}
 	}
 }

@@ -10,7 +10,7 @@ $(function (){
 			$.webmis.win('open',{title:$(this).text(),width:moWidth,height:moHeight,overflow:true});
 			$.post($base_url+'SysDBBackup/exp',{'table':id},function(data){
 				$.webmis.win('load',data);
-				expForm('SysDBRestore');
+				expForm();
 			});
 		}else{noSelect();}
 		return false;
@@ -24,21 +24,21 @@ $(function (){
 				$.webmis.win('load',data);
 				$('#Sub').webmis('SubClass');
 				$('#DelID').val(id);
-				expForm('SysDBBackup');
+				expForm();
 			});
 		}else{noSelect();}
 		return false;
 	});
 });
 /* Form validation */
-function expForm($url){
+function expForm(){
 	$('#Sub').webmis('SubClass');
 	// Validation
 	$("#Form").Validform({ajaxPost:true,tiptype:2,
 		callback:function(data){
 			$.Hidemsg();
 			if(data.status=="y"){
-				$.webmis.win('close',$url);
+				$.webmis.win('close',data.url);
 			}else{
 				$.webmis.win('close');
 				$.webmis.win('open',{title:data.title,content:'<b class="red">'+data.msg+'</b>',AutoClose:3,AutoCloseText:data.text});

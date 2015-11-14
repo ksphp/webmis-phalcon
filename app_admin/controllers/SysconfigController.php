@@ -46,15 +46,11 @@ class SysConfigController extends ControllerBase{
 				'libraryDir'=>$this->request->getPost('lDir'),
 				'baseUri'=>$this->request->getPost('bDir'),
 			);
-			return $this->_Cinfig($data)?$this->Result('suc'):$this->Result('err');
-		}
-	}
-	private function Result($type=''){
-		$lang = $this->inc->getLang('msg');
-		if($type=='suc'){
-			return $this->response->setJsonContent(array("status"=>"y",'url'=>$this->dispatcher->getControllerName()));
-		}elseif($type=='err'){
-			return $this->response->setJsonContent(array("status"=>"n","title"=>$lang->_("msg_title"),"msg"=>$lang->_("msg_err"),"text"=>$lang->_('msg_auto_close')));
+			if($this->_Cinfig($data)){
+				header("Location: ".$this->url->get('index/Result/suc/SysConfig'));
+			}else{
+				header("Location: ".$this->url->get('index/Result/err'));
+			}
 		}
 	}
 	private function _Cinfig($data=''){

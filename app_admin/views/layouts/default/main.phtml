@@ -37,7 +37,7 @@
 	$ico = $val1['ico']?'<em class="'.$val1['ico'].'"></em>':'';
 ?>
 			<div class="left_title"><?php echo $ico.$val1['title'];?></div>
-<?php if($val1['menus']){?>
+<?php if(isset($val1['menus'])){?>
 			<ul class="left_list">
 <?php foreach ($val1['menus'] as $val2){
 	$ico = $val2['ico']?'<em class="'.$val2['ico'].'"></em>':'';

@@ -92,4 +92,13 @@ class IndexController extends Controller{
 		}
 		echo json_encode($data);
 	}
+	/* Result */
+	public function ResultAction($type='',$url=''){
+		$lang = $this->inc->getLang('msg');
+		if($type=='suc'){
+			return $this->response->setJsonContent(array("status"=>"y","url"=>$url,"title"=>$lang->_("msg_title"),"msg"=>$lang->_("msg_suc"),"text"=>$lang->_('msg_auto_close')));
+		}elseif($type=='err'){
+			return $this->response->setJsonContent(array("status"=>"n","url"=>$url,"title"=>$lang->_("msg_title"),"msg"=>$lang->_("msg_err"),"text"=>$lang->_('msg_auto_close')));
+		}
+	}
 }

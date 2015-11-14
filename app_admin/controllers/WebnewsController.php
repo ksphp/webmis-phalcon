@@ -118,7 +118,11 @@ class WebNewsController extends ControllerBase{
 				$post = $this->request->getPost();
 				$post['uname'] = @$_SESSION['Admin']['uname'];
 				$data = new WebNews();
-				return $data->save($post)?$this->Result('suc'):$this->Result('err');
+				if($data->save($post)){
+					header("Location: ".$this->url->get('index/Result/suc/WebNews'));
+				}else{
+					header("Location: ".$this->url->get('index/Result/err'));
+				}
 			// Edit
 			}if($type=='edit'){
 				$id = $this->request->getPost('id');
@@ -132,19 +136,23 @@ class WebNewsController extends ControllerBase{
 				$data->summary = $this->request->getPost('summary');
 				$data->img = $this->request->getPost('img');
 				$data->content = $this->request->getPost('content');
-				return $data->save()?$this->Result('suc'):$this->Result('err');
+				if($data->save()){
+					header("Location: ".$this->url->get('index/Result/suc/WebNews'));
+				}else{
+					header("Location: ".$this->url->get('index/Result/err'));
+				}
 			// Delete
 			}elseif($type=='delete'){
 				$id = $this->request->getPost('id');
 				$arr = json_decode($id);
 				foreach ($arr as $val){
 					$data = WebNews::findFirst('id='.$val);
-					if($data->delete()==FALSE){return $this->Result('err');}
+					if($data->delete()==FALSE){header("Location: ".$this->url->get('index/Result/err'));}
 					// Remove Upload
 					$arr = array_filter(explode(',', $data->upload));
 					foreach ($arr as $val){@unlink($this->root.$this->path.$val);}
 				}
-				return $this->Result('suc');
+				header("Location: ".$this->url->get('index/Result/suc/WebNews'));
 			// Audit
 			}elseif($type=='audit'){
 				$id = $this->request->getPost('id');
@@ -152,19 +160,11 @@ class WebNewsController extends ControllerBase{
 				$arr = json_decode($id);
 				foreach ($arr as $val){
 					$data = WebNews::findFirst('id='.$val);
-					if($data->save(array('state'=>$state))==FALSE){return $this->Result('err');}
+					if($data->save(array('state'=>$state))==FALSE){header("Location: ".$this->url->get('index/Result/err'));}
 				}
-				return $this->Result('suc');
+				header("Location: ".$this->url->get('index/Result/suc/WebNews'));
 			}
 		}else{return FALSE;}
-	}
-	private function Result($type=''){
-		$lang = $this->inc->getLang('msg');
-		if($type=='suc'){
-			return $this->response->setJsonContent(array("status"=>"y","url"=>"WebNews"));
-		}elseif($type=='err'){
-			return $this->response->setJsonContent(array("status"=>"n","title"=>$lang->_("msg_title"),"msg"=>$lang->_("msg_err"),"text"=>$lang->_('msg_auto_close')));
-		}
 	}
 	/* UpLoad */
 	public function uploadAction(){

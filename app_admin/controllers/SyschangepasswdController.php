@@ -20,16 +20,12 @@ class SysChangePasswdController extends ControllerBase{
 			$data = Admins::findFirst('id='.@$_SESSION['Admin']['id']);
 			if(md5($pwd1)==$data->password){
 				$data->password = md5($pwd2);
-				return $data->save()?$this->Result('suc'):$this->Result('err');
-			}else{return $this->Result('err');}
-		}
-	}
-	private function Result($type=''){
-		$lang = $this->inc->getLang('msg');
-		if($type=='suc'){
-			return $this->response->setJsonContent(array("status"=>"y","url"=>"SysChangePasswd","title"=>$lang->_("msg_title"),"msg"=>$lang->_("msg_suc"),"text"=>$lang->_('msg_auto_close')));
-		}elseif($type=='err'){
-			return $this->response->setJsonContent(array("status"=>"n","title"=>$lang->_("msg_title"),"msg"=>$lang->_("msg_err"),"text"=>$lang->_('msg_auto_close')));
+				if($data->save()){
+					header("Location: ".$this->url->get('index/Result/suc/SysChangePasswd'));
+				}else{
+					header("Location: ".$this->url->get('index/Result/err'));
+				}
+			}else{header("Location: ".$this->url->get('index/Result/err'));}
 		}
 	}
 }

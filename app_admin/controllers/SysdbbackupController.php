@@ -82,21 +82,18 @@ class SysDBBackupController extends ControllerBase{
 				$File = new File();
 				$File->file_root = $path;
 				$file = $this->request->getPost('name').'.'.$this->request->getPost('format');
-				return $File->addFile($file, $data)?$this->Result('suc'):$this->Result('err');
+				if($File->addFile($file, $data)){
+					header("Location: ".$this->url->get('index/Result/suc/SysDBRestore'));
+				}else{
+					header("Location: ".$this->url->get('index/Result/err'));
+				}
 			}elseif($type=='delete'){
 				foreach ($Tables as $val){
-					if($this->db->dropTable($val)==FALSE){$this->Result('err');}
+					if($this->db->dropTable($val)==FALSE){header("Location: ".$this->url->get('index/Result/err'));}
 				}
 				return $this->Result('suc');
+				header("Location: ".$this->url->get('index/Result/suc/SysDBBackup'));
 			}
-		}
-	}
-	private function Result($type=''){
-		$lang = $this->inc->getLang('msg');
-		if($type=='suc'){
-			return $this->response->setJsonContent(array("status"=>"y"));
-		}elseif($type=='err'){
-			return $this->response->setJsonContent(array("status"=>"n","title"=>$lang->_("msg_title"),"msg"=>$lang->_("msg_err"),"text"=>$lang->_('msg_auto_close')));
 		}
 	}
 

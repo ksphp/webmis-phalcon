@@ -39,7 +39,7 @@ function logForm(){
 			$.Hidemsg();
 			if(data.status=="y"){
 				var url = $('#getUrl').text();
-				$.webmis.win('close','LogAdminLogin'+url);
+				$.webmis.win('close',data.url+url);
 			}else{
 				$.webmis.win('close');
 				$.webmis.win('open',{title:data.title,content:'<b class="red">'+data.msg+'</b>',AutoClose:3,AutoCloseText:data.text});
