@@ -14,6 +14,13 @@ class DesktopController extends ControllerBase{
 	}
 	/* Chart */
 	public function chartAction(){
+		$year = date("Y");
+		$last = $year-1;
+		for($i=1;$i<13;$i++){
+			$m = str_pad($i,2,'0',STR_PAD_LEFT);
+			$data1[] = count(LogAdminLogin::find("uname='".$_SESSION['Admin']['uname']."' AND time LIKE '".$year."-".$m."%'"));
+			$data2[] = count(LogAdminLogin::find("uname='".$_SESSION['Admin']['uname']."' AND time LIKE '".$last."-".$m."%'"));
+		}
 		$data = array(
 			'labels'=>array('January','February','March','April','May','June','July','August','September','October','November','December'),
 			'datasets'=>array(
@@ -25,7 +32,7 @@ class DesktopController extends ControllerBase{
 					'pointStrokeColor'=>'#fff',
 					'pointHighlightFill'=>'#fff',
 					'pointHighlightStroke'=>'rgba(220,220,220,1)',
-					'data'=>array(0, 0, 0, 0, 0, 65, 59, 80, 81, 56, 55, 40)
+					'data'=>$data2
 				),
 				array(
 					'label'=>'My Second dataset',
@@ -35,7 +42,7 @@ class DesktopController extends ControllerBase{
 					'pointStrokeColor'=>'#fff',
 					'pointHighlightFill'=>'#fff',
 					'pointHighlightStroke'=>'rgba(151,187,205,1)',
-					'data'=>array(28, 48, 0, 19, 86, 27, 90, 0, 0, 0, 0, 0)
+					'data'=>$data1
 				)
 			)
 		);
