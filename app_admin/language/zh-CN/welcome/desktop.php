@@ -1,5 +1,6 @@
 <?php
 $lang = array(
+	"wel_desktop_log" => "登陆次数",
 	"wel_desktop_m01" => "一月",
 	"wel_desktop_m02" => "二月",
 	"wel_desktop_m03" => "三月",

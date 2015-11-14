@@ -3,6 +3,7 @@ class DesktopController extends ControllerBase{
 	// Index
 	public function indexAction(){
 		// Data
+		$this->view->setVar('Lang',$this->inc->getLang('welcome/desktop'));
 		$this->view->setVar('LoadJS', array('welcome/desktop.js'));
 		// Menus
 		$this->view->setVar('Menus',$this->inc->getMenus());
