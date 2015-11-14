@@ -46,9 +46,9 @@ class LogadminloginController extends ControllerBase{
 				$arr = json_decode($id);
 				foreach ($arr as $val){
 					$data = LogAdminLogin::findFirst('id='.$val);
-					if($data->delete()==FALSE){header("Location: ".$this->url->get('index/Result/err'));}
+					if($data->delete()==FALSE){$this->response->redirect('Result/err');}
 				}
-				header("Location: ".$this->url->get('index/Result/suc/LogAdminLogin'));
+				$this->response->redirect('Result/suc/LogAdminLogin');
 			}
 		}else{return FALSE;}
 	}

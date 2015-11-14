@@ -59,21 +59,21 @@ class SysMenusActionController extends ControllerBase{
 				$post = $this->request->getPost();
 				$data = new MenuAction();
 				if($data->save($post)){
-					header("Location: ".$this->url->get('index/Result/suc/SysMenusAction'));
+					$this->response->redirect('Result/suc/SysMenusAction');
 				}else{
-					header("Location: ".$this->url->get('index/Result/err'));
+					$this->response->redirect('Result/err');
 				}
 			// Edit
-			}if($type=='edit'){
+			}elseif($type=='edit'){
 				$id = $this->request->getPost('id');
 				$data = MenuAction::findFirst('id='.$id);
 				$data->name = $this->request->getPost('name');
 				$data->perm = $this->request->getPost('perm');
 				$data->ico = $this->request->getPost('ico');
 				if($data->save()){
-					header("Location: ".$this->url->get('index/Result/suc/SysMenusAction'));
+					$this->response->redirect('Result/suc/SysMenusAction');
 				}else{
-					header("Location: ".$this->url->get('index/Result/err'));
+					$this->response->redirect('Result/err');
 				}
 			// Delete
 			}elseif($type=='delete'){
@@ -81,9 +81,9 @@ class SysMenusActionController extends ControllerBase{
 				$arr = json_decode($id);
 				foreach ($arr as $val){
 					$data = MenuAction::findFirst('id='.$val);
-					if($data->delete()==FALSE){header("Location: ".$this->url->get('index/Result/err'));}
+					if($data->delete()==FALSE){$this->response->redirect('Result/err');}
 				}
-				header("Location: ".$this->url->get('index/Result/suc/SysMenusAction'));
+				$this->response->redirect('Result/suc/SysMenusAction');
 			}
 		}else{return FALSE;}
 	}

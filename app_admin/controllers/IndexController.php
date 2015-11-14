@@ -82,23 +82,4 @@ class IndexController extends Controller{
 		$DB = new LogAdminLogin();
 		$DB->save($data);
 	}
-	
-	/* Get Lang */
-	public function getLangAction($type=''){
-		$lang = $this->inc->getLang($type);
-		$name = $this->request->getQuery();
-		foreach ($name as $key=>$val){
-			$data[$key] = $lang->_($key);
-		}
-		echo json_encode($data);
-	}
-	/* Result */
-	public function ResultAction($type='',$url=''){
-		$lang = $this->inc->getLang('msg');
-		if($type=='suc'){
-			return $this->response->setJsonContent(array("status"=>"y","url"=>$url,"title"=>$lang->_("msg_title"),"msg"=>$lang->_("msg_suc"),"text"=>$lang->_('msg_auto_close')));
-		}elseif($type=='err'){
-			return $this->response->setJsonContent(array("status"=>"n","url"=>$url,"title"=>$lang->_("msg_title"),"msg"=>$lang->_("msg_err"),"text"=>$lang->_('msg_auto_close')));
-		}
-	}
 }

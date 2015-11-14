@@ -47,9 +47,9 @@ class SysConfigController extends ControllerBase{
 				'baseUri'=>$this->request->getPost('bDir'),
 			);
 			if($this->_Cinfig($data)){
-				header("Location: ".$this->url->get('index/Result/suc/SysConfig'));
+				$this->response->redirect('Result/suc/SysConfig');
 			}else{
-				header("Location: ".$this->url->get('index/Result/err'));
+				$this->response->redirect('Result/err');
 			}
 		}
 	}

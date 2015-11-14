@@ -43,7 +43,7 @@ class SysDBRestoreController extends ControllerBase{
 			// Export
 			if($type=='import'){
 				$File = $this->FileRoot.trim($this->request->getPost('file'));
-				if(!is_file($File)){return $this->Result('err');}
+				if(!is_file($File)){$this->response->redirect('Result/err');}
 				/* Remove Notes */
 				$content = file_get_contents($File);
 				$content = preg_replace("/\n#\n# TABLE(.*)\s#\n\n/i","",$content);
@@ -51,28 +51,20 @@ class SysDBRestoreController extends ControllerBase{
 				foreach($sqls as $sql){
 					$sql = trim($sql);
 					if(!empty($sql)){
-						if($this->db->execute($sql)==FALSE){header("Location: ".$this->url->get('index/Result/err'));}
+						if($this->db->execute($sql)==FALSE){$this->response->redirect('Result/err');}
 					}
 				}
-				header("Location: ".$this->url->get('index/Result/suc/SysDBBackup'));
+				$this->response->redirect('Result/suc/SysDBBackup');
 			}elseif($type=='delete'){
 				$File = new File();
 				$File->file_root = $this->FileRoot;
 				$Files = json_decode($this->request->getPost('file'));
 				if($File->del('./',$Files)){
-					header("Location: ".$this->url->get('index/Result/suc/SysDBRestore'));
+					$this->response->redirect('Result/suc/SysDBRestore');
 				}else{
-					header("Location: ".$this->url->get('index/Result/err'));
+					$this->response->redirect('Result/err');
 				}
 			}
-		}
-	}
-	private function Result($type=''){
-		$lang = $this->inc->getLang('msg');
-		if($type=='suc'){
-			return $this->response->setJsonContent(array("status"=>"y"));
-		}elseif($type=='err'){
-			return $this->response->setJsonContent(array("status"=>"n","title"=>$lang->_("msg_title"),"msg"=>$lang->_("msg_err"),"text"=>$lang->_('msg_auto_close')));
 		}
 	}
 }

@@ -64,12 +64,12 @@ class SysMenusController extends ControllerBase{
 				$post['ctime'] = date('Y-m-d H:i:s');
 				$data = new Menus();
 				if($data->save($post)){
-					header("Location: ".$this->url->get('index/Result/suc/SysMenus'));
+					$this->response->redirect('Result/suc/SysMenus');
 				}else{
-					header("Location: ".$this->url->get('index/Result/err'));
+					$this->response->redirect('Result/err');
 				}
 			// Edit
-			}if($type=='edit'){
+			}elseif($type=='edit'){
 				$id = $this->request->getPost('id');
 				$data = Menus::findFirst('id='.$id);
 				$data->fid = $this->request->getPost('fid');
@@ -80,9 +80,9 @@ class SysMenusController extends ControllerBase{
 				$data->remark = $this->request->getPost('remark');
 				$data->sort = $this->request->getPost('sort');
 				if($data->save()){
-					header("Location: ".$this->url->get('index/Result/suc/SysMenus'));
+					$this->response->redirect('Result/suc/SysMenus');
 				}else{
-					header("Location: ".$this->url->get('index/Result/err'));
+					$this->response->redirect('Result/err');
 				}
 			// Delete
 			}elseif($type=='delete'){
@@ -90,9 +90,9 @@ class SysMenusController extends ControllerBase{
 				$arr = json_decode($id);
 				foreach ($arr as $val){
 					$data = Menus::findFirst('id='.$val);
-					if($data->delete()==FALSE){header("Location: ".$this->url->get('index/Result/err'));}
+					if($data->delete()==FALSE){$this->response->redirect('Result/err');}
 				}
-				header("Location: ".$this->url->get('index/Result/suc/SysMenus'));
+				$this->response->redirect('Result/suc/SysMenus');
 			}
 		}else{return FALSE;}
 	}

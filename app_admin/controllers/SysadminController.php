@@ -62,9 +62,9 @@ class SysAdminController extends ControllerBase{
 				$post['rtime'] = date('Y-m-d H:i:s');
 				$data = new Admins();
 				if($data->save($post)){
-					header("Location: ".$this->url->get('index/Result/suc/SysAdmin'));
+					$this->response->redirect('Result/suc/SysAdmin');
 				}else{
-					header("Location: ".$this->url->get('index/Result/err'));
+					$this->response->redirect('Result/err');
 				}
 			// Edit
 			}elseif($type=='edit'){
@@ -80,9 +80,9 @@ class SysAdminController extends ControllerBase{
 				$data->department = $this->request->getPost('department');
 				$data->position = $this->request->getPost('position');
 				if($data->save($post)){
-					header("Location: ".$this->url->get('index/Result/suc/SysAdmin'));
+					$this->response->redirect('Result/suc/SysAdmin');
 				}else{
-					header("Location: ".$this->url->get('index/Result/err'));
+					$this->response->redirect('Result/err');
 				}
 			// Delete
 			}elseif($type=='delete'){
@@ -90,16 +90,16 @@ class SysAdminController extends ControllerBase{
 				$arr = json_decode($id);
 				foreach ($arr as $val){
 					$data = Admins::findFirst('id='.$val);
-					if($data->delete()==FALSE){header("Location: ".$this->url->get('index/Result/err'));}
+					if($data->delete()==FALSE){$this->response->redirect('Result/err');}
 				}
-				header("Location: ".$this->url->get('index/Result/suc/SysAdmin'));
+				$this->response->redirect('Result/suc/SysAdmin');
 			}elseif($type=='perm'){
 				$data = Admins::findFirst('id='.$this->request->getPost('id'));
 				$data->perm = $this->request->getPost('perm');
 				if($data->save()){
-					header("Location: ".$this->url->get('index/Result/suc/SysAdmin'));
+					$this->response->redirect('Result/suc/SysAdmin');
 				}else{
-					header("Location: ".$this->url->get('index/Result/err'));
+					$this->response->redirect('Result/err');
 				}
 			}
 		}else{return FALSE;}

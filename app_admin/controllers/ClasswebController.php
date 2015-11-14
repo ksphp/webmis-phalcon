@@ -74,9 +74,9 @@ class ClasswebController extends ControllerBase{
 				$post['ctime'] = date('Y-m-d H:i:s');
 				$data = new ClassWeb();
 				if($data->save($post)){
-					header("Location: ".$this->url->get('index/Result/suc/ClassWeb'));
+					$this->response->redirect('Result/suc/ClassWeb');
 				}else{
-					header("Location: ".$this->url->get('index/Result/err'));
+					$this->response->redirect('Result/err');
 				}
 			// Edit
 			}elseif($type=='edit'){
@@ -88,11 +88,10 @@ class ClasswebController extends ControllerBase{
 				$data->ico = $this->request->getPost('ico');
 				$data->remark = $this->request->getPost('remark');
 				$data->sort = $this->request->getPost('sort');
-
 				if($data->save()){
-					header("Location: ".$this->url->get('index/Result/suc/ClassWeb'));
+					$this->response->redirect('Result/suc/ClassWeb');
 				}else{
-					header("Location: ".$this->url->get('index/Result/err'));
+					$this->response->redirect('Result/err');
 				}
 			// Delete
 			}elseif($type=='delete'){
@@ -100,9 +99,9 @@ class ClasswebController extends ControllerBase{
 				$arr = json_decode($id);
 				foreach ($arr as $val){
 					$data = ClassWeb::findFirst('id='.$val);
-					if($data->delete()==FALSE){header("Location: ".$this->url->get('index/Result/err'));}
+					if($data->delete()==FALSE){$this->response->redirect('Result/err');}
 				}
-				header("Location: ".$this->url->get('index/Result/suc/ClassWeb'));
+				$this->response->redirect('Result/suc/ClassWeb');
 			// Audit
 			}elseif($type=='audit'){
 				$id = $this->request->getPost('id');
@@ -110,9 +109,9 @@ class ClasswebController extends ControllerBase{
 				$arr = json_decode($id);
 				foreach ($arr as $val){
 					$data = ClassWeb::findFirst('id='.$val);
-					if($data->save(array('state'=>$state))==FALSE){header("Location: ".$this->url->get('index/Result/err'));}
+					if($data->save(array('state'=>$state))==FALSE){$this->response->redirect('Result/err');}
 				}
-				header("Location: ".$this->url->get('index/Result/suc/ClassWeb'));
+				$this->response->redirect('Result/suc/ClassWeb');
 			}
 		}else{return FALSE;}
 	}

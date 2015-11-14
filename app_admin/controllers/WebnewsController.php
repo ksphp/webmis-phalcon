@@ -119,12 +119,12 @@ class WebNewsController extends ControllerBase{
 				$post['uname'] = @$_SESSION['Admin']['uname'];
 				$data = new WebNews();
 				if($data->save($post)){
-					header("Location: ".$this->url->get('index/Result/suc/WebNews'));
+					$this->response->redirect('Result/suc/WebNews');
 				}else{
-					header("Location: ".$this->url->get('index/Result/err'));
+					$this->response->redirect('Result/err');
 				}
 			// Edit
-			}if($type=='edit'){
+			}elseif($type=='edit'){
 				$id = $this->request->getPost('id');
 				$data = WebNews::findFirst('id='.$id);
 				$data->class = $this->request->getPost('class');
@@ -137,9 +137,9 @@ class WebNewsController extends ControllerBase{
 				$data->img = $this->request->getPost('img');
 				$data->content = $this->request->getPost('content');
 				if($data->save()){
-					header("Location: ".$this->url->get('index/Result/suc/WebNews'));
+					$this->response->redirect('Result/suc/WebNews');
 				}else{
-					header("Location: ".$this->url->get('index/Result/err'));
+					$this->response->redirect('Result/err');
 				}
 			// Delete
 			}elseif($type=='delete'){
@@ -147,12 +147,12 @@ class WebNewsController extends ControllerBase{
 				$arr = json_decode($id);
 				foreach ($arr as $val){
 					$data = WebNews::findFirst('id='.$val);
-					if($data->delete()==FALSE){header("Location: ".$this->url->get('index/Result/err'));}
+					if($data->delete()==FALSE){$this->response->redirect('Result/err');}
 					// Remove Upload
 					$arr = array_filter(explode(',', $data->upload));
 					foreach ($arr as $val){@unlink($this->root.$this->path.$val);}
 				}
-				header("Location: ".$this->url->get('index/Result/suc/WebNews'));
+				$this->response->redirect('Result/suc/WebNews');
 			// Audit
 			}elseif($type=='audit'){
 				$id = $this->request->getPost('id');
@@ -160,9 +160,9 @@ class WebNewsController extends ControllerBase{
 				$arr = json_decode($id);
 				foreach ($arr as $val){
 					$data = WebNews::findFirst('id='.$val);
-					if($data->save(array('state'=>$state))==FALSE){header("Location: ".$this->url->get('index/Result/err'));}
+					if($data->save(array('state'=>$state))==FALSE){$this->response->redirect('Result/err');}
 				}
-				header("Location: ".$this->url->get('index/Result/suc/WebNews'));
+				$this->response->redirect('Result/suc/WebNews');
 			}
 		}else{return FALSE;}
 	}

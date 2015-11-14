@@ -21,11 +21,11 @@ class SysChangePasswdController extends ControllerBase{
 			if(md5($pwd1)==$data->password){
 				$data->password = md5($pwd2);
 				if($data->save()){
-					header("Location: ".$this->url->get('index/Result/suc/SysChangePasswd'));
+					$this->response->redirect('Result/suc/SysChangePasswd');
 				}else{
-					header("Location: ".$this->url->get('index/Result/err'));
+					$this->response->redirect('Result/err');
 				}
-			}else{header("Location: ".$this->url->get('index/Result/err'));}
+			}else{$this->response->redirect('Result/err');}
 		}
 	}
 }

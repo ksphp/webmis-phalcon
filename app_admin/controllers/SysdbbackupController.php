@@ -83,16 +83,15 @@ class SysDBBackupController extends ControllerBase{
 				$File->file_root = $path;
 				$file = $this->request->getPost('name').'.'.$this->request->getPost('format');
 				if($File->addFile($file, $data)){
-					header("Location: ".$this->url->get('index/Result/suc/SysDBRestore'));
+					$this->response->redirect('Result/suc/SysDBRestore');
 				}else{
-					header("Location: ".$this->url->get('index/Result/err'));
+					$this->response->redirect('Result/err');
 				}
 			}elseif($type=='delete'){
 				foreach ($Tables as $val){
-					if($this->db->dropTable($val)==FALSE){header("Location: ".$this->url->get('index/Result/err'));}
+					if($this->db->dropTable($val)==FALSE){$this->response->redirect('Result/err');}
 				}
-				return $this->Result('suc');
-				header("Location: ".$this->url->get('index/Result/suc/SysDBBackup'));
+				$this->response->redirect('Result/suc/SysDBBackup');
 			}
 		}
 	}
