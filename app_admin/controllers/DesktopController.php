@@ -35,7 +35,7 @@ class DesktopController extends ControllerBase{
 					'pointStrokeColor'=>'#fff',
 					'pointHighlightFill'=>'#fff',
 					'pointHighlightStroke'=>'rgba(151,187,205,1)',
-					'data'=>array(28, 48, 0, 19, 86, 27, 90)
+					'data'=>array(28, 48, 0, 19, 86, 27, 90, 0, 0, 0, 0, 0)
 				)
 			)
 		);
