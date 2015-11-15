@@ -82,7 +82,7 @@ input:focus, textarea:focus{box-shadow: 0 0 6px rgba(153, 153, 153, 0.7);}
 .left_an2 em{color: #666;}
 
 /* Content */
-.ct_body{padding: 42px 0.2em 0.2em; background-color: #FFF; overflow: hidden;}
+.ct_body{padding: 52px 0.2em 0.2em; background-color: #FFF; overflow: hidden;}
 .copy{line-height: 42px; color: #999; text-align: center; border-top: #CCC 1px solid;}
 
 /* Action */
