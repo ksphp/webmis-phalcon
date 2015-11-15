@@ -3,11 +3,13 @@
 
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+	<meta name="format-detection" content="telephone=no">
 	<meta name="author" content="KSPHP" />
 	<title><?php echo APP_TITLE;?></title>
 	<link rel="shortcut icon" href="/themes/favicon.ico" type="image/x-icon" />
 	<?php echo $this->tag->stylesheetLink("/webmis/themes/".WEBMIS_THEMES."/webmis.css");?>
-	<?php echo $this->tag->stylesheetLink("/themes/admin/".APP_THEMES."/main.css");?>
+	<?php echo $this->tag->stylesheetLink("/themes/admin/".APP_THEMES."/main_m.css");?>
 </head>
 
 <body class="body_login">
@@ -24,19 +26,20 @@
 	<h1 id="webmisVersion" class="login_title">WebMIS</h1>
 	<div class="login_body">
 		<div class="login_ct">
-			<dl class="login">
-				<dt><?php echo $incLang->_('inc_uname');?>：</dt>
-				<dd><input type="text" id="uname" class="login_input" value="webmis" /></dd>
-				<dt><?php echo $incLang->_('inc_passwd');?>：</dt>
-				<dd><input type="password" id="passwd" class="login_input" value="ksphp.com" /></dd>
-			</dl>
-			<a href="#" id="adminLogin" class="sub"><?php echo $incLang->_('inc_login');?></a>
+			<div class="login">
+				<div class="title"><?php echo $incLang->_('inc_uname');?>：</div>
+				<div class="input_ct"><input type="text" id="uname" class="login_input" value="webmis" /></div>
+				<div class="title"><?php echo $incLang->_('inc_passwd');?>：</div>
+				<div class="input_ct"><input type="password" id="passwd" class="login_input" value="ksphp.com" /></div>
+			</div>
+			<div class="sub"><a href="#" id="adminLogin"><?php echo $incLang->_('inc_login');?></a></div>
 		</div>
 	</div>
 	<div class="login_copy">
 		Copyright © <?php echo APP_COPY;?> All rights are reserved.<br>
 		<a href="<?php echo $this->url->get('../');?>" ><?php echo $incLang->_('inc_home');?></a> | <a href="?mode=pc" ><?php echo $incLang->_('inc_pc');?></a> | <a href="?mode=mobile" ><?php echo $incLang->_('inc_mobile');?></a>
 	</div>
+	
 <div id="base_url" style="display: none;"><?php echo $this->url->get();?></div>
 <div id="IsMobile" style="display: none;"><?php echo $this->session->get('IsMobile');?></div>
 <div id="getLang" style="display: none;"><?php echo $this->session->get('Lang');?></div>

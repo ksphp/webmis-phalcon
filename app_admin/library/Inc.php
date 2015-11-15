@@ -27,10 +27,12 @@ class Inc extends Component{
 	/* IsMobile */
 	public function IsMobile(){
 		$useragent = $this->request->getUserAgent();
-		$user_agent = new Phalcon\Config\Adapter\Php(APP_PATH . 'config/user_agents.php');
-		foreach ($user_agent->mobiles as $key=>$val){
-			if(strpos($useragent, $key)){return TRUE;}else{return FALSE;}
+		$useragent = preg_match('|\(.*?\)|',$useragent,$matches)>0?$matches[0]:'';
+		$agent = new Phalcon\Config\Adapter\Php(APP_PATH . 'config/user_agents.php');
+		foreach ($agent->mobiles as $key=>$val){
+			if(strpos($useragent, $key)){return TRUE;}
 		}
+		return FALSE;
 	}
 	
 	/* Get Lang */

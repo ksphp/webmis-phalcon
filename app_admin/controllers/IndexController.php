@@ -7,16 +7,19 @@ class IndexController extends Controller{
 		$this->url->setBaseUri($this->inc->BaseUrl(APP_NAME));
 	}
 	public function indexAction(){
+		// ISmobile
+		$this->session->set('IsMobile', $this->inc->IsMobile());
 		// Lang
 		$this->view->setVar('incLang',$this->inc->getLang('inc'));
 		$lang = $this->session->get('Lang');
 		$Name = new Names();
 		$this->view->setVar('LangName',$lang.' | '.$Name->getName('lang',$lang));
 		$this->view->setVar('LangAll',$Name->getName('lang'));
-		// Login Template
-		$this->view->setTemplateAfter(APP_THEMES.'/login');
-		// echo $this->inc->IsMobile();
-		
+		if($this->session->get('IsMobile')){
+			$this->view->setTemplateAfter(APP_THEMES.'/login_m');
+		}else{
+			$this->view->setTemplateAfter(APP_THEMES.'/login');
+		}
 	}
 
 	/* Login */
