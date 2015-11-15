@@ -8,7 +8,14 @@ class IndexController extends Controller{
 	}
 	public function indexAction(){
 		// ISmobile
-		$this->session->set('IsMobile', $this->inc->IsMobile());
+		$mode = $this->request->getQuery('mode');
+		if($mode=='pc'){
+			$this->session->set('IsMobile', FALSE);
+		}elseif($mode=='mobile'){
+			$this->session->set('IsMobile', TRUE);
+		}else{
+			$this->session->set('IsMobile', $this->inc->IsMobile());
+		}
 		// Lang
 		$this->view->setVar('incLang',$this->inc->getLang('inc'));
 		$lang = $this->session->get('Lang');
