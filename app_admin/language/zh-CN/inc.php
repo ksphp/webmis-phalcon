@@ -2,7 +2,7 @@
 $lang = array(
 	/* 登陆 */
 	"inc_uname" => "用户名",
-	"inc_passwd" => "密码",
+	"inc_passwd" => "密&nbsp;&nbsp;&nbsp;&nbsp;码",
 	"inc_login" => "登录",
 	"inc_home" => "网站首页",
 	"inc_pc" => "电脑版",
