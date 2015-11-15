@@ -28,7 +28,6 @@ class SysMenusController extends ControllerBase{
 		// View
 		if($this->session->get('IsMobile')){
 			$this->view->setTemplateAfter(APP_THEMES.'/main_m');
-			$this->view->pick("welcome/sys_change_passwd_m");
 			$this->view->pick("system/menus/index_m");
 		}else{
 			$this->view->setTemplateAfter(APP_THEMES.'/main');
