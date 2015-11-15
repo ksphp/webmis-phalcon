@@ -46,7 +46,7 @@ input:focus, textarea:focus{box-shadow: 0 0 6px rgba(153, 153, 153, 0.7);}
 
 /* Top */
 .top_user{position: fixed; top: 100%; width: 100%; height: 36px; margin-top: -36px; background-color: rgba(0,0,0,0.6);}
-.top_logo{float: left; width: 62px; height: 36px; background: url("images/logo.png") no-repeat left 4px; display: inline-block;}
+.top_logo{float: left; width: 140px; height: 36px; background: url("images/logo.png") no-repeat left 4px; display: inline-block;}
 .top_link{position: absolute; z-index: 1; right: 0px; line-height: 36px; color: #FFF; padding: 0 10px;}
 .top_link a{color: #6FB737;}
 .top_link a:hover{color: #FF6600;}
