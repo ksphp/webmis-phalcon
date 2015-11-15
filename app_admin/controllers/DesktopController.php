@@ -9,8 +9,13 @@ class DesktopController extends ControllerBase{
 		$this->view->setVar('Menus',$this->inc->getMenus());
 		$this->tag->prependTitle($this->inc->Ctitle);
 		// View
-		$this->view->setTemplateAfter(APP_THEMES.'/main');
-		$this->view->pick("welcome/desktop");
+		if($this->session->get('IsMobile')){
+			$this->view->setTemplateAfter(APP_THEMES.'/main_m');
+			$this->view->pick("welcome/desktop_m");
+		}else{
+			$this->view->setTemplateAfter(APP_THEMES.'/main');
+			$this->view->pick("welcome/desktop");
+		}
 	}
 	/* Chart */
 	public function chartAction(){

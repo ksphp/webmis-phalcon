@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="author" content="KSPHP" />
+	<title><?php echo APP_TITLE;?></title>
+	<link rel="shortcut icon" href="/themes/favicon.ico" type="image/x-icon" />
+	<?php echo $this->tag->stylesheetLink("/webmis/themes/".WEBMIS_THEMES."/webmis.css");?>
+	<?php echo $this->tag->stylesheetLink("/themes/admin/".APP_THEMES."/main_m.css");?>
+	<?php echo $this->tag->javascriptInclude("/webmis/plugin/jquery/".JQUERY_NAME);?>
+	<?php echo $this->tag->javascriptInclude("/webmis/jquery.webmis.js");?>
+	<?php echo $this->tag->javascriptInclude("/themes/admin/".APP_THEMES."/main_m.js");?>
+	<?php if(@$LoadCSS){ foreach($LoadCSS as $val){
+		echo $this->tag->stylesheetLink("/themes/admin/".APP_THEMES."/css/".$val);
+	}}?>
+</head>
+
+<body>
+	<!-- User Info -->
+	<div class="top_user">
+		<a href="" class="top_logo"></a>
+		<span class="top_link">
+			<?php echo $_SESSION['Admin']['uname'];?> [ <?php echo $_SESSION['Admin']['department'].'-'.$_SESSION['Admin']['position'];?> ] | <a href="<?php echo $this->url->get('index/loginOut');?>"><b><?php echo $incLang->_('inc_logout');?></b></a>
+		</span>
+	</div>
+	<!-- Nav -->
+	<div class="nav_ct">
+		<ul id="Nav" class="nav">
+	<?php
+	$MenusLeft ='';
+	foreach ($Menus['Date'] as $val){
+		$an = $val['id']==$Menus['FID']['FID1']?'an1':'an2';
+		if($val['menus']){$MenusLeft = $val['menus'];}
+	?>
+			<li><a href="<?php echo $this->url->get($val['url']);?>" class="<?php echo $an;?>"><em class="<?php echo $val['ico'];?>"></em></a></li>
+	<?php }?>
+		</ul>
+	</div>
+	<!-- Left Menus -->
+	<div class="left_menu"><em class="ico-menus"></em></div>
+	<div class="menu_ct">
+<?php if($MenusLeft){foreach($MenusLeft as $val1){
+?>
+		<div class="title"><a href="#"><em class="<?php echo $val1['ico'];?>"></em><?php echo $val1['title'];?></a></div>
+		<ul class="list">
+<?php if(@$val1['menus']){foreach($val1['menus'] as $val2){
+	$an = $val2['id']==$Menus['FID']['FID3']?'left_an1':'left_an2';
+?>
+			<li><a href="<?php echo $this->url->get($val2['url']);?>" class="<?php echo $an;?>"><em class="<?php echo $val2['ico'];?>"></em><?php echo $val2['title'];?></a></li>
+<?php }}?>
+		</ul>
+<?php }}?>
+	</div>
+	<div class="ct_body">
+<?php echo $this->getContent(); ?>
+	</div>
+	<div class="copy">Copyright © <?php echo APP_COPY;?> All rights are reserved.<br></div>
+<div id="base_url" style="display: none;"><?php echo $this->url->get();?></div>
+<div id="IsMobile" style="display: none;"></div>
+<div id="getLang" style="display: none;"><?php echo @$_SESSION['Lang'];?></div>
+<div id="getUrl" style="display: none;"><?php echo @$getUrl;?></div>
+<?php $this->assets->outputJs(); ?>
+<?php if(@$LoadJS){ foreach($LoadJS as $val){
+echo $this->tag->javascriptInclude("/themes/admin/js/".$val);
+}}?>
+</body>
+</html>
