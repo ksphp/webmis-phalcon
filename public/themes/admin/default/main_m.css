@@ -61,7 +61,7 @@ input:focus, textarea:focus{box-shadow: 0 0 6px rgba(153, 153, 153, 0.7);}
 .nav .an1 span{display: block;}
 .nav .an2{color: #CCC;}
 
-.left_menu{position: fixed; top: 100%; margin-top: -36px; width: 42px; height: 30px; padding-top: 6px; text-align: center; box-shadow: 1px 1px 3px #999;
+.left_menu{position: fixed; top: 100%; margin-top: -36px; width: 42px; height: 36px; line-height: 36px; text-align: center; box-shadow: 1px 1px 3px #999;
 	background:-moz-linear-gradient(top, #FFF,#E2E4E6);
 	background:-webkit-gradient(linear, 0 0, 0 100%, from(#FFF), to(#E2E4E6));
 	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#FFF,endColorstr=#E2E4E6,grandientType=1);
