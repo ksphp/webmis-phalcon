@@ -38,7 +38,7 @@ em{color: #6FB737; font-family: 'icomoon'; speak: none; font-style: normal; font
 .WebMisWin_ct .load{text-align: center;}
 .WebMisWin_ct .onLoad{padding: 5px 10px; background:url(images/onLoad.gif) no-repeat center center;}
 
-.WebMisTopMenu a{cursor: pointer; height: 20px; line-height: 20px; display: inline-block; margin: 9px 2px 0px 2px; padding: 0 10px; border-radius: 3px 3px 0 0;}
+.WebMisTopMenu a{cursor: pointer; height: 20px; line-height: 20px; display: inline-block; margin: 9px 2px 0px 2px; padding: 0 15px; border-radius: 3px 3px 0 0;}
 .WebMisTopMenu .an1{border: #3F9707 1px solid; border-bottom: none; background-color: #6FB737; color: #FFF;}
 .WebMisTopMenu .an2{border: #CCC 1px solid; border-bottom: none; background-color: #F2F2F2; color: #333;}
 
