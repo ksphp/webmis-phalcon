@@ -3,6 +3,8 @@ WebMIS
 
 MVC framework based on the development of multi users, multi access solutions, integration of CodeMirror, TinyMCE, Chart, Jquery and other plug-ins!
 
+http://phalcon.ksphp.com/admin
+
 Phalcon Framework
 =================
 
