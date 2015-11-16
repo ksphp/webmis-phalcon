@@ -42,6 +42,12 @@ input:focus, textarea:focus{box-shadow: 0 0 6px rgba(153, 153, 153, 0.7);}
 .login_copy{height: 50px; line-height: 20px; color: #CCC; text-align: center; padding: 15px 0; border-radius: 5px; min-width: 460px;}
 .login_copy a{color: #DFE1E8;}
 .login_copy a:hover{color: #FF6600;}
+.login_copy .qrcode{display: inline-block; padding-left: 18px;}
+.login_copy .qrcode em{position: absolute; z-index: 1; color: #FFF; font-size: 16px; margin: -1px 0 0 -20px;}
+.login_copy .qrcode_ct{display: none; position: absolute; z-index: 2; margin: -5px 0 0 -20px;}
+.login_copy .qrcode_ct .arrow{border: 5px solid transparent; display: block; height: 0; width: 0;}
+.login_copy .qrcode_ct .arrow:after{border: 8px solid transparent; display: block; height: 0; width: 0; border-bottom-color: #fff; content: " "; left: 5px; position: absolute; top: -4px;}
+.login_copy .qrcode_ct .ct{width: 100px; height: 100px; background-color: #FFF; padding: 8px; box-shadow: 0 0 2px #333;}
 
 /* Top */
 .top_body{position: fixed; width: 100%; height: 50px; background-color: #3D3D3D; overflow: hidden;}

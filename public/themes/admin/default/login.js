@@ -3,6 +3,14 @@ $(function(){
 	$('#webmisVersion').webmisVersion();
 	// Lang
 	$('#Lang').hover(function(){$(this).find('ul').show();},function(){$(this).find('ul').hide();});
+	// Mobile QRCode
+	$('#QRCodeCT').hover(function(){
+		$(this).find('.qrcode_ct').show();
+	},function(){
+		$(this).find('.qrcode_ct').hide();
+	});
+	$.webmis.inc({files:[$webmis_plugin+'tool/jquery.qrcode.min.js']});
+	$('#QRCode').qrcode({width: 100, height: 100, text: $base_url});
 	// Auto Size
 	var autoSize = function(){
 		var height = ($(window).height()-318)/2;
