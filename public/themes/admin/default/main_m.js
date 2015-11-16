@@ -62,12 +62,14 @@ function navMove(){
 }
 function menuShow(){
 	var W = $(window).width();
+	var H = $(window).height();
 	//初始化
 	IsMobile = $('#IsMobile').text();
 	moWidth = W-20;
-	moHeight = $(window).height()-20;
-	var Menu = $('.menu_ct');
+	moHeight = H-20;
+	$('.web_iframe').height(H-102);
 	//点击滑动
+	var Menu = $('.menu_ct');
 	$('.left_menu').click(function (){
 		$(this).hide();
 		var W = $(window).width();

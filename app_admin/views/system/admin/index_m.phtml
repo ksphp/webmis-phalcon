@@ -1,0 +1,31 @@
+<span class="action">
+	<span class="title"><?php echo $Menus['Ctitle'];?></span>
+<?php foreach ($Menus['action'] as $val){
+	$url = $val['ico']=='ico-list'?$this->url->get($this->dispatcher->getControllerName()):'';
+?>
+	<a href="<?php echo $url;?>" id="<?php echo $val['ico'];?>"><em class="<?php echo $val['ico'];?>"></em><span><?php echo $val['name'];?></span></a>
+<?php }?>
+</span>
+<table class="table_list">
+	<tr class="title">
+		<td width="20"><a href="#" id="checkboxY"></a><a href="#" id="checkboxN"></a></td>
+		<td width="60">ID</td>
+		<td width="120"><?php echo $Lang->_('sys_admin_uname');?></td>
+		<td width="80"><?php echo $Lang->_('sys_admin_name');?></td>
+		<td width="40"><?php echo $Lang->_('sys_admin_state');?></td>
+		<td width="40"><?php echo $Lang->_('sys_admin_perm');?></td>
+	</tr>
+	<tbody id="listBG">
+<?php foreach ($Page->items as $val){?>
+	<tr>
+		<td><input type="checkbox" value="<?php echo $val->id;?>" /></td>
+		<td><?php echo $val->id;?></td>
+		<td><b><?php echo $this->inc->keyHH($val->uname,@$_GET['uname']);?></b></td>
+		<td><?php echo $this->inc->keyHH($val->name,@$_GET['name']);?></td>
+		<td><?php echo $val->state==1?'<span class="green">'.$Lang->_('sys_admin_enable').'</span>':'<span class="red">'.$Lang->_('sys_admin_disable').'</span>';?></td>
+		<td><a href="#" id="editPerm<?php echo $val->id;?>" title="<?php echo $val->perm;?>" onclick="editPerm(<?php echo $val->id;?>,'<?php echo $Lang->_('sys_admin_perm');?>');return false;"><?php echo $Lang->_('sys_admin_permEdit');?></a></td>
+	</tr>
+<?php }?>
+	</tbody>
+</table>
+<div class="page"><?php echo $Page->PageHtml;?></div>

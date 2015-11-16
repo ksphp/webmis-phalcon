@@ -1,0 +1,160 @@
+<?php $isWrite = is_writable(__DIR__.'/../../../config/config.ini');?>
+<form action="<?php echo $this->url->get('SysConfig/Data');?>" method="post" id="Form">
+<table class="table_add">
+	<tr>
+		<td colspan="2"><h2><?php echo $Menus['Ctitle'];?></h2></td>
+	</tr>
+	<tr>
+		<td class="tright" width="90"><?php echo $Lang->_('sys_config_file');?>：</td>
+		<td>
+			<div class="<?php echo $isWrite?'suc':'err';?>"><em></em><b>config/config.ini</b></div>
+		</td>
+	</tr>
+	<?php if($isWrite){?>
+	<tr>
+		<td class="tright"><?php echo $Lang->_('sys_config_title');?>：</td>
+		<td>
+			<input type="text" name="title" class="input" style="width: 80%;" value="<?php echo $Config->webmis->appTitle;?>" />
+		</td>
+	</tr>
+	<tr>
+		<td class="tright"><?php echo $Lang->_('sys_config_copy');?>：</td>
+		<td>
+			<textarea name="copy" style="width: 90%; height: 80px;" maxlength="200"><?php echo $Config->webmis->appCopy;?></textarea>
+		</td>
+	</tr>
+	<tr>
+		<td class="tright"><?php echo $Lang->_('sys_config_backup');?>：</td>
+		<td>
+			<input type="text" name="backup" class="input" style="width: 80%;" value="<?php echo $Config->webmis->backupDir;?>" />
+		</td>
+	</tr>
+	<tr>
+		<td class="tright"><?php echo $Lang->_('sys_config_themes');?>：</td>
+		<td>
+			<select name="themes">
+<?php
+foreach ($Themes['folder'] as $val){
+	if($val['name']!='js'){
+?>
+				<option value="<?php echo $val['name'];?>" <?php echo $Config->webmis->defaultThemes==$val['name']?'selected':'';?>><?php echo $val['name'];?></option>
+<?php }}?>
+			</select>
+		</td>
+	</tr>
+	<tr>
+		<td class="tright"><?php echo $Lang->_('sys_config_wthemes');?>：</td>
+		<td>
+			<select name="wthemes">
+<?php
+foreach ($Webmis['folder'] as $val){
+?>
+				<option value="<?php echo $val['name'];?>" <?php echo $Config->webmis->webmisThemes==$val['name']?'selected':'';?>><?php echo $val['name'];?></option>
+<?php }?>
+			</select>
+		</td>
+	</tr>
+	<tr>
+		<td class="tright"><?php echo $Lang->_('sys_config_jquery');?>：</td>
+		<td>
+			<select name="jquery">
+<?php
+foreach ($Jquery['files'] as $val){
+	if($val['name']!='jquery.touchwipe.min.js'){
+?>
+				<option value="<?php echo $val['name'];?>" <?php echo $Config->webmis->jqueryName==$val['name']?'selected':'';?>><?php echo $val['name'];?></option>
+<?php }}?>
+			</select>
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2"><h3><?php echo $Lang->_('sys_config_db');?></h3></td>
+	</tr>
+	<tr>
+		<td class="tright"><?php echo $Lang->_('sys_config_db_a');?>：</td>
+		<td>
+			<select name="adapter">
+<?php
+$arr = array('Mysql','Test');
+foreach ($arr as $val){
+?>
+				<option value="Mysql" <?php echo $Config->database->adapter==$val?'selected':'';?>><?php echo $val;?></option>
+<?php }?>
+			</select>
+		</td>
+	</tr>
+	<tr>
+		<td class="tright"><?php echo $Lang->_('sys_config_db_h');?>：</td>
+		<td>
+			<input type="text" name="host" class="input" style="width: 60%;" value="<?php echo $Config->database->host;?>" />
+		</td>
+	</tr>
+	<tr>
+		<td class="tright"><?php echo $Lang->_('sys_config_db_u');?>：</td>
+		<td>
+			<input type="text" name="username" class="input" style="width: 90%;" value="<?php echo $Config->database->username;?>" />
+		</td>
+	</tr>
+	<tr>
+		<td class="tright"><?php echo $Lang->_('sys_config_db_p');?>：</td>
+		<td>
+			<input type="password" name="password" class="input" style="width: 90%;" value="<?php echo $Config->database->password;?>" />
+		</td>
+	</tr>
+	<tr>
+		<td class="tright"><?php echo $Lang->_('sys_config_db_n');?>：</td>
+		<td>
+			<input type="text" name="name" class="input" style="width: 60%;" value="<?php echo $Config->database->name;?>" />
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2"><h3><?php echo $Lang->_('sys_config_app');?></h3></td>
+	</tr>
+	<tr>
+		<td class="tright"><?php echo $Lang->_('sys_config_app_c');?>：</td>
+		<td>
+			<input type="text" name="cDir" class="input" style="width: 60%;" value="<?php echo $Config->application->controllersDir;?>" />
+		</td>
+	</tr>
+	<tr>
+		<td class="tright"><?php echo $Lang->_('sys_config_app_m');?>：</td>
+		<td>
+			<input type="text" name="mDir" class="input" style="width: 60%;" value="<?php echo $Config->application->modelsDir;?>" />
+		</td>
+	</tr>
+	<tr>
+		<td class="tright"><?php echo $Lang->_('sys_config_app_v');?>：</td>
+		<td>
+			<input type="text" name="vDir" class="input" style="width: 60%;" value="<?php echo $Config->application->viewsDir;?>" />
+		</td>
+	</tr>
+	<tr>
+		<td class="tright"><?php echo $Lang->_('sys_config_app_f');?>：</td>
+		<td>
+			<input type="text" name="fDir" class="input" style="width: 60%;" value="<?php echo $Config->application->formsDir;?>" />
+		</td>
+	</tr>
+	<tr>
+		<td class="tright"><?php echo $Lang->_('sys_config_app_l');?>：</td>
+		<td>
+			<input type="text" name="lDir" class="input" style="width: 60%;" value="<?php echo $Config->application->libraryDir;?>" />
+		</td>
+	</tr>
+	<tr>
+		<td class="tright"><?php echo $Lang->_('sys_config_app_b');?>：</td>
+		<td>
+			<input type="text" name="bDir" class="input" style="width: 60%;" value="<?php echo $Config->application->baseUri;?>" />
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2"><h2>&nbsp;</h2></td>
+	</tr>
+	<tr>
+		<td class="sub center" colspan="2">
+			<input type="submit" id="Sub" value="<?php echo $incLang->_('inc_save');?>" />
+			<br/><br/><br/>
+		</td>
+	</tr>
+	<?php }?>
+</table>
+</form>
