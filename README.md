@@ -11,21 +11,21 @@ Phalcon is an open source web framework delivered as a C extension for the PHP l
 install Phalcon
 -----------
 
-### Linux/Unix/Mac
+##### Linux/Unix/Mac
 
 https://phalconphp.com/en/download
 
-### Windows
+##### Windows
 
 https://phalconphp.com/en/download/windows
 
 Add the extension to your php.ini:
 -----------
 
-### CentOS
+##### CentOS
 vi /etc/php.d/phalcon.ini
 
-### Ubunut
+##### Ubunut
 vi /etc/php5/mods-available/phalcon.ini
 ln -s /etc/php5/mods-available/phalcon.ini /etc/php5/fpm/conf.d/phalcon.ini
 
@@ -52,7 +52,7 @@ Configure VirtualHost
 
 ### Nginx
 
-
+```bash
 server {
     listen       80;
     server_name  phalcon.ksphp.cn;
@@ -99,5 +99,6 @@ server {
         deny  all;
     }
 }
+```
 
 
