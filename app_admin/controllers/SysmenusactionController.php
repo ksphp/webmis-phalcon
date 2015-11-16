@@ -26,8 +26,13 @@ class SysMenusActionController extends ControllerBase{
 		$this->view->setVar('Menus',$this->inc->getMenus());
 		$this->tag->prependTitle($this->inc->Ctitle);
 		// View
-		$this->view->setTemplateAfter(APP_THEMES.'/main');
-		$this->view->pick("system/menus/action/index");
+		if($this->session->get('IsMobile')){
+			$this->view->setTemplateAfter(APP_THEMES.'/main_m');
+			$this->view->pick("system/menus/action/index_m");
+		}else{
+			$this->view->setTemplateAfter(APP_THEMES.'/main');
+			$this->view->pick("system/menus/action/index");
+		}
 	}
 	/* Search */
 	public function seaAction(){
