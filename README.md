@@ -1,7 +1,7 @@
 WebMIS
 =================
 
-WebMIS is MVC framework based on the development of multi users, multi access solutions, integration of CodeMirror, TinyMCE, Chart, Jquery and other plug-ins!
+MVC framework based on the development of multi users, multi access solutions, integration of CodeMirror, TinyMCE, Chart, Jquery and other plug-ins!
 
 Phalcon Framework
 =================
@@ -19,12 +19,13 @@ https://phalconphp.com/en/download
 
 https://phalconphp.com/en/download/windows
 
-### Add the extension to your php.ini:
+Add the extension to your php.ini:
+-----------
 
-# CentOS
+### CentOS
 vi /etc/php.d/phalcon.ini
 
-# Ubunut
+### Ubunut
 vi /etc/php5/mods-available/phalcon.ini
 ln -s /etc/php5/mods-available/phalcon.ini /etc/php5/fpm/conf.d/phalcon.ini
 
@@ -39,10 +40,10 @@ Download Phalcon-WebMIS
 
 ### Linux/Unix/Mac
 
-# Svn 方式
+##### Svn 方式
 svn co https://github.com/ksphp/phalcon-webmis/trunk webmis-phalcon
 
-# Git 方式
+##### Git 方式
 git clone https://github.com/ksphp/phalcon-webmis.git webmis-phalcon
 
 
@@ -50,6 +51,7 @@ Configure VirtualHost
 -----------
 
 ### Nginx
+
 
 server {
     listen       80;
@@ -97,3 +99,5 @@ server {
         deny  all;
     }
 }
+
+
