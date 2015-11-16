@@ -1,0 +1,35 @@
+<span class="action">
+	<span class="title"><?php echo $Menus['Ctitle'];?></span>
+<?php foreach ($Menus['action'] as $val){
+	$url = $val['ico']=='ico-list'?$this->url->get($this->dispatcher->getControllerName()):'';
+?>
+	<a href="<?php echo $url;?>" id="<?php echo $val['ico'];?>"><em class="<?php echo $val['ico'];?>"></em><span><?php echo $val['name'];?></span></a>
+<?php }?>
+</span>
+<!-- Content -->
+<table class="table_list">
+	<tr class="title" id="menus_table">
+		<td width="20"><a href="#" id="checkboxY"></a><a href="#" id="checkboxN"></a></td>
+		<td><?php echo $Lang->_('sys_db_restore_filename');?></td>
+		<td width="90"><?php echo $Lang->_('sys_db_restore_size');?></td>
+		<td width="140"><?php echo $Lang->_('sys_db_restore_ctime');?></td>
+		<td width="30"><?php echo $Lang->_('sys_db_restore_perm');?></td>
+	</tr>
+	<tbody id="listBG">
+	<?php if(isset($Files['files'])){foreach($Files['files'] as $val){?>
+	<tr>
+		<td><input type="checkbox" value="<?php echo $val['name'];?>" /></td>
+		<td class="tleft"><a href="<?php echo $this->url->get('SysDBRestore/down?file='.$val['name']) ;?>"><?php echo $val['name'];?></a></td>
+		<td><?php echo $val['size'];?></td>
+		<td><?php echo $val['ctime'];?></td>
+		<td><?php echo $val['perm'];?></td>
+	</tr>
+	<?php }} ?>
+	</tbody>
+</table>
+<div class="page">
+	<?php echo $Lang->_('sys_db_restore_dir').' : '.$Files['dirNum'];?>&nbsp;&nbsp;
+	<?php echo $Lang->_('sys_db_restore_file').' : '.$Files['fileNum'];?>&nbsp;&nbsp;
+	<?php echo $Lang->_('sys_db_restore_size').' : '.$Files['size'];?>
+</div>
+<!-- Content End -->

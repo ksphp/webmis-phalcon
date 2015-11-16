@@ -16,8 +16,13 @@ class SysDBRestoreController extends ControllerBase{
 		$this->view->setVar('Menus',$this->inc->getMenus());
 		$this->tag->prependTitle($this->inc->Ctitle);
 		// View
-		$this->view->setTemplateAfter(APP_THEMES.'/main');
-		$this->view->pick("system/db/restore/index");
+		if($this->session->get('IsMobile')){
+			$this->view->setTemplateAfter(APP_THEMES.'/main_m');
+			$this->view->pick("system/db/restore/index_m");
+		}else{
+			$this->view->setTemplateAfter(APP_THEMES.'/main');
+			$this->view->pick("system/db/restore/index");
+		}
 	}
 	/* Download */
 	public function downAction(){
