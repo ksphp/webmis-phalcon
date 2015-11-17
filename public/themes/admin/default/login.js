@@ -30,7 +30,7 @@ $(function(){
 			},'json');
 			return false;
 		}else{
-			$.post($base_url+'Index/login',{'uname':uname,'passwd':passwd,'is_mobile':is_mobile},function(data){
+			$.post($base_url+'index/login',{'uname':uname,'passwd':passwd,'is_mobile':is_mobile},function(data){
 				alert(data);
 				if(data.status == 'y'){
 					$.webmis.win('close','Welcome');
