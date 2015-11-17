@@ -34,11 +34,11 @@ class IndexController extends Controller{
 		if ($this->request->isPost()) {
 			$uname = $this->request->getPost('uname');
 			$password = $this->request->getPost('passwd');
-			echo $uname.$password;
-//			// User Data
-//			$admin = Admins::findFirst(array("(uname = :uname: OR email = :uname:) AND password = :password:",
-//				'bind' => array('uname' => $uname, 'password' => md5($password))));
-//			// Return JSON
+			// User Data
+			$admin = Admins::findFirst(array("(uname = :uname: OR email = :uname:) AND password = :password:",
+				'bind' => array('uname' => $uname, 'password' => md5($password))));
+			echo 1111;
+			// Return JSON
 //			$lang = $this->inc->getLang('msg');
 //			if(empty($admin)){
 //				$this->loginLog('Error',$uname);
