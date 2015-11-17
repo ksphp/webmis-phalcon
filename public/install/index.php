@@ -121,11 +121,11 @@ if (isset($_POST['install'])){
 					$suc .= '<p class="err">'.$Lang['msg_file_read' ].'：'.$file3.' [ '.$Lang['msg_err' ].' ]</p>';
 				}else {
 					// Write Config Admin
-					$ct1 = preg_replace("/ adapter = (.*)/"," adapter = ".$type,$ct1);
-					$ct1 = preg_replace("/ host = (.*)/"," host = ".$hostname,$ct1);
-					$ct1 = preg_replace("/ username = (.*)/"," username = ".$username,$ct1);
-					$ct1 = preg_replace("/ password = (.*)/"," password = ".$password,$ct1);
-					$ct1 = preg_replace("/ name = (.*)/"," name = ".$database,$ct1);
+					$ct1 = preg_replace("/ adapter = (.*)/"," adapter = '".$type."'",$ct1);
+					$ct1 = preg_replace("/ host = (.*)/"," host = '".$hostname."'",$ct1);
+					$ct1 = preg_replace("/ username = (.*)/"," username = '".$username."'",$ct1);
+					$ct1 = preg_replace("/ password = (.*)/"," password = '".$password."'",$ct1);
+					$ct1 = preg_replace("/ name = (.*)/"," name = '".$database."'",$ct1);
 					$fp=fopen($file1,'w');
 					if(fwrite($fp,$ct1)){
 						$suc .= '<p class="suc">'.$Lang['msg_file_write' ].'：'.$file1.' [ '.$Lang['msg_suc' ].' ]</p>';
@@ -134,11 +134,11 @@ if (isset($_POST['install'])){
 					};
 					fclose($fp);
 					// Write Config Web
-					$ct2 = preg_replace("/ adapter = (.*)/"," adapter = ".$type,$ct2);
-					$ct2 = preg_replace("/ host = (.*)/"," host = ".$hostname,$ct2);
-					$ct2 = preg_replace("/ username = (.*)/"," username = ".$username,$ct2);
-					$ct2 = preg_replace("/ password = (.*)/"," password = ".$password,$ct2);
-					$ct2 = preg_replace("/ name = (.*)/"," name = ".$database,$ct2);
+					$ct2 = preg_replace("/ adapter = (.*)/"," adapter = '".$type."'",$ct2);
+					$ct2 = preg_replace("/ host = (.*)/"," host = '".$hostname."'",$ct2);
+					$ct2 = preg_replace("/ username = (.*)/"," username = '".$username."'",$ct2);
+					$ct2 = preg_replace("/ password = (.*)/"," password = '".$password."'",$ct2);
+					$ct2 = preg_replace("/ name = (.*)/"," name = '".$database."'",$ct2);
 					$fp=fopen($file2,'w');
 					if(fwrite($fp,$ct2)){
 						$suc .= '<p class="suc">'.$Lang['msg_file_write' ].'：'.$file2.' [ '.$Lang['msg_suc' ].' ]</p>';
@@ -147,11 +147,11 @@ if (isset($_POST['install'])){
 					};
 					fclose($fp);
 					// Write Config M
-					$ct3 = preg_replace("/ adapter = (.*)/"," adapter = ".$type,$ct3);
-					$ct3 = preg_replace("/ host = (.*)/"," host = ".$hostname,$ct3);
-					$ct3 = preg_replace("/ username = (.*)/"," username = ".$username,$ct3);
-					$ct3 = preg_replace("/ password = (.*)/"," password = ".$password,$ct3);
-					$ct3 = preg_replace("/ name = (.*)/"," name = ".$database,$ct3);
+					$ct3 = preg_replace("/ adapter = (.*)/"," adapter = '".$type."'",$ct3);
+					$ct3 = preg_replace("/ host = (.*)/"," host = '".$hostname."'",$ct3);
+					$ct3 = preg_replace("/ username = (.*)/"," username = '".$username."'",$ct3);
+					$ct3 = preg_replace("/ password = (.*)/"," password = '".$password."'",$ct3);
+					$ct3 = preg_replace("/ name = (.*)/"," name = '".$database."'",$ct3);
 					$fp=fopen($file3,'w');
 					if(fwrite($fp,$ct3)){
 						$suc .= '<p class="suc">'.$Lang['msg_file_write' ].'：'.$file3.' [ '.$Lang['msg_suc' ].' ]</p>';
