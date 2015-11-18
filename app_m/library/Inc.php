@@ -4,29 +4,35 @@ use Phalcon\Mvc\User\Component;
 use Phalcon\Translate\Adapter\NativeArray;
 
 class Inc extends Component{
-	// Forward
+	/* Forward */
 	public function Forward($url){
 		$urlParts = explode('/', $url);
-		return $this->dispatcher->forward(array('controller' => $urlParts[0],'action' => @$urlParts[1]));
+		$C = $urlParts[0];
+		$A = @$urlParts[1];
+		unset($urlParts[0]);
+		unset($urlParts[1]);
+		return $this->dispatcher->forward(array('controller' =>$C,'action' =>$A,'params' => $urlParts));
 	}
 	
-	// AppURL
+	/* AppURL */
 	public function BaseUrl($url=''){
 		$base_url = $_SERVER['SERVER_PORT']=='443'?'https://':'http://';
-		$base_url .= $_SERVER['HTTP_HOST'].APP_NAME.$url;
-		echo $base_url;
+		$base_url .= $_SERVER['HTTP_HOST'].$url;
+		return $base_url;
 	}
-	
-	// IsMobile
+
+	/* IsMobile */
 	public function IsMobile(){
 		$useragent = $this->request->getUserAgent();
-		$user_agent = new Phalcon\Config\Adapter\Php(APP_PATH . 'config/user_agents.php');
-		foreach ($user_agent->mobiles as $key=>$val){
-			if(strpos($useragent, $key)){return TRUE;}else{return FALSE;}
+		$useragent = preg_match('|\(.*?\)|',$useragent,$matches)>0?$matches[0]:'';
+		$agent = new Phalcon\Config\Adapter\Php(APP_PATH . 'config/user_agents.php');
+		foreach ($agent->mobiles as $key=>$val){
+			if(strpos($useragent, $key)){return TRUE;}
 		}
+		return FALSE;
 	}
 	
-	// GetLang
+	/* Get Lang */
 	public function getLang($name=''){
 		if(!$name){return FALSE;}
 		$lang = $this->request->get('lang');
@@ -42,5 +48,12 @@ class Inc extends Component{
 		$file = __DIR__."/../language/".$lang."/".$name.".php";
 		if(file_exists($file)){require $file;}else{require __DIR__."/../language/en-US/".$name.".php";}
 		return new NativeArray(array('content'=>$lang));
+	}
+	
+	/* Key Highlight */
+	public function keyHH($str='', $phrase, $tag_open = '<span style="color:#FF6600">', $tag_close = '</span>'){
+		if ($str == ''){return FALSE;}
+		if ($phrase != ''){return preg_replace('/('.preg_quote($phrase, '/').')/i', $tag_open."\\1".$tag_close, $str);}
+		return $str;
 	}
 }

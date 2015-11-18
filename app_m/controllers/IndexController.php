@@ -7,7 +7,7 @@ class IndexController extends ControllerBase{
 			$this->view->setVar('LoadJS',array('index.js'));
 			$this->view->setTemplateAfter(APP_THEMES.'/main');
 		}else{
-			header('location: ../');
+			$this->response->redirect('../');
 		}
 	}
 }
