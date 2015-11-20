@@ -86,14 +86,8 @@ class ClasswebController extends ControllerBase{
 			// Edit
 			}elseif($type=='edit'){
 				$id = $this->request->getPost('id');
-				$data = ClassWeb::findFirst('id='.$id);
-				$data->fid = $this->request->getPost('fid');
-				$data->title = $this->request->getPost('title');
-				$data->url = $this->request->getPost('url');
-				$data->ico = $this->request->getPost('ico');
-				$data->remark = $this->request->getPost('remark');
-				$data->sort = $this->request->getPost('sort');
-				if($data->save()){
+				$data = ClassWeb::findFirst(array('id=:id:','bind'=>array('id'=>$id)));
+				if($data->save($this->request->getPost(),array('fid','title','url','ico','remark','sort'))){
 					$this->response->redirect('Result/suc/ClassWeb');
 				}else{
 					$this->response->redirect('Result/err');

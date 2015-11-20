@@ -74,17 +74,13 @@ class SysAdminController extends ControllerBase{
 			// Edit
 			}elseif($type=='edit'){
 				$id = $this->request->getPost('id');
-				$data = Admins::findFirst('id='.$id);
+				$data = Admins::findFirst(array('id=:id:','bind'=>array('id'=>$id)));
+				$post = $this->request->getPost();
 				$passwd = $this->request->getPost('passwd');
 				if(!empty($passwd)){
-					$data->password = md5($passwd);
+					$post['password'] = md5($passwd);
 				}
-				$data->state = $this->request->getPost('state');
-				$data->email = $this->request->getPost('email');
-				$data->name = $this->request->getPost('name');
-				$data->department = $this->request->getPost('department');
-				$data->position = $this->request->getPost('position');
-				if($data->save($post)){
+				if($data->save($post,array('password','state','email','name','department','position'))){
 					$this->response->redirect('Result/suc/SysAdmin');
 				}else{
 					$this->response->redirect('Result/err');

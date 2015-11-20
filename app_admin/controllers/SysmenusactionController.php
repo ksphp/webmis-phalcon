@@ -71,11 +71,8 @@ class SysMenusActionController extends ControllerBase{
 			// Edit
 			}elseif($type=='edit'){
 				$id = $this->request->getPost('id');
-				$data = MenuAction::findFirst('id='.$id);
-				$data->name = $this->request->getPost('name');
-				$data->perm = $this->request->getPost('perm');
-				$data->ico = $this->request->getPost('ico');
-				if($data->save()){
+				$data = MenuAction::findFirst(array('id=:id:','bind'=>array('id'=>$id)));
+				if($data->save($this->request->getPost(),array('name','perm','ico'))){
 					$this->response->redirect('Result/suc/SysMenusAction');
 				}else{
 					$this->response->redirect('Result/err');

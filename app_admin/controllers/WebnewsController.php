@@ -131,17 +131,8 @@ class WebNewsController extends ControllerBase{
 			// Edit
 			}elseif($type=='edit'){
 				$id = $this->request->getPost('id');
-				$data = WebNews::findFirst('id='.$id);
-				$data->class = $this->request->getPost('class');
-				$data->title = $this->request->getPost('title');
-				$data->sources = $this->request->getPost('sources');
-				$data->author = $this->request->getPost('author');
-				$data->ctime = $this->request->getPost('ctime');
-				$data->key = $this->request->getPost('key');
-				$data->summary = $this->request->getPost('summary');
-				$data->img = $this->request->getPost('img');
-				$data->content = $this->request->getPost('content');
-				if($data->save()){
+				$data = WebNews::findFirst(array('id=:id:','bind'=>array('id'=>$id)));
+				if($data->save($this->request->getPost(),array('class','title','sources','author','ctime','key','summary','img','content'))){
 					$this->response->redirect('Result/suc/WebNews');
 				}else{
 					$this->response->redirect('Result/err');
