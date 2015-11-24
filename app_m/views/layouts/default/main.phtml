@@ -20,7 +20,7 @@
 </head>
 <body class="body">
 <?php echo $this->getContent() ?>
-<div id="base_url" style="display: none;"><?php echo $this->inc->BaseUrl();?></div>
+<div id="base_url" style="display: none;"><?php echo $this->url->get();?></div>
 <?php if(@$LoadJS){ foreach($LoadJS as $val){
 	echo $this->tag->javascriptInclude("/themes/m/".APP_THEMES."/js/".$val);
 }} ?>
