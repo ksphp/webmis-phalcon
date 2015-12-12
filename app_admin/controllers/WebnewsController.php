@@ -102,9 +102,8 @@ class WebNewsController extends ControllerBase{
 		$fid = $this->request->getPost('fid');
 		$data = '';
 		$Menus = ClassWeb::find(array("fid='".$fid."'"));
-		$MLang = $this->inc->getLang('menus');
 		foreach ($Menus as $val){
-			$data[] = array('id'=>$val->id,'title'=>$MLang->_($val->title));
+			$data[] = array('id'=>$val->id,'title'=>$val->title);
 		}
 		return $this->response->setJsonContent($data);
 	}
