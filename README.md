@@ -72,6 +72,9 @@ server {
     location /admin/ {
         rewrite ^/admin/(.*)$ /admin/index.php?_url=/$1;
     }
+    location /app/ {
+        rewrite ^/app/(.*)$ /app/index.php?_url=/$1;
+    }
     location ~* ^/(webmis|upload)/(.+)$ {
         root $root_path;
     }
