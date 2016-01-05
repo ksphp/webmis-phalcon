@@ -37,7 +37,7 @@ class Inc extends Component{
 		$location = json_decode($location);
 		curl_close($ch);
 		if(isset($location->city)){
-			$Area = DataArea::findFirst("title='".$location->city."'");
+			// $Area = DataArea::findFirst("title='".$location->city."'");
 			if(@$Area->id){
 				$this->session->set('City',array('id'=>$Area->id,'name'=>$Area->title));
 			}else{

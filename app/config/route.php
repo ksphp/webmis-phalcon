@@ -5,11 +5,6 @@ use Phalcon\Mvc\Micro\Collection as MicroCollection;
 $app->get('/getUrl', function () use ($app) {
 	echo $app->url->get('');
 });
-// 获取城市
-$app->get('/getCity', function () use ($app) {
-	$city = $app->session->get('City');
-	return $app->response->setJsonContent($city);
-});
 
 /* 控制器  */
 $posts = new MicroCollection();
