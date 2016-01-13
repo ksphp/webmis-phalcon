@@ -31,13 +31,13 @@ class IndexController extends Controller{
 
 	/* Login */
 	public function loginAction(){
-		if ($this->request->isPost()) {
-			$uname = $this->request->getPost('uname');
-			$password = $this->request->getPost('passwd');
-			// User Data
-			$admin = Admins::findFirst(array("(uname = :uname: OR email = :uname:) AND password = :password:",
-				'bind' => array('uname' => $uname, 'password' => md5($password))));
-		print_r($admin);
+		echo 'login';
+//		if ($this->request->isPost()) {
+//			$uname = $this->request->getPost('uname');
+//			$password = $this->request->getPost('passwd');
+//			// User Data
+//			$admin = Admins::findFirst(array("(uname = :uname: OR email = :uname:) AND password = :password:",
+//				'bind' => array('uname' => $uname, 'password' => md5($password))));
 //			// Return JSON
 //			$lang = $this->inc->getLang('msg');
 //			if(!count($admin)){
@@ -52,7 +52,7 @@ class IndexController extends Controller{
 //				$this->loginLog('Disable',$uname);
 //				return $this->response->setJsonContent(array("status"=>"n","title"=>$lang->_("msg_title"),"msg"=>$lang->_("msg_isDisable"),"text"=>$lang->_('msg_auto_close')));
 //			}
-		}
+//		}
 	}
 	// Save Session
 	private function _registerSession(Admins $admin){
