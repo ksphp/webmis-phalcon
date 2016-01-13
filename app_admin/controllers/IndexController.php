@@ -32,11 +32,11 @@ class IndexController extends Controller{
 	/* Login */
 	public function loginAction(){
 		if ($this->request->isPost()) {
-			echo $uname = $this->request->getPost('uname');
+			$uname = $this->request->getPost('uname');
 			$password = $this->request->getPost('passwd');
-//			// User Data
-//			$admin = Admins::findFirst(array("(uname = :uname: OR email = :uname:) AND password = :password:",
-//				'bind' => array('uname' => $uname, 'password' => md5($password))));
+			// User Data
+			$admin = Admins::findFirst(array("(uname = :uname: OR email = :uname:) AND password = :password:",'bind' => array('uname' => $uname, 'password' => md5($password))));
+			print_r($admin);
 //			// Return JSON
 //			$lang = $this->inc->getLang('msg');
 //			if(!count($admin)){
