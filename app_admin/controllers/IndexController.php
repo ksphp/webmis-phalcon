@@ -37,20 +37,21 @@ class IndexController extends Controller{
 			// User Data
 			$admin = Admins::findFirst(array("(uname = :uname: OR email = :uname:) AND password = :password:",
 				'bind' => array('uname' => $uname, 'password' => md5($password))));
-			// Return JSON
-			$lang = $this->inc->getLang('msg');
-			if(!count($admin)){
-				//$this->loginLog('Error',$uname);
-				return $this->response->setJsonContent(array("status"=>"n","title"=>$lang->_("msg_title"),"msg"=>$lang->_("msg_isUser"),"text"=>$lang->_('msg_auto_close')));
-			}
-			if($admin->state=='1'){
-				$this->_registerSession($admin);
-				//$this->loginLog('Login',$uname);
-				return $this->response->setJsonContent(array("status"=>"y"));
-			}else{
-				//$this->loginLog('Disable',$uname);
-				return $this->response->setJsonContent(array("status"=>"n","title"=>$lang->_("msg_title"),"msg"=>$lang->_("msg_isDisable"),"text"=>$lang->_('msg_auto_close')));
-			}
+		print_r($admin);
+//			// Return JSON
+//			$lang = $this->inc->getLang('msg');
+//			if(!count($admin)){
+//				$this->loginLog('Error',$uname);
+//				return $this->response->setJsonContent(array("status"=>"n","title"=>$lang->_("msg_title"),"msg"=>$lang->_("msg_isUser"),"text"=>$lang->_('msg_auto_close')));
+//			}
+//			if($admin->state=='1'){
+//				$this->_registerSession($admin);
+//				$this->loginLog('Login',$uname);
+//				return $this->response->setJsonContent(array("status"=>"y"));
+//			}else{
+//				$this->loginLog('Disable',$uname);
+//				return $this->response->setJsonContent(array("status"=>"n","title"=>$lang->_("msg_title"),"msg"=>$lang->_("msg_isDisable"),"text"=>$lang->_('msg_auto_close')));
+//			}
 		}
 	}
 	// Save Session
