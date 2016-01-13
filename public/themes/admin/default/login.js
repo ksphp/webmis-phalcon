@@ -31,14 +31,13 @@ $(function(){
 			return false;
 		}else{
 			$.post($base_url+'index/login',{'uname':uname,'passwd':passwd,'is_mobile':is_mobile},function(data){
-				alert(data);
 				if(data.status == 'y'){
 					$.webmis.win('close','Welcome');
 				}else{
 					$.webmis.win('open',{title:data.title,content:data.msg,AutoClose:3,AutoCloseText:data.text});
 				}
 				return false;
-			});
+			},'json');
 		}
 		return false;
 	}
