@@ -31,10 +31,9 @@ class IndexController extends Controller{
 
 	/* Login */
 	public function loginAction(){
-		echo 'login';
-//		if ($this->request->isPost()) {
-//			$uname = $this->request->getPost('uname');
-//			$password = $this->request->getPost('passwd');
+		if ($this->request->isPost()) {
+			echo $uname = $this->request->getPost('uname');
+			$password = $this->request->getPost('passwd');
 //			// User Data
 //			$admin = Admins::findFirst(array("(uname = :uname: OR email = :uname:) AND password = :password:",
 //				'bind' => array('uname' => $uname, 'password' => md5($password))));
@@ -52,7 +51,7 @@ class IndexController extends Controller{
 //				$this->loginLog('Disable',$uname);
 //				return $this->response->setJsonContent(array("status"=>"n","title"=>$lang->_("msg_title"),"msg"=>$lang->_("msg_isDisable"),"text"=>$lang->_('msg_auto_close')));
 //			}
-//		}
+		}
 	}
 	// Save Session
 	private function _registerSession(Admins $admin){
