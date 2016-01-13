@@ -35,7 +35,7 @@ class IndexController extends Controller{
 			$uname = $this->request->getPost('uname');
 			$password = md5($this->request->getPost('passwd'));
 			// User Data
-			$admin = Admins::findFirst(array("(uname = :uname: OR email = :uname:) AND password = :password:",'bind' => array('uname' => $uname, 'password' => $password)));
+			$admin = Admins::findFirst(array("uname = :uname: AND password = :password:",'bind' => array('uname' => $uname, 'password' => $password)));
 			print_r($admin->id);
 //			// Return JSON
 //			$lang = $this->inc->getLang('msg');
