@@ -39,7 +39,7 @@ class IndexController extends Controller{
 				'bind' => array('uname' => $uname, 'password' => md5($password))));
 			// Return JSON
 			$lang = $this->inc->getLang('msg');
-			if(empty($admin)){
+			if(!count($admin)){
 				$this->loginLog('Error',$uname);
 				return $this->response->setJsonContent(array("status"=>"n","title"=>$lang->_("msg_title"),"msg"=>$lang->_("msg_isUser"),"text"=>$lang->_('msg_auto_close')));
 			}
