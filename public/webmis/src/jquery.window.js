@@ -2,8 +2,8 @@
 var openWin = function (options) {
 	var defaults = {
 		title:'信息提示',
-		width:240,
-		height:150,
+		width:280,
+		height:180,
 		content:'<section class="load"><span class="onLoad">&nbsp;</span><span class="text">Loading...</span></section>',
 		target:false,
 		overflow:false,
@@ -50,7 +50,7 @@ var openWin = function (options) {
 	
 	//窗口类型
 	if(options.overflow){
-		options.content = '<div id="WebMisWinCT" style="width: 100%; height: '+(options.height-32)+'px; overflow: auto;">'+options.content+'</div>';
+		options.content = '<div id="WebMisWinCT" style="width: 100%; height: '+(options.height-37)+'px; overflow: auto;">'+options.content+'</div>';
 	}else if(options.AutoClose){
 		options.content = '<div style="line-height: 30px; text-align: center; padding-top: 10px;">'+options.content;
 		options.content += '<br /><span style="color: #666;"><b id="WebMisWinIntNum" class="red">&nbsp;</b> '+options.AutoCloseText+'</span>';

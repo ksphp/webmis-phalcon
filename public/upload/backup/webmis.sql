@@ -41,7 +41,7 @@ CREATE TABLE `wmis_sys_admin` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
-INSERT INTO `wmis_sys_admin` (`id`, `uname`, `password`, `email`, `name`, `department`, `position`, `rtime`, `state`, `perm`) VALUES ('1', 'admin', '21232f297a57a5a743894a0e4a801fc3', 'admin@ksphp.com', 'Administrator', 'Department', 'Position', '2010-01-01 08:00:00', '1', '1:0 2:0 3:0 4:0 5:0 6:0 8:0 10:0 16:0 23:0 19:0 21:0 7:1 9:1 11:31 12:31 13:31 14:1 15:1 17:81 18:145 24:319 25:63 20:19 22:1');
+INSERT INTO `wmis_sys_admin` (`id`, `uname`, `password`, `email`, `name`, `department`, `position`, `rtime`, `state`, `perm`) VALUES ('1', 'admin', 'e10adc3949ba59abbe56e057f20f883e', 'admin@ksphp.com', 'Administrator', 'Department', 'Position', '2010-01-01 08:00:00', '1', '1:0 2:0 3:0 4:0 5:0 6:0 8:0 10:0 16:0 23:0 19:0 21:0 7:1 9:1 11:31 12:31 13:31 14:1 15:1 17:81 18:145 24:319 25:63 20:19 22:1');
 INSERT INTO `wmis_sys_admin` (`id`, `uname`, `password`, `email`, `name`, `department`, `position`, `rtime`, `state`, `perm`) VALUES ('2', 'webmis', '062d13422d6f79880a24408445f214ec', 'test@ksphp.com', 'Test', 'Test', 'Test', '2015-07-22 10:44:58', '1', '1:0 2:0 3:0 4:0 5:0 6:0 8:0 10:0 16:0 23:0 19:0 21:0 7:1 9:1 11:31 12:31 13:31 14:1 15:1 17:81 18:145 24:319 25:63 20:19 22:1');
 
 #
@@ -55,7 +55,7 @@ CREATE TABLE `wmis_sys_menus` (
   `fid` int(3) NOT NULL COMMENT 'FID',
   `title` varchar(32) NOT NULL COMMENT 'Name',
   `url` varchar(32) DEFAULT NULL COMMENT 'Controller',
-  `perm` varchar(6) DEFAULT NULL DEFAULT '0' COMMENT 'Authority',
+  `perm` varchar(6) DEFAULT '0' COMMENT 'Authority',
   `ico` varchar(16) DEFAULT NULL COMMENT 'ICON',
   `remark` varchar(30) DEFAULT NULL COMMENT 'Remark',
   `ctime` datetime DEFAULT NULL COMMENT 'Create time',
@@ -124,18 +124,20 @@ CREATE TABLE `wmis_web_news` (
   `class` varchar(24) DEFAULT NULL COMMENT 'Class',
   `title` varchar(36) NOT NULL COMMENT 'Title',
   `img` varchar(300) DEFAULT NULL COMMENT 'IMG',
-  `upload` text DEFAULT NULL COMMENT 'Upload',
+  `upload` text COMMENT 'Upload',
   `sources` varchar(24) DEFAULT NULL COMMENT 'Source',
   `author` varchar(12) DEFAULT NULL COMMENT 'Author',
   `uname` varchar(16) NOT NULL COMMENT 'UserName',
   `ctime` datetime DEFAULT NULL COMMENT 'Create time',
-  `click` int(6) DEFAULT NULL DEFAULT '0' COMMENT 'Click Num',
+  `click` int(6) DEFAULT '0' COMMENT 'Click Num',
   `key` varchar(64) DEFAULT NULL COMMENT 'Key',
   `audit` varchar(16) DEFAULT NULL COMMENT 'Audit',
   `atime` datetime DEFAULT NULL COMMENT 'Audit time',
-  `state` varchar(1) DEFAULT NULL DEFAULT '0' COMMENT 'State',
+  `state` varchar(1) DEFAULT '0' COMMENT 'State',
   `summary` varchar(300) DEFAULT NULL COMMENT 'Summary',
   `content` text,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
+INSERT INTO `wmis_web_news` (`id`, `class`, `title`, `img`, `upload`, `sources`, `author`, `uname`, `ctime`, `click`, `key`, `audit`, `atime`, `state`, `summary`, `content`) VALUES ('1', '', 'sdfsdf21', '1', '', 'KSPHP21', 'KSPHP1', 'admin', '2015-11-17 09:42:17', '0', '1', '', '', '0', '21', '<p>Welcome to use WEBMIS！</p>');
+INSERT INTO `wmis_web_news` (`id`, `class`, `title`, `img`, `upload`, `sources`, `author`, `uname`, `ctime`, `click`, `key`, `audit`, `atime`, `state`, `summary`, `content`) VALUES ('2', '', '2323432422', '2', '', 'KSPHP2', 'KSPHP2', 'webmis', '2015-11-20 17:03:58', '0', '2', '', '', '0', '2', '<p>Welcome to use WEBMIS！</p>');
