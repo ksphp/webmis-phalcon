@@ -32,13 +32,12 @@ input:focus, textarea:focus{box-shadow: 0 0 6px rgba(153, 153, 153, 0.7);}
 .body_login{background: url("images/bg.png") #2D2D2D center center;}
 .login_title{font-size: 38px; height: 50px; line-height: 50px; color: #DFE1E8; text-align: center; padding: 15px 0;}
 .login_body{overflow: hidden; border-top: #555 1px solid; border-bottom: #555 1px solid; background-color: #3D3D3D; padding: 24px 0;}
-.login_ct{max-width: 360px; margin: 0 auto; color: #DFE1E8;}
-.login_ct .login{width: 100%;}
-.login_ct .login .title{float: left; width: 80px; line-height: 25px; text-align: right; padding: 6px 0;}
-.login_ct .login .input_ct{line-height: 30px; padding: 6px 0 6px 80px;}
-.login_ct .login_input{border: none; width: 90%; height: 30px; line-height: 30px; padding: 0 5px; border: #222 1px solid; font-size: 1.5em; background-color: #DFE1E8;}
-.login_ct .sub{text-align: center; padding-top: 15px;}
-.login_ct .sub a{width: 92%; line-height: 42px; display: inline-block; background-color: #6FB737; color: #FFF; text-align: center; box-shadow: 1px 1px 2px #000; border-radius: 3px;}
+.login_ct{max-width: 320px; margin: 0 auto; color: #DFE1E8;}
+.login_ct li{padding: 6px 15px;}
+.login_ct li input{text-indent: 32px; width: 99%; height: 30px; line-height: 30px; border: #222 1px solid; font-size: 1.4em; background-color: #DFE1E8;}
+.login_ct li label em{position: absolute; z-index: 1; font-size: 20px; color: #999; margin: 6px 0 0 8px;}
+.login_ct .sub{padding-top: 15px; font-size: 1.2em;}
+.login_ct .sub a{width: 100%; line-height: 42px; display: inline-block; background-color: #6FB737; color: #FFF; text-align: center; box-shadow: 1px 1px 2px #000; border-radius: 3px;}
 .login_ct .sub a:hover{background-color: #390;}
 .login_copy{height: 50px; line-height: 20px; color: #CCC; text-align: center; padding: 15px 0; border-radius: 5px;}
 .login_copy a{color: #DFE1E8;}
@@ -69,11 +68,11 @@ input:focus, textarea:focus{box-shadow: 0 0 6px rgba(153, 153, 153, 0.7);}
 .left_menu em{color: #6FB737; font-size: 1.8em; text-shadow: 1px 1px 0px #FFF;}
 
 .menu_ct{display: none; position: fixed; z-index: 10; top: 0px; width: 100%; height: 100%; background-color: rgba(0,0,0,0.8); overflow-y: auto; padding: 1em 0;}
-.menu_ct .title a{color: #38B000; font-weight: bold; padding: 0 1em;}
-.menu_ct .title a em{color: #38B000;}
+.menu_ct .title a{color: #38B000; font-weight: bold; padding: 0 10px;}
+.menu_ct .title a em{color: #38B000; padding-right: 5px;}
 .menu_ct .list{font-size: 1.2em;}
 .menu_ct .list li{padding: 2px;}
-.menu_ct .list li a{color: #FFF; line-height: 2.2em; padding: 0 1em; display: block;}
+.menu_ct .list li a{color: #FFF; line-height: 2.2em; padding-left: 30px; display: block;}
 .menu_ct .list li a em{color: #FFF; padding-right: 5px;}
 
 .left_an1{background: #6FB737; color: #FFF; box-shadow: 0 0 2px #666;}
@@ -86,23 +85,23 @@ input:focus, textarea:focus{box-shadow: 0 0 6px rgba(153, 153, 153, 0.7);}
 .copy{line-height: 42px; color: #999; text-align: center; border-top: #CCC 1px solid;}
 
 /* Action */
-.action{line-height: 32px; display: inline-block; overflow: hidden; border: #DADCDF 1px solid; border-radius: 3px; box-shadow: 1px 1px 1px #EEE;
+.action{line-height: 32px; display: block; overflow: hidden; border: #DADCDF 1px solid; border-radius: 3px; box-shadow: 1px 1px 1px #EEE;
 	background:-moz-linear-gradient(top, #FFF,#F5F5F5);
 	background:-webkit-gradient(linear, 0 0, 0 100%, from(#FFF), to(#F5F5F5));
 	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#FFF,endColorstr=#F5F5F5,grandientType=1);
 }
-.action .title{float: left; display: block; font-weight: bold; border-right: #DADCDF 1px solid; background-color: #FFF; color: #999; padding: 0 10px; box-shadow: 0 1px 0 #DADCDF;}
+.action .title{display: block; font-weight: bold; background-color: #FFF; color: #999; padding: 0 10px; box-shadow: 0 1px 0 #DADCDF;}
 .action a{float: left; padding: 0 8px; display: inline-block; overflow: hidden; color: #333;}
-.action a em{float: left; font-size: 14px; position: relative;}
-.action a span{float: left; padding-left: 5px;}
+.action a em{float: left; font-size: 18px; position: relative;}
+.action a span{float: left; padding-left: 2px;}
 .action a:hover{background-color: #6FB737; color: #FFF;}
 .action a:hover em{color: #FFF;}
 
 /* Checkbox */
-#checkboxY,#checkboxN{font-family: 'icomoon'; font-style: normal; font-weight: normal; font-size: 14px; color: #6FB737; padding: 2px 2px;}
+#checkboxY,#checkboxN{font-family: 'iconfont'; font-style: normal; font-weight: normal; font-size: 18px; color: #6FB737;}
 #checkboxN{display: none;}
-#checkboxY:before {content: "\e637";}
-#checkboxN:before {content: "\e636";}
+#checkboxY:before {content: "\e6a5";}
+#checkboxN:before {content: "\e6a4";}
 
 /* Page */
 .page{height: 60px; line-height: 60px; text-align: center; color: #999;}
@@ -120,61 +119,47 @@ input:focus, textarea:focus{box-shadow: 0 0 6px rgba(153, 153, 153, 0.7);}
 .table_add h2{font-size: 14px; color: #666; padding: 5px 0; border-bottom: #DADCDF 1px solid;}
 .table_add h3{font-size: 12px; color: #999;}
 
+.table_show{width: 98%; border-collapse: collapse; margin: 0 auto; font-size: 13px;}
+.table_show td{padding: 8px 5px;}
+
 /* ICO */
-.ico-menus:before {content: "\e676";}
-.ico-qrcode:before {content: "\e608";}
+.ico-menus:before {content: "\e6a0";}
+.ico-qrcode:before {content: "\e696";}
 
-.ico-home:before {content: "\e620";}
-.ico-system:before {content: "\e621";}
-.ico-web:before {content: "\e62f";}
-.ico-logs:before {content: "\e606";}
-.ico-help:before {content: "\e663";}
+.ico-home:before {content: "\e69a";}
+.ico-system:before {content: "\e67f";}
+.ico-web:before {content: "\e692";}
+.ico-logs:before {content: "\e699";}
+.ico-help:before {content: "\e6a3";}
 
-.ico-disktop:before {content: "\e612";}
-.ico-user:before {content: "\e61a";}
-.ico-user1:before {content: "\e61b";}
-.ico-pwd:before {content: "\e61d";}
+.ico-disktop:before {content: "\e6a0";}
+.ico-user:before {content: "\e6a1";}
+.ico-user1:before {content: "\e690";}
+.ico-pwd:before {content: "\e698";}
 
-.ico-system1:before {content: "\e658";}
-.ico-system2:before {content: "\e622";}
-.ico-menu:before {content: "\e62a";}
-.ico-menuA:before {content: "\e637";}
-.ico-admin:before {content: "\e61a";}
-.ico-fileM:before {content: "\e677";}
+.ico-system1:before {content: "\e67f";}
+.ico-system2:before {content: "\e680";}
+.ico-menu:before {content: "\e68f";}
+.ico-menuA:before {content: "\e693";}
+.ico-admin:before {content: "\e6a2";}
+.ico-fileM:before {content: "\e69d";}
 
-.ico-logs1:before {content: "\e605";}
+.ico-logs1:before {content: "\e689";}
 
-.ico-db:before {content: "\e62b";}
+.ico-db:before {content: "\e682";}
 
-.ico-list:before {content: "\e637";}
-.ico-search:before {content: "\e65e";}
-.ico-add:before {content: "\e670";}
-.ico-edit:before {content: "\e600";}
-.ico-del:before {content: "\e636";}
-.ico-audit:before {content: "\e61f";}
-.ico-chart:before {content: "\e623";}
-.ico-exp:before {content: "\e62c";}
-.ico-imp:before {content: "\e62d";}
+.ico-list:before {content: "\e689";}
+.ico-search:before {content: "\e69b";}
+.ico-add:before {content: "\e68b";}
+.ico-edit:before {content: "\e684";}
+.ico-del:before {content: "\e68a";}
+.ico-audit:before {content: "\e693";}
+.ico-chart:before {content: "\e68d";}
+.ico-exp:before {content: "\e6a8";}
+.ico-imp:before {content: "\e6a7";}
 
 /* File */
-.ico-back:before {content: "\e65d";}
-.ico-addfolder:before {content: "\e65b";}
-.ico-addfile:before {content: "\e67d";}
-.ico-refresh:before {content: "\e664";}
-.ico-upload:before {content: "\e62d";}
-.ico-down:before {content: "\e62c";}
-.ico-fdel:before {content: "\e636";}
+.ico-back:before {content: "\e675";}
 
-.ico-folder:before {content: "\e65b";}
-.ico-file:before {content: "\e67d";}
-.ico-ico:before {content: "\e63e";}
-.ico-html:before {content: "\e649";}
-.ico-php:before {content: "\e649";}
-.ico-css:before {content: "\e64a";}
-.ico-img:before {content: "\e603";}
-.ico-pdf:before {content: "\e643";}
-.ico-zip:before {content: "\e647";}
-.ico-txt:before {content: "\e642";}
-.ico-doc:before {content: "\e645";}
-.ico-xls:before {content: "\e646";}
-.ico-odt:before {content: "\e644";}
+.ico-folder:before {content: "\e69d";}
+.ico-file:before {content: "\e69c";}

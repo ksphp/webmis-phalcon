@@ -25,15 +25,19 @@
 	<!--	Longin -->
 	<h1 id="webmisVersion" class="login_title">WebMIS</h1>
 	<div class="login_body">
-		<div class="login_ct">
-			<div class="login">
-				<div class="title"><?php echo $incLang->_('inc_uname');?>：</div>
-				<div class="input_ct"><input type="text" id="uname" class="login_input" value="webmis" /></div>
-				<div class="title"><?php echo $incLang->_('inc_passwd');?>：</div>
-				<div class="input_ct"><input type="password" id="passwd" class="login_input" value="ksphp.com" /></div>
-			</div>
-			<div class="sub"><a href="#" id="adminLogin"><?php echo $incLang->_('inc_login');?></a></div>
-		</div>
+		<ul class="login_ct">
+			<li>
+				<label><em class="ico-user"></em></label>
+				<input type="text" id="uname" value="webmis" />
+			</li>
+			<li>
+				<label><em class="ico-pwd"></em></label>
+				<input type="password" id="passwd" value="ksphp.com" />
+			</li>
+			<li class="sub">
+				<a href="#" id="adminLogin"><?php echo $incLang->_('inc_login');?></a>
+			</li>
+		</ul>
 	</div>
 	<div class="login_copy">
 		Copyright © <?php echo APP_COPY;?> All rights are reserved.<br>

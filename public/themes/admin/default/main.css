@@ -8,7 +8,7 @@ ul{list-style: none;}
 a{color: #007568; text-decoration: none;}
 a:hover{color: #FF6600;}
 textarea{border: #999 1px solid; background: #FFF;}
-input, textarea{box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;}
+input, textarea{}
 input:focus, textarea:focus{box-shadow: 0 0 6px rgba(153, 153, 153, 0.7);}
 
 /* INC */
@@ -18,6 +18,10 @@ input:focus, textarea:focus{box-shadow: 0 0 6px rgba(153, 153, 153, 0.7);}
 .inputText{float: left; height: 30px; line-height: 30px; padding: 0 10px 0 5px;}
 .Checkbox{float: left; margin-top: 8px;}
 .noDisplay{display: none;}
+
+.autocomplete-suggestions{border: #DADCDF 1px solid; background-color: #FFF; text-indent: 10px; font-size: 12px;}
+.autocomplete-suggestions div{padding: 6px 0;}
+.autocomplete-suggestions div:hover{background-color: #F4F5F9;}
 
 /* WebMIS */
 .Validform_checktip{float: left;}
@@ -75,11 +79,11 @@ input:focus, textarea:focus{box-shadow: 0 0 6px rgba(153, 153, 153, 0.7);}
 
 /* Left */
 .left_title{cursor: pointer; width: 90%; padding: 5px 0; font-size: 12px; color: #999; font-weight: bold; border-bottom: #CCC 1px solid; box-shadow: 0 1px 0 #FFF; margin: 0 auto;}
-.left_title em{color: #999; font-size: 14px; padding-right: 8px;}
+.left_title em{color: #999; font-size: 14px; padding-right: 5px;}
 .left_list{padding: 5px 0;}
-.left_list li a{font-size: 13px; display: block; overflow: hidden; padding: 5px 10px;}
-.left_list li a em{float: left; position: relative; font-size: 16px; margin-top: -1px;}
-.left_list li a span{float: left; padding-left: 8px;}
+.left_list li a{font-size: 13px; display: block; overflow: hidden; padding: 3px 10px;}
+.left_list li a em{float: left; position: relative; font-size: 18px;}
+.left_list li a span{float: left; padding-left: 5px;}
 
 .left_an1{color: #6FB737; background: #FFF; border-top: #CCC 1px solid; border-bottom: #CCC 1px solid;}
 .left_an1:hover{color: #6FB737;}
@@ -97,16 +101,16 @@ input:focus, textarea:focus{box-shadow: 0 0 6px rgba(153, 153, 153, 0.7);}
 }
 .action .title{float: left; display: block; font-weight: bold; border-right: #DADCDF 1px solid; background-color: #FFF; color: #999; padding: 0 10px; box-shadow: 0 1px 0 #DADCDF;}
 .action a{float: left; padding: 0 8px; display: inline-block; overflow: hidden; color: #333;}
-.action a em{float: left; font-size: 14px; position: relative;}
-.action a span{float: left; padding-left: 5px;}
+.action a em{float: left; font-size: 18px; position: relative;}
+.action a span{float: left; padding-left: 2px;}
 .action a:hover{background-color: #6FB737; color: #FFF;}
 .action a:hover em{color: #FFF;}
 
 /* Checkbox */
-#checkboxY,#checkboxN{font-family: 'icomoon'; font-style: normal; font-weight: normal; font-size: 14px; color: #6FB737; padding: 2px 2px;}
+#checkboxY,#checkboxN{font-family: 'iconfont'; font-style: normal; font-size: 18px; color: #6FB737;}
 #checkboxN{display: none;}
-#checkboxY:before {content: "\e637";}
-#checkboxN:before {content: "\e636";}
+#checkboxY:before {content: "\e6a5";}
+#checkboxN:before {content: "\e6a4";}
 
 /* Page */
 .page{height: 60px; line-height: 60px; text-align: center; color: #999;}
@@ -124,61 +128,50 @@ input:focus, textarea:focus{box-shadow: 0 0 6px rgba(153, 153, 153, 0.7);}
 .table_add h2{font-size: 14px; color: #666; padding: 5px 0; border-bottom: #DADCDF 1px solid;}
 .table_add h3{font-size: 12px; color: #999;}
 
+.table_show{width: 98%; border-collapse: collapse; margin: 0 auto; font-size: 13px;}
+.table_show td{padding: 4px 5px;}
+.table_show .tright{color: #999;}
+.table_show .sub{padding: 30px;}
+.table_show .an{padding: 8px 30px; boroer: #999 1px solid; background-color: #F2F2F2; color: #666; border-radius: 3px; box-shadow: 1px 1px 2px #999;}
+.table_show .an:hover{background-color: #6FB737; color: #FFF;}
+
 /* ICO */
-.ico-qrcode:before {content: "\e608";}
+.ico-qrcode:before {content: "\e696";}
 
-.ico-home:before {content: "\e620";}
-.ico-system:before {content: "\e621";}
-.ico-web:before {content: "\e62f";}
-.ico-logs:before {content: "\e606";}
-.ico-help:before {content: "\e663";}
+.ico-home:before {content: "\e69a";}
+.ico-system:before {content: "\e67f";}
+.ico-web:before {content: "\e692";}
+.ico-logs:before {content: "\e699";}
+.ico-help:before {content: "\e6a3";}
 
-.ico-disktop:before {content: "\e612";}
-.ico-user:before {content: "\e61a";}
-.ico-user1:before {content: "\e61b";}
-.ico-pwd:before {content: "\e61d";}
+.ico-disktop:before {content: "\e6a0";}
+.ico-user:before {content: "\e6a1";}
+.ico-user1:before {content: "\e690";}
+.ico-pwd:before {content: "\e698";}
 
-.ico-system1:before {content: "\e658";}
-.ico-system2:before {content: "\e622";}
-.ico-menu:before {content: "\e62a";}
-.ico-menuA:before {content: "\e637";}
-.ico-admin:before {content: "\e61a";}
-.ico-fileM:before {content: "\e677";}
+.ico-system1:before {content: "\e67f";}
+.ico-system2:before {content: "\e680";}
+.ico-menu:before {content: "\e68f";}
+.ico-menuA:before {content: "\e693";}
+.ico-admin:before {content: "\e6a2";}
+.ico-fileM:before {content: "\e69d";}
 
-.ico-logs1:before {content: "\e605";}
+.ico-logs1:before {content: "\e689";}
 
-.ico-db:before {content: "\e62b";}
+.ico-db:before {content: "\e682";}
 
-.ico-list:before {content: "\e637";}
-.ico-search:before {content: "\e65e";}
-.ico-add:before {content: "\e670";}
-.ico-edit:before {content: "\e600";}
-.ico-del:before {content: "\e636";}
-.ico-audit:before {content: "\e61f";}
-.ico-chart:before {content: "\e623";}
-.ico-exp:before {content: "\e62c";}
-.ico-imp:before {content: "\e62d";}
+.ico-list:before {content: "\e689";}
+.ico-search:before {content: "\e69b";}
+.ico-add:before {content: "\e68b";}
+.ico-edit:before {content: "\e684";}
+.ico-del:before {content: "\e68a";}
+.ico-audit:before {content: "\e693";}
+.ico-chart:before {content: "\e68d";}
+.ico-exp:before {content: "\e6a8";}
+.ico-imp:before {content: "\e6a7";}
 
 /* File */
-.ico-back:before {content: "\e65d";}
-.ico-addfolder:before {content: "\e65b";}
-.ico-addfile:before {content: "\e67d";}
-.ico-refresh:before {content: "\e664";}
-.ico-upload:before {content: "\e62d";}
-.ico-down:before {content: "\e62c";}
-.ico-fdel:before {content: "\e636";}
+.ico-back:before {content: "\e675";}
 
-.ico-folder:before {content: "\e65b";}
-.ico-file:before {content: "\e67d";}
-.ico-ico:before {content: "\e63e";}
-.ico-html:before {content: "\e649";}
-.ico-php:before {content: "\e649";}
-.ico-css:before {content: "\e64a";}
-.ico-img:before {content: "\e603";}
-.ico-pdf:before {content: "\e643";}
-.ico-zip:before {content: "\e647";}
-.ico-txt:before {content: "\e642";}
-.ico-doc:before {content: "\e645";}
-.ico-xls:before {content: "\e646";}
-.ico-odt:before {content: "\e644";}
-
+.ico-folder:before {content: "\e69d";}
+.ico-file:before {content: "\e69c";}
