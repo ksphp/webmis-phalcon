@@ -124,7 +124,7 @@ input:focus, textarea:focus{box-shadow: 0 0 6px rgba(153, 153, 153, 0.7);}
 
 /* ICO */
 .ico-menus:before {content: "\e6a0";}
-.ico-qrcode:before {content: "\e696";}
+.ico-qrcode:before {content: "\e6ab";}
 
 .ico-home:before {content: "\e69a";}
 .ico-system:before {content: "\e67f";}

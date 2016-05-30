@@ -2,7 +2,7 @@ var IsMobile;
 var moWidth;
 var moHeight;
 $(function (){
-	$.webmis.inc({files:[$webmis_plugin+'jquery/jquery.touchwipe.min.js']});
+	$.webmis.inc({files:[$webmis_plugin+'jquery/jquery.touchSwipe.min.js']});
 	navMove();
 	menuShow();
 	// All or Not all
@@ -43,21 +43,24 @@ function navMove(){
 	var li = $("#Nav li").length;
 	var li_w = (W/N-1)*li;
 	// Sliding Around
-	$('#Nav').touchwipe({
-		wipeLeft: function() {
+	$('#Nav').swipe({
+		swipeLeft: function() {
 			var W = $(window).width();
-			var left = parseInt($('#Nav').css('left'));
+			var left = $('#Nav').css('left');
+			if(left=='auto'){left=0;}else{left = parseInt(left);}
 			//限制
 			if(-left+W < li_w){left = left-W;}
 			$('#Nav').animate({'left':left});
 		},
-		wipeRight: function() {
+		swipeRight: function() {
 			var W = $(window).width();
-			var left = parseInt($('#Nav').css('left'));
+			var left = $('#Nav').css('left');
+			if(left=='auto'){left=0;}else{left = parseInt(left);}
 			//限制
 			if(left+W <= 0){left = left+W;}
 			$('#Nav').animate({'left':left});
-		}
+		},
+		threshold:30
 	});
 }
 function menuShow(){
@@ -76,8 +79,8 @@ function menuShow(){
 		Menu.css({'left':0-W}).show().animate({'left':0});
 	});
 //	//右滑动
-//	$("#ctBody").touchwipe({
-//		wipeRight: function() {
+//	$("#ctBody").swipe({
+//		swipeRight: function() {
 //			var W = $(window).width();
 //			Menu.css({'left':0-W}).show().animate({'left':0});
 //		},
@@ -85,8 +88,8 @@ function menuShow(){
 //		preventDefaultEvents: false
 //	});
 	//左滑动
-	Menu.touchwipe({
-		wipeLeft: function() {
+	Menu.swipe({
+		swipeLeft: function() {
 			var W = $(window).width();
 			Menu.animate({'left':0-W},function(){
 				$(this).hide();

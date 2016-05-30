@@ -136,7 +136,7 @@ input:focus, textarea:focus{box-shadow: 0 0 6px rgba(153, 153, 153, 0.7);}
 .table_show .an:hover{background-color: #6FB737; color: #FFF;}
 
 /* ICO */
-.ico-qrcode:before {content: "\e696";}
+.ico-qrcode:before {content: "\e6ab";}
 
 .ico-home:before {content: "\e69a";}
 .ico-system:before {content: "\e67f";}
