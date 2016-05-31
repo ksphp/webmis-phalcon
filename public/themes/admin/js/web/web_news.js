@@ -87,9 +87,9 @@ $(function(){
 		// Content
 		$.post($base_url+'WebNews/chart',function(data){
 			// Create
-			$('#WebMisWinCT').html('<div style="padding: 50px;"><canvas id="myChart" style="width: 100%; height: 100%;"></canvas>');
-			var ctx = $("#myChart").get(0).getContext("2d");
-			var myNewChart = new Chart(ctx).Pie(data);
+			$('#WebMisWinCT').html('<div style="padding: 50px;"><canvas id="myChart"></canvas>');
+			var ctx = $("#myChart");
+			var myNewChart = new Chart(ctx,{type: 'pie',data:data});
 		},'json');
 		return false;
 	});

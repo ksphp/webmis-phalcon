@@ -89,12 +89,14 @@ class WebNewsController extends ControllerBase{
 		$color = array('#6FB737','#3A90BA','#3D3D3D');
 		$Class = ClassWeb::find('fid=0');
 		foreach ($Class as $val){
-			//echo $val->id;
 			$num = count(WebNews::find('class=":'.$val->id.':"'));
 			$num = $num?$num:'1';
-			$data[] = array('value'=>$num, 'color'=>$color[$i], 'label'=>$val->title);
+			$label[] = $val->title;
+			$data[] = $num;
+			$bgcolor[] = $color[$i];
 			$i++;
 		}
+		$data = array('labels'=>$label,'datasets'=>array(array('data'=>$data,'backgroundColor'=>$bgcolor)));
 		return $this->response->setJsonContent($data);
 	}
 	/* GetMenu */

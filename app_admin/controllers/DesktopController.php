@@ -32,24 +32,18 @@ class DesktopController extends ControllerBase{
 			'labels'=>$name,
 			'datasets'=>array(
 				array(
-					'label'=>'My First dataset',
-					'fillColor'=>'rgba(220,220,220,0.2)',
-					'strokeColor'=>'rgba(220,220,220,1)',
-					'pointColor'=>'rgba(220,220,220,1)',
-					'pointStrokeColor'=>'#fff',
-					'pointHighlightFill'=>'#fff',
-					'pointHighlightStroke'=>'rgba(220,220,220,1)',
-					'data'=>$data2
+					'label'=>'Now year log',
+					'backgroundColor'=>'rgba(151,187,205,0.2)',
+					'borderColor'=>'rgba(151,187,205,1)',
+					'borderWidth'=>2,
+					'data'=>$data1
 				),
 				array(
-					'label'=>'My Second dataset',
-					'fillColor'=>'rgba(151,187,205,0.2)',
-					'strokeColor'=>'rgba(151,187,205,1)',
-					'pointColor'=>'rgba(151,187,205,1)',
-					'pointStrokeColor'=>'#fff',
-					'pointHighlightFill'=>'#fff',
-					'pointHighlightStroke'=>'rgba(151,187,205,1)',
-					'data'=>$data1
+					'label'=>'Last year log',
+					'backgroundColor'=>'rgba(220,220,220,0.2)',
+					'borderColor'=>'rgba(220,220,220,1)',
+					'borderWidth'=>2,
+					'data'=>$data2
 				)
 			)
 		);

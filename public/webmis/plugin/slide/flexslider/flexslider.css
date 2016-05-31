@@ -1,5 +1,5 @@
 /*
- * jQuery FlexSlider v2.5.0
+ * jQuery FlexSlider v2.6.1
  * http://www.woothemes.com/flexslider/
  *
  * Copyright 2012 WooThemes
@@ -7,7 +7,7 @@
  * http://www.gnu.org/licenses/gpl-2.0.html
  *
  * Contributing author: Tyler Smith (@mbmufffin)
- * 
+ *
  */
 /* ====================================================================================================================
  * FONT-FACE
@@ -197,7 +197,7 @@ html[xmlns] .flexslider .slides {
 .flex-control-nav {
   width: 100%;
   position: absolute;
-  bottom: -40px;
+  bottom: -5px;
   text-align: center;
 }
 .flex-control-nav li {
@@ -272,4 +272,3 @@ html[xmlns] .flexslider .slides {
     opacity: 1;
     right: 10px;
   }
-}
