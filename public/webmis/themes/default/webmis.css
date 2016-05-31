@@ -79,14 +79,8 @@ em{color: #6FB737; font-family: 'iconfont'; font-style: normal; font-size: 16px;
 }
 
 /* Validform */
-.Validform_checktip{overflow:hidden; color:#999; font-size:12px; padding-left: 25px; display: none;}
-.Validform_right{color:#71b83d; background:url(images/right.png) no-repeat 5px center; display: inline-block;}
-.Validform_wrong{color:red; white-space:nowrap; background:url(images/error.png) no-repeat 5px center; display: inline-block;}
-.Validform_loading{padding-left:20px; background:url(images/onLoad.gif) no-repeat left center;}
-.Validform_error{background-color:#FFF;}
-#Validform_msg{color:#7d8289; font: 12px/1.5 tahoma, arial, \5b8b\4f53, sans-serif; width:280px; box-shadow:2px 2px 3px #aaa; background:#fff; position:absolute; top:0px; right:50px; z-index:99999; display:none;}
-#Validform_msg .iframe{position:absolute; left:0px; top:-1px; z-index:-1;}
-#Validform_msg .Validform_title{line-height:25px; height:25px; text-align:left; font-weight:bold; padding:0 8px; color:#fff; position:relative; background-color:#000;}
-#Validform_msg a.Validform_close:link,#Validform_msg a.Validform_close:visited{line-height:22px; position:absolute; right:8px; top:0px; color:#fff; text-decoration:none;}
-#Validform_msg a.Validform_close:hover{color:#cc0;}
-#Validform_msg .Validform_info{padding:8px;border:1px solid #000; border-top:none; text-align:left;}
+input.error {border: #FF6600 1px solid;}
+label.error{color: #FF6600; padding-left: 10px;}
+label.error em{padding-right: 2px;}
+label.error em:before {color: #FF6600; content: "\e6a9"; font-size: 14px;}
+label.error.checked em:before {content: "\e6a4";}
