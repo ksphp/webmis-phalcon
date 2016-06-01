@@ -4,7 +4,7 @@
  */
 $.extend( $.validator.messages, {
 	required: "<em></em>必填",
-	remote: "<em></em>修正",
+	remote: "<em></em>错误",
 	email: "<em></em>请输入邮件地址",
 	url: "<em></em>请输入网址",
 	date: "<em></em>请输入日期",
@@ -14,10 +14,10 @@ $.extend( $.validator.messages, {
 	creditcard: "<em></em>请输入信用卡号码",
 	equalTo: "<em></em>不一致",
 	extension: "<em></em>请输入后缀",
-	maxlength: $.validator.format( "<em></em>最大{0}个字符" ),
-	minlength: $.validator.format( "<em></em>最小{0}个字符" ),
+	maxlength: $.validator.format( "<em></em>最多{0}位字符" ),
+	minlength: $.validator.format( "<em></em>最少{0}位字符" ),
 	rangelength: $.validator.format( "<em></em>请输入{0}~{1}位字符" ),
-	range: $.validator.format( "<em></em>{0}~{1} 位数字" ),
-	max: $.validator.format( "<em></em>不大于 {0} 的数值" ),
-	min: $.validator.format( "<em></em>不小于 {0} 的数值" )
+	range: $.validator.format( "<em></em>{0}~{1}的数值" ),
+	max: $.validator.format( "<em></em>不大于{0}的数值" ),
+	min: $.validator.format( "<em></em>不小于{0}的数值" )
 } );
