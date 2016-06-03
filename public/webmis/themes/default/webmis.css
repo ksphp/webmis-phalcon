@@ -81,6 +81,6 @@ em{color: #6FB737; font-family: 'iconfont'; font-style: normal; font-size: 16px;
 /* Validform */
 input.error{border: #FF6600 1px solid;}
 label.error{color: #FF6600; padding-left: 3px; font-size: 12px;}
-label.error em{padding-left: 3px;}
-label.error em:before {color: #FF6600; content: "\e6a9"; font-size: 14px;}
-label.error.checked em:before {content: "\e6a4";}
+label.error em{padding-left: 3px; font-size: 14px;}
+label.error em:before {content: "\e6a9"; color: #FF6600;}
+label.checked .suc:before {content: "\e6aa"; color: #6FB737;}

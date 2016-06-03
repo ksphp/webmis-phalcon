@@ -1,6 +1,5 @@
 $(function(){
 	$.webmis.inc({files:[
-		$webmis_plugin + 'form/Validform.min.js',
 		$webmis_plugin + 'chart/Chart.min.js',
 		$webmis_plugin + 'edit/tinymce/tinymce.min.js',
 		$webmis_plugin + 'date/datepicker/datepicker.js',
@@ -25,7 +24,7 @@ $(function(){
 	});
 /* Add */
 	$('#ico-add').click(function(){
-		if(!IsMobile){moWidth = 840; moHeight= 560;}
+		if(!IsMobile){moWidth = 840; moHeight= 570;}
 		$.webmis.win('open',{title:$(this).text(),width:moWidth,height:moHeight,overflow:true});
 		// Content
 		$.get($base_url+'WebNews/add',function(data){
@@ -39,7 +38,7 @@ $(function(){
 	$('#ico-edit').click(function(){
 		var id = $('#listBG').webmis('GetInputID');
 		if(id){
-			if(!IsMobile){moWidth = 840; moHeight= 560;}
+			if(!IsMobile){moWidth = 840; moHeight= 570;}
 			$.webmis.win('open',{title:$(this).text(),width:moWidth,height:moHeight,overflow:true});
 			// Content
 			$.post($base_url+'WebNews/edit',{'id':id},function(data){
@@ -114,18 +113,7 @@ function newsForm($type){
 	// Editr
 	TinyMce('#tinymce',Lang);
 	// Validform
-	$("#Form").Validform({ajaxPost:true,tiptype:2,
-		callback:function(data){
-			$.Hidemsg();
-			if(data.status=="y"){
-				var url = $('#getUrl').text();
-				$.webmis.win('close',data.url+url);
-			}else{
-				$.webmis.win('close');
-				$.webmis.win('open',{title:data.title,content:'<b class="red">'+data.msg+'</b>',AutoClose:3,AutoCloseText:data.text});
-			}
-		}
-	});
+	formValidSub();
 }
 /* Editr */
 function TinyMce(obj,Lang){

@@ -29,6 +29,7 @@ $lang = array(
 	"inc_page_next" => "Next",
 	"inc_page_last" => "Last",
 	/* Form */
+	"inc_form_info" => "Please fill in the following form!",
 	"inc_form_null" => "Not Null",
 	"inc_form_pass" => "Pass",
 	"inc_form_suc" => "Success",

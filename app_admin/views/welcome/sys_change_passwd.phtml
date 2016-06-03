@@ -4,7 +4,11 @@
 		<td colspan="2"><h2><?php echo $Menus['Ctitle'];?></h2></td>
 	</tr>
 	<tr>
-		<td class="tright" width="120"><?php echo $Lang->_('sys_pwd_uname');?>:</td>
+		<td class="tright" width="120"></td>
+		<td id="textVal"><span class="c2"><?php echo $incLang->_('inc_form_info');?></span></td>
+	</tr>
+	<tr>
+		<td class="tright"><?php echo $Lang->_('sys_pwd_uname');?>:</td>
 		<td>
 			<b id="uname"><?php echo @$_SESSION['Admin']['uname']; ?></b>
 			<input type="hidden" name="uname" value="<?php echo @$_SESSION['AdminInfo']['uname']; ?>" />
@@ -13,22 +17,19 @@
 	<tr>
 		<td class="tright"><?php echo $Lang->_('sys_pwd_pwd');?>:</td>
 		<td>
-			<input type="password" name="password" class="input" style="width: 180px;" datatype="*6-16" errormsg="6~16<?php echo $incLang->_('inc_form_char');?>" sucmsg="<?php echo $incLang->_('inc_form_pass');?>" nullmsg="<?php echo $incLang->_('inc_form_null');?>" />
-			<span class="Validform_checktip"></span>
+			<input type="password" name="password" class="input" style="width: 180px;" rangelength="[6,16]" required />
 		</td>
 	</tr>
 	<tr>
 		<td class="tright"><?php echo $Lang->_('sys_pwd_pwd1');?>:</td>
 		<td>
-			<input type="password" name="passwd" class="input" style="width: 180px;" datatype="*6-16" errormsg="6~16<?php echo $incLang->_('inc_form_char');?>" sucmsg="<?php echo $incLang->_('inc_form_pass');?>" nullmsg="<?php echo $incLang->_('inc_form_null');?>" />
-			<span class="Validform_checktip"></span>
+			<input type="password" id="passwd" name="passwd" class="input" style="width: 180px;" rangelength="[6,16]" required />
 		</td>
 	</tr>
 	<tr>
 		<td class="tright"><?php echo $Lang->_('sys_pwd_pwd2');?>:</td>
 		<td>
-			<input type="password" class="input" style="width: 180px;" datatype="*" recheck="passwd" errormsg="<?php echo $incLang->_('inc_form_pwd');?>" sucmsg="<?php echo $incLang->_('inc_form_pass');?>" nullmsg="<?php echo $incLang->_('inc_form_null');?>" />
-			<span class="Validform_checktip"></span>
+			<input type="password" class="input" style="width: 180px;" equalTo="#passwd" required />
 		</td>
 	</tr>
 	<tr>

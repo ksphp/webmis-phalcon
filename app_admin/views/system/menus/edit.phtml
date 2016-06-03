@@ -1,7 +1,11 @@
 <form action="<?php echo $this->url->get('SysMenus/Data/edit');?>" method="post" id="Form">
 <table class="table_add">
 	<tr>
-		<td class="tright" width="90"><?php echo $Lang->_('sys_menu_class');?>:</td>
+		<td class="tright" width="90"></td>
+		<td id="textVal"><span class="c2"><?php echo $incLang->_('inc_form_info');?></span></td>
+	</tr>
+	<tr>
+		<td class="tright"><?php echo $Lang->_('sys_menu_class');?>:</td>
 		<td>
 			<input type="text" id="menus_fid" name="fid" class="input" style="width: 40px;" value="<?php echo $Edit->fid;?>" />
 			<span id="menusClass">&nbsp;</span>
@@ -10,32 +14,29 @@
 	<tr>
 		<td class="tright"><?php echo $Lang->_('sys_menu_name');?>:</td>
 		<td>
-			<input type="text" name="title" class="input" style="width: 70%;" value="<?php echo $Edit->title;?>" datatype="*2-32" errormsg="2~32<?php echo $incLang->_('inc_form_char');?>" sucmsg="<?php echo $incLang->_('inc_form_pass');?>" nullmsg="<?php echo $incLang->_('inc_form_null');?>" />
-			<span class="Validform_checktip"></span>
+			<input type="text" name="title" class="input" style="width: 70%;" value="<?php echo $Edit->title;?>" rangelength="[2,32]" required />
 		</td>
 	</tr>
 	<tr>
 		<td class="tright"><?php echo $Lang->_('sys_menu_cname');?>:</td>
 		<td>
-			<input type="text" name="url" class="input" style="width: 70%;" value="<?php echo $Edit->url;?>" datatype="*0-32" errormsg="0~32<?php echo $incLang->_('inc_form_char');?>" sucmsg="<?php echo $incLang->_('inc_form_pass');?>" nullmsg="<?php echo $incLang->_('inc_form_null');?>" />
-			<span class="Validform_checktip"></span>
+			<input type="text" name="url" class="input" style="width: 70%;" value="<?php echo $Edit->url;?>" rangelength="[0,32]" />
 		</td>
 	</tr>
 	<tr>
 		<td class="tright"><?php echo $Lang->_('sys_menu_icon');?>:</td>
 		<td>
-			<input type="text" name="ico" class="input" style="width: 30%;" value="<?php echo $Edit->ico;?>" datatype="*0-16" errormsg="0~16<?php echo $incLang->_('inc_form_char');?>" sucmsg="<?php echo $incLang->_('inc_form_pass');?>" nullmsg="<?php echo $incLang->_('inc_form_null');?>" />
-			<span class="Validform_checktip"></span>
+			<input type="text" name="ico" class="input" style="width: 30%;" value="<?php echo $Edit->ico;?>" rangelength="[0,16]" />
 		</td>
 	</tr>
 	<tr>
 		<td class="tright"><?php echo $Lang->_('sys_menu_perm');?>:</td>
-		<td>
+		<td id="PermVal">
 <?php
 foreach($Action as $val){
 	$title = $MLang->_($val->name);
 ?>
-			<input type="checkbox" id="PermVal" class="Checkbox" value="<?php echo $val->perm;?>" <?php echo intval($Edit->perm)&intval($val->perm)?'checked':'';?> /><span class="inputText"><?php echo $title;?></span>
+			<input type="checkbox" class="Checkbox" value="<?php echo $val->perm;?>" <?php echo intval($Edit->perm)&intval($val->perm)?'checked':'';?> /><span class="inputText"><?php echo $title;?></span>
 <?php }?>
 			<input type="hidden" id="menus_perm" name="perm" value="0" />
 		</td>

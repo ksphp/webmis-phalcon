@@ -10,7 +10,7 @@ $.extend( $.validator.messages, {
 	date: "<em></em>请输入日期",
 	dateISO: "<em></em>请输入日期 (YYYY-MM-DD)",
 	number: "<em></em>请输入数字",
-	digits: "<em></em>只能输入数字",
+	digits: "<em></em>只能数字",
 	creditcard: "<em></em>请输入信用卡号码",
 	equalTo: "<em></em>不一致",
 	extension: "<em></em>请输入后缀",

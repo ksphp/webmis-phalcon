@@ -1,5 +1,4 @@
 $(function (){
-	$.webmis.inc({files:[$webmis_plugin+'form/Validform.min.js']});
 /* Index */
 	$('#listBG').webmis('TableOddColor');
 /* Search */
@@ -17,7 +16,7 @@ $(function (){
 /* Add */
 	$('#ico-add').click(function(){
 		if(!IsMobile){moWidth = 450;}
-		$.webmis.win('open',{title:$(this).text(),width:moWidth,height:260});
+		$.webmis.win('open',{title:$(this).text(),width:moWidth,height:300});
 		// Content
 		$.get($base_url+'SysMenusAction/add',function(data){
 			$.webmis.win('load',data);
@@ -30,7 +29,7 @@ $(function (){
 		var id = $('#listBG').webmis('GetInputID');
 		if(id){
 			if(!IsMobile){moWidth = 450;}
-			$.webmis.win('open',{title:$(this).text(),width:moWidth,height:260});
+			$.webmis.win('open',{title:$(this).text(),width:moWidth,height:300});
 			// Content
 			$.post($base_url+'SysMenusAction/edit',{'id':id},function(data){
 				$.webmis.win('load',data);
@@ -58,24 +57,5 @@ $(function (){
 /* Form validation */
 function menusForm(){
 	$('#Sub').webmis('SubClass');
-	//  Validation
-	$("#Form").Validform({ajaxPost:true,tiptype:2,
-		beforeCheck:function(data){
-			var perm=0;
-			$('#PermVal:checked').each(function(){
-				perm += parseInt($(this).val());
-			});
-			$('#menus_perm').val(perm);
-		},
-		callback:function(data){
-			$.Hidemsg();
-			if(data.status=="y"){
-				var url = $('#getUrl').text();
-				$.webmis.win('close',data.url+url);
-			}else{
-				$.webmis.win('close');
-				$.webmis.win('open',{title:data.title,content:'<b class="red">'+data.msg+'</b>',AutoClose:3,AutoCloseText:data.text});
-			}
-		}
-	});
+	formValidSub();
 }

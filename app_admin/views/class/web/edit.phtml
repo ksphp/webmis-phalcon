@@ -1,7 +1,11 @@
 <form action="<?php echo $this->url->get('ClassWeb/Data/edit');?>" method="post" id="Form">
 <table class="table_add">
 	<tr>
-		<td class="width tright"><?php echo $Lang->_('class_web_class');?>:</td>
+		<td class="tright" width="90"></td>
+		<td id="textVal"><span class="c2"><?php echo $incLang->_('inc_form_info');?></span></td>
+	</tr>
+	<tr>
+		<td class="tright"><?php echo $Lang->_('class_web_class');?>:</td>
 		<td>
 			<input type="text" id="menus_fid" name="fid" class="input" style="width: 40px;" value="<?php echo $Edit->fid;?>" />
 			<span id="newsClass">&nbsp;</span>
@@ -10,15 +14,19 @@
 	<tr>
 		<td class="tright"><?php echo $Lang->_('class_web_title');?>:</td>
 		<td>
-			<input type="text" name="title" class="input" style="width: 60%;" value="<?php echo $Edit->title;?>" datatype="*2-16" errormsg="2~16<?php echo $incLang->_('inc_form_char');?>" sucmsg="<?php echo $incLang->_('inc_form_pass');?>" nullmsg="<?php echo $incLang->_('inc_form_null');?>" />
-			<span class="Validform_checktip"></span>
+			<input type="text" name="title" class="input" style="width: 60%;" value="<?php echo $Edit->title;?>" rangelength="[2,16]" required />
+		</td>
+	</tr>
+	<tr>
+		<td class="tright"><?php echo $Lang->_('class_web_en');?>:</td>
+		<td>
+			<input type="text" name="en" class="input" style="width: 60%;" value="<?php echo $Edit->en;?>" rangelength="[2,16]" required />
 		</td>
 	</tr>
 	<tr>
 		<td class="tright"><?php echo $Lang->_('class_web_url');?>:</td>
 		<td>
-			<input type="text" name="url" class="input" style="width: 60%;" value="<?php echo $Edit->url;?>" datatype="*2-32" errormsg="2~32<?php echo $incLang->_('inc_form_char');?>" sucmsg="<?php echo $incLang->_('inc_form_pass');?>" nullmsg="<?php echo $incLang->_('inc_form_null');?>" />
-			<span class="Validform_checktip"></span>
+			<input type="text" name="url" class="input" style="width: 60%;" value="<?php echo $Edit->url;?>" rangelength="[2,64]" required />
 		</td>
 	</tr>
 	<tr>
@@ -30,7 +38,7 @@
 	<tr>
 		<td class="tright"><?php echo $Lang->_('class_web_remark');?>:</td>
 		<td>
-			<textarea name="remark" style="width: 95%; height: 120px;"><?php echo $Edit->remark;?></textarea>
+			<textarea name="remark" style="width: 95%; height: 80px;"><?php echo $Edit->remark;?></textarea>
 		</td>
 	</tr>
 	<tr>

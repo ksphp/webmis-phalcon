@@ -8,7 +8,6 @@ ul{list-style: none;}
 a{color: #007568; text-decoration: none;}
 a:hover{color: #FF6600;}
 textarea{border: #999 1px solid; background: #FFF;}
-input, textarea{}
 input:focus, textarea:focus{box-shadow: 0 0 6px rgba(153, 153, 153, 0.7);}
 
 /* INC */
@@ -24,7 +23,8 @@ input:focus, textarea:focus{box-shadow: 0 0 6px rgba(153, 153, 153, 0.7);}
 .autocomplete-suggestions div:hover{background-color: #F4F5F9;}
 
 /* WebMIS */
-.Validform_checktip{float: left;}
+label.error{float: left; line-height: 20px; padding: 5px 0;}
+label.error em{float: left; padding-left: 5px;}
 
 /* Lang */
 .lang_ct{position: absolute; z-index: 10; cursor: pointer; width: 140px; height: 28px; line-height: 28px; background-color: rgba(0,0,0,0.5); color: #FFF; text-align: center; border-radius: 5px; top: 10px; right: 10px;}

@@ -26,6 +26,40 @@ function noSelect(){
 	},'json');
 }
 
+/* Form Valid Submit */
+function formValidSub(obj) {
+	// Loading
+	$.webmis.inc({files:[
+		$webmis_plugin + 'form/jquery.validate.min.js',
+		$webmis_plugin + 'form/jquery.form.js'
+	]});
+	// Lang
+	var lang = $('#getLang').text();
+	if(lang=='zh-CN'){
+		$.webmis.inc({files:[$webmis_plugin + 'form/jquery.validate.zh.js']});
+	}
+	// 校验
+	if(obj==null){obj='#Form';}
+	$(obj).validate({
+		success: function(label) {
+			label.html('<em class="suc"></em>').addClass("checked");
+		},
+		submitHandler: function(form){
+			$(form).ajaxSubmit({
+				dataType:'json', 
+				success:function(data) {
+					if(data.status=='y'){
+						var url = $('#getUrl').text();
+						$.webmis.win('open',{title:data.title,content:'<b class="green"><em></em>'+data.msg+'</b>',target:data.url+url,AutoClose:3,AutoCloseText:data.text});
+					}else{
+						$('#textVal').html('<span class="err"><em></em>'+data.msg+'</span>');
+					}
+				}
+			});
+		}
+	});
+}
+
 // Slide Nav
 function navMove(){
 	$("#Nav .an1").css({'color':'#FFF'});

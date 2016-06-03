@@ -22,7 +22,7 @@ class SysChangePasswdController extends ControllerBase{
 		if($this->request->isPost()){
 			$pwd1 = $this->request->getPost('password');
 			$pwd2 = $this->request->getPost('passwd');
-			$data = Admins::findFirst(array('id=:id:','bind'=>array('id'=>@$_SESSION['Admin']['id'])));
+			$data = Admins::findFirst(array('id=:id:','bind'=>array('id'=>$this->session->get('Admin')['id'])));
 			if(md5($pwd1)==$data->password){
 				$data->password = md5($pwd2);
 				if($data->save()){

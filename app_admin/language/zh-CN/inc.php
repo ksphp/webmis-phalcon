@@ -29,6 +29,7 @@ $lang = array(
 	"inc_page_next" => "下一页",
 	"inc_page_last" => "末页",
 	/* 表单 */
+	"inc_form_info" => "请认真填写以下表单内容!",
 	"inc_form_null" => "不能为空",
 	"inc_form_pass" => "通过",
 	"inc_form_suc" => "成功",

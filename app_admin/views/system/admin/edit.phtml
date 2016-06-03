@@ -1,7 +1,11 @@
 <form action="<?php echo $this->url->get('SysAdmin/Data/edit');?>" method="post" id="Form">
 <table class="table_add">
 	<tr>
-		<td class="tright" width="90"><?php echo $Lang->_('sys_admin_state');?>:</td>
+		<td class="tright" width="90"></td>
+		<td id="textVal"><span class="c2"><?php echo $incLang->_('inc_form_info');?></span></td>
+	</tr>
+	<tr>
+		<td class="tright"><?php echo $Lang->_('sys_admin_state');?>:</td>
 		<td>
 			<select name="state">
 				<option value="1" <?php echo $Edit->state==1?'':'selected';?> ><?php echo $Lang->_('sys_admin_enable');?></option>
@@ -19,14 +23,13 @@
 	<tr>
 		<td class="tright"><?php echo $Lang->_('sys_admin_npwd');?>:</td>
 		<td>
-			<input type="password" name="passwd" class="input" style="width: 80%;" />
+			<input type="password" name="passwd" class="input" style="width: 80%;" rangelength="[6,16]" required />
 		</td>
 	</tr>
 	<tr>
 		<td class="tright"><?php echo $Lang->_('sys_admin_email');?>:</td>
 		<td>
-			<input type="text" name="email" class="input" value="<?php echo $Edit->email;?>" style="width: 80%;" datatype="e" errormsg="<?php echo $incLang->_('inc_form_format');?>" sucmsg="<?php echo $incLang->_('inc_form_pass');?>" nullmsg="<?php echo $incLang->_('inc_form_null');?>" />
-			<span class="Validform_checktip"></span>
+			<input type="text" name="email" class="input" value="<?php echo $Edit->email;?>" style="width: 80%;" rangelength="[6,32]" email="true" required />
 		</td>
 	</tr>
 	<tr>

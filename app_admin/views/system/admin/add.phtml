@@ -1,7 +1,11 @@
 <form action="<?php echo $this->url->get('SysAdmin/Data/add');?>" method="post" id="Form">
 <table class="table_add">
 	<tr>
-		<td class="width tright"><?php echo $Lang->_('sys_admin_state');?>:</td>
+		<td class="tright" width="90"></td>
+		<td id="textVal"><span class="c2"><?php echo $incLang->_('inc_form_info');?></span></td>
+	</tr>
+	<tr>
+		<td class="tright"><?php echo $Lang->_('sys_admin_state');?>:</td>
 		<td>
 			<select name="state">
 				<option value="1"><?php echo $Lang->_('sys_admin_enable');?></option>
@@ -13,29 +17,25 @@
 	<tr>
 		<td class="tright"><?php echo $Lang->_('sys_admin_uname');?>:</td>
 		<td>
-			<input type="text" name="uname" class="input" style="width: 40%;" datatype="*3-16" errormsg="3~16<?php echo $incLang->_('inc_form_char');?>" sucmsg="<?php echo $incLang->_('inc_form_pass');?>" nullmsg="<?php echo $incLang->_('inc_form_null');?>" />
-			<span class="Validform_checktip"></span>
+			<input type="text" name="uname" class="input" style="width: 40%;" rangelength="[3,16]" required />
 		</td>
 	</tr>
 	<tr>
 		<td class="tright"><?php echo $Lang->_('sys_admin_pwd1');?>:</td>
 		<td>
-			<input type="password" name="passwd" class="input" style="width: 70%;" datatype="*6-16" errormsg="6~16<?php echo $incLang->_('inc_form_char');?>" sucmsg="<?php echo $incLang->_('inc_form_pass');?>" nullmsg="<?php echo $incLang->_('inc_form_null');?>" />
-			<span class="Validform_checktip"></span>
+			<input type="password" id="passwd" name="passwd" class="input" style="width: 70%;" rangelength="[6,16]" required />
 		</td>
 	</tr>
 	<tr>
 		<td class="tright"><?php echo $Lang->_('sys_admin_pwd2');?>:</td>
 		<td>
-			<input type="password" class="input" style="width: 70%;" datatype="*" recheck="passwd" errormsg="<?php echo $incLang->_('inc_form_pwd');?>" sucmsg="<?php echo $incLang->_('inc_form_pass');?>" nullmsg="<?php echo $incLang->_('inc_form_null');?>" />
-			<span class="Validform_checktip"></span>
+			<input type="password" class="input" style="width: 70%;" rangelength="[6,16]" equalto="#passwd" required />
 		</td>
 	</tr>
 	<tr>
 		<td class="tright"><?php echo $Lang->_('sys_admin_email');?>:</td>
 		<td>
-			<input type="text" name="email" class="input" style="width: 70%;" datatype="e" errormsg="<?php echo $incLang->_('inc_form_format');?>" sucmsg="<?php echo $incLang->_('inc_form_pass');?>" nullmsg="<?php echo $incLang->_('inc_form_null');?>" />
-			<span class="Validform_checktip"></span>
+			<input type="text" name="email" class="input" style="width: 70%;" rangelength="[6,32]" email="true" required />
 		</td>
 	</tr>
 	<tr>

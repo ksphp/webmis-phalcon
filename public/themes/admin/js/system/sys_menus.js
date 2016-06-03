@@ -1,5 +1,4 @@
 $(function (){
-	$.webmis.inc({files:[$webmis_plugin+'form/Validform.min.js']});
 /* Index */
 	$('#listBG').webmis('TableOddColor');
 /* Search */
@@ -60,25 +59,14 @@ $(function (){
 /* Form validation */
 function menusForm(){
 	$('#Sub').webmis('SubClass');
-	//  Validation
-	$("#Form").Validform({ajaxPost:true,tiptype:2,
-		beforeCheck:function(data){
-			var perm=0;
-			$('#PermVal:checked').each(function(){
-				perm += parseInt($(this).val());
-			});
-			$('#menus_perm').val(perm);
-		},
-		callback:function(data){
-			$.Hidemsg();
-			if(data.status=="y"){
-				var url = $('#getUrl').text();
-				$.webmis.win('close',data.url+url);
-			}else{
-				$.webmis.win('close');
-				$.webmis.win('open',{title:data.title,content:'<b class="red">'+data.msg+'</b>',AutoClose:3,AutoCloseText:data.text});
-			}
-		}
+	formValidSub();
+	// Get Perm
+	$('#PermVal .Checkbox').click(function() {
+		var perm=0;
+		$('#PermVal .Checkbox:checked').each(function(){
+			perm += parseInt($(this).val());
+		});
+		$('#menus_perm').val(perm);
 	});
 }
 

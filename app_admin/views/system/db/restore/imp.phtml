@@ -1,9 +1,13 @@
 <form action="<?php echo $this->url->get('SysDBRestore/Data/import');?>" method="post" id="Form">
 <table class="table_add">
 	<tr>
-		<td class="tright" width="60"><?php echo $Lang->_('sys_db_restore_file');?>:</td>
+		<td class="tright" width="60"></td>
+		<td id="textVal"><span class="c2"><?php echo $incLang->_('inc_form_info');?></span></td>
+	</tr>
+	<tr>
+		<td class="tright"><?php echo $Lang->_('sys_db_restore_file');?>:</td>
 		<td>
-			<input type="text" name="file" class="input" style="width: 80%;" value="<?php echo $File;?>" />
+			<input type="text" name="file" class="input" style="width: 80%;" value="<?php echo $File;?>" rangelength="[2,30]" required />
 		</td>
 	</tr>
 	<tr>

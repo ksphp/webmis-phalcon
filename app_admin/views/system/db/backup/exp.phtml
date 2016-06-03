@@ -1,10 +1,13 @@
 <form action="<?php echo $this->url->get('SysDBBackup/Data/export');?>" method="post" id="Form">
 <table class="table_add">
 	<tr>
-		<td class="tright" width="90"><?php echo $Lang->_('sys_db_backup_name');?>:</td>
+		<td class="tright" width="90"></td>
+		<td id="textVal"><span class="c2"><?php echo $incLang->_('inc_form_info');?></span></td>
+	</tr>
+	<tr>
+		<td class="tright"><?php echo $Lang->_('sys_db_backup_name');?>:</td>
 		<td>
-			<input type="text" name="name" class="input" style="width: 60%;" value="<?php echo $Fname;?>" datatype="*2-30" errormsg="2~30<?php echo $incLang->_('inc_form_char');?>" sucmsg="<?php echo $incLang->_('inc_form_pass');?>" nullmsg="<?php echo $incLang->_('inc_form_null');?>" />
-			<span class="Validform_checktip"></span>
+			<input type="text" name="name" class="input" style="width: 60%;" value="<?php echo $Fname;?>" rangelength="[2,30]" required />
 		</td>
 	</tr>
 	<tr>

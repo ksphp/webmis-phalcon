@@ -1,5 +1,4 @@
 $(function (){
-	$.webmis.inc({files:[$webmis_plugin+'form/Validform.min.js']});
 /* Index */
 	$('#listBG').webmis('TableOddColor');
 /* Search */
@@ -16,7 +15,7 @@ $(function (){
 	});
 /* Add */
 	$('#ico-add').click(function(){
-		if(!IsMobile){moWidth = 620; moHeight= 480;}
+		if(!IsMobile){moWidth = 620; moHeight= 520;}
 		$.webmis.win('open',{title:$(this).text(),width:moWidth,height:moHeight,overflow:true});
 		// Content
 		$.get($base_url+'SysAdmin/add',function(data){
@@ -29,7 +28,7 @@ $(function (){
 	$('#ico-edit').click(function(){
 		var id = $('#listBG').webmis('GetInputID');
 		if(id){
-			if(!IsMobile){moWidth = 620; moHeight= 420;}
+			if(!IsMobile){moWidth = 620; moHeight= 460;}
 			$.webmis.win('open',{title:$(this).text(),width:moWidth,height:moHeight,overflow:true});
 			// Content
 			$.post($base_url+'SysAdmin/edit',{'id':id},function(data){
@@ -58,26 +57,12 @@ $(function (){
 /* Form validation */
 function menusForm(){
 	$('#Sub').webmis('SubClass');
-	//  Validation
-	$("#Form").Validform({ajaxPost:true,tiptype:2,
-		beforeCheck:function(data){
-			var perm=0;
-			$('#PermVal:checked').each(function(){
-				perm += parseInt($(this).val());
-			});
-			$('#menus_perm').val(perm);
-		},
-		callback:function(data){
-			$.Hidemsg();
-			if(data.status=="y"){
-				var url = $('#getUrl').text();
-				$.webmis.win('close',data.url+url);
-			}else{
-				$.webmis.win('close');
-				$.webmis.win('open',{title:data.title,content:'<b class="red">'+data.msg+'</b>',AutoClose:3,AutoCloseText:data.text});
-			}
-		}
-	});
+	formValidSub();
+	// Email
+	$.validator.addMethod("email", function(value, element){
+		var email =  /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+		return this.optional(element) || email.test(value);
+	}, "<em></em>请输入正确邮箱");
 }
 
 /* Edit Perm */

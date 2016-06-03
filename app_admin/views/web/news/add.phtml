@@ -6,7 +6,11 @@
 <table class="table_add">
 	<tbody id="newsBody0">
 	<tr>
-		<td class="tright" width="80"><?php echo $Lang->_('web_news_class');?>:</td>
+		<td class="tright" width="80"></td>
+		<td id="textVal"><span class="c2"><?php echo $incLang->_('inc_form_info');?></span></td>
+	</tr>
+	<tr>
+		<td class="tright"><?php echo $Lang->_('web_news_class');?>:</td>
 		<td>
 			<div id="newsClass">&nbsp;</div>
 			<input type="hidden" id="menus_fid" name="class" value="" />
@@ -15,23 +19,21 @@
 	<tr>
 		<td class="tright"><?php echo $Lang->_('web_news_title');?>:</td>
 		<td>
-			<input type="text" name="title" class="input" style="width: 80%;" datatype="*2-36" errormsg="2~36<?php echo $incLang->_('inc_form_char');?>" sucmsg="<?php echo $incLang->_('inc_form_pass');?>" nullmsg="<?php echo $incLang->_('inc_form_null');?>" />
-			<span class="Validform_checktip"></span>
+			<input type="text" name="title" class="input" style="width: 80%;" rangelength="[2,36]" required />
 		</td>
 	</tr>
 	<tr>
 		<td class="tright"><?php echo $Lang->_('web_news_source');?>:</td>
 		<td>
-			<input type="text" name="sources" class="input" style="width: 30%;" value="KSPHP" datatype="*2-24" errormsg="2~24<?php echo $incLang->_('inc_form_char');?>" sucmsg="<?php echo $incLang->_('inc_form_pass');?>" nullmsg="<?php echo $incLang->_('inc_form_null');?>" />
+			<input type="text" name="sources" class="input" style="width: 30%;" value="KSPHP" rangelength="[2,24]" required />
 			<span class="inputText"><?php echo $Lang->_('web_news_author');?>:</span>
-			<input type="text" name="author" class="input" style="width: 20%;" value="KSPHP" datatype="*2-12" errormsg="2~12<?php echo $incLang->_('inc_form_char');?>" sucmsg="<?php echo $incLang->_('inc_form_pass');?>" nullmsg="<?php echo $incLang->_('inc_form_null');?>" />
-			<span class="Validform_checktip"></span>
+			<input type="text" name="author" class="input" style="width: 20%;" value="KSPHP" rangelength="[2,12]" required />
 		</td>
 	</tr>
 	<tr>
 		<td class="tright"><?php echo $Lang->_('web_news_ctime');?>:</td>
 		<td>
-			<input type="text" name="ctime" id="datepicker" class="input" style="width: 130px;" value="<?php echo date('Y-m-d H:i:s');?>" />
+			<input type="text" name="ctime" id="datepicker" class="input" style="width: 140px;" value="<?php echo date('Y-m-d H:i:s');?>" />
 		</td>
 	</tr>
 	<tr>
@@ -43,7 +45,7 @@
 	</tr>
 	<tr>
 		<td class="tright"><?php echo $Lang->_('web_news_summary');?>:</td>
-		<td><textarea name="summary" style="width: 95%; height: 120px;" maxlength="300"></textarea><span class="inputText c2">1~300<?php echo $incLang->_('inc_form_char');?></span></td>
+		<td><textarea name="summary" style="float: left; width: 95%; height: 120px;" maxlength="300"></textarea><span class="inputText c2">1~300<?php echo $incLang->_('inc_form_char');?></span></td>
 	</tr>
 	<tr>
 		<td class="tright"><?php echo $Lang->_('web_news_img');?>:</td>

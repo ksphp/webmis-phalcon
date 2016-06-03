@@ -8,7 +8,6 @@ ul{list-style: none;}
 a{color: #007568; text-decoration: none;}
 a:hover{color: #FF6600;}
 textarea{border: #999 1px solid; background: #FFF;}
-input, textarea{box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;}
 input:focus, textarea:focus{box-shadow: 0 0 6px rgba(153, 153, 153, 0.7);}
 
 /* INC */
@@ -19,8 +18,13 @@ input:focus, textarea:focus{box-shadow: 0 0 6px rgba(153, 153, 153, 0.7);}
 .Checkbox{float: left; margin-top: 8px;}
 .noDisplay{display: none;}
 
+.autocomplete-suggestions{border: #DADCDF 1px solid; background-color: #FFF; text-indent: 10px; font-size: 12px;}
+.autocomplete-suggestions div{padding: 6px 0;}
+.autocomplete-suggestions div:hover{background-color: #F4F5F9;}
+
 /* WebMIS */
-.Validform_checktip{float: left;}
+label.error{float: left; line-height: 20px; padding: 5px 0;}
+label.error em{float: left; padding-left: 5px;}
 
 /* Lang */
 .lang_ct{position: absolute; z-index: 10; cursor: pointer; width: 100%; height: 36px; line-height: 36px; top: 0px; background-color: rgba(0,0,0,0.7); color: #FFF; font-size: 14px; text-align: center; box-shadow: 1px 1px 3px #333;}
@@ -124,7 +128,7 @@ input:focus, textarea:focus{box-shadow: 0 0 6px rgba(153, 153, 153, 0.7);}
 
 /* ICO */
 .ico-menus:before {content: "\e6a0";}
-.ico-qrcode:before {content: "\e6ab";}
+.ico-qrcode:before {content: "\e696";}
 
 .ico-home:before {content: "\e69a";}
 .ico-system:before {content: "\e67f";}

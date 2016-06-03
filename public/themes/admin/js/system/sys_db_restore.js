@@ -1,5 +1,4 @@
 $(function (){
-	$.webmis.inc({files:[$webmis_plugin+'form/Validform.min.js']});
 /* Index */
 	$('#listBG').webmis('TableOddColor');
 /* Import */
@@ -7,7 +6,7 @@ $(function (){
 		var id = $('#listBG').webmis('GetInputID');
 		if(id){
 			if(!IsMobile){moWidth = 450;}
-			$.webmis.win('open',{title:$(this).text(),width:moWidth,height:200});
+			$.webmis.win('open',{title:$(this).text(),width:moWidth,height:240});
 			$.post($base_url+'SysDBRestore/imp',{'file':id},function(data){
 				$.webmis.win('load',data);
 				impForm();
@@ -33,16 +32,5 @@ $(function (){
 /* Form validation */
 function impForm(){
 	$('#Sub').webmis('SubClass');
-	// Validation
-	$("#Form").Validform({ajaxPost:true,tiptype:2,
-		callback:function(data){
-			$.Hidemsg();
-			if(data.status=="y"){
-				$.webmis.win('close',data.url);
-			}else{
-				$.webmis.win('close');
-				$.webmis.win('open',{title:data.title,content:'<b class="red">'+data.msg+'</b>',AutoClose:3,AutoCloseText:data.text});
-			}
-		}
-	});
+	formValidSub();
 }
