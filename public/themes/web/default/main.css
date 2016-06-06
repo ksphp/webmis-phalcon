@@ -3,7 +3,7 @@
 body,div,span,ul,li,table,tr,td,input,a,p,h1,h2,h3,h4,dl{margin: 0; padding: 0;}
 body,textarea{font-family: arial; font-size: 12px;}
 header,section,footer,aside{display: block;}
-img{border: none;}
+img{border: none; vertical-align: top;}
 ul{list-style: none;}
 a{color: #007568; text-decoration: none;}
 a:hover{color: #FF6600;}
