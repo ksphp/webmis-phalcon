@@ -1,4 +1,4 @@
-<?php $isWrite = is_writable(__DIR__.'/../../../config/config.ini');?>
+<?php $isWrite = is_writable(__DIR__.'/../../../config/config.php');?>
 <form action="<?php echo $this->url->get('SysConfig/Data');?>" method="post" id="Form">
 <table class="table_add">
 	<tr>
@@ -7,7 +7,7 @@
 	<tr>
 		<td class="tright" width="90"><?php echo $Lang->_('sys_config_file');?>：</td>
 		<td id="textVal">
-			<div class="<?php echo $isWrite?'suc':'err';?>"><em></em><b>config/config.ini</b></div>
+			<div class="<?php echo $isWrite?'suc':'err';?>"><em></em><b>config/config.php</b></div>
 		</td>
 	</tr>
 	<?php if($isWrite){?>

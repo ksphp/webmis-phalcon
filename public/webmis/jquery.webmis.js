@@ -40,8 +40,9 @@ $(function(){
 			}
 		},
 		// Win
-		win: function (effect,options) {
-			var file = $webmis_src + 'jquery.window.js';
+		win: function (effect,options,path) {
+			if(!path){path='';}
+			var file = path + $webmis_src + 'jquery.window.js';
 			if ($('script[src="'+file+'"]').length == 0) {$.webmis.inc({files:[file]});}
 			//APP
 			switch (effect){

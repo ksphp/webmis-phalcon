@@ -2,7 +2,7 @@
 error_reporting(E_ALL);
 
 use Phalcon\Mvc\Application;
-use Phalcon\Config\Adapter\Ini as ConfigIni;
+use Phalcon\Config\Adapter\Php as ConfigPHP;
 
 try {
 	define('APP_PATH', realpath('..') . '/app_web/');
@@ -10,7 +10,7 @@ try {
 	/**
 	 * Read the configuration
 	 */
-	$config = new ConfigIni(APP_PATH . 'config/config.ini');
+	$config = new ConfigPHP(APP_PATH . 'config/config.php');
 
 	/**
 	 * Auto-loader configuration

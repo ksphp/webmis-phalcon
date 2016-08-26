@@ -2,11 +2,11 @@
 error_reporting(E_ALL);
 
 use Phalcon\Mvc\Micro;
-use Phalcon\Config\Adapter\Ini as ConfigIni;
+use Phalcon\Config\Adapter\Php as ConfigPHP;
 
 try {
 	define('APP_PATH', realpath('../..') . '/app/');
-	$config = new ConfigIni(APP_PATH . 'config/config.ini');
+	$config = new ConfigPHP(APP_PATH . 'config/config.php');
 	require APP_PATH .'config/loader.php';
 	require APP_PATH .'config/services.php';
 	/* 创建APP */

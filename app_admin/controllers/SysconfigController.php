@@ -1,5 +1,5 @@
 <?php
-use Phalcon\Config\Adapter\Ini as ConfigIni;
+use Phalcon\Config\Adapter\Php as ConfigPHP;
 class SysConfigController extends ControllerBase{
 	// Index
 	public function indexAction(){
@@ -12,7 +12,7 @@ class SysConfigController extends ControllerBase{
 		$File->file_root = $Root.'/webmis/plugin/jquery/';
 		$this->view->setVar('Jquery',$File->lists());
 
-		$config = new ConfigIni(APP_PATH . 'config/config.ini');
+		$config = new ConfigPHP(APP_PATH . 'config/config.php');
 		$this->view->setVar('Config',$config);
 		$this->view->setVar('Lang',$this->inc->getLang('system/sys_config'));
 		$this->view->setVar('LoadJS', array('system/sys_config.js'));
@@ -59,12 +59,12 @@ class SysConfigController extends ControllerBase{
 		}
 	}
 	private function _Cinfig($data=''){
-		$file = __DIR__.'/../config/config.ini';
+		$file = __DIR__.'/../config/config.php';
 		$ct = @file_get_contents($file);
 		if($ct){
 			foreach ($data as $key=>$val){
-				$pat = "/ ".$key." = (.*)/";
-				$rep = " ".$key." = '".$val."'";
+				$pat = "/\t\t'".$key."'=>(.*)/";
+				$rep = "\t\t'".$key."'=>'".$val."',";
 				$ct = preg_replace($pat,$rep,$ct);
 			}
 			/* Write */
