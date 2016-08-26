@@ -23,13 +23,19 @@
 	<tr>
 		<td class="tright"><?php echo $Lang->_('sys_admin_npwd');?>:</td>
 		<td>
-			<input type="password" name="passwd" class="input" style="width: 80%;" rangelength="[6,16]" required />
+			<input type="password" name="passwd" class="input" style="width: 80%;" rangelength="[6,16]" />
 		</td>
 	</tr>
 	<tr>
 		<td class="tright"><?php echo $Lang->_('sys_admin_email');?>:</td>
 		<td>
 			<input type="text" name="email" class="input" value="<?php echo $Edit->email;?>" style="width: 80%;" rangelength="[6,32]" email="true" required />
+		</td>
+	</tr>
+	<tr>
+		<td class="tright"><?php echo $Lang->_('sys_admin_tel');?>:</td>
+		<td>
+			<input type="text" name="tel" class="input" value="<?php echo $Edit->tel;?>" style="width: 80%;" tel="true" required />
 		</td>
 	</tr>
 	<tr>

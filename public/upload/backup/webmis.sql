@@ -32,6 +32,7 @@ CREATE TABLE `wmis_sys_admin` (
   `uname` varchar(16) NOT NULL COMMENT 'UserName',
   `password` varchar(32) NOT NULL COMMENT 'PassWord',
   `email` varchar(32) NOT NULL COMMENT 'Email',
+  `tel` varchar(11) NOT NULL COMMENT 'Tel',
   `name` varchar(24) DEFAULT NULL COMMENT 'Name',
   `department` varchar(12) DEFAULT NULL COMMENT 'Department',
   `position` varchar(12) DEFAULT NULL COMMENT 'Position',
@@ -41,8 +42,8 @@ CREATE TABLE `wmis_sys_admin` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
-INSERT INTO `wmis_sys_admin` (`id`, `uname`, `password`, `email`, `name`, `department`, `position`, `rtime`, `state`, `perm`) VALUES ('1', 'admin', 'e10adc3949ba59abbe56e057f20f883e', 'admin@ksphp.com', 'Administrator', 'Department', 'Position', '2010-01-01 08:00:00', '1', '1:0 2:0 3:0 4:0 5:0 6:0 8:0 10:0 16:0 23:0 19:0 21:0 7:1 9:1 11:31 12:31 13:31 14:1 15:1 17:81 18:145 24:319 25:63 20:19 22:1');
-INSERT INTO `wmis_sys_admin` (`id`, `uname`, `password`, `email`, `name`, `department`, `position`, `rtime`, `state`, `perm`) VALUES ('2', 'webmis', '062d13422d6f79880a24408445f214ec', 'test@ksphp.com', 'Test', 'Test', 'Test', '2015-07-22 10:44:58', '1', '1:0 2:0 3:0 4:0 5:0 6:0 8:0 10:0 16:0 23:0 19:0 21:0 7:1 9:1 11:31 12:31 13:31 14:1 15:1 17:81 18:145 24:319 25:63 20:19 22:1');
+INSERT INTO `wmis_sys_admin` (`id`, `uname`, `password`, `email`, `tel`, `name`, `department`, `position`, `rtime`, `state`, `perm`) VALUES ('1', 'admin', 'e10adc3949ba59abbe56e057f20f883e', 'admin@ksphp.com', '15088886666', 'Administrator', 'Department', 'Position', '2010-01-01 08:00:00', '1', '1:0 2:0 3:0 4:0 5:0 6:0 8:0 10:0 16:0 23:0 19:0 21:0 7:1 9:1 11:31 12:31 13:31 14:1 15:1 17:81 18:145 24:319 25:63 20:19 22:1');
+INSERT INTO `wmis_sys_admin` (`id`, `uname`, `password`, `email`, `tel`, `name`, `department`, `position`, `rtime`, `state`, `perm`) VALUES ('2', 'webmis', '062d13422d6f79880a24408445f214ec', 'test@ksphp.com', '15088886666', 'Test', 'Test', 'Test', '2015-07-22 10:44:58', '1', '1:0 2:0 3:0 4:0 5:0 6:0 8:0 10:0 16:0 23:0 19:0 21:0 7:1 9:1 11:31 12:31 13:31 14:1 15:1 17:81 18:145 24:319 25:63 20:19 22:1');
 
 #
 # TABLE STRUCTURE FOR: wmis_sys_menus

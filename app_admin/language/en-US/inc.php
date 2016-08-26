@@ -3,6 +3,8 @@ $lang = array(
 	/* 登陆 */
 	"inc_uname" => "UserName",
 	"inc_passwd" => "PassWord",
+	"inc_user" => "Username/Email/Tel",
+	"inc_pwdinfo" => "Please input a password",
 	"inc_login" => "Login",
 	"inc_home" => "Home",
 	"inc_pc" => "Computer",

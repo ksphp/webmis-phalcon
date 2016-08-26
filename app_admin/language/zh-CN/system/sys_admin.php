@@ -5,6 +5,7 @@ $lang = array(
 	"sys_admin_pwd1" => "密码",
 	"sys_admin_pwd2" => "确认密码",
 	"sys_admin_email" => "邮箱",
+	"sys_admin_tel" => "手机号码",
 	"sys_admin_show" => "详细信息",
 	"sys_admin_name" => "姓名",
 	"sys_admin_dept" => "部门",

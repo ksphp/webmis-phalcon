@@ -80,7 +80,7 @@ class SysAdminController extends ControllerBase{
 				if(!empty($passwd)){
 					$post['password'] = md5($passwd);
 				}
-				if($data->save($post,array('password','state','email','name','department','position'))){
+				if($data->save($post,array('password','state','email','tel','name','department','position'))){
 					$this->response->redirect('Result/suc/SysAdmin');
 				}else{
 					$this->response->redirect('Result/err');

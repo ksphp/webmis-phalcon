@@ -9,15 +9,9 @@ $(function(){
 	},function(){
 		$(this).find('.qrcode_ct').hide();
 	});
+	// QRCode
 	$.webmis.inc({files:[$webmis_plugin+'tool/jquery.qrcode.min.js']});
 	$('#QRCode').qrcode({width: 100, height: 100, text: $base_url});
-	// Auto Size
-	var autoSize = function(){
-		var height = ($(window).height()-318)/2;
-		$('#webmisVersion').css({'margin-top':height});
-	}
-	autoSize();
-	$(window).resize(function(){autoSize();});
 	
 	// Login
 	var login = function(){

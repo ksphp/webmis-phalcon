@@ -3,7 +3,7 @@ $(function (){
 	$('#listBG').webmis('TableOddColor');
 /* Search */
 	$('#ico-search').click(function(){
-		if(!IsMobile){moWidth = 520; moHeight= 400;}
+		if(!IsMobile){moWidth = 520; moHeight= 450;}
 		$.webmis.win('open',{title:$(this).text(),width:moWidth,height:moHeight,overflow:true});
 		// Content
 		var url = $('#getUrl').text();
@@ -15,7 +15,7 @@ $(function (){
 	});
 /* Add */
 	$('#ico-add').click(function(){
-		if(!IsMobile){moWidth = 620; moHeight= 520;}
+		if(!IsMobile){moWidth = 620; moHeight= 560;}
 		$.webmis.win('open',{title:$(this).text(),width:moWidth,height:moHeight,overflow:true});
 		// Content
 		$.get($base_url+'SysAdmin/add',function(data){
@@ -28,7 +28,7 @@ $(function (){
 	$('#ico-edit').click(function(){
 		var id = $('#listBG').webmis('GetInputID');
 		if(id){
-			if(!IsMobile){moWidth = 620; moHeight= 460;}
+			if(!IsMobile){moWidth = 620; moHeight= 520;}
 			$.webmis.win('open',{title:$(this).text(),width:moWidth,height:moHeight,overflow:true});
 			// Content
 			$.post($base_url+'SysAdmin/edit',{'id':id},function(data){
@@ -63,6 +63,11 @@ function menusForm(){
 		var email =  /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
 		return this.optional(element) || email.test(value);
 	}, "<em></em>请输入正确邮箱");
+	// Tel
+	$.validator.addMethod("tel", function(value, element){
+		var tel =  /^(13[0-9]|14[0-9]|15[0-9]|18[0-9])\d{8}$/;
+		return this.optional(element) || tel.test(value);
+	}, "<em></em>请输入手机号码");
 }
 
 /* Edit Perm */

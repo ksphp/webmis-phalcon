@@ -5,6 +5,7 @@ $lang = array(
 	"sys_admin_pwd1" => "PassWord",
 	"sys_admin_pwd2" => "Confirm PWD",
 	"sys_admin_email" => "Email",
+	"sys_admin_tel" => "Tel",
 	"sys_admin_show" => "Show Information",
 	"sys_admin_name" => "Name",
 	"sys_admin_dept" => "Department",
