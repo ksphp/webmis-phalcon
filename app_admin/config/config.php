@@ -14,13 +14,13 @@ return array(
 		'pluginsDir'=>'plugins',
 		'formsDir'=>'forms',
 		'libraryDir'=>'library',
-		'baseUri'=>'/admin/'
+		'baseUri'=>'/admin/',
 	),'webmis'=>array(
 		'appTitle'=>'WebMIS Management',
 		'appCopy'=>'<a href="http://www.ksphp.com/" target="_blank"><b>ksphp.com</b></a>',
 		'defaultThemes'=>'default',
 		'webmisThemes'=>'default',
-		'jqueryName'=>'jquery-2.min.js',
-		'backupDir'=>'/upload/backup/'
+		'jqueryName'=>'jquery-3.min.js',
+		'backupDir'=>'/upload/backup/',
 	)
 );

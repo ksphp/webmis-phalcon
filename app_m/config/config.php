@@ -20,6 +20,6 @@ return array(
 		'appCopy'=>'<a href="http://www.ksphp.com/" target="_blank"><b>KSPHP.com</b></a>',
 		'defaultThemes'=>'default',
 		'webmisThemes'=>'default',
-		'jqueryName'=>'jquery-2.min.js'
+		'jqueryName'=>'jquery-3.min.js'
 	)
 );
