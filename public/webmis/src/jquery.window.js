@@ -52,7 +52,7 @@ var openWin = function (options) {
 	if(options.overflow){
 		options.content = '<div id="WebMisWinCT" style="width: 100%; height: '+(options.height-37)+'px; overflow: auto;">'+options.content+'</div>';
 	}else if(options.AutoClose){
-		options.content = '<div style="line-height: 30px; text-align: center; padding-top: 10px;">'+options.content;
+		options.content = '<div style="line-height: 24px; text-align: center; padding-top: 40px;">'+options.content;
 		options.content += '<br /><span style="color: #666;"><b id="WebMisWinIntNum" class="red">&nbsp;</b> '+options.AutoCloseText+'</span>';
 		options.content += '</div>';
 		//开始倒计时

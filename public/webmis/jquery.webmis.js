@@ -1,16 +1,22 @@
 ﻿/**
- * jQuery WebMIS 2015
+ * jQuery WebMIS 2016
  * Copyright (c) www.ksphp.com. All rights reserved.
- * Date: 2015-07-30
+ * Date: 2016-08-30
  */
- /* Public */
-var $base_url;
-var $webmis_root = '/webmis/';
-var $webmis_src = $webmis_root+'src/';
-var $webmis_plugin = $webmis_root+'plugin/';
+
+var $base_url;		// Web site URL
+var $webmis_root;	// WebMIS Root
+var $webmis_src;		// WebMIS Src
+var $webmis_plugin;	// WebMIS Plugin
 
 $(function(){
+
+	 /* Public */
 	$base_url = $('#base_url').text();
+	$webmis_root = $base_url+'../webmis/';
+	$webmis_src = $webmis_root+'src/';
+	$webmis_plugin = $webmis_root+'plugin/';
+
 	/* Version */
 	var D = new Date();
 	$.fn.webmisVersion = function (options) {
