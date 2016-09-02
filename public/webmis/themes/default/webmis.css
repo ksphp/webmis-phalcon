@@ -1,5 +1,7 @@
 @charset "utf-8";
 /* 初始化 */
+html{height: 100%;}
+body{height: 100%;}
 body,div,span,ul,li,table,tr,td,input,a,h1,h2,h3,h4{margin: 0; padding: 0;}
 body,textarea{font-family: ROCK,"\5FAE\8F6F\96C5\9ED1",helvetica,arial,sans-serif; font-size: 12px;}
 header,section,footer,aside{display: block;}
@@ -67,17 +69,13 @@ em{color: #6FB737; font-family: 'iconfont'; font-style: normal; font-size: 16px;
 .TableAdjust{cursor: e-resize; position: fixed; width: 4px; margin-left: -7px;}
 
 /* Table */
-.SubClass1,.SubClass2{cursor: pointer; height: 32px; padding: 0 20px; border-radius: 3px; box-shadow: 1px 1px 2px #999;}
-.SubClass1{border: #999 1px solid; color: #666;
+.SubClass1,.SubClass2{cursor: pointer; height: 34px; font-size: 14px; padding: 0 30px; border-radius: 3px; box-shadow: 1px 1px 3px #BBB;}
+.SubClass1{border: #BBB 1px solid; color: #666;
 	background:-moz-linear-gradient(top, #FFF,#F2F2F2);
 	background:-webkit-gradient(linear, 0 0, 0 100%, from(#FFF), to(#F2F2F2));
 	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#FFF,endColorstr=#F2F2F2,grandientType=1);
 }
-.SubClass2{border: #339900 1px solid; color: #FFF;
-	background:-moz-linear-gradient(top, #6FB737,#339900);
-	background:-webkit-gradient(linear, 0 0, 0 100%, from(#6FB737), to(#339900));
-	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#6FB737,endColorstr=#339900,grandientType=1);
-}
+.SubClass2{border: #3F9707 1px solid; color: #FFF; background: #6FB737;}
 
 /* Validform */
 input.error{border: #FF6600 1px solid;}

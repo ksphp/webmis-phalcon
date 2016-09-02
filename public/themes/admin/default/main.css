@@ -7,7 +7,7 @@ img{border: none; vertical-align: top;}
 ul{list-style: none;}
 a{color: #007568; text-decoration: none;}
 a:hover{color: #FF6600;}
-textarea{border: #999 1px solid; background: #FFF;}
+textarea{border: #999 1px solid; background: #FFF; padding: 5px;}
 input:focus, textarea:focus{box-shadow: 0 0 6px rgba(153, 153, 153, 0.7);}
 
 /* INC */
@@ -132,8 +132,8 @@ label.error em{float: left; padding-left: 5px;}
 .table_show td{padding: 4px 5px;}
 .table_show .tright{color: #999;}
 .table_show .sub{padding: 30px;}
-.table_show .an{padding: 8px 30px; boroer: #999 1px solid; background-color: #F2F2F2; color: #666; border-radius: 3px; box-shadow: 1px 1px 2px #999;}
-.table_show .an:hover{background-color: #6FB737; color: #FFF;}
+.table_show .an{padding: 10px 30px; border: #BBB 1px solid; background-color: #F2F2F2; color: #666; border-radius: 3px; box-shadow: 1px 1px 2px #CCC;}
+.table_show .an:hover{border: #6FB737 1px solid; background-color: #6FB737; color: #FFF;}
 
 /* ICO */
 .ico-qrcode:before {content: "\e6ab";}
