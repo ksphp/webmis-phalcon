@@ -2,7 +2,7 @@ var IsMobile;
 var moWidth;
 var moHeight;
 $(function (){
-	$.webmis.inc({files:[$webmis_plugin+'jquery/jquery.touchSwipe.min.js']});
+	$.webmis.inc({files:[$webmis_plugin+'tool/jquery.touchSwipe.min.js']});
 	navMove();
 	menuShow();
 	// All or Not all
