@@ -1,5 +1,5 @@
 /* Index */
 .body{background: url("../images/bg.png") #E2E4E6 center top;}
-.in_body{width: 320px; line-height: 24px; margin: 0 auto; text-align: center; color: #333;}
+.in_body{position: absolute; width: 320px; line-height: 24px; top: 30%; left: 0; right: 0; margin: 0 auto; text-align: center; color: #333;}
 .in_body .logo{display: block; height: 60px; background: url('../images/logo.png') center center no-repeat;}
 .in_copy{}
