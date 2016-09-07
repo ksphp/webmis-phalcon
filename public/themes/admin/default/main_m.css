@@ -49,10 +49,21 @@ label.error em{float: left; padding-left: 5px;}
 
 /* Top */
 .top_user{position: fixed; top: 100%; width: 100%; height: 36px; margin-top: -36px; background-color: rgba(0,0,0,0.7);}
-.top_logo{float: left; width: 140px; height: 36px; background: url("images/logo.png") no-repeat -5px 4px; display: inline-block;}
-.top_link{position: absolute; z-index: 1; right: 0px; line-height: 36px; color: #FFF; padding: 0 10px;}
-.top_link a{color: #6FB737;}
-.top_link a:hover{color: #FF6600;}
+
+.top_link{position: absolute; z-index: 1; right: 5px; height: 36px; color: #999; padding: 0 10px;}
+.top_link span{float: left; line-height: 36px;}
+.top_link .uname{font-size: 14px; font-weight: bold; padding-right: 10px;}
+.top_link .icon{width: 32px; height: 32px; line-height: 32px; text-align: center; background-color: #222; margin-top: 2px; border-radius: 16px;}
+.top_link .icon em:before{content: "\e6a1"; font-size: 21px;}
+.top_link:hover{background-color: #222;}
+.top_link:hover .icon{background-color: #6FB737;}
+.top_link:hover em{color: #FFF;}
+.top_link .info{display: none; position: absolute; z-index: 2; right: 0px; bottom: 36px; background-color: rgba(0,0,0,0.87);}
+.top_link .info .ct{padding: 10px; line-height: 24px;}
+.top_link .info a{float: left; display: inline-block; min-width: 200px; line-height: 36px; font-size: 14px; color: #6FB737; padding: 0 10px;}
+.top_link .info a:hover{color: #FF6600; background-color: #3D3D3D;}
+.top_link .info .btop{border-top: #3D3D3D 1px solid;}
+.top_link:hover .info{display: block;}
 
 .nav_ct{width: 100%; position: fixed; z-index: 9; height: 42px; background: #3D3D3D; overflow: hidden; backface-visibility: hidden; box-shadow: 1px 1px 3px #666;}
 .nav{position: relative; top: 0px; width: 1600px; height: 42px; line-height: 42px; font-size: 14px;}

@@ -27,9 +27,18 @@
 			<li><a href="<?php echo $this->url->get($val['url']);?>" class="<?php echo $an;?>"><em class="<?php echo $val['ico'];?>"></em><span><?php echo $val['title'];?></span></a></li>
 <?php }?>
 		</ul>
-		<span class="top_link">
-			<?php echo $_SESSION['Admin']['uname'];?> [ <?php echo $_SESSION['Admin']['department'].'-'.$_SESSION['Admin']['position'];?> ] | <a href="<?php echo $this->url->get('index/loginOut');?>"><b><?php echo $incLang->_('inc_logout');?></b></a>
-		</span>
+		<div class="top_link">
+			<span class="uname"><?php echo $_SESSION['Admin']['uname'];?></span>
+			<span class="icon"><em></em></span>
+			<span class="info">
+				<span class="ct">
+					<?php echo $incLang->_('inc_department').': '.$_SESSION['Admin']['department'];?><br>
+					<?php echo $incLang->_('inc_position').': '.$_SESSION['Admin']['position'];?>
+				</span>
+				<a href="<?php echo $this->url->get('SysChangePasswd');?>" class="btop"><?php echo $incLang->_('inc_changepwd');?></a>
+				<a href="<?php echo $this->url->get('index/loginOut');?>" class="btop center"><?php echo $incLang->_('inc_logout');?></a>
+			</span>
+		</div>
 	</div>
 	<div class="ct_body">
 		<div class="ct_left">

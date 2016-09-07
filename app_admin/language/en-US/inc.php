@@ -11,6 +11,10 @@ $lang = array(
 	"inc_mobile" => "Mobile",
 	"inc_isIE" => "Please use IE 9 or above or other browsers！",
 	"inc_sysconfig" => "Sysconfig",
+
+	"inc_department" => "Department",
+	"inc_position" => "Position",
+	"inc_changepwd" => "Change Password",
 	"inc_logout" => "Logout",
 	/* Action */
 	"inc_sea" => "Search",

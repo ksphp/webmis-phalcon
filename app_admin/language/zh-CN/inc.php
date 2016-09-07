@@ -11,6 +11,10 @@ $lang = array(
 	"inc_mobile" => "手机版",
 	"inc_isIE" => "请使用IE 9以上或其他浏览器！",
 	"inc_sysconfig" => "系统配置",
+
+	"inc_department" => "部门",
+	"inc_position" => "职务",
+	"inc_changepwd" => "修改密码",
 	"inc_logout" => "注销",
 	/* 动作 */
 	"inc_sea" => "搜索",
