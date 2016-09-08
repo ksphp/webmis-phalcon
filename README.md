@@ -23,27 +23,35 @@ Add the extension to your php.ini:
 -----------
 
 ##### CentOS
+```bash
 vi /etc/php.d/phalcon.ini
+```
 
 ##### Ubunut
+```bash
 vi /etc/php5/mods-available/phalcon.ini
 ln -s /etc/php5/mods-available/phalcon.ini /etc/php5/fpm/conf.d/phalcon.ini
+```
 
 
 Download Phalcon-WebMIS
 -----------
-
+```bash
     Project Download：https://github.com/ksphp/phalcon-webmis
-    Official Docs：https://docs.phalconphp.com/zh/latest/index.html
+    Official Docs：https://docs.phalconphp.com/en/latest/index.html
+```
 
 ### Linux/Unix/Mac
 
 ##### Svn 方式
+```bash
 svn co https://github.com/ksphp/phalcon-webmis/trunk webmis-phalcon
+```
 
 ##### Git 方式
+```bash
 git clone https://github.com/ksphp/phalcon-webmis.git webmis-phalcon
-
+```
 
 Configure VirtualHost
 -----------
