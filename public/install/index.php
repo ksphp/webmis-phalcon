@@ -47,20 +47,31 @@ $lang = array(
 );
 $Lang = $lang[$_SESSION['Lang']];
 
+// 修改配置文件
+function cofingFile($file,$ct,$data){
+	foreach ($data as $key=>$val){
+		$pat = "/\t\t'".$key."'=>(.*)/";
+		$rep = "\t\t'".$key."'=>'".$val."',";
+		$ct = preg_replace($pat,$rep,$ct);
+	}
+	/* Write */
+	return file_put_contents($file,$ct)==TRUE?TRUE:FALSE;
+}
+
 $isWrite='';$msg='';$suc='';
 
 // Is Write
 if(!is_writable('webmis.sql')){
 	$isWrite .= '<p class="err">install/webmis.sql '.$Lang['msg_not_write'].'</p>';
 }
-if(!is_writable('../../app_admin/config/config.ini')){
-	$isWrite .= '<p class="err">app_admin/config/config.ini '.$Lang['msg_not_write'].'</p>';
+if(!is_writable('../../app_admin/config/config.php')){
+	$isWrite .= '<p class="err">app_admin/config/config.php '.$Lang['msg_not_write'].'</p>';
 }
-if(!is_writable('../../app_web/config/config.ini')){
-	$isWrite .= '<p class="err">app_web/config/config.ini '.$Lang['msg_not_write'].'</p>';
+if(!is_writable('../../app_web/config/config.php')){
+	$isWrite .= '<p class="err">app_web/config/config.php '.$Lang['msg_not_write'].'</p>';
 }
-if(!is_writable('../../app_m/config/config.ini')){
-	$isWrite .= '<p class="err">app_m/config/config.ini '.$Lang['msg_not_write'].'</p>';
+if(!is_writable('../../app_m/config/config.php')){
+	$isWrite .= '<p class="err">app_m/config/config.php '.$Lang['msg_not_write'].'</p>';
 }
 
 // Install
@@ -107,9 +118,9 @@ if (isset($_POST['install'])){
 				}
 				$suc .= $data;
 				// Database Config
-				$file1 = '../../app_admin/config/config.ini';
-				$file2 = '../../app_web/config/config.ini';
-				$file3 = '../../app_m/config/config.ini';
+				$file1 = '../../app_admin/config/config.php';
+				$file2 = '../../app_web/config/config.php';
+				$file3 = '../../app_m/config/config.php';
 				$ct1 = file_get_contents($file1);
 				$ct2 = file_get_contents($file2);
 				$ct3 = file_get_contents($file3);
@@ -120,45 +131,22 @@ if (isset($_POST['install'])){
 				}elseif(!$ct3) {
 					$suc .= '<p class="err">'.$Lang['msg_file_read' ].'：'.$file3.' [ '.$Lang['msg_err' ].' ]</p>';
 				}else {
-					// Write Config Admin
-					$ct1 = preg_replace("/ adapter = (.*)/"," adapter = '".$type."'",$ct1);
-					$ct1 = preg_replace("/ host = (.*)/"," host = '".$hostname."'",$ct1);
-					$ct1 = preg_replace("/ username = (.*)/"," username = '".$username."'",$ct1);
-					$ct1 = preg_replace("/ password = (.*)/"," password = '".$password."'",$ct1);
-					$ct1 = preg_replace("/ name = (.*)/"," name = '".$database."'",$ct1);
-					$fp=fopen($file1,'w');
-					if(fwrite($fp,$ct1)){
+					$data = array('adapter'=>$type,'host'=>$hostname,'username'=>$username,'password'=>$password,'name'=>$database);
+					if(cofingFile($file1,$ct1,$data)){
 						$suc .= '<p class="suc">'.$Lang['msg_file_write' ].'：'.$file1.' [ '.$Lang['msg_suc' ].' ]</p>';
 					}else {
 						$suc .= '<p class="err">'.$Lang['msg_file_write' ].'：'.$file1.' [ '.$Lang['msg_err' ].' ]</p>';
 					};
-					fclose($fp);
-					// Write Config Web
-					$ct2 = preg_replace("/ adapter = (.*)/"," adapter = '".$type."'",$ct2);
-					$ct2 = preg_replace("/ host = (.*)/"," host = '".$hostname."'",$ct2);
-					$ct2 = preg_replace("/ username = (.*)/"," username = '".$username."'",$ct2);
-					$ct2 = preg_replace("/ password = (.*)/"," password = '".$password."'",$ct2);
-					$ct2 = preg_replace("/ name = (.*)/"," name = '".$database."'",$ct2);
-					$fp=fopen($file2,'w');
-					if(fwrite($fp,$ct2)){
-						$suc .= '<p class="suc">'.$Lang['msg_file_write' ].'：'.$file2.' [ '.$Lang['msg_suc' ].' ]</p>';
+					if(cofingFile($file2,$ct2,$data)){
+						$suc .= '<p class="suc">'.$Lang['msg_file_write' ].'：'.$file1.' [ '.$Lang['msg_suc' ].' ]</p>';
 					}else {
-						$suc .= '<p class="err">'.$Lang['msg_file_write' ].'：'.$file2.' [ '.$Lang['msg_err' ].' ]</p>';
+						$suc .= '<p class="err">'.$Lang['msg_file_write' ].'：'.$file1.' [ '.$Lang['msg_err' ].' ]</p>';
 					};
-					fclose($fp);
-					// Write Config M
-					$ct3 = preg_replace("/ adapter = (.*)/"," adapter = '".$type."'",$ct3);
-					$ct3 = preg_replace("/ host = (.*)/"," host = '".$hostname."'",$ct3);
-					$ct3 = preg_replace("/ username = (.*)/"," username = '".$username."'",$ct3);
-					$ct3 = preg_replace("/ password = (.*)/"," password = '".$password."'",$ct3);
-					$ct3 = preg_replace("/ name = (.*)/"," name = '".$database."'",$ct3);
-					$fp=fopen($file3,'w');
-					if(fwrite($fp,$ct3)){
-						$suc .= '<p class="suc">'.$Lang['msg_file_write' ].'：'.$file3.' [ '.$Lang['msg_suc' ].' ]</p>';
+					if(cofingFile($file3,$ct3,$data)){
+						$suc .= '<p class="suc">'.$Lang['msg_file_write' ].'：'.$file1.' [ '.$Lang['msg_suc' ].' ]</p>';
 					}else {
-						$suc .= '<p class="err">'.$Lang['msg_file_write' ].'：'.$file3.' [ '.$Lang['msg_err' ].' ]</p>';
+						$suc .= '<p class="err">'.$Lang['msg_file_write' ].'：'.$file1.' [ '.$Lang['msg_err' ].' ]</p>';
 					};
-					fclose($fp);
 					$suc .= '<p>'.$Lang['msg_finish'].'</p>';
 					$suc .= '<div class="finish"><a href="../">'.$Lang['link_home' ].'</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="../admin/">'.$Lang['link_admin' ].'</a></div>';
 				}
