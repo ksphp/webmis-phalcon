@@ -50,7 +50,7 @@ svn co https://github.com/ksphp/phalcon-webmis/trunk webmis-phalcon
 
 ##### Git 方式
 ```bash
-git clone https://github.com/ksphp/phalcon-webmis.git webmis-phalcon
+git clone --depth=1 https://github.com/ksphp/phalcon-webmis.git webmis-phalcon
 ```
 
 Configure VirtualHost
