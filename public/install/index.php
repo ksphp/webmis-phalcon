@@ -156,7 +156,7 @@ if (isset($_POST['install'])){
 		}
 	}
 }else{
-	$uname='admin';$type='';$hostname='localhost';$username='root';$database='webmis';
+	$uname='webmis';$type='';$hostname='localhost';$username='root';$database='webmis';
 }
 ?>
 <!DOCTYPE html>
