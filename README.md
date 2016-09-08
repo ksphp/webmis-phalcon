@@ -33,10 +33,8 @@ ln -s /etc/php5/mods-available/phalcon.ini /etc/php5/fpm/conf.d/phalcon.ini
 Download Phalcon-WebMIS
 -----------
 
-
-    Online Experience：http://phalcon.ksphp.com/admin
     Project Download：https://github.com/ksphp/phalcon-webmis
-    Official Docs：https://docs.phalconphp.com/en/latest/index.html
+    Official Docs：https://docs.phalconphp.com/zh/latest/index.html
 
 ### Linux/Unix/Mac
 
