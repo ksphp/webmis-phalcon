@@ -4,8 +4,8 @@ return array(
 		'adapter'=>'Mysql',
 		'host'=>'localhost',
 		'username'=>'webmis',
-		'password'=>'www.ksphp.com',
-		'name'=>'pwebmis',
+		'password'=>'webmis',
+		'name'=>'webmis',
 		'charset'=>'utf8'
 	),'application'=>array(
 		'controllersDir'=>'controllers',

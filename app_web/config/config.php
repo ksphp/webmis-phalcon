@@ -5,7 +5,7 @@ return array(
 		'host'=>'localhost',
 		'username'=>'webmis',
 		'password'=>'webmis',
-		'name'=>'pwebmis',
+		'name'=>'webmis',
 		'charset'=>'utf8'
 	),'application'=>array(
 		'controllersDir'=>'controllers',
