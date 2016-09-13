@@ -4,21 +4,21 @@
 .WebMIS_Upload_input input{display: none;}
 .WebMIS_Upload_files{overflow: hidden; padding: 0 10px;}
 .WebMIS_Upload_files_ct{font-size: 12px; border: #DADCDF 1px solid; padding: 5px 10px 15px 45px; margin-bottom: 10px; box-shadow: 1px 1px 1px #F2F2F2;
-	background:-moz-linear-gradient(top, #FFF,#F2F2F2);
-	background:-webkit-gradient(linear, 0 0, 0 100%, from(#FFF), to(#F2F2F2));
-	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#FFF,endColorstr=#F2F2F2,grandientType=1);
+	background:-moz-linear-gradient(top, #FFF,#F8F8F8);
+	background:-webkit-gradient(linear, 0 0, 0 100%, from(#FFF), to(#F8F8F8));
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#FFF,endColorstr=#F8F8F8,grandientType=1);
 }
-.WebMIS_Upload_files_img{float: left; width: 35px; height: 35px; line-height: 35px; margin: 3px 0 0 -40px; text-align: center; color: #6fb737; background-size: contain; background-repeat: no-repeat; background-position: center center;}
-.WebMIS_Upload_files_img span{width: 100%; height: 100%; background-color: #F2F2F2; border-radius: 60px; display: block;}
+.WebMIS_Upload_files_img{float: left; width: 36px; height: 36px; line-height: 36px; margin: 5px 0 0 -40px; text-align: center; color: #6fb737; background-size: contain; background-repeat: no-repeat; background-position: center center;}
+.WebMIS_Upload_files_img span{width: 100%; height: 100%; background-color: #F2F2F2; border-radius: 60px; box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.15) inset; display: block;}
 .WebMIS_Upload_files_title{overflow: hidden; width: 100%; color: #999;}
 .WebMIS_Upload_files_title span{float: left; font-size: 10px;}
 .WebMIS_Upload_files_title span b{color: #666; font-size: 12px;}
 .WebMIS_Upload_files_title em{float: right; cursor: pointer; font-size: 14px;}
 .WebMIS_Upload_files_title em:before {content: "\e6a9";}
-.WebMIS_Upload_files_load{overflow: hidden; height: 12px; background-color: #F2F2F2; box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1) inset;}
+.WebMIS_Upload_files_load{overflow: hidden; height: 12px; background-color: #F2F2F2; box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.15) inset;}
 @keyframes WebMIS_Upload_files_barBG{from{background-position:40px 0}to{background-position:0 0}}
 @-webkit-keyframes WebMIS_Upload_files_barBG{from{background-position:40px 0}to{background-position:0 0}}
-.WebMIS_Upload_files_bar{height: 12px; font-size: 12px; text-align: right; color: #FFF; background-color: #6FB737; box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1) inset;
+.WebMIS_Upload_files_bar{height: 12px; line-height: 12px; font-size: 12px; text-align: right; color: #FFF; background-color: #6FB737; box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1) inset;
 	background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
 	background-size: 40px 40px;
 	animation: WebMIS_Upload_files_barBG 2s linear infinite;
