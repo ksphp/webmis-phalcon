@@ -1,18 +1,21 @@
 ## WebMIS
-webmis是多年开发中整理并开发的前端插件，整合了Jquery、CodeMirror、TinyMCE、Chart等插件！功能有字体图标、自动加载CSS或JS、提示框、HTML5视频播放、图表、表单验证、编辑器、文件上传等常用功能。
+WEBMIS is in the development of many years finishing and development of the front-end plug-ins, integrated Jquery, CodeMirror, TinyMCE, Chart and other plug-ins! Features Font Icon, automatically loaded CSS or JS, prompt box, HTML5 video playback, graphics, form validation, editor, file upload and other commonly used functions.
 
 ## WebMIS-Phalcon
-基于Phalcon框架开发的多用户、多权限开源解决方案！提供整体网站开发体系、解决后台管理和二次开发问题。
+Multi user, multi privilege open source solution based on Phalcon framework! Provide the overall website development system, solve the problems of background management and the two development.
 
-* [官方网站](https://ksphp.github.io/)
-* [WebMIS文档](https://ksphp.github.io/docs/WebMIS/)
-* [Phalcon文档](https://docs.phalconphp.com/zh/latest/index.html)
+## WebMIS Document
 
-## 一、安装Phalcon框架
+* [Official Website](https://ksphp.github.io/)
+* [WebMIS Document](https://ksphp.github.io/docs/WebMIS/)
+* [Phalcon Document](https://docs.phalconphp.com/zh/latest/index.html)
+
+
+# Install Phalcon framework
 https://phalconphp.com/zh/download
 
-### 添加到PHP扩展
-extension=phalcon.so // 添加到INI文件
+### Add to PHP extension
+extension=phalcon.so    // Add to INI file
 ```bash
 # CentOS
 vi /etc/php.d/phalcon.ini
@@ -22,37 +25,37 @@ vi /etc/php5/mods-available/phalcon.ini
 ln -s /etc/php5/mods-available/phalcon.ini /etc/php5/fpm/conf.d/phalcon.ini
 ```
 
-### 无法编译C的解决方法(阿里云ECS、腾讯云CVM)
+### Unable to compile C solution (Aliyun cloud ECS, Tencent cloud CVM)
 ```bash
-# 编译时内存不足导致
+# Error
 gcc: internal compiler error: Killed (program cc1)
 
-# 增加SWAP文件
+# Add SWAP file
 dd if=/dev/zero of=/var/swapfile bs=1M count=2048
 
-# 创建SWAP文件
+# Create SWAP file
 mkswap /var/swapfile
 
-# 激活SWAP文件
+# Activate SWAP file
 swapon /var/swapfile
 
-# 查看SWAP
+# View SWAP
 free -m
 
-# 添加到fstab文件中让系统引导时自动启动
+# Add to fstab file
 echo "/var/swapfile swap swap defaults 0 0" >>/etc/fstab
 
 ```
 
-## 二、下载webmis-phalcon项目
+# Download webmis-phalcon project
 ```bash
-# Svn 方式
+# Svn mode
 svn co https://github.com/ksphp/webmis-phalcon/trunk webmis-phalcon
-# Git 方式
+# Git mode
 git clone --depth=1 https://github.com/ksphp/webmis-phalcon.git webmis-phalcon
 ```
 
-## 三、配置环境
+# Configuration
 ### 1) Apache
 ```bash
 [...]
@@ -80,9 +83,6 @@ server {
     }
     location /admin/ {
         rewrite ^/admin/(.*)$ /admin/index.php?_url=/$1;
-    }
-    location /app/ {
-        rewrite ^/app/(.*)$ /app/index.php?_url=/$1;
     }
     location ~* ^/(webmis|upload)/(.+)$ {
         root $root_path;
@@ -115,8 +115,8 @@ server {
 }
 ```
 
-## 四、安装向导
+# Installation wizard
 ```bash
 http://phalcon.ksphp.cn/install
 ```
-注意：安装完成后记得删除该目录！
+Note: remember to delete the directory after the installation is complete!
