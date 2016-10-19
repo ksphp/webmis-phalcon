@@ -2,7 +2,6 @@
 $lang = array(
 	"class_web_class" => "所属",
 	"class_web_title" => "菜单名",
-	"class_web_en" => "英文名",
 	"class_web_url" => "控制器",
 	"class_web_ico" => "图标",
 	"class_web_ctime" => "创建时间",
