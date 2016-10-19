@@ -14,13 +14,9 @@ return array(
 		'pluginsDir'=>'plugins',
 		'formsDir'=>'forms',
 		'libraryDir'=>'library',
-		'baseUri'=>'/admin/',
+		'baseUri'=>'/data/'
 	),'webmis'=>array(
-		'appTitle'=>'WebMIS Management',
-		'appCopy'=>'<a href="https://ksphp.github.io/" target="_blank"><b>WebMIS</b></a>',
-		'defaultThemes'=>'default',
-		'webmisThemes'=>'default',
-		'jqueryName'=>'jquery-3.min.js',
-		'backupDir'=>'/upload/backup/',
+		'appTitle'=>'WebMIS APP Data',
+		'appCopy'=>'<a href="https://ksphp.github.io/" target="_blank"><b>WebMIS</b></a>'
 	)
 );

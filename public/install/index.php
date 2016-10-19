@@ -73,6 +73,9 @@ if(!is_writable('../../app_web/config/config.php')){
 if(!is_writable('../../app_m/config/config.php')){
 	$isWrite .= '<p class="err">app_m/config/config.php '.$Lang['msg_not_write'].'</p>';
 }
+if(!is_writable('../../app_data/config/config.php')){
+	$isWrite .= '<p class="err">app_data/config/config.php '.$Lang['msg_not_write'].'</p>';
+}
 
 // Install
 if (isset($_POST['install'])){
@@ -121,16 +124,20 @@ if (isset($_POST['install'])){
 				$file1 = '../../app_admin/config/config.php';
 				$file2 = '../../app_web/config/config.php';
 				$file3 = '../../app_m/config/config.php';
+				$file4 = '../../app_data/config/config.php';
 				$ct1 = file_get_contents($file1);
 				$ct2 = file_get_contents($file2);
 				$ct3 = file_get_contents($file3);
-				if(!$ct1) {
+				$ct4 = file_get_contents($file4);
+				if(!$ct1){
 					$suc .= '<p class="err">'.$Lang['msg_file_read' ].'：'.$file1.' [ '.$Lang['msg_err' ].' ]</p>';
-				}elseif(!$ct2) {
+				}elseif(!$ct2){
 					$suc .= '<p class="err">'.$Lang['msg_file_read' ].'：'.$file2.' [ '.$Lang['msg_err' ].' ]</p>';
-				}elseif(!$ct3) {
+				}elseif(!$ct3){
 					$suc .= '<p class="err">'.$Lang['msg_file_read' ].'：'.$file3.' [ '.$Lang['msg_err' ].' ]</p>';
-				}else {
+				}elseif(!$ct4){
+					$suc .= '<p class="err">'.$Lang['msg_file_read' ].'：'.$file4.' [ '.$Lang['msg_err' ].' ]</p>';
+				}else{
 					$data = array('adapter'=>$type,'host'=>$hostname,'username'=>$username,'password'=>$password,'name'=>$database);
 					if(cofingFile($file1,$ct1,$data)){
 						$suc .= '<p class="suc">'.$Lang['msg_file_write' ].'：'.$file1.' [ '.$Lang['msg_suc' ].' ]</p>';
@@ -138,14 +145,19 @@ if (isset($_POST['install'])){
 						$suc .= '<p class="err">'.$Lang['msg_file_write' ].'：'.$file1.' [ '.$Lang['msg_err' ].' ]</p>';
 					};
 					if(cofingFile($file2,$ct2,$data)){
-						$suc .= '<p class="suc">'.$Lang['msg_file_write' ].'：'.$file1.' [ '.$Lang['msg_suc' ].' ]</p>';
+						$suc .= '<p class="suc">'.$Lang['msg_file_write' ].'：'.$file2.' [ '.$Lang['msg_suc' ].' ]</p>';
 					}else {
-						$suc .= '<p class="err">'.$Lang['msg_file_write' ].'：'.$file1.' [ '.$Lang['msg_err' ].' ]</p>';
+						$suc .= '<p class="err">'.$Lang['msg_file_write' ].'：'.$file2.' [ '.$Lang['msg_err' ].' ]</p>';
 					};
 					if(cofingFile($file3,$ct3,$data)){
-						$suc .= '<p class="suc">'.$Lang['msg_file_write' ].'：'.$file1.' [ '.$Lang['msg_suc' ].' ]</p>';
+						$suc .= '<p class="suc">'.$Lang['msg_file_write' ].'：'.$file3.' [ '.$Lang['msg_suc' ].' ]</p>';
 					}else {
-						$suc .= '<p class="err">'.$Lang['msg_file_write' ].'：'.$file1.' [ '.$Lang['msg_err' ].' ]</p>';
+						$suc .= '<p class="err">'.$Lang['msg_file_write' ].'：'.$file3.' [ '.$Lang['msg_err' ].' ]</p>';
+					};
+					if(cofingFile($file4,$ct4,$data)){
+						$suc .= '<p class="suc">'.$Lang['msg_file_write' ].'：'.$file4.' [ '.$Lang['msg_suc' ].' ]</p>';
+					}else {
+						$suc .= '<p class="err">'.$Lang['msg_file_write' ].'：'.$file4.' [ '.$Lang['msg_err' ].' ]</p>';
 					};
 					$suc .= '<p>'.$Lang['msg_finish'].'</p>';
 					$suc .= '<div class="finish"><a href="../">'.$Lang['link_home' ].'</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="../admin/">'.$Lang['link_admin' ].'</a></div>';

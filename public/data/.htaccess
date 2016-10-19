@@ -1,0 +1,15 @@
+#*****************************
+#http://www.example.com/m/
+# "/m/"
+#http://wmis.example.com
+# "/"
+#*****************************
+
+RewriteEngine On
+RewriteBase /data/
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-l
+
+RewriteRule ^(.*)$ index.php?_url=/$1 [QSA,L]

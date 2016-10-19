@@ -17,7 +17,7 @@ return array(
 		'baseUri'=>'/m/'
 	),'webmis'=>array(
 		'appTitle'=>'WebMIS Mobile Phone',
-		'appCopy'=>'<a href="http://www.ksphp.com/" target="_blank"><b>KSPHP.com</b></a>',
+		'appCopy'=>'<a href="https://ksphp.github.io/" target="_blank"><b>WebMIS</b></a>',
 		'defaultThemes'=>'default',
 		'webmisThemes'=>'default',
 		'jqueryName'=>'jquery-3.min.js'
