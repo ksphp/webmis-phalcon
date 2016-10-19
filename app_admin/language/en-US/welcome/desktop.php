@@ -1,6 +1,6 @@
 <?php
 $lang = array(
-	"wel_desktop_log" => "Login LOG",
+	"wel_desktop_log" => "Login Log",
 	"wel_desktop_m01" => "January",
 	"wel_desktop_m02" => "February",
 	"wel_desktop_m03" => "March",

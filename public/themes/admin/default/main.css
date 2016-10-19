@@ -1,6 +1,7 @@
 @charset "utf-8";
 /* Default */
 body,div,span,ul,li,table,tr,td,input,a,p,h1,h2,h3,h4,dl{margin: 0; padding: 0;}
+body,.top_body{min-width: 640px;}
 body,textarea{color: #333;}
 header,section,footer,aside{display: block;}
 img{border: none; vertical-align: top;}
@@ -148,6 +149,11 @@ label.error em{float: left; padding-left: 5px;}
 .table_show .sub{padding: 30px;}
 .table_show .an{padding: 10px 30px; border: #BBB 1px solid; background-color: #F2F2F2; color: #666; border-radius: 3px; box-shadow: 1px 1px 2px #CCC;}
 .table_show .an:hover{border: #6FB737 1px solid; background-color: #6FB737; color: #FFF;}
+
+/* Html */
+.html{padding: 20px 10px; line-height: 24px; font-size: 14px;}
+.html h2{font-size: 18px; padding: 8px 0; border-bottom: #DADCDF 1px solid;}
+.html p{padding: 8px 0;}
 
 /* ICO */
 .ico-qrcode:before {content: "\e6ab";}

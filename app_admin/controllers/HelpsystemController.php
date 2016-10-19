@@ -2,6 +2,8 @@
 class HelpSystemController extends ControllerBase{
 	// Index
 	public function indexAction(){
+		// Data
+		$this->view->setVar('Lang',$this->inc->getLang('help/help_system'));
 		// Menus
 		$this->view->setVar('Menus',$this->inc->getMenus());
 		$this->tag->prependTitle($this->inc->Ctitle);
