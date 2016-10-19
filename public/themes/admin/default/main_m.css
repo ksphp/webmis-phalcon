@@ -137,6 +137,11 @@ label.error em{float: left; padding-left: 5px;}
 .table_show{width: 98%; border-collapse: collapse; margin: 0 auto; font-size: 13px;}
 .table_show td{padding: 8px 5px;}
 
+/* Html */
+.html{padding: 20px 10px; line-height: 24px; font-size: 14px;}
+.html h2{font-size: 18px; padding: 8px 0; border-bottom: #DADCDF 1px solid;}
+.html p{padding: 8px 0;}
+
 /* ICO */
 .ico-menus:before {content: "\e6a0";}
 .ico-qrcode:before {content: "\e696";}
