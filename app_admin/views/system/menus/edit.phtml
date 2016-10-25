@@ -38,7 +38,7 @@ foreach($Action as $val){
 ?>
 			<input type="checkbox" class="Checkbox" value="<?php echo $val->perm;?>" <?php echo intval($Edit->perm)&intval($val->perm)?'checked':'';?> /><span class="inputText"><?php echo $title;?></span>
 <?php }?>
-			<input type="hidden" id="menus_perm" name="perm" value="0" />
+			<input type="hidden" id="menus_perm" name="perm" value="<?php echo $Edit->perm;?>" />
 		</td>
 	</tr>
 	<tr>
