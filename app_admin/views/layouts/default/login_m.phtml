@@ -15,7 +15,7 @@
 <body class="body_login">
 	<!--	Lang -->
 	<div id="Lang" class="lang_ct">
-		<?php echo $LangName;?>
+		<span><?php echo $LangName;?></span>
 		<ul class="lang">
 <?php foreach ($LangAll as $key=>$val){?>
 			<li><a href="<?php echo $this->url->get('?lang='.$key); ?>"><?php echo $key.' | '.$val;?></a></li>

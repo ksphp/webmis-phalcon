@@ -19,7 +19,7 @@ $di->set('dispatcher', function() use ($di) {
 	$eventsManager = new EventsManager;
 	//NotFound
 	$eventsManager->attach('dispatch:beforeException', new NotFoundPlugin);
-	
+
 	$dispatcher = new Dispatcher;
 	$dispatcher->setEventsManager($eventsManager);
 
