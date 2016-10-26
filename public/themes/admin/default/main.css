@@ -21,6 +21,7 @@ input:focus, textarea:focus{box-shadow: 0 0 6px rgba(153, 153, 153, 0.7);}
 .inputText{float: left; height: 30px; line-height: 30px; padding: 0 10px 0 5px;}
 .Checkbox{float: left; margin-top: 8px;}
 .noDisplay{display: none;}
+.hideText{overflow: hidden; white-space: nowrap; text-overflow: ellipsis;}
 
 .autocomplete-suggestions{border: #DADCDF 1px solid; background-color: #FFF; text-indent: 10px; font-size: 12px;}
 .autocomplete-suggestions div{padding: 6px 0;}
